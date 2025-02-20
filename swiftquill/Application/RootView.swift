@@ -87,14 +87,8 @@ struct RootView: View {
     @ViewBuilder
     func setupOnboardingView () -> some View {
         OnboardingView(onEvent: { event in
-            switch event {
-            case .finishButtonTapped:
-                DIContainer.shared.userRepository.setOnboardingIsFinished()
-                router.navigate(to: .home)
-            case .skipButtonTapped:
-                DIContainer.shared.userRepository.setOnboardingIsFinished()
-                router.navigate(to: .home)
-            }
+            DIContainer.shared.userRepository.setOnboardingIsFinished()
+            router.navigateToRoot()
         })
     }
     
