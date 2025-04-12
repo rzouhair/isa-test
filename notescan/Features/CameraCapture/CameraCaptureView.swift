@@ -8,11 +8,43 @@
 import SwiftUI
 
 struct CameraCaptureView: View {
+    @State private var showChatSheet: Bool = false
+    @State private var cameraIsActive: Bool = true
+    @State private var showHistory: Bool = false
+    
+    @Environment(Router.self) private var router: Router
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            ZStack(alignment: .top) {
+                CameraView(isActive: $cameraIsActive, onCaptureImage: { images in
+                    router.presentFullscreenCover(.detection(images: images))
+                }, showHistory: $showHistory)
+            }
+            .edgesIgnoringSafeArea(.all)
+            .background(Color.black)
+            .toolbar {
+                if router.presentedSheet != .camera {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button {
+                            router.dismissSheet()
+                            router.dismissFullscreenCover()
+                        } label: {
+                            Image(systemName: "xmark")
+                                .resizable()
+                                .frame(width: 18, height: 18)
+                                .padding(.top, 18)
+                                .foregroundStyle(.white)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
 #Preview {
+    let router = Router()
     CameraCaptureView()
+        .environment(router)
 }

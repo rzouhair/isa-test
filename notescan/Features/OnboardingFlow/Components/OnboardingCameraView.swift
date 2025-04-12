@@ -187,23 +187,6 @@ struct OnboardingCameraView: View {
                     Spacer()
                     
                     HStack {
-                        Button(action: {
-                            //show image selection
-                            showImagePicker = true
-                        }) {
-                            Image(systemName: "photo.on.rectangle")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 30, height: 30, alignment: .center)
-                                .clipped()
-                                .padding(25)
-                        }
-                        .foregroundColor(.white)
-                        .sheet(isPresented: $showImagePicker) {
-                            PhotoPicker(isPresented: $showImagePicker, selectedImage: $selectedImage, filename: $filename)
-                                .accentColor(.blue)
-                        }
-                        
                         Spacer()
                         Button(action: {
                             // Capture photo
@@ -222,23 +205,6 @@ struct OnboardingCameraView: View {
                                 .clipShape(Circle())
                         }
                         Spacer()
-                        //
-                        
-                        
-                        
-                        Button(action: {
-                            showHistory.toggle()
-                        }) {
-                            Image(systemName: "clock.arrow.circlepath")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 30, alignment: .center)
-                                .clipped()
-                                .padding(25)
-                        }
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 2.5)
-                        
                     }
                     .padding(.horizontal)
                 }
@@ -361,7 +327,7 @@ struct OnboardingCameraView: View {
     @State var showHistory: Bool = false
 
     ZStack (alignment: .top) {
-        CameraView(isActive: $cameraIsActive, onCaptureImage: { images in
+        OnboardingCameraView(isActive: $cameraIsActive, onCaptureImage: { images in
             
             showChatSheet = true
             

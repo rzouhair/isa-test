@@ -1,0 +1,82 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Notescan App Architecture
+
+## 📂 Application Layer
+This layer contains the app's entry points and manages the overall application lifecycle.
+
+- **AppDelegate.swift** – Handles app lifecycle events.
+- **AppMain.swift** – The main entry point for the app.
+- **AppState.swift** – Manages global application state.
+- **RootView.swift** – The root view container for the application.
+- **Assets.xcassets** – Stores image and color assets.
+
+## 📂 Core Layer
+This layer provides fundamental services and architecture-related components.
+
+- **DI (Dependency Injection)** – Manages dependencies across the app.
+- **Navigation** – Handles screen navigation and routing.
+
+### Data Layer
+Handles data retrieval and storage.
+
+- **Datasources** – Defines data sources (local or remote APIs).
+- **Repositories** – Acts as an intermediary between data sources and the domain layer.
+- **Services** – Contains core business logic for interacting with data.
+
+### Domain Layer
+Defines business rules and entities.
+
+- **Enums** – Holds enumerations used across the app.
+- **Functions** – Common utility functions.
+- **Models** – Defines data models.
+- **Protocols** – Defines interfaces for dependency injection and architecture consistency.
+
+## 📂 Features Layer
+Encapsulates different functional modules.
+
+- **Authentication** – Handles user authentication.
+- **CameraCapture** – Manages camera-based banknote scanning.
+- **Chat** – Handles user chat interactions (if applicable).
+- **Onboarding** – Implements onboarding flow for new users.
+- **Patterns** – Reusable UI or business logic patterns.
+- **Purchases** – Manages in-app purchases.
+- **Settings** – Handles app settings.
+- ... Add more if needed
+
+## 📂 Presentation Layer
+Handles UI components and rendering.
+
+- **Components** – Reusable UI components.
+- **Extensions** – Swift extensions for adding custom functionality.
+- **Generated** – Auto-generated UI or data files.
+- **Resources** – Stores UI-related assets.
+
+## 📂 Preview Content
+Holds preview data for SwiftUI development.
+
+---
+
+## 📄 Other Files
+- **Constants.swift** – Stores app-wide constant values.
+- **GoogleService-Info.plist** – Firebase or Google-related configuration.
+- **Info.plist** – App metadata and configurations.
+- **Item.swift** – Defines a general-purpose data model.
+
+---
+
+### 🏛️ **Architecture Summary**
+This project follows **MVVM + Clean Architecture**, ensuring separation of concerns:
+
+- **Application Layer** → Entry points and lifecycle management.
+- **Core Layer** → Dependency injection, navigation, and base services.
+- **Data Layer** → Fetches and stores data from APIs or local databases.
+- **Domain Layer** → Business logic and models.
+- **Features Layer** → Independent modules for different app functionalities.
+- **Presentation Layer** → UI components and extensions.
+
+This structure ensures modularity, scalability, and testability.

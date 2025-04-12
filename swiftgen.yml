@@ -1,15 +1,15 @@
 xcassets:
   - inputs:
-    - swiftquill/Presentation/Resources/Colors.xcassets
-    - swiftquill/Presentation/Resources/Images.xcassets
+    - notescan/Presentation/Resources/Colors.xcassets
+    - notescan/Presentation/Resources/Images.xcassets
     outputs:
       templateName: swift5
-      output: swiftquill/Presentation/Generated/Assets.swift
+      output: notescan/Presentation/Generated/Assets.swift
       params:
         publicAccess: true
 
 fonts:
-  inputs: swiftquill/Presentation/Resources/Fonts
+  inputs: notescan/Presentation/Resources/Fonts
   outputs:
     templateName: swift5
-    output: swiftquill/Presentation/Generated/Fonts.swift
+    output: notescan/Presentation/Generated/Fonts.swift

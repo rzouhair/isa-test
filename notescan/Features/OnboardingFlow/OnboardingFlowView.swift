@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct OnboardingConstants {
     // Colors
-    static let primaryColor = Color(hex: "#FF7D3B")
+    static let primaryColor: Color = Asset.Colors.appPrimary.swiftUIColor
     static let backgroundColor = Color.black
     static let textColor = Color.white
     static let secondaryTextColor = Color(hex: "#A0A0A0")
@@ -60,102 +61,96 @@ let onboardingSteps = [
 
 struct OnboardingFlowView: View {
     @State private var currentStep = 0
-    @State private var showPermissions = false
+    @State private var showPaywall = false
+    
+    @State private var isCameraAuthorized = false
+    @State private var showPermission = false
+    
+    @Environment(AppState.self) private var appState
+    @Environment(Router.self) private var router: Router
 
     var body: some View {
         ZStack {
-            OnboardingConstants.backgroundColor.ignoresSafeArea()
-            
-            VStack(spacing: OnboardingConstants.elementSpacing) {
-                // Progress indicator
-                HStack(spacing: 8) {
-                    ForEach(0..<onboardingSteps.count, id: \.self) { index in
-                        Capsule()
-                            .fill(currentStep >= index ? OnboardingConstants.primaryColor : OnboardingConstants.secondaryTextColor)
-                            .frame(height: 4)
-                    }
-                }
-                .padding(.top, 16)
-                
-                // Skip button
-                HStack {
-                    Spacer()
-                    Button("Skip") {
+            Group {
+                if (currentStep == 0) {
+                    OnboardingWelcomeView(onContinue: {
                         withAnimation {
-                            requestPermissions()
+                            currentStep = 1
                         }
-                    }
-                    .foregroundColor(OnboardingConstants.secondaryTextColor)
-                    .padding(.trailing)
+                    })
                 }
                 
-                Spacer()
-                
-                // Image
-                Image(onboardingSteps[currentStep].imageName)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 250)
-                    .transition(.opacity.combined(with: .scale))
-                
-                Spacer()
-                
-                // Content
-                VStack(alignment: .leading, spacing: 16) {
-                    Text(onboardingSteps[currentStep].title)
-                        .font(.system(size: OnboardingConstants.titleSize, weight: .bold))
-                        .foregroundColor(OnboardingConstants.textColor)
-                        .multilineTextAlignment(.leading)
-                        .transition(.opacity.combined(with: .move(edge: .trailing)))
-                    
-                    Text(onboardingSteps[currentStep].description)
-                        .font(.system(size: OnboardingConstants.bodySize))
-                        .foregroundColor(OnboardingConstants.secondaryTextColor)
-                        .multilineTextAlignment(.leading)
-                        .transition(.opacity.combined(with: .move(edge: .trailing)))
-                }
-                .padding(.horizontal, OnboardingConstants.screenPadding)
-                
-                Spacer()
-                
-                // Button
-                Button(action: {
-                    withAnimation(.easeInOut(duration: OnboardingConstants.transitionDuration)) {
-                        if currentStep < onboardingSteps.count - 1 {
-                            currentStep += 1
-                        } else {
-                            requestPermissions()
+                if (currentStep == 1) {
+                    // Instant Value View
+                    OnboardingInstantValueView(
+                        onTryNowTapped: {
+                            withAnimation {
+                                currentStep = 2
+                            }
+                        },
+                        onLearnMoreTapped: {
+                            withAnimation {
+                                currentStep = 2
+                            }
                         }
-                    }
-                }) {
-                    Text(onboardingSteps[currentStep].buttonText)
-                        .font(.system(size: OnboardingConstants.buttonTextSize, weight: .semibold))
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: OnboardingConstants.buttonHeight)
-                        .background(OnboardingConstants.primaryColor)
-                        .cornerRadius(16)
-                        .padding(.horizontal, OnboardingConstants.screenPadding)
+                    )
+                }
+                
+                if (currentStep == 2) {
+                    // Features View
+                    OnboardingFeaturesView(
+                        onSkip: {
+                            showPermission = true
+                        },
+                        onFinish: {
+                            showPermission = true
+                        }
+                    )
                 }
             }
-            .padding(.vertical, OnboardingConstants.screenPadding)
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .ignoresSafeArea(edges: .bottom)
             
-            if showPermissions {
-                PermissionsView()
-                    .transition(.opacity.combined(with: .move(edge: .trailing)))
+            if showPermission {
+                PermissionsView(
+                    onPermissionGranted: {
+                        router.navigateToRoot()
+                        appState.isPaywallShown = true
+                    },
+                    onLaterPressed: {
+                        router.navigateToRoot()
+                        appState.isPaywallShown = true
+                    }
+                )
             }
+        }
+        .onAppear {
+            checkCameraAuthorization()
         }
     }
     
-    private func requestPermissions() {
-        withAnimation {
-            showPermissions = true
+    private func checkCameraAuthorization() {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized:
+            isCameraAuthorized = true
+        case .notDetermined:
+            isCameraAuthorized = false
+            break
+        case .denied, .restricted:
+            isCameraAuthorized = false
+            break
+        @unknown default:
+            isCameraAuthorized = false
+            break
         }
     }
 }
 
 struct PermissionsView: View {
     @State private var cameraPermissionGranted = false
+    
+    var onPermissionGranted: () -> Void
+    var onLaterPressed: () -> Void
     
     var body: some View {
         ZStack {
@@ -200,6 +195,7 @@ struct PermissionsView: View {
                 Button(action: {
                     // For demo purposes, we'll just complete onboarding
                     DIContainer.shared.userRepository.setOnboardingIsFinished()
+                    onLaterPressed()
                 }) {
                     Text("Later")
                         .font(.system(size: OnboardingConstants.bodySize))
@@ -212,11 +208,14 @@ struct PermissionsView: View {
     }
     
     private func requestCameraPermission() {
-        // Camera permission request code would go here
-        // For demo purposes:
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            cameraPermissionGranted = true
-            DIContainer.shared.userRepository.setOnboardingIsFinished()
+        AVCaptureDevice.requestAccess(for: .video) { granted in
+            DispatchQueue.main.async {
+                cameraPermissionGranted = granted
+                if granted {
+                    DIContainer.shared.userRepository.setOnboardingIsFinished()
+                    onPermissionGranted()
+                }
+            }
         }
     }
 }
@@ -249,10 +248,9 @@ extension Color {
 }
 
 #Preview {
+    var router: Router = Router()
+    var appState: AppState = AppState()
     OnboardingFlowView()
-}
-
-
-#Preview {
-    OnboardingFlowView()
+        .environment(router)
+        .environment(appState)
 }

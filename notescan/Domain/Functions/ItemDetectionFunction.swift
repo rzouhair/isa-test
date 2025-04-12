@@ -7,46 +7,113 @@
 
 import Foundation
 
-struct WeatherFunction: ToolDefinition {
-    static let name = "get_current_weather"
-    static let description = "Get the current weather in a given location"
+struct DetectedBanknote: Codable {
+    var country: String?
+    var title: String?
+    var year: String?
+    var serialNumber: String?
+    var designElements: [String]?
+    var specifications: [DetectedSpecification]?
+    
+    var name: String? {
+        return "\(String(describing: country))'s \(year != nil ? String(year ?? "0") : "") \(String(describing: title))"
+    }
+    
+    var fullSpecsList: String {
+        return specifications?.map { "\($0.title): \($0.value)" }.joined(separator: "\n") ?? "No specifications available."
+    }
+}
+
+struct DetectedSpecification: Codable {
+    var title: String
+    var value: String
+}
+
+struct ItemDetectionFunction: ToolDefinition {
+    static let name = "detect_banknote"
+    static let description = "Analyze and detect banknote details from the provided image"
     static let parameters: [String: AnyCodable] = [
         "type": AnyCodable("object"),
         "properties": AnyCodable([
-            "location": [
+            "country": [
                 "type": "string",
-                "description": "The city and state, e.g., San Francisco, CA"
+                "description": "The country of origin for the banknote"
             ],
-            "temperature": [
-                "type": "number",
-                "description": "The actual temperature value"
-            ],
-            "description": [
+            "title": [
                 "type": "string",
-                "description": "The description of the weather output"
+                "description": "The denomination and name of the banknote"
             ],
-            "unit": [
+            "year": [
                 "type": "string",
-                "enum": ["celsius", "fahrenheit"]
+                "description": "The most probable year range of the banknote's issue or design change, one year if confident about it"
+            ],
+            "serialNumber": [
+                "type": "string",
+                "description": "The serial number printed on the banknote, if visible"
+            ],
+            "designElements": [
+                "type": "array",
+                "items": [
+                    "type": "string"
+                ],
+                "description": "Array of design elements found on the banknote (portraits, buildings, symbols, etc.)"
+            ],
+            "specifications": [
+                "type": "array",
+                "items": [
+                    "type": "object",
+                    "properties": [
+                        "title": [
+                            "type": "string",
+                            "description": "The name of the specification (e.g., 'Dimensions', 'Material')"
+                        ],
+                        "value": [
+                            "type": "string",
+                            "description": "The value of the specification"
+                        ]
+                    ],
+                    "required": ["title", "value"]
+                ],
+                "description": "Array of specifications about the banknote"
             ]
         ]),
-        "required": AnyCodable(["location"])
+        "required": AnyCodable(["country", "title", "year", "serialNumber", "designElements", "specifications"])
     ]
     
     static func handler(arguments: [String: Any]) async throws -> String {
-        guard let location = arguments["location"] as? String else {
-            throw AIServiceError.functionHandlingFailed
+        let specs: [DetectedSpecification]
+        if let specsArray = arguments["specifications"] as? [[String: String]] {
+            specs = specsArray.compactMap { dict in
+                guard let title = dict["title"], let value = dict["value"] else { return nil }
+                return DetectedSpecification(title: title, value: value)
+            }
+        } else {
+            specs = []
         }
         
-        // Simulate fetching weather data
-        let weather = [
-            "location": location,
-            "temperature": 22,
-            "unit": arguments["unit"] as? String ?? "celsius",
-            "description": "Sunny"
-        ] as [String : Any]
+        let banknote = DetectedBanknote(
+            country: arguments["country"] as? String,
+            title: arguments["title"] as? String,
+            year: arguments["year"] as? String,
+            serialNumber: arguments["serialNumber"] as? String,
+            designElements: arguments["designElements"] as? [String],
+            specifications: specs
+        )
         
-        let weatherJSON = try JSONSerialization.data(withJSONObject: weather)
-        return String(data: weatherJSON, encoding: .utf8) ?? "{}"
+        let encoder = JSONEncoder()
+        return String(data: try encoder.encode(banknote), encoding: .utf8) ?? "{}"
+    }
+    
+    static func toFunctionDefinition() -> FunctionDefinition {
+        return FunctionDefinition(name: self.name, description: self.description, parameters: self.parameters)
+    }
+    
+    static func registerableFunction() -> RegisterableFunction {
+        return RegisterableFunction(
+            name: ItemDetectionFunction.name,
+            description: ItemDetectionFunction.description,
+            parameters: ItemDetectionFunction.parameters,
+            handler: ItemDetectionFunction.handler
+        )
     }
 }

@@ -32,7 +32,7 @@ struct BanknoteRowView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 80, height: 60)
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
             } else {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color.gray.opacity(0.1))

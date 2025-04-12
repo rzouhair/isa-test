@@ -1,5 +1,5 @@
 //
-//  WeatherFunction.swift
+//  ItemGradeFunction.swift
 //  notescan
 //
 //  Created by user on 16/2/2025.
@@ -7,55 +7,78 @@
 
 import Foundation
 
-struct DetectedValuation: Codable {
-    var banknote: String
-    var circulated: String
-    var uncirculated: String
+struct DetectedGrade: Codable {
+    var grade: String                 // e.g., "VF 25"
+    var gradeLabel: String            // e.g., "Very Fine 25"
+    var gradingScale: String          // e.g., "PMG"
+    var justification: String         // Concise grading reasoning
+    var notableStrengths: String    // Key highlights
+    var notableFlaws: String        // Key defects
 }
 
-struct ItemValuationFunction: ToolDefinition {
-    static let name = "valuate_banknote"
-    static let description = "Analyze and detect the banknote valuation from the provided web search results"
+struct ItemGradeFunction: ToolDefinition {
+    static let name = "grade_banknote"
+    static let description = "Assigns a professional banknote grade and explains the rationale based on grading criteria"
+
     static let parameters: [String: AnyCodable] = [
         "type": AnyCodable("object"),
         "properties": AnyCodable([
-            "banknote": [
+            "grade": [
                 "type": "string",
-                "description": "The banknote description"
+                "description": "The final assigned grade (e.g., 'VF 25', 'AU 55')"
             ],
-            "circulated": [
+            "gradeLabel": [
                 "type": "string",
-                "description": "The number of banknotes in circulated condition with the currency prefix, or n/a if unavailable"
+                "description": "A human-readable label for the grade, such as 'Very Fine 25'"
             ],
-            "uncirculated": [
+            "gradingScale": [
                 "type": "string",
-                "description": "The number of banknotes in uncirculated condition with the currency prefix, or n/a if unavailable"
+                "description": "The grading scale used, usually 'PMG' or 'IBNS'"
+            ],
+            "justification": [
+                "type": "string",
+                "description": "Summary of grading reasoning, based on paper quality, folds, corners, and other features"
+            ],
+            "notableStrengths": [
+                "type": "string",
+                "description": "List of positive features that strengthen the note’s grade, in form of a comma joined string"
+            ],
+            "notableFlaws": [
+                "type": "string",
+                "description": "List of flaws or imperfections that justify the deduction in grading, in form of a comma joined string"
             ]
         ]),
-        "required": AnyCodable(["banknote", "circulated", "uncirculated"])
+        "required": AnyCodable(["grade", "gradingScale", "justification", "notableStrengths", "notableFlaws"])
     ]
-    
+
     static func handler(arguments: [String: Any]) async throws -> String {
-        let banknote = DetectedValuation(
-            banknote: arguments["banknote"] as? String ?? "",
-            circulated: arguments["circulated"] as? String ?? "n/a",
-            uncirculated: arguments["uncirculated"] as? String ?? "n/a"
+        let grade = DetectedGrade(
+            grade: arguments["grade"] as? String ?? "Unknown",
+            gradeLabel: arguments["gradeLabel"] as? String ?? "Unknown Grade",
+            gradingScale: arguments["gradingScale"] as? String ?? "PMG",
+            justification: arguments["justification"] as? String ?? "No justification provided",
+            notableStrengths: arguments["notableStrengths"] as? String ?? "",
+            notableFlaws: arguments["notableFlaws"] as? String ?? ""
         )
         
         let encoder = JSONEncoder()
-        return String(data: try encoder.encode(banknote), encoding: .utf8) ?? "{}"
+        return String(data: try encoder.encode(grade), encoding: .utf8) ?? "{}"
     }
-    
+
     static func toFunctionDefinition() -> FunctionDefinition {
-        return FunctionDefinition(name: self.name, description: self.description, parameters: self.parameters)
+        return FunctionDefinition(
+            name: self.name,
+            description: self.description,
+            parameters: self.parameters
+        )
     }
-    
+
     static func registerableFunction() -> RegisterableFunction {
         return RegisterableFunction(
-            name: ItemValuationFunction.name,
-            description: ItemValuationFunction.description,
-            parameters: ItemValuationFunction.parameters,
-            handler: ItemValuationFunction.handler
+            name: ItemGradeFunction.name,
+            description: ItemGradeFunction.description,
+            parameters: ItemGradeFunction.parameters,
+            handler: ItemGradeFunction.handler
         )
     }
 }

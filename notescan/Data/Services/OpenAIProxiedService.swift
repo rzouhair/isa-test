@@ -8,13 +8,191 @@
 import Foundation
 import SwiftUI
 
-public class OpenAIProvider: AIServiceProvider {
-    private let baseURL = URL(string: "https://api.openai.com/v1")!
-    private let apiKey: String
+public class OpenAIProxiedProvider: AIServiceProvider {
+    private let baseURL = URL(string: Constants.proxyLambdaURL)!
     private let defaultModel: String
     
     private var functionRegistry: [String: ([String: Any]) async throws -> String] = [:]
+    
+    init(defaultModel: String = "gpt-4o-mini") {
+        self.defaultModel = defaultModel
+    }
+    
+    public func sendChat(messages: [Message], model: String?, temperature: Double, functions: [FunctionDefinition]?) async throws -> Message {
+        let parameters: [String: Any] = [
+            "endpoint": "text",
+            "model": model ?? defaultModel,
+            "input": messages.map { $0.toDict() },
+        ]
+
+        let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+
+        var request = URLRequest(url: URL(string: Constants.proxyLambdaURL)!,timeoutInterval: Double.infinity)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+
+        let (data, _) = try await URLSession.shared.data(for: request)
+
+        guard let responseString = String(data: data, encoding: .utf8) else {
+            throw AIServiceError.functionHandlingFailed
+        }
         
+        let parsedResponse = parseOpenAIResponse(jsonString: responseString) as? TextResponse
+
+        return Message(role: .assistant, content: parsedResponse?.textContent ?? "No function call found")
+    }
+    
+    public func sendCompletion(prompt: String, model: String?, temperature: Double) async throws -> String {
+        let parameters: [String: Any] = [
+            "endpoint": "text",
+            "model": model ?? defaultModel,
+            "input": prompt
+        ]
+        
+        let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        
+        var request = URLRequest(url: URL(string: Constants.proxyLambdaURL)!,
+                               timeoutInterval: Double.infinity)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            print(data)
+            
+            guard let responseString = String(data: data, encoding: .utf8) else {
+                print("Some error here")
+                throw AIServiceError.functionHandlingFailed
+            }
+            
+            return responseString
+        } catch {
+            print(error)
+            print("Error: \(error.localizedDescription)")
+            throw error
+        }
+    }
+
+    public func sendToolCompletion<T: Decodable>(prompt: String, tools: [FunctionDefinition], model: String?, temperature: Double = 0.5) async throws -> T? {
+        let toolsArray = tools.map { tool in
+            [
+                "type": "function",
+                "name": tool.name,
+                "description": tool.description,
+                "parameters": tool.parameters.mapValues { $0.value }
+            ] as [String: Any]
+        }
+        
+            // 2. Prepare the main parameters dictionary
+            let parameters: [String: Any] = [
+                "model": model ?? "gpt-4o-mini",
+                "endpoint": "function",
+                "input": prompt,
+                "tool_choice": "auto",
+                "tools": toolsArray
+            ]
+            
+            do {
+                // 3. Convert to JSON with sorted keys to match Postman's order
+                let jsonData = try JSONSerialization.data(
+                    withJSONObject: parameters,
+                    options: [.sortedKeys, .withoutEscapingSlashes]
+                )
+                
+                // 4. Create and send the request
+                var request = URLRequest(
+                    url: URL(string: Constants.proxyLambdaURL)!,
+                    timeoutInterval: 60
+                )
+                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.httpMethod = "POST"
+                request.httpBody = jsonData
+                
+                // 5. Use async/await for modern Swift concurrency
+                let (data, _) = try await URLSession.shared.data(for: request)
+                
+                guard let responseString = String(data: data, encoding: .utf8) else {
+                    throw AIServiceError.functionHandlingFailed
+                }
+                
+                print("Response from OpenAI: \(responseString)")
+
+                let parsedResponse = parseOpenAIResponse(jsonString: responseString) as? FunctionCallResponse
+                
+                print("Parsed Response:")
+                print(parsedResponse)
+
+                guard (parsedResponse?.functionCall) != nil else {
+                    return nil
+                }
+                if let functionCall = parsedResponse?.functionCall {
+                    print("Function Call Output:")
+                    print(functionCall)
+                    let handledResponse = try await self.handleFunctionCall(functionCall)
+                    print("Handled Response:")
+                    print(handledResponse)
+                    
+                    // CHANGE: Parse the handled response string to the generic type T
+                    if let jsonData = handledResponse.data(using: .utf8) {
+                        do {
+                            let decodedResult = try JSONDecoder().decode(T.self, from: jsonData)
+                            print("Decoded Result:")
+                            print(decodedResult)
+                            return decodedResult
+                        } catch {
+                            print("Error decoding to type \(T.self): \(error)")
+                            throw AIServiceError.functionHandlingFailed
+                        }
+                    }
+                }
+                
+                return nil
+            } catch {
+                print("Error: \(error)")
+                throw error
+            }
+    }
+    
+    public func sendWebSearch(prompt: String, model: String?) async throws -> CitationResult? {
+        let parameters: [String: Any] = [
+            "endpoint": "web_search",
+            "model": model ?? defaultModel,
+            "input": prompt,
+            "tools": [
+                [
+                    "type": "web_search_preview",
+                    "domains": [],
+                    "search_context_size": "medium"
+                ]
+            ]
+        ]
+        
+        let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+        
+        var request = URLRequest(url: URL(string: Constants.proxyLambdaURL)!,
+                               timeoutInterval: Double.infinity)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        
+        let (data, _) = try await URLSession.shared.data(for: request)
+        
+        guard let responseString = String(data: data, encoding: .utf8) else {
+            throw AIServiceError.functionHandlingFailed
+        }
+        
+        let parsedResponse = parseOpenAIResponse(jsonString: responseString) as? WebSearchResponse
+
+        // Parse the JSON response
+        guard let websearchResponse = parsedResponse?.messageWithCitations else {
+            throw AIServiceError.functionHandlingFailed
+        }
+        
+        return websearchResponse
+    }
+    
     public func registerFunction(
         name: String,
         description: String,
@@ -24,131 +202,9 @@ public class OpenAIProvider: AIServiceProvider {
         functionRegistry[name] = handler
     }
     
-    public init(apiKey: String, defaultModel: String = "gpt-4o-mini") {
-        self.apiKey = apiKey
-        self.defaultModel = defaultModel
-    }
-
-    public func sendChat(
-        messages: [Message],
-        model: String,
-        temperature: Double = 0.7,
-        functions: [FunctionDefinition]? = nil
-    ) async throws -> Message {
-        let url = baseURL.appendingPathComponent("/chat/completions")
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let requestBody = OpenAIChatRequest(
-            model: model,
-            messages: messages.map(OpenAIMessage.init),
-            temperature: temperature,
-            functions: functions?.map(OpenAIFunctionDefinition.init)
-        )
-        
-        request.httpBody = try JSONEncoder().encode(requestBody)
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw AIServiceError.invalidResponse
-        }
-        
-        guard 200...299 ~= httpResponse.statusCode else {
-            throw handleOpenAIError(statusCode: httpResponse.statusCode, data: data)
-        }
-        
-        let responseBody = try JSONDecoder().decode(OpenAIChatResponse.self, from: data)
-        guard let message = responseBody.choices.first?.message else {
-            throw AIServiceError.invalidResponse
-        }
-        
-        return Message(
-            role: .assistant,
-            content: message.content ?? "",
-            functionCall: message.function_call,
-            functionName: nil
-        )
-    }
-    
-    public func sendCompletion(
-        prompt: String,
-        model: String,
-        temperature: Double = 0.7
-    ) async throws -> String {
-        let url = baseURL.appendingPathComponent("/completions")
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let requestBody = OpenAICompletionRequest(
-            model: model,
-            prompt: prompt,
-            temperature: temperature,
-            functions: nil
-        )
-        
-        request.httpBody = try JSONEncoder().encode(requestBody)
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw AIServiceError.invalidResponse
-        }
-        
-        guard 200...299 ~= httpResponse.statusCode else {
-            throw handleOpenAIError(statusCode: httpResponse.statusCode, data: data)
-        }
-        
-        let responseBody = try JSONDecoder().decode(OpenAICompletionResponse.self, from: data)
-        return responseBody.choices.first?.text ?? ""
-    }
-    
-    
-    public func sendChat<T: Codable>(
-        prompt: String,
-        model: String,
-        temperature: Double = 0.7,
-        functions: [FunctionDefinition]?
-    ) async throws -> T? {
-        let url = baseURL.appendingPathComponent("/completions")
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let requestBody = OpenAICompletionRequest(
-            model: model,
-            prompt: prompt,
-            temperature: temperature,
-            functions: functions?.map(OpenAIFunctionDefinition.init)
-        )
-        
-        request.httpBody = try JSONEncoder().encode(requestBody)
-        
-        let (data, response) = try await URLSession.shared.data(for: request)
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw AIServiceError.invalidResponse
-        }
-        
-        guard 200...299 ~= httpResponse.statusCode else {
-            throw handleOpenAIError(statusCode: httpResponse.statusCode, data: data)
-        }
-        
-        let responseBody = try JSONDecoder().decode(OpenAICompletionResponse.self, from: data)
-        
-        if let jsonText = responseBody.choices.first?.text {
-            print(jsonText)
-            print(responseBody)
-            return JSONDecoder().decodeJson(from: jsonText)
-        } else {
-            return nil
-        }
-    }
-    
-    public func handleFunctionCall(_ functionCall: FunctionCall) async throws -> String {
+    public func handleFunctionCall(_ functionCall: FunctionCallOutput) async throws -> String {
         guard let handler = functionRegistry[functionCall.name] else {
+            print("No handler registered for function '\(functionCall.name)'")
             throw AIServiceError.functionHandlingFailed
         }
         
@@ -160,85 +216,5 @@ public class OpenAIProvider: AIServiceProvider {
         
         return try await handler(arguments)
     }
-    
-    private func handleOpenAIError(statusCode: Int, data: Data) -> AIServiceError {
-        guard let errorResponse = try? JSONDecoder().decode(OpenAIErrorResponse.self, from: data) else {
-            return AIServiceError.unknownError("Unknown error occurred")
-        }
-        
-        switch errorResponse.error.code {
-        case "invalid_api_key": return .invalidAPIKey
-        case "rate_limit_exceeded": return .rateLimited
-        default: return .unknownError(errorResponse.error.message)
-        }
-    }
 }
 
-// MARK: - OpenAI Request/Response Models
-private struct OpenAIChatRequest: Codable {
-    let model: String
-    let messages: [OpenAIMessage]
-    let temperature: Double
-    let functions: [OpenAIFunctionDefinition]?
-}
-
-private struct OpenAIMessage: Codable {
-    let role: MessageRole
-    let content: String?
-    let name: String?
-    let function_call: FunctionCall?
-    
-    init(_ message: Message) {
-        role = message.role
-        content = message.content.isEmpty ? nil : message.content
-        name = message.functionName
-        function_call = message.functionCall
-    }
-}
-
-private struct OpenAIFunctionDefinition: Codable {
-    let name: String
-    let description: String
-    let parameters: [String: AnyCodable]
-    
-    init(_ function: FunctionDefinition) {
-        name = function.name
-        description = function.description
-        parameters = function.parameters
-    }
-}
-
-private struct OpenAIChatResponse: Codable {
-    struct Choice: Codable {
-        struct Message: Codable {
-            let role: MessageRole
-            let content: String?
-            let function_call: FunctionCall?
-        }
-        let message: Message
-    }
-    let choices: [Choice]
-}
-
-private struct OpenAICompletionRequest: Codable {
-    let model: String
-    let prompt: String
-    let temperature: Double
-    let functions: [OpenAIFunctionDefinition]?
-}
-
-private struct OpenAICompletionResponse: Codable {
-    struct Choice: Codable {
-        let text: String
-    }
-    let choices: [Choice]
-}
-
-private struct OpenAIErrorResponse: Codable {
-    struct ErrorInfo: Codable {
-        let message: String
-        let type: String
-        let code: String
-    }
-    let error: ErrorInfo
-}

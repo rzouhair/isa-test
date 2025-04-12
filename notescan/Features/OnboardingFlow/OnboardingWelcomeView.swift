@@ -8,11 +8,96 @@
 import SwiftUI
 
 struct OnboardingWelcomeView: View {
+    let onContinue: () -> Void
+    
+    @State private var isAnimating = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            // Background gradient
+            Asset.Colors.appPrimary.swiftUIColor
+                .ignoresSafeArea()
+            
+            VStack(spacing: 40) {
+                Spacer()
+                
+                // Logo and app name
+                VStack(spacing: 24) {
+                    Asset.Images.logo.swiftUIImage
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 250, height: 100)
+                        .opacity(isAnimating ? 1 : 0)
+                        .scaleEffect(isAnimating ? 1 : 0.8)
+                    
+                    VStack(spacing: 8) {
+                        Text("Welcome to PaperScan AI")
+                            .font(.system(size: 32, weight: .bold))
+                            .multilineTextAlignment(.center)
+                        
+                        Text("Your Smart Banknote Assistant")
+                            .font(.title3)
+                            .opacity(0.9)
+                    }
+                    .foregroundColor(.white)
+                    .opacity(isAnimating ? 1 : 0)
+                    .offset(y: isAnimating ? 0 : 20)
+                }
+                
+                // Feature highlights
+                VStack(spacing: 16) {
+                    featureRow(icon: "camera.viewfinder", text: "Instant banknote recognition")
+                    featureRow(icon: "magnifyingglass", text: "Detailed information")
+                    featureRow(icon: "heart.fill", text: "Build your collection")
+                }
+                .opacity(isAnimating ? 1 : 0)
+                .offset(y: isAnimating ? 0 : 20)
+                
+                Spacer()
+                
+                // Continue button
+                Button(action: onContinue) {
+                    HStack {
+                        Text("Get Started")
+                            .fontWeight(.semibold)
+                        Image(systemName: "arrow.right")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(.white)
+                    .foregroundColor(Asset.Colors.appPrimary.swiftUIColor)
+                    .cornerRadius(16)
+                    .shadow(color: .black.opacity(0.1), radius: 10, y: 5)
+                }
+                .padding(.horizontal, 24)
+                .opacity(isAnimating ? 1 : 0)
+                .offset(y: isAnimating ? 0 : 20)
+            }
+            .padding(.bottom, 48)
+        }
+        .onAppear {
+            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                isAnimating = true
+            }
+        }
+    }
+    
+    private func featureRow(icon: String, text: String) -> some View {
+        HStack(spacing: 12) {
+            Image(systemName: icon)
+                .font(.system(size: 24))
+                .frame(width: 32)
+            
+            Text(text)
+                .font(.body)
+            
+            Spacer()
+        }
+        .foregroundColor(.white)
+        .padding(.horizontal, 24)
     }
 }
 
 #Preview {
-    OnboardingWelcomeView()
+    OnboardingWelcomeView(onContinue: {})
 }

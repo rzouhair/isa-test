@@ -1,0 +1,122 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+
+# 📌 **Banknote Identifier & Collection App – Architecture & UI/UX Flow**  
+
+This document outlines the **app architecture, user flow, screen descriptions, and shared components** needed for a **SwiftUI-based iOS app**.  
+
+---
+
+## **🛠️ App Architecture**  
+
+- **Pattern:** **MVVM (Model-View-ViewModel)** for modularity & separation of concerns.  
+- **Networking:** `URLSession` or `Alamofire` (for fetching banknote info from API).  
+- **Data Storage:** `CoreData` or `Realm` (to store saved banknotes).  
+- **Camera Processing:** `AVFoundation` (for real-time banknote scanning).  
+- **Image Recognition:** CoreML (if using AI to identify banknotes).  
+
+---
+
+## **🔄 User Flow**  
+
+### **1️⃣ Onboarding & Home**  
+- 🏁 **Splash Screen** → Shows logo animation, then navigates to Home.  
+- 🏠 **Home Screen** → Offers options to scan a banknote or view collection.  
+
+### **2️⃣ Banknote Identification**  
+- 📸 **Scan Screen** → Captures the banknote image.  
+- 🔍 **Identification Screen** → Displays banknote details, serial number, and estimated value.  
+
+### **3️⃣ Serial Number Rarity Check**  
+- 🔢 **Serial Number Check Screen** → Analyzes and categorizes rarity.  
+
+### **4️⃣ Collection Management**  
+- 📂 **Collection Screen** → Lists saved banknotes.  
+- 📄 **Banknote Facts Screen** → Displays history, specifications, and images.  
+
+---
+
+## **🖥️ Screens Description & Components**  
+
+### **1️⃣ Splash Screen**  
+📌 **Purpose:** Displays logo and smoothly transitions to the Home screen.  
+🔹 **Components:**  
+- `ZStack` → Background & logo.  
+- `Image(systemName: "logo")` → App logo.  
+- `Animation` → Fades out before transitioning.  
+
+---
+
+### **2️⃣ Home Screen**  
+📌 **Purpose:** Main dashboard for scanning or accessing collection.  
+🔹 **Components:**  
+- `NavigationView` → Enables screen navigation.  
+- `VStack` → Arranges main actions.  
+- `Button(action: scanBanknote)` → "Scan a Banknote".  
+- `NavigationLink` → "View My Collection".  
+- `RoundedRectangle` → For action cards.  
+
+---
+
+### **3️⃣ Scan Screen**  
+📌 **Purpose:** Uses the **camera** to capture banknote images.  
+🔹 **Components:**  
+- `ZStack` → For camera preview.  
+- `CameraView()` → Custom SwiftUI camera view.  
+- `Text("Align the banknote...")` → Instructions.  
+- `Button(action: takePhoto)` → Shutter button.  
+
+---
+
+### **4️⃣ Identification & Value Screen**  
+📌 **Purpose:** Shows **banknote details, serial number, and value**.  
+🔹 **Components:**  
+- `ScrollView` → Displays content.  
+- `Image` → Shows the scanned banknote.  
+- `Text(banknoteName)` → Displays name.  
+- `HStack` → Serial number & rarity indicator.  
+- `Button(action: addToCollection)` → "Save to Collection".  
+
+---
+
+### **5️⃣ Serial Number Rarity Check**  
+📌 **Purpose:** Determines rarity of the banknote's serial number.  
+🔹 **Components:**  
+- `TextField("Enter Serial Number")` → Input field.  
+- `Button(action: checkRarity)` → Fetch rarity data.  
+- `Gauge(value: rarityScore)` → Shows rarity score.  
+
+---
+
+### **6️⃣ Collection Screen**  
+📌 **Purpose:** Displays saved banknotes.  
+🔹 **Components:**  
+- `List { ForEach(banknotes) }` → Displays saved banknotes.  
+- `Image` → Shows banknote thumbnail.  
+- `Text(banknote.name)` → Displays name & year.  
+- `NavigationLink(destination: BanknoteFactsScreen(banknote))`  
+
+---
+
+### **7️⃣ Banknote Facts Screen**  
+📌 **Purpose:** Displays historical and technical information about a banknote.  
+🔹 **Components:**  
+- `Image` → Reference banknote images.  
+- `Text(banknote.description)` → Historical facts.  
+- `List { Text(specifications) }` → Lists specifications.  
+
+---
+
+## **🔗 Shared Components**  
+
+| Component | Purpose | Used In |
+|-----------|---------|---------|
+| `BanknoteCardView` | Displays banknote preview | Collection, Home |
+| `CameraView` | Custom camera interface | Scan |
+| `RarityGaugeView` | Visualizes rarity | Serial Number Check |
+| `PrimaryButton` | Reusable button style | Multiple screens |

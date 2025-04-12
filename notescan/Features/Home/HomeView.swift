@@ -1,5 +1,5 @@
 //
-//  CollectionsView.swift
+//  HomeView.swift
 //  notescan
 //
 //  Created by user on 26/3/2025.
@@ -8,137 +8,132 @@
 import SwiftUI
 import SwiftData
 
-struct CollectionView: View {
+struct HomeView: View {
     @Environment(\.modelContext) private var modelContext: ModelContext
     @Environment(Router.self) private var router: Router
-    @State var viewModel: ViewModel?
+    @Environment(AppState.self) private var appState: AppState
+    @State private var viewModel: HomeViewModel?
     
-    @State private var selectedFilter: CollectionFilter = .all
-
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                // filterSection
-                collectionStats
-                collectionItems
+            VStack(alignment: .leading, spacing: 32) {
+                // Scan CTA Button
+                Button {
+                    viewModel?.scanBanknote()
+                } label: {
+                    HStack {
+                        Image(systemName: "camera.fill")
+                            .font(.title2)
+                        Text("Scan Banknote")
+                            .font(.title3.weight(.semibold))
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 20)
+                    .background(Color.appPrimary.gradient)
+                    .foregroundColor(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                }
+                .padding(.horizontal)
+                
+                // Recent Identifications
+                if let viewModel = viewModel {
+                    // Most Rare
+                    if let rarest = viewModel.rarestBanknote {
+                        VStack(alignment: .leading, spacing: 16) {
+                            Text("Most Rare")
+                                .font(.title2.bold())
+                            
+                            BanknoteRowView(banknote: rarest)
+                                .background(Color(.secondarySystemBackground))
+                                .contentShape(Rectangle())
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
+                                .onTapGesture {
+                                    viewModel.showBanknoteDetails(rarest)
+                                }
+                        }
+                        .padding(.horizontal)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 16) {
+                        Text("Recent Identifications")
+                            .font(.title2.bold())
+                        
+                        VStack(spacing: 0) {
+                            ForEach(viewModel.recentBanknotes) { banknote in
+                                BanknoteRowView(banknote: banknote)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        viewModel.showBanknoteDetails(banknote)
+                                    }
+                                
+                                if banknote.id != viewModel.recentBanknotes.last?.id {
+                                    Divider()
+                                }
+                            }
+                        }
+                        .background(Color(.secondarySystemBackground))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                    }
+                    .padding(.horizontal)
+                    
+                    // Uncollected Banknotes Section
+                    if !viewModel.uncollectedBanknotes.isEmpty {
+                        VStack(alignment: .leading, spacing: 16) {
+                            Text("Uncollected Banknotes")
+                                .font(.title2.bold())
+                            
+                            VStack(spacing: 0) {
+                                ForEach(viewModel.uncollectedBanknotes) { banknote in
+                                    BanknoteRowView(banknote: banknote)
+                                        .contentShape(Rectangle())
+                                        .onTapGesture {
+                                            viewModel.showBanknoteDetails(banknote)
+                                        }
+                                    
+                                    if banknote.id != viewModel.uncollectedBanknotes.last?.id {
+                                        Divider()
+                                    }
+                                }
+                            }
+                            .background(Color(.secondarySystemBackground))
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                        }
+                        .padding(.horizontal)
+                    }
+                }
             }
-            .padding(.horizontal)
+            .padding(.vertical)
         }
+        .background(Color(.systemBackground))
+        .navigationBarTitleDisplayMode(.automatic)
         .onAppear {
-            self.viewModel = ViewModel(context: modelContext)
+            if viewModel == nil {
+                viewModel = HomeViewModel(context: modelContext, router: router, appState: appState)
+            }
         }
-    }
-    
-    private var filterSection: some View {
-        Picker("Filter", selection: $selectedFilter) {
-            Text("All").tag(CollectionFilter.all)
-            Text("Custom set").tag(CollectionFilter.custom)
+        .onChange(of: router.presentedSheet) { oldVal, newVal in
+            Task {
+                await self.viewModel?.fetchData()
+            }
         }
-        .pickerStyle(.segmented)
-    }
-    
-    private var collectionStats: some View {
-        HStack {
-            Spacer()
-            StatItem(count: viewModel?.itemsData["banknotes"] ?? 0, label: "Banknotes")
-                .foregroundStyle(.white)
-            Spacer()
-            Spacer()
-            StatItem(count: viewModel?.itemsData["countries"] ?? 0, label: "Countries")
-                .foregroundStyle(.white)
-            Spacer()
-        }
-        .padding(.vertical, 24)
-        .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(.appPrimary.gradient)
-        )
-    }
-    
-    private var collectionItems: some View {
-        VStack(spacing: 0) {
-            ForEach(viewModel?.filteredItems ?? [], id: \.id) { banknote in
-                CollectionItemView(banknote: banknote)
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        router.presentFullscreenCover(.banknoteDetails(banknote: banknote))
-                    }
-                
-                if banknote.id != viewModel?.items.last?.id {
-                    Divider().padding(.vertical, 8)
-                }
+        .onChange(of: router.presentedFullscreenCover) { oldVal, newVal in
+            Task {
+                await self.viewModel?.fetchData()
             }
         }
     }
 }
 
-// MARK: - Subviews
-private struct StatItem: View {
-    let count: Int
-    let label: String
-    
-    var body: some View {
-        VStack {
-            Text("\(count)")
-                .font(.title2.bold())
-            Text(label)
-                .font(.subheadline)
-        }
-    }
-}
-
-private struct CollectionItemView: View {
-    let banknote: Banknote
-    
-    var body: some View {
-        HStack(alignment: .top) {
-            VStack(alignment: .center) {
-                Text("Image")
-                    .frame(minWidth: 120, maxHeight: .infinity)
-                    .background(Color.gray.opacity(0.1))
-            }
-            
-            VStack(alignment: .leading, spacing: 4) {
-                Text(banknote.title)
-                    .font(.headline)
-                
-                Text(banknote.country)
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                
-                Text("#\(banknote.serialNumber)")
-                    .font(.caption)
-                    .foregroundStyle(.tertiary)
-                
-                Group {
-                    if let entryDate = banknote.collectionEntryDate {
-                        Text(entryDate.formatted(date: .abbreviated, time: .omitted))
-                    } else {
-                        Text("Not collected")
-                    }
-                }
-                .font(.caption)
-                .foregroundStyle(.appPrimary)
-            }
-            
-            Spacer()
-        }
-        .padding(.vertical, 4)
-    }
-}
-
-// MARK: - Preview
 #Preview {
     let preview = Preview(Banknote.self)
     preview.addExamples(Banknote.sampleData)
-    
     let router = Router()
+    let appState = AppState()
     
-    return CollectionView(
-        viewModel: CollectionView.ViewModel(
-            context: preview.container.mainContext
-        )
-    )
-    .environment(router)
-    .modelContainer(preview.container)
+    return NavigationStack {
+        HomeView()
+            .environment(router)
+            .environment(appState)
+            .modelContainer(preview.container)
+    }
 }

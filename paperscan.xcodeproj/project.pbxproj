@@ -293,7 +293,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CE46EF9A2D57C17E004CFB49 /* Build configuration list for PBXProject "paperscam" */;
+			buildConfigurationList = CE46EF9A2D57C17E004CFB49 /* Build configuration list for PBXProject "paperscan" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -647,7 +647,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CE46EF9A2D57C17E004CFB49 /* Build configuration list for PBXProject "paperscam" */ = {
+		CE46EF9A2D57C17E004CFB49 /* Build configuration list for PBXProject "paperscan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CE46EFC32D57C187004CFB49 /* Debug */,
