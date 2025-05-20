@@ -4,10 +4,43 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>notescan.xcscheme_^#shared#^_</key>
+		<key>Copy of paperscan.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>Promises (Playground).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>paperscan.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>paperscan.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>CE46EF9E2D57C17E004CFB49</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE46EFB02D57C187004CFB49</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE46EFBA2D57C187004CFB49</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

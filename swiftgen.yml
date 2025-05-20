@@ -1,15 +1,15 @@
 xcassets:
   - inputs:
-    - notescan/Presentation/Resources/Colors.xcassets
-    - notescan/Presentation/Resources/Images.xcassets
+    - paperscan/Presentation/Resources/Colors.xcassets
+    - paperscan/Presentation/Resources/Images.xcassets
     outputs:
       templateName: swift5
-      output: notescan/Presentation/Generated/Assets.swift
+      output: paperscan/Presentation/Generated/Assets.swift
       params:
         publicAccess: true
 
 fonts:
-  inputs: notescan/Presentation/Resources/Fonts
+  inputs: paperscan/Presentation/Resources/Fonts
   outputs:
     templateName: swift5
-    output: notescan/Presentation/Generated/Fonts.swift
+    output: paperscan/Presentation/Generated/Fonts.swift
