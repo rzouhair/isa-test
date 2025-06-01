@@ -100,9 +100,15 @@ struct RootView: View {
                     await SubscriptionService.shared.loadProStatus()
                     
                     showPaywallCrown = !appState.isProUser
+                    print("====== root appearance ======")
+                    print(appState.shouldShowPaywall)
+                    print(DIContainer.shared.userRepository.onboardingIsFinished())
+                    print(appState.isProUser)
                     if appState.shouldShowPaywall && DIContainer.shared.userRepository.onboardingIsFinished() && !appState.isProUser {
+                        print("Requested")
                         appState.showPaywall()
                     }
+                    print("====== root appearance ======")
                 }
             }
         }
@@ -124,28 +130,8 @@ struct RootView: View {
         SettingsView(
             viewModel: SettingsViewModel(onEvent: { event in
                 switch event {
-                case .deleteAccount:
-                    DIContainer.shared.userRepository.deleteAccount()
-                    // router.navigate(to: .login, replace: true)
+                  default:
                     router.dismissSheet()
-                case .logout:
-                    DIContainer.shared.userRepository.signOut()
-                    // router.navigate(to: .login, replace: true)
-                    router.dismissSheet()
-                }
-            })
-        )
-    }
-
-    @ViewBuilder
-    func setupSigninView () -> some View {
-        SignInView(
-            viewModel: SignInView.ViewModel(onEvent: { event in
-                switch event {
-                case .signInSuccessful:
-                    print("Successful Login")
-                    router.navigateToRoot()
-                    // router.navigate(to: .home)
                 }
             })
         )
@@ -156,8 +142,6 @@ struct RootView: View {
         switch destination {
         case .onboarding:
             setupOnboardingView()
-        case .login:
-            setupSigninView()
         case .home:
             HomeView()
         case .camera:

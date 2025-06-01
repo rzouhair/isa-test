@@ -43,12 +43,13 @@ struct SettingsView: View {
                 .scrollContentBackground(.hidden)
                 Spacer()
                 VStack {
-                    Text("Made by user")
+                    Text("Made by RZouhair")
                     Text("Version \(viewModel.versionString)")
                 }
                 .frame(maxWidth: .infinity)
                 .font(.footnote)
                 .foregroundColor(.gray)
+                .offset(y: -20)
             }
             .font(.defaultText.regular)
             .navigationTitle("Settings")

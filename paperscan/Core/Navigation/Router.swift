@@ -3,7 +3,6 @@ import SwiftUI
 @Observable final class Router {
     enum Route: Hashable, Identifiable {
         case onboarding
-        case login
         case settings
         case paywall
         case home
@@ -22,8 +21,6 @@ import SwiftUI
             switch self {
             case .onboarding:
                 return "Onboarding"
-            case .login:
-                return "Login"
             case .settings:
                 return "Settings"
             case .paywall:
@@ -45,8 +42,6 @@ import SwiftUI
             switch self {
             case .onboarding:
                 return "person.fill"
-            case .login:
-                return "person.circle"
             case .settings:
                 return "gear"
             case .paywall:

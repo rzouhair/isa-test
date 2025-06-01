@@ -67,7 +67,6 @@ struct OnboardingFlowView: View {
     @State private var showPaywall = false
     
     @State private var isCameraAuthorized = false
-    @State private var showPermission = false
     @State private var showReviewRequest = false
     
     @Environment(AppState.self) private var appState
@@ -105,33 +104,16 @@ struct OnboardingFlowView: View {
                     // Features View
                     OnboardingFeaturesView(
                         onSkip: {
-                            showPermission = true
+                            requestCameraPermission()
                         },
                         onFinish: {
-                            showPermission = true
+                            requestCameraPermission()
                         }
                     )
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .ignoresSafeArea(edges: .bottom)
-            
-            if showPermission {
-                PermissionsView(
-                    onPermissionGranted: {
-                        showPermission = false
-                        showReviewRequest = true
-                        requestReview()
-                        router.navigateToRoot()
-                    },
-                    onLaterPressed: {
-                        showPermission = false
-                        showReviewRequest = true
-                        requestReview()
-                        router.navigateToRoot()
-                    }
-                )
-            }
             
         }
         .onAppear {
@@ -154,121 +136,19 @@ struct OnboardingFlowView: View {
             break
         }
     }
-}
 
-struct PermissionsView: View {
-    @ObserveInjection var inject
-    @State private var cameraPermissionGranted = false
-    
-    var onPermissionGranted: () -> Void
-    var onLaterPressed: () -> Void
-    
-    var body: some View {
-        ZStack {
-            OnboardingConstants.backgroundColor.ignoresSafeArea()
-            
-            VStack(spacing: OnboardingConstants.elementSpacing) {
-                Spacer()
-                
-                Image("camera")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 200)
-                
-                Spacer()
-                
-                VStack(alignment: .leading, spacing: 16) {
-                    HStack {
-                        Spacer()
-                        ZStack {
-                            Circle()
-                                .fill(Asset.Colors.appPrimary.swiftUIColor)
-                                .frame(width: 60, height: 60)
-                            
-                            Image(systemName: "camera.fill")
-                                .font(.system(size: 24))
-                                .foregroundColor(.white)
-                        }
-                        Spacer()
-                    }
-
-                    Text("Camera Access Required")
-                        .font(.system(size: OnboardingConstants.titleSize, weight: .bold))
-                        .foregroundColor(OnboardingConstants.textColor)
-                    
-                    Text("To identify banknotes, we need permission to use your camera")
-                        .font(.system(size: OnboardingConstants.bodySize))
-                        .foregroundColor(OnboardingConstants.secondaryTextColor)
-                }
-                .padding(.horizontal, OnboardingConstants.screenPadding)
-                
-                Spacer()
-                
-                Button(action: {
-                    requestCameraPermission()
-                }) {
-                    Text("Allow Camera Access")
-                        .font(.system(size: OnboardingConstants.buttonTextSize, weight: .semibold))
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: OnboardingConstants.buttonHeight)
-                        .background(OnboardingConstants.primaryColor)
-                        .cornerRadius(16)
-                        .padding(.horizontal, OnboardingConstants.screenPadding)
-                }
-                
-                Button(action: {
-                    // For demo purposes, we'll just complete onboarding
-                    DIContainer.shared.userRepository.setOnboardingIsFinished()
-                    onLaterPressed()
-                }) {
-                    Text("Later")
-                        .font(.system(size: OnboardingConstants.bodySize))
-                        .foregroundColor(OnboardingConstants.secondaryTextColor)
-                        .padding()
-                }
-            }
-            .padding(.vertical, OnboardingConstants.screenPadding)
-        }
-    }
-    
     private func requestCameraPermission() {
         AVCaptureDevice.requestAccess(for: .video) { granted in
             DispatchQueue.main.async {
-                cameraPermissionGranted = granted
-                if granted {
-                    DIContainer.shared.userRepository.setOnboardingIsFinished()
-                    onPermissionGranted()
-                }
+                isCameraAuthorized = granted
+                DIContainer.shared.userRepository.setOnboardingIsFinished()
+                print(DIContainer.shared.userRepository.onboardingIsFinished())
+                showReviewRequest = true
+                requestReview()
+                router.navigateToRoot()
+                appState.showPaywall()
             }
         }
-    }
-}
-
-// Helper extension for hex colors
-extension Color {
-    init(hex: String) {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int: UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&int)
-        let a, r, g, b: UInt64
-        switch hex.count {
-        case 3: // RGB (12-bit)
-            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6: // RGB (24-bit)
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8: // ARGB (32-bit)
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            (a, r, g, b) = (1, 1, 1, 0)
-        }
-        self.init(
-            .sRGB,
-            red: Double(r) / 255,
-            green: Double(g) / 255,
-            blue: Double(b) / 255,
-            opacity: Double(a) / 255
-        )
     }
 }
 
@@ -293,7 +173,7 @@ struct ReviewRequestView: View {
                 Spacer()
                 
                 VStack(alignment: .center, spacing: 16) {
-                    Text("Enjoying PaperScan?")
+                    Text("Enjoying Money Scanner?")
                         .font(.system(size: OnboardingConstants.titleSize, weight: .bold))
                         .foregroundColor(OnboardingConstants.textColor)
                     
@@ -312,7 +192,7 @@ struct ReviewRequestView: View {
                     // Continue to next screen
                     onContinue()
                 }) {
-                    Text("Rate PaperScan")
+                    Text("Rate Money Scanner")
                         .font(.system(size: OnboardingConstants.buttonTextSize, weight: .semibold))
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
@@ -343,4 +223,31 @@ struct ReviewRequestView: View {
     OnboardingFlowView()
         .environment(router)
         .environment(appState)
+}
+
+// Helper extension for hex colors
+extension Color {
+    init(hex: String) {
+        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
+        var int: UInt64 = 0
+        Scanner(string: hex).scanHexInt64(&int)
+        let a, r, g, b: UInt64
+        switch hex.count {
+        case 3: // RGB (12-bit)
+            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
+        case 6: // RGB (24-bit)
+            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
+        case 8: // ARGB (32-bit)
+            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
+        default:
+            (a, r, g, b) = (1, 1, 1, 0)
+        }
+        self.init(
+            .sRGB,
+            red: Double(r) / 255,
+            green: Double(g) / 255,
+            blue: Double(b) / 255,
+            opacity: Double(a) / 255
+        )
+    }
 }

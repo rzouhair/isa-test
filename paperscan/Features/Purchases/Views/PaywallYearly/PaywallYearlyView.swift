@@ -31,7 +31,6 @@ struct PaywallYearlyView: View {
     @State var showNoneRestoredAlert: Bool = false
     @State private var showTermsActionSheet: Bool = false
 
-    @State private var freeTrial: Bool = true
     @State private var selectedProductId: String = ""
     
     let color: Color = Color.appPrimary
@@ -43,16 +42,13 @@ struct PaywallYearlyView: View {
     let placeholderProductDetails: [PurchaseProductDetails] = []
     
     var callToActionText: String {
-        if let selectedProductTrial = purchaseModel.productDetails.first(where: {$0.productId == selectedProductId})?.hasTrial {
-            if selectedProductTrial {
-                return "Start Free Trial"
-            }
-            else {
-                return "Unlock Now"
-            }
-        }
-        else {
+        guard let selectedProduct = purchaseModel.productDetails.first(where: { $0.productId == selectedProductId }) else {
             return "Unlock Now"
+        }
+        if selectedProduct.hasTrial {
+            return "Start Free Trial"
+        } else {
+            return "Unlock Premium"
         }
     }
     
@@ -92,38 +88,14 @@ struct PaywallYearlyView: View {
     var body: some View {
         ZStack (alignment: .top) {
             
-            HStack {
-                Spacer()
-                
-                if hasCooldown && !showCloseButton {
-                    Circle()
-                        .trim(from: 0.0, to: progress)
-                        .stroke(style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
-                        .opacity(0.1 + 0.1 * self.progress)
-                        .rotationEffect(Angle(degrees: -90))
-                        .frame(width: 20, height: 20)
-                }
-                else {
-                    Image(systemName: "multiply")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, alignment: .center)
-                        .clipped()
-                        .onTapGesture {
-                            isPresented = false
-                        }
-                        .opacity(0.2)
-                }
-            }
-            .padding(.top)
-
-            VStack (spacing: 20) {
-                
-                ZStack {
+            ScrollView {
+              VStack (spacing: 10) {
+                  
+                  ZStack (alignment: .top) {
                     Image("note")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(height: 120, alignment: .center)
+                        .frame(height: 100, alignment: .center)
                         .scaleEffect(shakeZoom)
                         .rotationEffect(.degrees(shakeDegrees))
                         .onAppear {
@@ -131,55 +103,90 @@ struct PaywallYearlyView: View {
                                 startShaking()
                             }
                         }
-                }
-                
-                VStack (spacing: 10) {
-                    Text("Unlock Premium Access")
-                        .font(.system(size: 30, weight: .semibold))
-                        .multilineTextAlignment(.center)
-                    VStack (alignment: .leading) {
-                        PurchaseFeatureView(title: "Identify any banknote instantly", icon: "camera.viewfinder", color: color)
-                        PurchaseFeatureView(title: "Access detailed information for all currencies", icon: "globe", color: color)
-                        PurchaseFeatureView(title: "Build your complete banknote collection", icon: "rectangle.stack.fill", color: color)
-                        PurchaseFeatureView(title: "No ads or interruptions", icon: "hand.raised.slash", color: color)
-                    }
-                    .font(.system(size: 19))
-                    .padding(.top)
-                }
-                
-                Spacer()
-                
-                VStack (spacing: 20) {
-                    VStack (spacing: 10) {
+
+                    HStack {
+                        Spacer()
                         
-                        let productDetails = purchaseModel.isFetchingProducts ? placeholderProductDetails : purchaseModel.productDetails
-                        
-                        ForEach(productDetails) { productDetails in
-                            
-                            Button(action: {
-                                withAnimation {
-                                    selectedProductId = productDetails.productId
+                        if hasCooldown && !showCloseButton {
+                            Circle()
+                                .trim(from: 0.0, to: progress)
+                                .stroke(style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
+                                .opacity(0.1 + 0.1 * self.progress)
+                                .rotationEffect(Angle(degrees: -90))
+                                .frame(width: 20, height: 20)
+                        }
+                        else {
+                            Image(systemName: "multiply")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 20, alignment: .center)
+                                .clipped()
+                                .onTapGesture {
+                                    isPresented = false
                                 }
-                                self.freeTrial = productDetails.hasTrial
-                            }) {
-                                VStack {
-                                    HStack {
-                                        VStack(alignment: .leading) {
-                                            Text(productDetails.hasTrial
-                                              ? (productDetails.trialDuration ?? "Trial period")
-                                              : productDetails.duration + " Plan")
-                                                .font(.headline.bold())
-                                                .foregroundColor(.primary)
+                                .opacity(0.2)
+                        }
+                    }
+                    .padding(.top)
+                    .offset(x: -10, y: -10)
+                    .zIndex(1)
+
+                  }
+                  
+                  VStack (spacing: 10) {
+                      Text("Unlock Premium Access")
+                          .font(.system(size: 30, weight: .semibold))
+                          .multilineTextAlignment(.center)
+                      VStack (alignment: .leading) {
+                          PurchaseFeatureView(title: "Identify any banknote instantly", icon: "camera.viewfinder", color: color)
+                          PurchaseFeatureView(title: "Access detailed information for all currencies", icon: "globe", color: color)
+                          PurchaseFeatureView(title: "Build your complete banknote collection", icon: "rectangle.stack.fill", color: color)
+                      }
+                      .font(.system(size: 19))
+                      .padding(.top)
+                  }
+                  
+                  Spacer()
+                  
+                  VStack (spacing: 10) {
+                      VStack (spacing: 10) {
+                          
+                          let productDetails = purchaseModel.isFetchingProducts ? placeholderProductDetails : purchaseModel.productDetails
+                          
+                          ForEach(productDetails) { productDetails in
+                              
+                              Button(action: {
+                                  selectedProductId = productDetails.productId
+                              }) {
+                                  VStack {
+                                      HStack {
+                                          VStack(alignment: .leading) {
+                                            HStack {
+                                              Text(productDetails.duration + " Plan")
+                                                  .font(.headline.bold())
+                                                  .foregroundColor(.primary)
+
+                                              if !productDetails.hasTrial {
+                                                VStack {
+                                                  Text("SAVE \(calculatePercentageSaved)%")
+                                                      .font(.caption2.bold())
+                                                      .foregroundColor(.white)
+                                                      .padding(4)
+                                                }
+                                                .background(Color.red)
+                                                .cornerRadius(6)   
+                                              }
+                                            }
                                             if productDetails.hasTrial {
-                                                Text("then "+productDetails.priceString)
+                                                Text("\(productDetails.trialDuration ?? "Trial period"), then \(productDetails.priceString)")
                                                     .foregroundColor(.primary)
                                                     .opacity(0.8)
                                             }
                                             else {
                                                 HStack (spacing: 0) {
                                                     if let calculateFullPrice = calculateFullPrice, //round down
-                                                       let calculateFullPriceLocalCurrency = toLocalCurrencyString(calculateFullPrice),
-                                                       calculateFullPrice > 0
+                                                        let calculateFullPriceLocalCurrency = toLocalCurrencyString(calculateFullPrice),
+                                                        calculateFullPrice > 0
                                                     {
                                                         //shows the full price based on weekly calculaation
                                                         Text("\(calculateFullPriceLocalCurrency) ")
@@ -192,204 +199,179 @@ struct PaywallYearlyView: View {
                                                 }
                                                 .opacity(0.8)
                                             }
-                                        }
-                                        Spacer()
-                                        if productDetails.hasTrial {
-                                            //removed: Some apps were being rejected with this caption present:
-                                            /*Text("FREE")
-                                                .font(.title2.bold())*/
-                                        }
-                                        else {
-                                            VStack {
-                                                Text("SAVE \(calculatePercentageSaved)%")
-                                                    .font(.caption.bold())
-                                                    .foregroundColor(.white)
-                                                    .padding(8)
-                                            }
-                                            .background(Color.red)
-                                            .cornerRadius(6)
-                                        }
+                                          }
+                                          Spacer()
                                         
-                                        ZStack {
-                                            Image(systemName: (selectedProductId == productDetails.productId) ? "circle.fill" : "circle")
-                                                .foregroundColor((selectedProductId == productDetails.productId) ? color : Color.primary.opacity(0.15))
-                                            
-                                            if selectedProductId == productDetails.productId {
-                                                Image(systemName: "checkmark")
-                                                    .foregroundColor(Color.white)
-                                                    .scaleEffect(0.7)
-                                            }
-                                        }
-                                        .font(.title3.bold())
-                                        
-                                    }
-                                    .padding(.horizontal)
-                                    .padding(.vertical, 10)
-                                }
-                                //.background(Color(.systemGray4))
-                                .cornerRadius(6)
-                                .overlay(
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: 6)
-                                            .stroke((selectedProductId == productDetails.productId) ? color : Color.primary.opacity(0.15), lineWidth: 1) // Border color and width
-                                        RoundedRectangle(cornerRadius: 6)
-                                            .foregroundColor((selectedProductId == productDetails.productId) ? color.opacity(0.05) : Color.primary.opacity(0.001))
-                                    }
-                                )
-                            }
-                            .accentColor(Color.primary)
-                            
-                        }
-                        
-                        HStack {
-                            Toggle(isOn: $freeTrial) {
-                                Text("Free Trial Enabled")
-                                    .font(.headline.bold())
-                            }
-                            .padding(.horizontal)
-                            .padding(.vertical, 10)
-                            .onChange(of: freeTrial) { freeTrial in
-                                if !freeTrial, let firstProductId = self.purchaseModel.productIds.first {
-                                    withAnimation {
-                                        self.selectedProductId = String(firstProductId)
-                                    }
-                                }
-                                else if freeTrial, let lastProductId = self.purchaseModel.productIds.last {
-                                    withAnimation {
-                                        self.selectedProductId = lastProductId
-                                    }
-                                }
-                            }
-                        }
-                        .background(Color.primary.opacity(0.05))
-                        .cornerRadius(6)
-                        
-                    }
-                    .opacity(purchaseModel.isFetchingProducts ? 0 : 1)
-                    
-                    VStack (spacing: 25) {
-                        
-                        ZStack (alignment: .center) {
-                            
-                            //if purchasedModel.isPurchasing {
-                            ProgressView()
-                                .opacity(purchaseModel.isPurchasing ? 1 : 0)
-                            
-                            Button(action: {
-                                //productManager.purchaseProduct()
-                                if !purchaseModel.isPurchasing {
-                                    purchaseModel.purchaseSubscription(productId: self.selectedProductId)
-                                }
-                            }) {
-                                HStack {
-                                    Spacer()
-                                    HStack {
-                                        Text(callToActionText)
-                                        Image(systemName: "chevron.right")
-                                    }
-                                    Spacer()
-                                }
-                                .padding()
-                                .foregroundColor(.white)
-                                .font(.title3.bold())
-                            }
-                            .background(color)
-                            .cornerRadius(6)
-                            .opacity(purchaseModel.isPurchasing ? 0 : 1)
-                            .padding(.top)
-                            .padding(.bottom, 4)
-                            
-                            
-                        }
-                        
-                    }
-                    .opacity(purchaseModel.isFetchingProducts ? 0 : 1)
-                }
-                .id("view-\(purchaseModel.isFetchingProducts)")
-                .background {
-                    if purchaseModel.isFetchingProducts {
-                        ProgressView()
-                    }
-                }
-                
-                VStack (spacing: 5) {
-                    
-                    /*HStack (spacing: 4) {
-                        Image(systemName: "figure.2.and.child.holdinghands")
-                            .foregroundColor(Color.red)
-                        Text("Family Sharing enabled")
-                            .foregroundColor(.white)
-                    }
-                    .font(.footnote)*/
-                    
-                    HStack (spacing: 10) {
-                        
-                        Button("Restore") {
-                            Task {
-                                await purchaseModel.restorePurchases()
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
-                                if !purchaseModel.isSubscribed {
-                                    showNoneRestoredAlert = true
-                                }
-                            }
-                        }
-                        .alert(isPresented: $showNoneRestoredAlert) {
-                            Alert(title: Text("Restore Purchases"), message: Text("No purchases restored"), dismissButton: .default(Text("OK")))
-                        }
-                        .overlay(
-                            Rectangle()
-                                .frame(height: 1)
-                                .foregroundColor(.gray), alignment: .bottom
-                        )
-                        .font(.footnote)
-                        
-                        
-                        Button("Terms of Use & Privacy Policy") {
-                            showTermsActionSheet = true
-                        }
-                        .overlay(
-                            Rectangle()
-                                .frame(height: 1)
-                                .foregroundColor(.gray), alignment: .bottom
-                        )
-                        .actionSheet(isPresented: $showTermsActionSheet) {
-                            ActionSheet(title: Text("View Terms & Conditions"), message: nil,
-                                        buttons: [
-                                            .default(Text("Terms of Use"), action: {
-                                                if let url = URL(string: "https://example.com") {
-                                                    UIApplication.shared.open(url)
-                                                }
-                                            }),
-                                            .default(Text("Privacy Policy"), action: {
-                                                if let url = URL(string: "https://example.com") {
-                                                    UIApplication.shared.open(url)
-                                                }
-                                            }),
-                                            .cancel()
-                                        ])
-                        }
-                        .font(.footnote)
-                        
-                        
-                    }
-                    //.font(.headline)
-                    .foregroundColor(.gray)
-                    .font(.system(size: 15))
-                    
-                    
-                    
-                    
-                }
+                                          ZStack {
+                                              Image(systemName: (selectedProductId == productDetails.productId) ? "circle.fill" : "circle")
+                                                  .foregroundColor((selectedProductId == productDetails.productId) ? color : Color.primary.opacity(0.15))
+                                              
+                                              if selectedProductId == productDetails.productId {
+                                                  Image(systemName: "checkmark")
+                                                      .foregroundColor(Color.white)
+                                                      .scaleEffect(0.7)
+                                              }
+                                          }
+                                          .font(.title3.bold())
+                                          
+                                      }
+                                      .padding(.horizontal)
+                                      .padding(.vertical, 10)
+                                  }
+                                  //.background(Color(.systemGray4))
+                                  .cornerRadius(6)
+                                  .overlay(
+                                      ZStack {
+                                          RoundedRectangle(cornerRadius: 6)
+                                              .stroke((selectedProductId == productDetails.productId) ? color : Color.primary.opacity(0.15), lineWidth: 1) // Border color and width
+                                          RoundedRectangle(cornerRadius: 6)
+                                              .foregroundColor((selectedProductId == productDetails.productId) ? color.opacity(0.05) : Color.primary.opacity(0.001))
+                                      }
+                                  )
+                              }
+                              .accentColor(Color.primary)
+                              
+                          }
+                          
+                      }
+                      .opacity(purchaseModel.isFetchingProducts ? 0 : 1)
+                      
+                      VStack (spacing: 25) {
+                          
+                          ZStack (alignment: .center) {
+                              
+                              //if purchasedModel.isPurchasing {
+                              ProgressView()
+                                  .opacity(purchaseModel.isPurchasing ? 1 : 0)
+                              
+                              Button(action: {
+                                  //productManager.purchaseProduct()
+                                  if !purchaseModel.isPurchasing {
+                                      purchaseModel.purchaseSubscription(productId: self.selectedProductId)
+                                  }
+                              }) {
+                                  HStack {
+                                      Spacer()
+                                      HStack {
+                                          Text(callToActionText)
+                                          Image(systemName: "chevron.right")
+                                      }
+                                      Spacer()
+                                  }
+                                  .padding()
+                                  .foregroundColor(.white)
+                                  .font(.title3.bold())
+                              }
+                              .background(color)
+                              .cornerRadius(6)
+                              .opacity(purchaseModel.isPurchasing ? 0 : 1)
+                              .padding(.top)
+                              .padding(.bottom, 4)
+                              
+                              
+                          }
+                          
+                      }
+                      .opacity(purchaseModel.isFetchingProducts ? 0 : 1)
+                  }
+                  .id("view-\(purchaseModel.isFetchingProducts)")
+                  .background {
+                      if purchaseModel.isFetchingProducts {
+                          ProgressView()
+                      }
+                  }
+                  
+                  VStack (spacing: 5) {
+                      
+                      /*HStack (spacing: 4) {
+                          Image(systemName: "figure.2.and.child.holdinghands")
+                              .foregroundColor(Color.red)
+                          Text("Family Sharing enabled")
+                              .foregroundColor(.white)
+                      }
+                      .font(.footnote)*/
+                      
+                      HStack (spacing: 10) {
+                          
+                          Button("Restore Purchase") {
+                              Task {
+                                  await purchaseModel.restorePurchases()
+                              }
+                          }
+                          .alert(isPresented: $showNoneRestoredAlert) {
+                              Alert(title: Text("Restore Purchases"), message: Text("No purchases restored"), dismissButton: .default(Text("OK")))
+                          }
+                          .overlay(
+                              Rectangle()
+                                  .frame(height: 1)
+                                  .foregroundColor(.gray), alignment: .bottom
+                          )
+                          .font(.footnote)
 
-                
-            }
-        }
-        .padding(.horizontal)
-        .onChange(of: purchaseModel.productIds) { prods in
-            selectedProductId = purchaseModel.productIds.last ?? ""
+                          
+                          Button("Terms of Use & Privacy Policy") {
+                              showTermsActionSheet = true
+                          }
+                          .overlay(
+                              Rectangle()
+                                  .frame(height: 1)
+                                  .foregroundColor(.gray), alignment: .bottom
+                          )
+                          .actionSheet(isPresented: $showTermsActionSheet) {
+                              ActionSheet(title: Text("View Terms & Conditions"), message: nil,
+                                          buttons: [
+                                              .default(Text("Terms of Use (EULA)"), action: {
+                                                if let url = URL(string: Constants.appleEulaUrl) {
+                                                      UIApplication.shared.open(url)
+                                                  }
+                                              }),
+                                              .default(Text("Privacy Policy"), action: {
+                                                if let url = URL(string: Constants.privacyPolicyUrl) {
+                                                      UIApplication.shared.open(url)
+                                                  }
+                                              }),
+                                              .cancel()
+                                          ])
+                          }
+                          .font(.footnote)
+                          
+                          
+                      }
+                      //.font(.headline)
+                      .foregroundColor(.gray)
+                      .font(.system(size: 15))
+                      
+                      
+                      Text("Premium membership unlocks all the packs and content. This is an auto-renewal subscription. Subscriptions will automatically renew and you will be charged for renewal within 24 hours prior to end of each period unless auto renew is tuned off at least 24-hours before the end of each period. You can manage your subscription settings and auto-renewal may be turned off by going to Apple ID Account Settings after purchase.")
+                          .font(.caption2)
+                          .foregroundColor(.secondary)
+                          .multilineTextAlignment(.center)
+                          .padding(.top, 8)
+                          .multilineTextAlignment(.center)
+                          .fixedSize(horizontal: false, vertical: true)
+                      
+                      
+                  }
+
+                  Spacer()
+                  
+              }
+          }
+          .padding(.horizontal)
+          .onChange(of: purchaseModel.productIds) { prods in
+              if let trialProduct = purchaseModel.productDetails.first(where: { $0.hasTrial }) {
+                  selectedProductId = trialProduct.productId
+              } else if let firstProduct = prods.first {
+                  selectedProductId = firstProduct
+              } else {
+                  selectedProductId = ""
+              }
+          }
         }
         .onAppear {
+            // This block is for the initial setup when the view appears.
+            // It should handle both the shaking animation and checking subscription status.
+
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                 withAnimation(.easeIn(duration: allowCloseAfter)) {
                     self.progress = 1.0
@@ -400,17 +382,22 @@ struct PaywallYearlyView: View {
                     }
                 }
             }
+            
+            // Start shaking animation
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // Keep the original delay for shake
+                startShaking()
+            }
+            
+            // Check subscription status
+            if purchaseModel.isSubscribed {
+                isPresented = false
+            }
         }
         .onChange(of: purchaseModel.isSubscribed) { isSubscribed in
             if(isSubscribed) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     isPresented = false
                 }
-            }
-        }
-        .onAppear {
-            if(purchaseModel.isSubscribed) {
-                isPresented = false
             }
         }
         
@@ -481,7 +468,7 @@ struct PaywallYearlyView: View {
     func toLocalCurrencyString(_ value: Double) -> String? {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
-        //formatter.locale = locale
+        formatter.locale = Locale(identifier: "en_US") // Force USD
         return formatter.string(from: NSNumber(value: value))
     }
 

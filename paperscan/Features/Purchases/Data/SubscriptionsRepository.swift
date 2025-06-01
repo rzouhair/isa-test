@@ -61,7 +61,7 @@ public class SubscriptionsRepository {
     public func loadOffering() async -> Offering? {
         await withCheckedContinuation { continuation in
             Purchases.shared.getOfferings { offerings, error in
-                guard let currentOffering = offerings?.all["default"] else {
+                guard let currentOffering = offerings?.all.values.first else {
                     continuation.resume(returning: nil)
                     print(offerings?.all)
                     return

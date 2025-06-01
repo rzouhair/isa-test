@@ -22,24 +22,27 @@ struct OnboardingWelcomeView: View {
             
             VStack(spacing: 40) {
                 Spacer()
+                Spacer()
                 
                 // Logo and app name
                 VStack(spacing: 24) {
                     Asset.Images.logo.swiftUIImage
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 250, height: 100)
+                        .frame(width: 200, height: 80)
                         .opacity(isAnimating ? 1 : 0)
                         .scaleEffect(isAnimating ? 1 : 0.8)
                     
                     VStack(spacing: 8) {
-                        Text("Welcome to\nPaperScan AI")
-                            .font(.system(size: 32, weight: .bold))
+                        Text("Welcome to\n Money Scanner: Banknote ID")
+                            .font(.system(size: 24, weight: .bold))
                             .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
                         
                         Text("Your Smart Banknote Assistant")
-                            .font(.title3)
+                            .font(.system(size: 16, weight: .regular))
                             .opacity(0.9)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                     .foregroundColor(.white)
                     .opacity(isAnimating ? 1 : 0)
@@ -75,6 +78,8 @@ struct OnboardingWelcomeView: View {
                 .padding(.horizontal, 24)
                 .opacity(isAnimating ? 1 : 0)
                 .offset(y: isAnimating ? 0 : 20)
+
+                Spacer()
             }
             .padding(.bottom, 48)
         }
@@ -94,6 +99,7 @@ struct OnboardingWelcomeView: View {
             
             Text(text)
                 .font(.body)
+                .fixedSize(horizontal: false, vertical: true)
             
             Spacer()
         }

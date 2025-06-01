@@ -5,6 +5,7 @@
 //  Created by user on 24/03/2024.
 //
 
+import RevenueCat
 import Foundation
 import MessageUI
 import SwiftUI
@@ -30,7 +31,24 @@ class SettingsViewModel {
     
     func handleItemTap(_ item: SettingsItem) {
         switch item {
-        case .manageSubscriptions: isShowingManageSubscriptionsSheet = true
+        case .manageSubscriptions:
+          Task {
+            isShowingManageSubscriptionsSheet = true
+            if #available(iOS 15.0, *) {
+                do {
+                    try await Purchases.shared.showManageSubscriptions()
+                } catch {
+                    // fallback
+                    if let url = URL(string: "https://apps.apple.com/account/subscriptions") {
+                        await UIApplication.shared.open(url)
+                    }
+                }
+            } else {
+                if let url = URL(string: "https://apps.apple.com/account/subscriptions") {
+                    await UIApplication.shared.open(url)
+                }
+            }
+          }
         case .restorePurchase: restorePurchase()
         case .aboutAuthor:
             isShowingAboutAuthorView = true
@@ -38,8 +56,8 @@ class SettingsViewModel {
             if MFMailComposeViewController.canSendMail() {
                 let mailComposer = MFMailComposeViewController()
                 mailComposer.setToRecipients([Constants.supportEmail])
-                mailComposer.setSubject("PaperScan Bug Report")
-                mailComposer.setMessageBody("Hello PaperScan Team,\n\nI'd like to report a bug:\n\n", isHTML: false)
+                mailComposer.setSubject("\(Constants.appName) Bug Report")
+                mailComposer.setMessageBody("Hello \(Constants.appName) Team,\n\nI'd like to report a bug:\n\n", isHTML: false)
                 isShowingMailComposer = true
             } else {
                 UIApplication.showAlert(title: "Email Not Available", message: "Your device is not configured to send emails. Please report bugs to us at \(Constants.supportEmail)")
@@ -83,8 +101,8 @@ class SettingsViewModel {
         if MFMailComposeViewController.canSendMail() {
             let mailComposer = MFMailComposeViewController()
             mailComposer.setToRecipients([Constants.supportEmail])
-            mailComposer.setSubject("PaperScan Support Request")
-            mailComposer.setMessageBody("Hello PaperScan Team,\n\n", isHTML: false)
+            mailComposer.setSubject("\(Constants.appName) Support Request")
+            mailComposer.setMessageBody("Hello \(Constants.appName) Team,\n\n", isHTML: false)
             isShowingMailComposer = true
         } else {
             UIApplication.showAlert(title: "Email Not Available", message: "Your device is not configured to send emails. Please contact us at \(Constants.supportEmail)")

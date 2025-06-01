@@ -1,6 +1,5 @@
 import Foundation
 import SwiftUI
-import Firebase
 import RevenueCat
 import SwiftData
 
@@ -40,7 +39,6 @@ struct AppMain: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
 
-        FirebaseApp.configure()
         Purchases.configure(
             with: Configuration.builder(withAPIKey: Constants.revenueCat)
                 .with(storeKitVersion: .storeKit2)

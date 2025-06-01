@@ -93,7 +93,6 @@ struct BanknoteDetectionView: View {
             Button("OK", role: .cancel) {
                 router.dismissFullscreenCover()
                 router.navigateToRoot()
-                router.navigate(to: .home, replace: true)
             }
         } message: {
             Text("An unexpected error occurred while processing your banknotes. Please try again.")

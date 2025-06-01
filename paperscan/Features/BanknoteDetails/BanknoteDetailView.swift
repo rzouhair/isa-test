@@ -53,9 +53,6 @@ struct BanknoteDetailView: View {
                             specificationsSection
                                 .modifier(SectionStyleModifier())
                             
-                            gradeSection
-                                .modifier(SectionStyleModifier())
-
                             designDetailsSection
                                 .modifier(SectionStyleModifier(showDivider: false))
                         }

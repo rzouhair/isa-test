@@ -74,7 +74,7 @@
       "localizations" : [
 
       ],
-      "name" : "subgroup",
+      "name" : "Money Scanner Pro Access",
       "subscriptions" : [
         {
           "adHocOffers" : [
@@ -83,7 +83,7 @@
           "codeOffers" : [
 
           ],
-          "displayPrice" : "4.99",
+          "displayPrice" : "6.99",
           "familyShareable" : false,
           "groupNumber" : 1,
           "internalID" : "5FBDB9C4",
@@ -100,9 +100,9 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "premium_weekly_1",
+          "productID" : "ms_499_1w_3d0",
           "recurringSubscriptionPeriod" : "P1W",
-          "referenceName" : "Weekly",
+          "referenceName" : "Weekly $6,99 - 3 days free",
           "subscriptionGroupID" : "4D54BDE9",
           "type" : "RecurringSubscription",
           "winbackOffers" : [
@@ -116,7 +116,7 @@
           "codeOffers" : [
 
           ],
-          "displayPrice" : "24.99",
+          "displayPrice" : "26.99",
           "familyShareable" : false,
           "groupNumber" : 1,
           "internalID" : "878D0D9F",
@@ -128,9 +128,9 @@
               "locale" : "en_US"
             }
           ],
-          "productID" : "premium_yearly",
+          "productID" : "ms_2699_1y_0d0",
           "recurringSubscriptionPeriod" : "P1Y",
-          "referenceName" : "Yearly",
+          "referenceName" : "MoneyScanner Yearly 24,99$",
           "subscriptionGroupID" : "4D54BDE9",
           "type" : "RecurringSubscription",
           "winbackOffers" : [

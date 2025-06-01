@@ -41,6 +41,8 @@ struct CameraView: View {
   @State private var selectedImages: [UIImage] = []
 
   @State private var filename: String? = nil
+  @State private var showAlert: Bool = false
+  @State private var showPermissionDeniedMessage: Bool = false
 
   @Binding var showHistory: Bool
 
@@ -106,6 +108,32 @@ struct CameraView: View {
 
         ResizableCropFrameView(cropRect: $cropRect, parentSize: UIScreen.main.bounds.size)
 
+      }
+      .blur(radius: showPermissionDeniedMessage ? 3 : 0)
+
+      if showPermissionDeniedMessage {
+        VStack {
+          Spacer()
+          Text("Camera access is required.")
+            .font(.headline)
+            .padding()
+          Text("Please grant camera access in Settings to use the banknote capture feature")
+            .font(.subheadline)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal)
+          Button("Open Settings") {
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+              UIApplication.shared.open(url)
+            }
+          }
+          .padding()
+          .buttonStyle(.borderedProminent)
+          Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.black.opacity(0.75))
+        .foregroundColor(.white)
+        .edgesIgnoringSafeArea(.all)
       }
 
       if isProcessing {
@@ -229,12 +257,18 @@ struct CameraView: View {
 
             Spacer()
             Button(action: {
-              if let photoOutput = photoOutput {
-                print("==> capturePhoto")
-                isProcessing = true
-                let settings = AVCapturePhotoSettings()
-                photoOutput.capturePhoto(with: settings, delegate: photoCaptureDelegate)
-                //self.onShutterFlash()
+              switch AVCaptureDevice.authorizationStatus(for: .video) {
+              case .authorized:
+                if let photoOutput = photoOutput {
+                  print("==> capturePhoto")
+                  isProcessing = true
+                  let settings = AVCapturePhotoSettings()
+                  photoOutput.capturePhoto(with: settings, delegate: photoCaptureDelegate)
+                }
+              case .denied, .restricted:
+                showAlert = true
+              default:
+                showAlert = true
               }
             }) {
               Image(systemName: "camera.fill")
@@ -277,6 +311,18 @@ struct CameraView: View {
 
       }
 
+    }
+    .alert(isPresented: $showAlert) {
+      Alert(
+        title: Text("Camera Access Denied"),
+        message: Text("Camera access is required to use this feature."),
+        primaryButton: .default(Text("Settings"), action: {
+          if let url = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(url)
+          }
+        }),
+        secondaryButton: .cancel()
+      )
     }
     .onChange(of: isProcessing) { value in
       if value {
@@ -389,17 +435,24 @@ struct CameraView: View {
     switch AVCaptureDevice.authorizationStatus(for: .video) {
     case .authorized:
       // Already authorized
+      showPermissionDeniedMessage = false
       setupCamera()
     case .notDetermined:
       // Request permission
       AVCaptureDevice.requestAccess(for: .video) { granted in
-        if granted {
-          setupCamera()
+        DispatchQueue.main.async {
+          if granted {
+            showPermissionDeniedMessage = false
+            setupCamera()
+          } else {
+            // Handle if not granted
+            showPermissionDeniedMessage = true
+          }
         }
-        // Handle if not granted
       }
     case .denied, .restricted:
       // Permission denied or restricted, handle accordingly
+      showPermissionDeniedMessage = true
       break
     @unknown default:
       break

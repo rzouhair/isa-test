@@ -140,12 +140,12 @@ struct FeatureSlideView: View {
     @State private var isAnimating = false
     
     var body: some View {
-        VStack(spacing: 32) {
+        VStack(alignment: .trailing, spacing: 16) {
             // Image
             Image(slide.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 280)
+                .frame(maxWidth: .infinity)
                 .opacity(isAnimating ? 1 : 0)
                 .offset(y: isAnimating ? 0 : 20)
             
@@ -165,14 +165,20 @@ struct FeatureSlideView: View {
                     Text(slide.title)
                         .font(.title2)
                         .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity)
                     
                     Text(slide.description)
                         .font(.body)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)
-                        .padding(.horizontal, 32)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal, 16)
                 }
             }
+            .frame(maxWidth: .infinity)
             .opacity(isAnimating ? 1 : 0)
             .offset(y: isAnimating ? 0 : 20)
         }

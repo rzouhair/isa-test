@@ -8,12 +8,8 @@
 import Foundation
 
 protocol UserRepositoryProtocol {
-    func isUserLoggedIn() -> Bool
     func onboardingIsFinished() -> Bool
     func setOnboardingIsFinished()
-    func signIn(provider: SignInProvider) async throws -> Bool
-    func signOut()
-    func deleteAccount()
     func wasReviewPrompted() -> Bool
     func setReviewPrompted()
 }
