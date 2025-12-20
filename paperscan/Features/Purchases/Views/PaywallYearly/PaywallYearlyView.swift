@@ -145,9 +145,9 @@ struct PaywallYearlyView: View {
                       .font(.system(size: 19))
                       .padding(.top)
                   }
-                  
+
                   Spacer()
-                  
+
                   VStack (spacing: 10) {
                       VStack (spacing: 10) {
                           
