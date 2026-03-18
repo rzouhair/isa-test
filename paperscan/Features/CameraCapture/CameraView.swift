@@ -117,7 +117,7 @@ struct CameraView: View {
           Text("Camera access is required.")
             .font(.headline)
             .padding()
-          Text("Please grant camera access in Settings to use the banknote capture feature")
+          Text("Please grant camera access in Settings to use the scanning feature")
             .font(.subheadline)
             .multilineTextAlignment(.center)
             .padding(.horizontal)

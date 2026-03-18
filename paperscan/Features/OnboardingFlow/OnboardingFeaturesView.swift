@@ -19,25 +19,25 @@ struct OnboardingFeaturesView: View {
     private let features = [
         FeatureSlide(
             title: "Instant Recognition",
-            description: "Capture and identify any banknote in seconds with our advanced AI technology.",
+            description: "Capture and identify items in seconds with our advanced AI technology.",
             imageName: "note",
             iconName: "camera.viewfinder"
         ),
         FeatureSlide(
             title: "AI-Powered Analysis",
-            description: "Our AI instantly analyzes banknotes and provides accurate information without storing your data.",
+            description: "Our AI instantly analyzes your scans and provides accurate information.",
             imageName: "magic",
             iconName: "sparkles"
         ),
         FeatureSlide(
             title: "Unlock Full Potential",
-            description: "Upgrade to Pro for unlimited scans and detailed currency information at your fingertips.",
+            description: "Upgrade to Pro for unlimited scans and detailed information at your fingertips.",
             imageName: "lock",
             iconName: "lock.open.fill"
         ),
         FeatureSlide(
             title: "Privacy First",
-            description: "We never store your banknote images. and Camera access is only used for scanning purposes.",
+            description: "We never store your images. Camera access is only used for scanning.",
             imageName: "shield",
             iconName: "shield.fill"
         )

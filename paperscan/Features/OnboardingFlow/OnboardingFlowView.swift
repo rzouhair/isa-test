@@ -42,20 +42,20 @@ struct OnboardingStep: Identifiable {
 // Onboarding Content
 let onboardingSteps = [
     OnboardingStep(
-        title: "Instant Banknote Recognition",
-        description: "Point your camera at any banknote to identify currency, value, and authenticity in seconds",
+        title: "Smart Scanning",
+        description: "Point your camera to scan and identify items instantly",
         imageName: "onboarding_scan",
         buttonText: "Continue"
     ),
     OnboardingStep(
-        title: "150+ Currencies Supported",
-        description: "From USD to JPY, EUR to CNY - identify banknotes from all major countries",
+        title: "AI-Powered Analysis",
+        description: "Get detailed information and insights powered by advanced AI",
         imageName: "onboarding_global",
         buttonText: "Continue"
     ),
     OnboardingStep(
-        title: "Detailed Information",
-        description: "Learn about security features, exchange rates, and historical context",
+        title: "Detailed Results",
+        description: "Access comprehensive details and save your scan history",
         imageName: "onboarding_details",
         buttonText: "Get Started"
     )
@@ -173,10 +173,10 @@ struct ReviewRequestView: View {
                 Spacer()
                 
                 VStack(alignment: .center, spacing: 16) {
-                    Text("Enjoying Money Scanner?")
+                    Text("Enjoying \(Constants.appName)?")
                         .font(.system(size: OnboardingConstants.titleSize, weight: .bold))
                         .foregroundColor(OnboardingConstants.textColor)
-                    
+
                     Text("Your feedback helps us improve the app and provide better service for everyone.")
                         .font(.system(size: OnboardingConstants.bodySize))
                         .foregroundColor(OnboardingConstants.secondaryTextColor)
@@ -192,7 +192,7 @@ struct ReviewRequestView: View {
                     // Continue to next screen
                     onContinue()
                 }) {
-                    Text("Rate Money Scanner")
+                    Text("Rate \(Constants.appName)")
                         .font(.system(size: OnboardingConstants.buttonTextSize, weight: .semibold))
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)

@@ -138,9 +138,9 @@ struct PaywallYearlyView: View {
                           .font(.system(size: 30, weight: .semibold))
                           .multilineTextAlignment(.center)
                       VStack (alignment: .leading) {
-                          PurchaseFeatureView(title: "Identify any banknote instantly", icon: "camera.viewfinder", color: color)
-                          PurchaseFeatureView(title: "Access detailed information for all currencies", icon: "globe", color: color)
-                          PurchaseFeatureView(title: "Build your complete banknote collection", icon: "rectangle.stack.fill", color: color)
+                          PurchaseFeatureView(title: "Unlimited scanning and recognition", icon: "camera.viewfinder", color: color)
+                          PurchaseFeatureView(title: "Access detailed AI-powered analysis", icon: "sparkles", color: color)
+                          PurchaseFeatureView(title: "Save and organize your scan history", icon: "rectangle.stack.fill", color: color)
                       }
                       .font(.system(size: 19))
                       .padding(.top)

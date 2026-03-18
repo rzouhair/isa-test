@@ -31,17 +31,6 @@ struct HighlightTabBar: View {
                     tabIndex: 0,
                     activeTab: $selectedPage
                 )
-                
-                Spacer()
-                Spacer()
-
-                TabItem(
-                    tint: tint,
-                    inactiveTint: inactiveTint,
-                    tab: Router.Route.collection,
-                    tabIndex: 1,
-                    activeTab: $selectedPage
-                )
             }
             .padding(.horizontal, 15)
             .padding(.top, 6)

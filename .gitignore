@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Xcode user data
+*.xcuserdata/
+xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# Build
+build/
+DerivedData/
+
+# IDE specific
+.cursor/
+.vscode/
+
+# Dependencies
+Pods/
+Carthage/
+
+# Secrets
+*.xcconfig
+GoogleService-Info.plist

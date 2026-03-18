@@ -19,14 +19,14 @@ struct OnboardingInstantValueView: View {
         VStack(spacing: 32) {
             // Header
             VStack(spacing: 16) {
-                Text("Instantly identify any banknote")
+                Text("Scan anything instantly")
                     .font(.system(size: 32, weight: .bold))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
                     .opacity(isAnimating ? 1 : 0)
                     .offset(y: isAnimating ? 0 : 20)
-                
-                Text("Just point your camera. We'll handle the rest (privately).")
+
+                Text("Just point your camera. We'll handle the rest.")
                     .font(.title3)
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)

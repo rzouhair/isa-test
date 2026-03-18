@@ -11,9 +11,9 @@ class Constants {
     /// Set up the basic constants here...
     ///
     ///
-    static let appName = "Money Scanner: Banknote ID"
-    static let privacyPolicyUrl = "https://www.notion.so/Money-Scanner-Banknote-ID-Privacy-Policy-1d34d383e4768034905fc38c74480b3e?pvs=4" /// IMPORTANT: set this to the correct URL
-    static let termsOfUseUrl = "https://www.notion.so/Money-Scanner-Banknote-ID-Terms-and-Conditions-1d34d383e4768095a2c7e9df03ae6832" /// IMPORTANT: set this to the correct URL
+    static let appName = "PaperScan" /// TODO: Update to your app name
+    static let privacyPolicyUrl = "" /// IMPORTANT: set this to the correct URL
+    static let termsOfUseUrl = "" /// IMPORTANT: set this to the correct URL
 
     static let appleEulaUrl = "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/"
     static let supportEmail = "rouikaalt@gmail.com"
@@ -29,5 +29,5 @@ class Constants {
     
     static let proxyLambdaURL = "https://edvrtovrdvcx3ghayyvy3sooe40qrlob.lambda-url.us-east-1.on.aws"
 
-    static let appStoreId = "6479833602"
+    static let appStoreId = "6479833602" /// IMPORTANT: set this to your App Store ID
 }

@@ -20,7 +20,7 @@ struct CameraCaptureView: View {
         NavigationStack {
             ZStack(alignment: .top) {
                 CameraView(isActive: $cameraIsActive, onCaptureImage: { images in
-                    router.presentFullscreenCover(.detection(images: images))
+                    router.presentFullscreenCover(.home)
                 }, showHistory: $showHistory)
             }
             .edgesIgnoringSafeArea(.all)

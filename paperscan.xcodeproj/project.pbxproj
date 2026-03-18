@@ -7,8 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26CC28D32F6A47BA00C0447F /* OpenAIParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CC28D12F6A47BA00C0447F /* OpenAIParser.swift */; };
+		26CC28D42F6A47BA00C0447F /* SignInProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CC28CB2F6A47BA00C0447F /* SignInProviders.swift */; };
+		26CC28D52F6A47BA00C0447F /* ToolDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CC28CD2F6A47BA00C0447F /* ToolDefinition.swift */; };
+		26CC28D62F6A47BA00C0447F /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CC28CF2F6A47BA00C0447F /* Preview.swift */; };
+		26CC28D72F6A47BA00C0447F /* OpenAIParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CC28D12F6A47BA00C0447F /* OpenAIParser.swift */; };
+		26CC28D82F6A47BA00C0447F /* SignInProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CC28CB2F6A47BA00C0447F /* SignInProviders.swift */; };
+		26CC28D92F6A47BA00C0447F /* ToolDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CC28CD2F6A47BA00C0447F /* ToolDefinition.swift */; };
+		26CC28DA2F6A47BA00C0447F /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CC28CF2F6A47BA00C0447F /* Preview.swift */; };
+		26CC28DB2F6A47BA00C0447F /* OpenAIParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CC28D12F6A47BA00C0447F /* OpenAIParser.swift */; };
+		26CC28DC2F6A47BA00C0447F /* SignInProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CC28CB2F6A47BA00C0447F /* SignInProviders.swift */; };
+		26CC28DD2F6A47BA00C0447F /* ToolDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CC28CD2F6A47BA00C0447F /* ToolDefinition.swift */; };
+		26CC28DE2F6A47BA00C0447F /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CC28CF2F6A47BA00C0447F /* Preview.swift */; };
 		CE8DF48D2DAC248E0052EFDD /* Inject in Frameworks */ = {isa = PBXBuildFile; productRef = CE8DF48C2DAC248E0052EFDD /* Inject */; };
-		CEA7E6BD2DDC8A580094766F /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC8E2DAAD0EA00DCE39C /* ChatViewModel.swift */; };
 		CEB038292DC679C800E06C45 /* configurationtest.storekit in Resources */ = {isa = PBXBuildFile; fileRef = CEB038282DC679C800E06C45 /* configurationtest.storekit */; };
 		CEB0382A2DC679C800E06C45 /* configurationtest.storekit in Resources */ = {isa = PBXBuildFile; fileRef = CEB038282DC679C800E06C45 /* configurationtest.storekit */; };
 		CEB0382B2DC679C800E06C45 /* configurationtest.storekit in Resources */ = {isa = PBXBuildFile; fileRef = CEB038282DC679C800E06C45 /* configurationtest.storekit */; };
@@ -27,14 +38,10 @@
 		CEF1ED012DAAD0EA00DCE39C /* FeaturesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC62DAAD0EA00DCE39C /* FeaturesList.swift */; };
 		CEF1ED022DAAD0EA00DCE39C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECE72DAAD0EA00DCE39C /* Item.swift */; };
 		CEF1ED032DAAD0EA00DCE39C /* StoreKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD22DAAD0EA00DCE39C /* StoreKitExtension.swift */; };
-		CEF1ED042DAAD0EA00DCE39C /* OnboardingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC9E2DAAD0EA00DCE39C /* OnboardingDelegate.swift */; };
 		CEF1ED052DAAD0EA00DCE39C /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECB92DAAD0EA00DCE39C /* MailView.swift */; };
-		CEF1ED062DAAD0EA00DCE39C /* ItemGradeFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC662DAAD0EA00DCE39C /* ItemGradeFunction.swift */; };
 		CEF1ED072DAAD0EA00DCE39C /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD12DAAD0EA00DCE39C /* FontExtension.swift */; };
 		CEF1ED082DAAD0EA00DCE39C /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC5D2DAAD0EA00DCE39C /* UserRepository.swift */; };
 		CEF1ED092DAAD0EA00DCE39C /* OpenAIProxiedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC5F2DAAD0EA00DCE39C /* OpenAIProxiedService.swift */; };
-		CEF1ED0A2DAAD0EA00DCE39C /* OnboardingDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC9F2DAAD0EA00DCE39C /* OnboardingDependencies.swift */; };
-		CEF1ED0B2DAAD0EA00DCE39C /* OnboardingPageConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC962DAAD0EA00DCE39C /* OnboardingPageConfig.swift */; };
 		CEF1ED0C2DAAD0EA00DCE39C /* AboutAuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECB82DAAD0EA00DCE39C /* AboutAuthorView.swift */; };
 		CEF1ED0D2DAAD0EA00DCE39C /* PaywallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECAE2DAAD0EA00DCE39C /* PaywallViewModel.swift */; };
 		CEF1ED0E2DAAD0EA00DCE39C /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD52DAAD0EA00DCE39C /* UIImageExtension.swift */; };
@@ -42,77 +49,50 @@
 		CEF1ED102DAAD0EA00DCE39C /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECBB2DAAD0EA00DCE39C /* SettingsViewModel.swift */; };
 		CEF1ED112DAAD0EA00DCE39C /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECAD2DAAD0EA00DCE39C /* PaywallView.swift */; };
 		CEF1ED122DAAD0EA00DCE39C /* ArcShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECBF2DAAD0EA00DCE39C /* ArcShape.swift */; };
-		CEF1ED132DAAD0EA00DCE39C /* BanknoteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC822DAAD0EA00DCE39C /* BanknoteDetailViewModel.swift */; };
 		CEF1ED142DAAD0EA00DCE39C /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECCA2DAAD0EA00DCE39C /* Reviews.swift */; };
 		CEF1ED152DAAD0EA00DCE39C /* UserRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC752DAAD0EA00DCE39C /* UserRepositoryProtocol.swift */; };
 		CEF1ED162DAAD0EA00DCE39C /* Accordion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECBE2DAAD0EA00DCE39C /* Accordion.swift */; };
-		CEF1ED172DAAD0EA00DCE39C /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC9B2DAAD0EA00DCE39C /* SplashView.swift */; };
 		CEF1ED182DAAD0EA00DCE39C /* OnboardingCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA22DAAD0EA00DCE39C /* OnboardingCameraView.swift */; };
 		CEF1ED192DAAD0EA00DCE39C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC522DAAD0EA00DCE39C /* AppState.swift */; };
 		CEF1ED1A2DAAD0EA00DCE39C /* OnboardingFeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA42DAAD0EA00DCE39C /* OnboardingFeaturesView.swift */; };
 		CEF1ED1B2DAAD0EA00DCE39C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC942DAAD0EA00DCE39C /* HomeViewModel.swift */; };
-		CEF1ED1C2DAAD0EA00DCE39C /* ItemDetectionFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC652DAAD0EA00DCE39C /* ItemDetectionFunction.swift */; };
 		CEF1ED1D2DAAD0EA00DCE39C /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC22DAAD0EA00DCE39C /* Banner.swift */; };
 		CEF1ED1E2DAAD0EA00DCE39C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC572DAAD0EA00DCE39C /* Router.swift */; };
 		CEF1ED1F2DAAD0EA00DCE39C /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC602DAAD0EA00DCE39C /* OpenAIService.swift */; };
-		CEF1ED202DAAD0EA00DCE39C /* WeatherFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC6A2DAAD0EA00DCE39C /* WeatherFunction.swift */; };
 		CEF1ED212DAAD0EA00DCE39C /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC32DAAD0EA00DCE39C /* Button.swift */; };
 		CEF1ED222DAAD0EA00DCE39C /* AIServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC742DAAD0EA00DCE39C /* AIServiceProvider.swift */; };
-		CEF1ED232DAAD0EA00DCE39C /* SignInProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC632DAAD0EA00DCE39C /* SignInProviders.swift */; };
 		CEF1ED242DAAD0EA00DCE39C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC532DAAD0EA00DCE39C /* RootView.swift */; };
 		CEF1ED252DAAD0EA00DCE39C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC932DAAD0EA00DCE39C /* HomeView.swift */; };
 		CEF1ED262DAAD0EA00DCE39C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC552DAAD0EA00DCE39C /* DIContainer.swift */; };
 		CEF1ED272DAAD0EA00DCE39C /* UserDefaultsDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC5B2DAAD0EA00DCE39C /* UserDefaultsDatasource.swift */; };
-		CEF1ED282DAAD0EA00DCE39C /* BanknoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC812DAAD0EA00DCE39C /* BanknoteDetailView.swift */; };
-		CEF1ED292DAAD0EA00DCE39C /* BanknoteExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECCE2DAAD0EA00DCE39C /* BanknoteExtension.swift */; };
-		CEF1ED2B2DAAD0EA00DCE39C /* BanknoteDetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC852DAAD0EA00DCE39C /* BanknoteDetectionViewModel.swift */; };
 		CEF1ED2C2DAAD0EA00DCE39C /* OnboardingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA52DAAD0EA00DCE39C /* OnboardingFlowView.swift */; };
-		CEF1ED2D2DAAD0EA00DCE39C /* BanknoteDetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC842DAAD0EA00DCE39C /* BanknoteDetectionView.swift */; };
-		CEF1ED2E2DAAD0EA00DCE39C /* ItemValuationFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC682DAAD0EA00DCE39C /* ItemValuationFunction.swift */; };
 		CEF1ED2F2DAAD0EA00DCE39C /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD42DAAD0EA00DCE39C /* UIApplicationExtension.swift */; };
 		CEF1ED302DAAD0EA00DCE39C /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC82DAAD0EA00DCE39C /* LogoView.swift */; };
 		CEF1ED312DAAD0EA00DCE39C /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC02DAAD0EA00DCE39C /* Badge.swift */; };
 		CEF1ED322DAAD0EA00DCE39C /* SwiftDataDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC5A2DAAD0EA00DCE39C /* SwiftDataDatasource.swift */; };
 		CEF1ED342DAAD0EA00DCE39C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD32DAAD0EA00DCE39C /* StringExtension.swift */; };
-		CEF1ED362DAAD0EA00DCE39C /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC972DAAD0EA00DCE39C /* OnboardingPageView.swift */; };
 		CEF1ED372DAAD0EA00DCE39C /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC892DAAD0EA00DCE39C /* PhotoPicker.swift */; };
 		CEF1ED382DAAD0EA00DCE39C /* Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECCC2DAAD0EA00DCE39C /* Stars.swift */; };
-		CEF1ED392DAAD0EA00DCE39C /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC6E2DAAD0EA00DCE39C /* Preview.swift */; };
 		CEF1ED3A2DAAD0EA00DCE39C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC882DAAD0EA00DCE39C /* CameraView.swift */; };
-		CEF1ED3B2DAAD0EA00DCE39C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC982DAAD0EA00DCE39C /* OnboardingView.swift */; };
-		CEF1ED3D2DAAD0EA00DCE39C /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA02DAAD0EA00DCE39C /* OnboardingManager.swift */; };
 		CEF1ED3F2DAAD0EA00DCE39C /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC512DAAD0EA00DCE39C /* AppMain.swift */; };
 		CEF1ED402DAAD0EA00DCE39C /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD82DAAD0EA00DCE39C /* Assets.swift */; };
 		CEF1ED412DAAD0EA00DCE39C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC502DAAD0EA00DCE39C /* AppDelegate.swift */; };
-		CEF1ED422DAAD0EA00DCE39C /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC6D2DAAD0EA00DCE39C /* Collection.swift */; };
 		CEF1ED432DAAD0EA00DCE39C /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC8A2DAAD0EA00DCE39C /* PhotoView.swift */; };
 		CEF1ED442DAAD0EA00DCE39C /* PurchasesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECAB2DAAD0EA00DCE39C /* PurchasesExtension.swift */; };
 		CEF1ED452DAAD0EA00DCE39C /* SubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECB62DAAD0EA00DCE39C /* SubscriptionService.swift */; };
 		CEF1ED472DAAD0EA00DCE39C /* OnboardingInstantValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA62DAAD0EA00DCE39C /* OnboardingInstantValueView.swift */; };
 		CEF1ED492DAAD0EA00DCE39C /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC52DAAD0EA00DCE39C /* Checkbox.swift */; };
-		CEF1ED4A2DAAD0EA00DCE39C /* Banknote.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC6C2DAAD0EA00DCE39C /* Banknote.swift */; };
-		CEF1ED4B2DAAD0EA00DCE39C /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC7F2DAAD0EA00DCE39C /* AuthStore.swift */; };
-		CEF1ED4C2DAAD0EA00DCE39C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC7E2DAAD0EA00DCE39C /* AuthService.swift */; };
-		CEF1ED4D2DAAD0EA00DCE39C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC6F2DAAD0EA00DCE39C /* Task.swift */; };
 		CEF1ED4E2DAAD0EA00DCE39C /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD62DAAD0EA00DCE39C /* UINavigationControllerExtension.swift */; };
-		CEF1ED4F2DAAD0EA00DCE39C /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC912DAAD0EA00DCE39C /* CollectionViewModel.swift */; };
 		CEF1ED502DAAD0EA00DCE39C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECBA2DAAD0EA00DCE39C /* SettingsView.swift */; };
 		CEF1ED512DAAD0EA00DCE39C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC42DAAD0EA00DCE39C /* Card.swift */; };
 		CEF1ED532DAAD0EA00DCE39C /* DecodeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECCF2DAAD0EA00DCE39C /* DecodeJSON.swift */; };
 		CEF1ED542DAAD0EA00DCE39C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECE42DAAD0EA00DCE39C /* Constants.swift */; };
 		CEF1ED552DAAD0EA00DCE39C /* CameraCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC872DAAD0EA00DCE39C /* CameraCaptureView.swift */; };
-		CEF1ED562DAAD0EA00DCE39C /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC702DAAD0EA00DCE39C /* Weather.swift */; };
 		CEF1ED572DAAD0EA00DCE39C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD92DAAD0EA00DCE39C /* Fonts.swift */; };
-		CEF1ED582DAAD0EA00DCE39C /* BanknoteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC12DAAD0EA00DCE39C /* BanknoteRowView.swift */; };
-		CEF1ED592DAAD0EA00DCE39C /* ToolDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC692DAAD0EA00DCE39C /* ToolDefinition.swift */; };
 		CEF1ED5A2DAAD0EA00DCE39C /* PaywallYearlyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECB12DAAD0EA00DCE39C /* PaywallYearlyViewModel.swift */; };
-		CEF1ED5B2DAAD0EA00DCE39C /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC902DAAD0EA00DCE39C /* CollectionView.swift */; };
 		CEF1ED5C2DAAD0EA00DCE39C /* HighlightTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC72DAAD0EA00DCE39C /* HighlightTabBar.swift */; };
-		CEF1ED5D2DAAD0EA00DCE39C /* OpenAIParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC772DAAD0EA00DCE39C /* OpenAIParser.swift */; };
-		CEF1ED5E2DAAD0EA00DCE39C /* BanknoteDetectionPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC722DAAD0EA00DCE39C /* BanknoteDetectionPrompt.swift */; };
 		CEF1ED5F2DAAD0EA00DCE39C /* OnboardingWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA72DAAD0EA00DCE39C /* OnboardingWelcomeView.swift */; };
 		CEF1ED602DAAD0EA00DCE39C /* FixedSizeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD02DAAD0EA00DCE39C /* FixedSizeScrollView.swift */; };
-		CEF1ED612DAAD0EA00DCE39C /* ItemRarityFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC672DAAD0EA00DCE39C /* ItemRarityFunction.swift */; };
 		CEF1ED622DAAD0EA00DCE39C /* PaywallYearlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECB02DAAD0EA00DCE39C /* PaywallYearlyView.swift */; };
 		CEF1ED632DAAD0EA00DCE39C /* SubscriptionsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA92DAAD0EA00DCE39C /* SubscriptionsRepository.swift */; };
 		CEF1ED642DAAD0EA00DCE39C /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC92DAAD0EA00DCE39C /* RatingView.swift */; };
@@ -120,14 +100,10 @@
 		CEF1ED662DAAD0EA00DCE39C /* FeaturesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC62DAAD0EA00DCE39C /* FeaturesList.swift */; };
 		CEF1ED672DAAD0EA00DCE39C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECE72DAAD0EA00DCE39C /* Item.swift */; };
 		CEF1ED682DAAD0EA00DCE39C /* StoreKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD22DAAD0EA00DCE39C /* StoreKitExtension.swift */; };
-		CEF1ED692DAAD0EA00DCE39C /* OnboardingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC9E2DAAD0EA00DCE39C /* OnboardingDelegate.swift */; };
 		CEF1ED6A2DAAD0EA00DCE39C /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECB92DAAD0EA00DCE39C /* MailView.swift */; };
-		CEF1ED6B2DAAD0EA00DCE39C /* ItemGradeFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC662DAAD0EA00DCE39C /* ItemGradeFunction.swift */; };
 		CEF1ED6C2DAAD0EA00DCE39C /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD12DAAD0EA00DCE39C /* FontExtension.swift */; };
 		CEF1ED6D2DAAD0EA00DCE39C /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC5D2DAAD0EA00DCE39C /* UserRepository.swift */; };
 		CEF1ED6E2DAAD0EA00DCE39C /* OpenAIProxiedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC5F2DAAD0EA00DCE39C /* OpenAIProxiedService.swift */; };
-		CEF1ED6F2DAAD0EA00DCE39C /* OnboardingDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC9F2DAAD0EA00DCE39C /* OnboardingDependencies.swift */; };
-		CEF1ED702DAAD0EA00DCE39C /* OnboardingPageConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC962DAAD0EA00DCE39C /* OnboardingPageConfig.swift */; };
 		CEF1ED712DAAD0EA00DCE39C /* AboutAuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECB82DAAD0EA00DCE39C /* AboutAuthorView.swift */; };
 		CEF1ED722DAAD0EA00DCE39C /* PaywallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECAE2DAAD0EA00DCE39C /* PaywallViewModel.swift */; };
 		CEF1ED732DAAD0EA00DCE39C /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD52DAAD0EA00DCE39C /* UIImageExtension.swift */; };
@@ -135,81 +111,50 @@
 		CEF1ED752DAAD0EA00DCE39C /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECBB2DAAD0EA00DCE39C /* SettingsViewModel.swift */; };
 		CEF1ED762DAAD0EA00DCE39C /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECAD2DAAD0EA00DCE39C /* PaywallView.swift */; };
 		CEF1ED772DAAD0EA00DCE39C /* ArcShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECBF2DAAD0EA00DCE39C /* ArcShape.swift */; };
-		CEF1ED782DAAD0EA00DCE39C /* BanknoteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC822DAAD0EA00DCE39C /* BanknoteDetailViewModel.swift */; };
 		CEF1ED792DAAD0EA00DCE39C /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECCA2DAAD0EA00DCE39C /* Reviews.swift */; };
 		CEF1ED7A2DAAD0EA00DCE39C /* UserRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC752DAAD0EA00DCE39C /* UserRepositoryProtocol.swift */; };
 		CEF1ED7B2DAAD0EA00DCE39C /* Accordion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECBE2DAAD0EA00DCE39C /* Accordion.swift */; };
-		CEF1ED7C2DAAD0EA00DCE39C /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC9B2DAAD0EA00DCE39C /* SplashView.swift */; };
 		CEF1ED7D2DAAD0EA00DCE39C /* OnboardingCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA22DAAD0EA00DCE39C /* OnboardingCameraView.swift */; };
 		CEF1ED7E2DAAD0EA00DCE39C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC522DAAD0EA00DCE39C /* AppState.swift */; };
 		CEF1ED7F2DAAD0EA00DCE39C /* OnboardingFeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA42DAAD0EA00DCE39C /* OnboardingFeaturesView.swift */; };
 		CEF1ED802DAAD0EA00DCE39C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC942DAAD0EA00DCE39C /* HomeViewModel.swift */; };
-		CEF1ED812DAAD0EA00DCE39C /* ItemDetectionFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC652DAAD0EA00DCE39C /* ItemDetectionFunction.swift */; };
 		CEF1ED822DAAD0EA00DCE39C /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC22DAAD0EA00DCE39C /* Banner.swift */; };
 		CEF1ED832DAAD0EA00DCE39C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC572DAAD0EA00DCE39C /* Router.swift */; };
 		CEF1ED842DAAD0EA00DCE39C /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC602DAAD0EA00DCE39C /* OpenAIService.swift */; };
-		CEF1ED852DAAD0EA00DCE39C /* WeatherFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC6A2DAAD0EA00DCE39C /* WeatherFunction.swift */; };
 		CEF1ED862DAAD0EA00DCE39C /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC32DAAD0EA00DCE39C /* Button.swift */; };
 		CEF1ED872DAAD0EA00DCE39C /* AIServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC742DAAD0EA00DCE39C /* AIServiceProvider.swift */; };
-		CEF1ED882DAAD0EA00DCE39C /* SignInProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC632DAAD0EA00DCE39C /* SignInProviders.swift */; };
 		CEF1ED892DAAD0EA00DCE39C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC532DAAD0EA00DCE39C /* RootView.swift */; };
 		CEF1ED8A2DAAD0EA00DCE39C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC932DAAD0EA00DCE39C /* HomeView.swift */; };
 		CEF1ED8B2DAAD0EA00DCE39C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC552DAAD0EA00DCE39C /* DIContainer.swift */; };
 		CEF1ED8C2DAAD0EA00DCE39C /* UserDefaultsDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC5B2DAAD0EA00DCE39C /* UserDefaultsDatasource.swift */; };
-		CEF1ED8D2DAAD0EA00DCE39C /* BanknoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC812DAAD0EA00DCE39C /* BanknoteDetailView.swift */; };
-		CEF1ED8E2DAAD0EA00DCE39C /* BanknoteExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECCE2DAAD0EA00DCE39C /* BanknoteExtension.swift */; };
-		CEF1ED902DAAD0EA00DCE39C /* BanknoteDetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC852DAAD0EA00DCE39C /* BanknoteDetectionViewModel.swift */; };
 		CEF1ED912DAAD0EA00DCE39C /* OnboardingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA52DAAD0EA00DCE39C /* OnboardingFlowView.swift */; };
-		CEF1ED922DAAD0EA00DCE39C /* BanknoteDetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC842DAAD0EA00DCE39C /* BanknoteDetectionView.swift */; };
-		CEF1ED932DAAD0EA00DCE39C /* ItemValuationFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC682DAAD0EA00DCE39C /* ItemValuationFunction.swift */; };
 		CEF1ED942DAAD0EA00DCE39C /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD42DAAD0EA00DCE39C /* UIApplicationExtension.swift */; };
 		CEF1ED952DAAD0EA00DCE39C /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC82DAAD0EA00DCE39C /* LogoView.swift */; };
 		CEF1ED962DAAD0EA00DCE39C /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC02DAAD0EA00DCE39C /* Badge.swift */; };
 		CEF1ED972DAAD0EA00DCE39C /* SwiftDataDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC5A2DAAD0EA00DCE39C /* SwiftDataDatasource.swift */; };
-		CEF1ED982DAAD0EA00DCE39C /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC8D2DAAD0EA00DCE39C /* ChatView.swift */; };
 		CEF1ED992DAAD0EA00DCE39C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD32DAAD0EA00DCE39C /* StringExtension.swift */; };
-		CEF1ED9A2DAAD0EA00DCE39C /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC7A2DAAD0EA00DCE39C /* SignInViewModel.swift */; };
-		CEF1ED9B2DAAD0EA00DCE39C /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC972DAAD0EA00DCE39C /* OnboardingPageView.swift */; };
 		CEF1ED9C2DAAD0EA00DCE39C /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC892DAAD0EA00DCE39C /* PhotoPicker.swift */; };
 		CEF1ED9D2DAAD0EA00DCE39C /* Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECCC2DAAD0EA00DCE39C /* Stars.swift */; };
-		CEF1ED9E2DAAD0EA00DCE39C /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC6E2DAAD0EA00DCE39C /* Preview.swift */; };
 		CEF1ED9F2DAAD0EA00DCE39C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC882DAAD0EA00DCE39C /* CameraView.swift */; };
-		CEF1EDA02DAAD0EA00DCE39C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC982DAAD0EA00DCE39C /* OnboardingView.swift */; };
-		CEF1EDA22DAAD0EA00DCE39C /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA02DAAD0EA00DCE39C /* OnboardingManager.swift */; };
 		CEF1EDA42DAAD0EA00DCE39C /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC512DAAD0EA00DCE39C /* AppMain.swift */; };
 		CEF1EDA52DAAD0EA00DCE39C /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD82DAAD0EA00DCE39C /* Assets.swift */; };
 		CEF1EDA62DAAD0EA00DCE39C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC502DAAD0EA00DCE39C /* AppDelegate.swift */; };
-		CEF1EDA72DAAD0EA00DCE39C /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC6D2DAAD0EA00DCE39C /* Collection.swift */; };
 		CEF1EDA82DAAD0EA00DCE39C /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC8A2DAAD0EA00DCE39C /* PhotoView.swift */; };
 		CEF1EDA92DAAD0EA00DCE39C /* PurchasesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECAB2DAAD0EA00DCE39C /* PurchasesExtension.swift */; };
 		CEF1EDAA2DAAD0EA00DCE39C /* SubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECB62DAAD0EA00DCE39C /* SubscriptionService.swift */; };
-		CEF1EDAB2DAAD0EA00DCE39C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC7C2DAAD0EA00DCE39C /* SignInView.swift */; };
 		CEF1EDAC2DAAD0EA00DCE39C /* OnboardingInstantValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA62DAAD0EA00DCE39C /* OnboardingInstantValueView.swift */; };
 		CEF1EDAE2DAAD0EA00DCE39C /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC52DAAD0EA00DCE39C /* Checkbox.swift */; };
-		CEF1EDAF2DAAD0EA00DCE39C /* Banknote.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC6C2DAAD0EA00DCE39C /* Banknote.swift */; };
-		CEF1EDB02DAAD0EA00DCE39C /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC7F2DAAD0EA00DCE39C /* AuthStore.swift */; };
-		CEF1EDB12DAAD0EA00DCE39C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC7E2DAAD0EA00DCE39C /* AuthService.swift */; };
-		CEF1EDB22DAAD0EA00DCE39C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC6F2DAAD0EA00DCE39C /* Task.swift */; };
 		CEF1EDB32DAAD0EA00DCE39C /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD62DAAD0EA00DCE39C /* UINavigationControllerExtension.swift */; };
-		CEF1EDB42DAAD0EA00DCE39C /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC912DAAD0EA00DCE39C /* CollectionViewModel.swift */; };
 		CEF1EDB52DAAD0EA00DCE39C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECBA2DAAD0EA00DCE39C /* SettingsView.swift */; };
 		CEF1EDB62DAAD0EA00DCE39C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC42DAAD0EA00DCE39C /* Card.swift */; };
-		CEF1EDB72DAAD0EA00DCE39C /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC8E2DAAD0EA00DCE39C /* ChatViewModel.swift */; };
 		CEF1EDB82DAAD0EA00DCE39C /* DecodeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECCF2DAAD0EA00DCE39C /* DecodeJSON.swift */; };
 		CEF1EDB92DAAD0EA00DCE39C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECE42DAAD0EA00DCE39C /* Constants.swift */; };
 		CEF1EDBA2DAAD0EA00DCE39C /* CameraCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC872DAAD0EA00DCE39C /* CameraCaptureView.swift */; };
-		CEF1EDBB2DAAD0EA00DCE39C /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC702DAAD0EA00DCE39C /* Weather.swift */; };
 		CEF1EDBC2DAAD0EA00DCE39C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD92DAAD0EA00DCE39C /* Fonts.swift */; };
-		CEF1EDBD2DAAD0EA00DCE39C /* BanknoteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC12DAAD0EA00DCE39C /* BanknoteRowView.swift */; };
-		CEF1EDBE2DAAD0EA00DCE39C /* ToolDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC692DAAD0EA00DCE39C /* ToolDefinition.swift */; };
 		CEF1EDBF2DAAD0EA00DCE39C /* PaywallYearlyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECB12DAAD0EA00DCE39C /* PaywallYearlyViewModel.swift */; };
-		CEF1EDC02DAAD0EA00DCE39C /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC902DAAD0EA00DCE39C /* CollectionView.swift */; };
 		CEF1EDC12DAAD0EA00DCE39C /* HighlightTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC72DAAD0EA00DCE39C /* HighlightTabBar.swift */; };
-		CEF1EDC22DAAD0EA00DCE39C /* OpenAIParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC772DAAD0EA00DCE39C /* OpenAIParser.swift */; };
-		CEF1EDC32DAAD0EA00DCE39C /* BanknoteDetectionPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC722DAAD0EA00DCE39C /* BanknoteDetectionPrompt.swift */; };
 		CEF1EDC42DAAD0EA00DCE39C /* OnboardingWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA72DAAD0EA00DCE39C /* OnboardingWelcomeView.swift */; };
 		CEF1EDC52DAAD0EA00DCE39C /* FixedSizeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD02DAAD0EA00DCE39C /* FixedSizeScrollView.swift */; };
-		CEF1EDC62DAAD0EA00DCE39C /* ItemRarityFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC672DAAD0EA00DCE39C /* ItemRarityFunction.swift */; };
 		CEF1EDC72DAAD0EA00DCE39C /* PaywallYearlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECB02DAAD0EA00DCE39C /* PaywallYearlyView.swift */; };
 		CEF1EDC82DAAD0EA00DCE39C /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = CEF1ECF12DAAD0EA00DCE39C /* swiftgen.yml */; };
 		CEF1EDC92DAAD0EA00DCE39C /* Rubik.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEF1ECDB2DAAD0EA00DCE39C /* Rubik.ttf */; };
@@ -224,14 +169,10 @@
 		CEF1EDD52DAAD0EA00DCE39C /* FeaturesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC62DAAD0EA00DCE39C /* FeaturesList.swift */; };
 		CEF1EDD62DAAD0EA00DCE39C /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECE72DAAD0EA00DCE39C /* Item.swift */; };
 		CEF1EDD72DAAD0EA00DCE39C /* StoreKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD22DAAD0EA00DCE39C /* StoreKitExtension.swift */; };
-		CEF1EDD82DAAD0EA00DCE39C /* OnboardingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC9E2DAAD0EA00DCE39C /* OnboardingDelegate.swift */; };
 		CEF1EDD92DAAD0EA00DCE39C /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECB92DAAD0EA00DCE39C /* MailView.swift */; };
-		CEF1EDDA2DAAD0EA00DCE39C /* ItemGradeFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC662DAAD0EA00DCE39C /* ItemGradeFunction.swift */; };
 		CEF1EDDB2DAAD0EA00DCE39C /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD12DAAD0EA00DCE39C /* FontExtension.swift */; };
 		CEF1EDDC2DAAD0EA00DCE39C /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC5D2DAAD0EA00DCE39C /* UserRepository.swift */; };
 		CEF1EDDD2DAAD0EA00DCE39C /* OpenAIProxiedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC5F2DAAD0EA00DCE39C /* OpenAIProxiedService.swift */; };
-		CEF1EDDE2DAAD0EA00DCE39C /* OnboardingDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC9F2DAAD0EA00DCE39C /* OnboardingDependencies.swift */; };
-		CEF1EDDF2DAAD0EA00DCE39C /* OnboardingPageConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC962DAAD0EA00DCE39C /* OnboardingPageConfig.swift */; };
 		CEF1EDE02DAAD0EA00DCE39C /* AboutAuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECB82DAAD0EA00DCE39C /* AboutAuthorView.swift */; };
 		CEF1EDE12DAAD0EA00DCE39C /* PaywallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECAE2DAAD0EA00DCE39C /* PaywallViewModel.swift */; };
 		CEF1EDE22DAAD0EA00DCE39C /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD52DAAD0EA00DCE39C /* UIImageExtension.swift */; };
@@ -239,81 +180,50 @@
 		CEF1EDE42DAAD0EA00DCE39C /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECBB2DAAD0EA00DCE39C /* SettingsViewModel.swift */; };
 		CEF1EDE52DAAD0EA00DCE39C /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECAD2DAAD0EA00DCE39C /* PaywallView.swift */; };
 		CEF1EDE62DAAD0EA00DCE39C /* ArcShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECBF2DAAD0EA00DCE39C /* ArcShape.swift */; };
-		CEF1EDE72DAAD0EA00DCE39C /* BanknoteDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC822DAAD0EA00DCE39C /* BanknoteDetailViewModel.swift */; };
 		CEF1EDE82DAAD0EA00DCE39C /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECCA2DAAD0EA00DCE39C /* Reviews.swift */; };
 		CEF1EDE92DAAD0EA00DCE39C /* UserRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC752DAAD0EA00DCE39C /* UserRepositoryProtocol.swift */; };
 		CEF1EDEA2DAAD0EA00DCE39C /* Accordion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECBE2DAAD0EA00DCE39C /* Accordion.swift */; };
-		CEF1EDEB2DAAD0EA00DCE39C /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC9B2DAAD0EA00DCE39C /* SplashView.swift */; };
 		CEF1EDEC2DAAD0EA00DCE39C /* OnboardingCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA22DAAD0EA00DCE39C /* OnboardingCameraView.swift */; };
 		CEF1EDED2DAAD0EA00DCE39C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC522DAAD0EA00DCE39C /* AppState.swift */; };
 		CEF1EDEE2DAAD0EA00DCE39C /* OnboardingFeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA42DAAD0EA00DCE39C /* OnboardingFeaturesView.swift */; };
 		CEF1EDEF2DAAD0EA00DCE39C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC942DAAD0EA00DCE39C /* HomeViewModel.swift */; };
-		CEF1EDF02DAAD0EA00DCE39C /* ItemDetectionFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC652DAAD0EA00DCE39C /* ItemDetectionFunction.swift */; };
 		CEF1EDF12DAAD0EA00DCE39C /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC22DAAD0EA00DCE39C /* Banner.swift */; };
 		CEF1EDF22DAAD0EA00DCE39C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC572DAAD0EA00DCE39C /* Router.swift */; };
 		CEF1EDF32DAAD0EA00DCE39C /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC602DAAD0EA00DCE39C /* OpenAIService.swift */; };
-		CEF1EDF42DAAD0EA00DCE39C /* WeatherFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC6A2DAAD0EA00DCE39C /* WeatherFunction.swift */; };
 		CEF1EDF52DAAD0EA00DCE39C /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC32DAAD0EA00DCE39C /* Button.swift */; };
 		CEF1EDF62DAAD0EA00DCE39C /* AIServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC742DAAD0EA00DCE39C /* AIServiceProvider.swift */; };
-		CEF1EDF72DAAD0EA00DCE39C /* SignInProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC632DAAD0EA00DCE39C /* SignInProviders.swift */; };
 		CEF1EDF82DAAD0EA00DCE39C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC532DAAD0EA00DCE39C /* RootView.swift */; };
 		CEF1EDF92DAAD0EA00DCE39C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC932DAAD0EA00DCE39C /* HomeView.swift */; };
 		CEF1EDFA2DAAD0EA00DCE39C /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC552DAAD0EA00DCE39C /* DIContainer.swift */; };
 		CEF1EDFB2DAAD0EA00DCE39C /* UserDefaultsDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC5B2DAAD0EA00DCE39C /* UserDefaultsDatasource.swift */; };
-		CEF1EDFC2DAAD0EA00DCE39C /* BanknoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC812DAAD0EA00DCE39C /* BanknoteDetailView.swift */; };
-		CEF1EDFD2DAAD0EA00DCE39C /* BanknoteExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECCE2DAAD0EA00DCE39C /* BanknoteExtension.swift */; };
-		CEF1EDFF2DAAD0EA00DCE39C /* BanknoteDetectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC852DAAD0EA00DCE39C /* BanknoteDetectionViewModel.swift */; };
 		CEF1EE002DAAD0EA00DCE39C /* OnboardingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA52DAAD0EA00DCE39C /* OnboardingFlowView.swift */; };
-		CEF1EE012DAAD0EA00DCE39C /* BanknoteDetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC842DAAD0EA00DCE39C /* BanknoteDetectionView.swift */; };
-		CEF1EE022DAAD0EA00DCE39C /* ItemValuationFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC682DAAD0EA00DCE39C /* ItemValuationFunction.swift */; };
 		CEF1EE032DAAD0EA00DCE39C /* UIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD42DAAD0EA00DCE39C /* UIApplicationExtension.swift */; };
 		CEF1EE042DAAD0EA00DCE39C /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC82DAAD0EA00DCE39C /* LogoView.swift */; };
 		CEF1EE052DAAD0EA00DCE39C /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC02DAAD0EA00DCE39C /* Badge.swift */; };
 		CEF1EE062DAAD0EA00DCE39C /* SwiftDataDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC5A2DAAD0EA00DCE39C /* SwiftDataDatasource.swift */; };
-		CEF1EE072DAAD0EA00DCE39C /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC8D2DAAD0EA00DCE39C /* ChatView.swift */; };
 		CEF1EE082DAAD0EA00DCE39C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD32DAAD0EA00DCE39C /* StringExtension.swift */; };
-		CEF1EE092DAAD0EA00DCE39C /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC7A2DAAD0EA00DCE39C /* SignInViewModel.swift */; };
-		CEF1EE0A2DAAD0EA00DCE39C /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC972DAAD0EA00DCE39C /* OnboardingPageView.swift */; };
 		CEF1EE0B2DAAD0EA00DCE39C /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC892DAAD0EA00DCE39C /* PhotoPicker.swift */; };
 		CEF1EE0C2DAAD0EA00DCE39C /* Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECCC2DAAD0EA00DCE39C /* Stars.swift */; };
-		CEF1EE0D2DAAD0EA00DCE39C /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC6E2DAAD0EA00DCE39C /* Preview.swift */; };
 		CEF1EE0E2DAAD0EA00DCE39C /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC882DAAD0EA00DCE39C /* CameraView.swift */; };
-		CEF1EE0F2DAAD0EA00DCE39C /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC982DAAD0EA00DCE39C /* OnboardingView.swift */; };
-		CEF1EE112DAAD0EA00DCE39C /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA02DAAD0EA00DCE39C /* OnboardingManager.swift */; };
 		CEF1EE132DAAD0EA00DCE39C /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC512DAAD0EA00DCE39C /* AppMain.swift */; };
 		CEF1EE142DAAD0EA00DCE39C /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD82DAAD0EA00DCE39C /* Assets.swift */; };
 		CEF1EE152DAAD0EA00DCE39C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC502DAAD0EA00DCE39C /* AppDelegate.swift */; };
-		CEF1EE162DAAD0EA00DCE39C /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC6D2DAAD0EA00DCE39C /* Collection.swift */; };
 		CEF1EE172DAAD0EA00DCE39C /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC8A2DAAD0EA00DCE39C /* PhotoView.swift */; };
 		CEF1EE182DAAD0EA00DCE39C /* PurchasesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECAB2DAAD0EA00DCE39C /* PurchasesExtension.swift */; };
 		CEF1EE192DAAD0EA00DCE39C /* SubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECB62DAAD0EA00DCE39C /* SubscriptionService.swift */; };
-		CEF1EE1A2DAAD0EA00DCE39C /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC7C2DAAD0EA00DCE39C /* SignInView.swift */; };
 		CEF1EE1B2DAAD0EA00DCE39C /* OnboardingInstantValueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA62DAAD0EA00DCE39C /* OnboardingInstantValueView.swift */; };
 		CEF1EE1D2DAAD0EA00DCE39C /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC52DAAD0EA00DCE39C /* Checkbox.swift */; };
-		CEF1EE1E2DAAD0EA00DCE39C /* Banknote.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC6C2DAAD0EA00DCE39C /* Banknote.swift */; };
-		CEF1EE1F2DAAD0EA00DCE39C /* AuthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC7F2DAAD0EA00DCE39C /* AuthStore.swift */; };
-		CEF1EE202DAAD0EA00DCE39C /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC7E2DAAD0EA00DCE39C /* AuthService.swift */; };
-		CEF1EE212DAAD0EA00DCE39C /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC6F2DAAD0EA00DCE39C /* Task.swift */; };
 		CEF1EE222DAAD0EA00DCE39C /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD62DAAD0EA00DCE39C /* UINavigationControllerExtension.swift */; };
-		CEF1EE232DAAD0EA00DCE39C /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC912DAAD0EA00DCE39C /* CollectionViewModel.swift */; };
 		CEF1EE242DAAD0EA00DCE39C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECBA2DAAD0EA00DCE39C /* SettingsView.swift */; };
 		CEF1EE252DAAD0EA00DCE39C /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC42DAAD0EA00DCE39C /* Card.swift */; };
-		CEF1EE262DAAD0EA00DCE39C /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC8E2DAAD0EA00DCE39C /* ChatViewModel.swift */; };
 		CEF1EE272DAAD0EA00DCE39C /* DecodeJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECCF2DAAD0EA00DCE39C /* DecodeJSON.swift */; };
 		CEF1EE282DAAD0EA00DCE39C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECE42DAAD0EA00DCE39C /* Constants.swift */; };
 		CEF1EE292DAAD0EA00DCE39C /* CameraCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC872DAAD0EA00DCE39C /* CameraCaptureView.swift */; };
-		CEF1EE2A2DAAD0EA00DCE39C /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC702DAAD0EA00DCE39C /* Weather.swift */; };
 		CEF1EE2B2DAAD0EA00DCE39C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD92DAAD0EA00DCE39C /* Fonts.swift */; };
-		CEF1EE2C2DAAD0EA00DCE39C /* BanknoteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC12DAAD0EA00DCE39C /* BanknoteRowView.swift */; };
-		CEF1EE2D2DAAD0EA00DCE39C /* ToolDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC692DAAD0EA00DCE39C /* ToolDefinition.swift */; };
 		CEF1EE2E2DAAD0EA00DCE39C /* PaywallYearlyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECB12DAAD0EA00DCE39C /* PaywallYearlyViewModel.swift */; };
-		CEF1EE2F2DAAD0EA00DCE39C /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC902DAAD0EA00DCE39C /* CollectionView.swift */; };
 		CEF1EE302DAAD0EA00DCE39C /* HighlightTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECC72DAAD0EA00DCE39C /* HighlightTabBar.swift */; };
-		CEF1EE312DAAD0EA00DCE39C /* OpenAIParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC772DAAD0EA00DCE39C /* OpenAIParser.swift */; };
-		CEF1EE322DAAD0EA00DCE39C /* BanknoteDetectionPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC722DAAD0EA00DCE39C /* BanknoteDetectionPrompt.swift */; };
 		CEF1EE332DAAD0EA00DCE39C /* OnboardingWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECA72DAAD0EA00DCE39C /* OnboardingWelcomeView.swift */; };
 		CEF1EE342DAAD0EA00DCE39C /* FixedSizeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECD02DAAD0EA00DCE39C /* FixedSizeScrollView.swift */; };
-		CEF1EE352DAAD0EA00DCE39C /* ItemRarityFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1EC672DAAD0EA00DCE39C /* ItemRarityFunction.swift */; };
 		CEF1EE362DAAD0EA00DCE39C /* PaywallYearlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF1ECB02DAAD0EA00DCE39C /* PaywallYearlyView.swift */; };
 		CEF1EE372DAAD0EA00DCE39C /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = CEF1ECF12DAAD0EA00DCE39C /* swiftgen.yml */; };
 		CEF1EE382DAAD0EA00DCE39C /* Rubik.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CEF1ECDB2DAAD0EA00DCE39C /* Rubik.ttf */; };
@@ -342,6 +252,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		26CC28CB2F6A47BA00C0447F /* SignInProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInProviders.swift; sourceTree = "<group>"; };
+		26CC28CD2F6A47BA00C0447F /* ToolDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolDefinition.swift; sourceTree = "<group>"; };
+		26CC28CF2F6A47BA00C0447F /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
+		26CC28D12F6A47BA00C0447F /* OpenAIParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIParser.swift; sourceTree = "<group>"; };
 		CE46EF9F2D57C17E004CFB49 /* PaperScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaperScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE46EFB12D57C187004CFB49 /* paperscanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = paperscanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE46EFBB2D57C187004CFB49 /* paperscanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = paperscanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -359,48 +273,15 @@
 		CEF1EC5D2DAAD0EA00DCE39C /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		CEF1EC5F2DAAD0EA00DCE39C /* OpenAIProxiedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIProxiedService.swift; sourceTree = "<group>"; };
 		CEF1EC602DAAD0EA00DCE39C /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
-		CEF1EC632DAAD0EA00DCE39C /* SignInProviders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInProviders.swift; sourceTree = "<group>"; };
-		CEF1EC652DAAD0EA00DCE39C /* ItemDetectionFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetectionFunction.swift; sourceTree = "<group>"; };
-		CEF1EC662DAAD0EA00DCE39C /* ItemGradeFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemGradeFunction.swift; sourceTree = "<group>"; };
-		CEF1EC672DAAD0EA00DCE39C /* ItemRarityFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRarityFunction.swift; sourceTree = "<group>"; };
-		CEF1EC682DAAD0EA00DCE39C /* ItemValuationFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemValuationFunction.swift; sourceTree = "<group>"; };
-		CEF1EC692DAAD0EA00DCE39C /* ToolDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolDefinition.swift; sourceTree = "<group>"; };
-		CEF1EC6A2DAAD0EA00DCE39C /* WeatherFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFunction.swift; sourceTree = "<group>"; };
-		CEF1EC6C2DAAD0EA00DCE39C /* Banknote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banknote.swift; sourceTree = "<group>"; };
-		CEF1EC6D2DAAD0EA00DCE39C /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
-		CEF1EC6E2DAAD0EA00DCE39C /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
-		CEF1EC6F2DAAD0EA00DCE39C /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		CEF1EC702DAAD0EA00DCE39C /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		CEF1EC722DAAD0EA00DCE39C /* BanknoteDetectionPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanknoteDetectionPrompt.swift; sourceTree = "<group>"; };
 		CEF1EC742DAAD0EA00DCE39C /* AIServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIServiceProvider.swift; sourceTree = "<group>"; };
 		CEF1EC752DAAD0EA00DCE39C /* UserRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryProtocol.swift; sourceTree = "<group>"; };
-		CEF1EC772DAAD0EA00DCE39C /* OpenAIParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIParser.swift; sourceTree = "<group>"; };
-		CEF1EC7A2DAAD0EA00DCE39C /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
-		CEF1EC7C2DAAD0EA00DCE39C /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
-		CEF1EC7E2DAAD0EA00DCE39C /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		CEF1EC7F2DAAD0EA00DCE39C /* AuthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthStore.swift; sourceTree = "<group>"; };
-		CEF1EC812DAAD0EA00DCE39C /* BanknoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanknoteDetailView.swift; sourceTree = "<group>"; };
-		CEF1EC822DAAD0EA00DCE39C /* BanknoteDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanknoteDetailViewModel.swift; sourceTree = "<group>"; };
-		CEF1EC842DAAD0EA00DCE39C /* BanknoteDetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanknoteDetectionView.swift; sourceTree = "<group>"; };
-		CEF1EC852DAAD0EA00DCE39C /* BanknoteDetectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanknoteDetectionViewModel.swift; sourceTree = "<group>"; };
 		CEF1EC872DAAD0EA00DCE39C /* CameraCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureView.swift; sourceTree = "<group>"; };
 		CEF1EC882DAAD0EA00DCE39C /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		CEF1EC892DAAD0EA00DCE39C /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		CEF1EC8A2DAAD0EA00DCE39C /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		CEF1EC8B2DAAD0EA00DCE39C /* ResizableCropFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableCropFrameView.swift; sourceTree = "<group>"; };
-		CEF1EC8D2DAAD0EA00DCE39C /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
-		CEF1EC8E2DAAD0EA00DCE39C /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
-		CEF1EC902DAAD0EA00DCE39C /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
-		CEF1EC912DAAD0EA00DCE39C /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
 		CEF1EC932DAAD0EA00DCE39C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		CEF1EC942DAAD0EA00DCE39C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		CEF1EC962DAAD0EA00DCE39C /* OnboardingPageConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageConfig.swift; sourceTree = "<group>"; };
-		CEF1EC972DAAD0EA00DCE39C /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
-		CEF1EC982DAAD0EA00DCE39C /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		CEF1EC9B2DAAD0EA00DCE39C /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
-		CEF1EC9E2DAAD0EA00DCE39C /* OnboardingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDelegate.swift; sourceTree = "<group>"; };
-		CEF1EC9F2DAAD0EA00DCE39C /* OnboardingDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDependencies.swift; sourceTree = "<group>"; };
-		CEF1ECA02DAAD0EA00DCE39C /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
 		CEF1ECA22DAAD0EA00DCE39C /* OnboardingCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCameraView.swift; sourceTree = "<group>"; };
 		CEF1ECA42DAAD0EA00DCE39C /* OnboardingFeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeaturesView.swift; sourceTree = "<group>"; };
 		CEF1ECA52DAAD0EA00DCE39C /* OnboardingFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowView.swift; sourceTree = "<group>"; };
@@ -420,7 +301,6 @@
 		CEF1ECBE2DAAD0EA00DCE39C /* Accordion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accordion.swift; sourceTree = "<group>"; };
 		CEF1ECBF2DAAD0EA00DCE39C /* ArcShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArcShape.swift; sourceTree = "<group>"; };
 		CEF1ECC02DAAD0EA00DCE39C /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
-		CEF1ECC12DAAD0EA00DCE39C /* BanknoteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanknoteRowView.swift; sourceTree = "<group>"; };
 		CEF1ECC22DAAD0EA00DCE39C /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		CEF1ECC32DAAD0EA00DCE39C /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		CEF1ECC42DAAD0EA00DCE39C /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -432,7 +312,6 @@
 		CEF1ECCA2DAAD0EA00DCE39C /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		CEF1ECCB2DAAD0EA00DCE39C /* SailTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SailTextField.swift; sourceTree = "<group>"; };
 		CEF1ECCC2DAAD0EA00DCE39C /* Stars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stars.swift; sourceTree = "<group>"; };
-		CEF1ECCE2DAAD0EA00DCE39C /* BanknoteExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BanknoteExtension.swift; sourceTree = "<group>"; };
 		CEF1ECCF2DAAD0EA00DCE39C /* DecodeJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeJSON.swift; sourceTree = "<group>"; };
 		CEF1ECD02DAAD0EA00DCE39C /* FixedSizeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixedSizeScrollView.swift; sourceTree = "<group>"; };
 		CEF1ECD12DAAD0EA00DCE39C /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
@@ -482,6 +361,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26CC28CC2F6A47BA00C0447F /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				26CC28CB2F6A47BA00C0447F /* SignInProviders.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		26CC28CE2F6A47BA00C0447F /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				26CC28CD2F6A47BA00C0447F /* ToolDefinition.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
+		26CC28D02F6A47BA00C0447F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				26CC28CF2F6A47BA00C0447F /* Preview.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		26CC28D22F6A47BA00C0447F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				26CC28D12F6A47BA00C0447F /* OpenAIParser.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		CE46EF962D57C17E004CFB49 = {
 			isa = PBXGroup;
 			children = (
@@ -582,47 +493,6 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		CEF1EC642DAAD0EA00DCE39C /* Enums */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC632DAAD0EA00DCE39C /* SignInProviders.swift */,
-			);
-			path = Enums;
-			sourceTree = "<group>";
-		};
-		CEF1EC6B2DAAD0EA00DCE39C /* Functions */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC652DAAD0EA00DCE39C /* ItemDetectionFunction.swift */,
-				CEF1EC662DAAD0EA00DCE39C /* ItemGradeFunction.swift */,
-				CEF1EC672DAAD0EA00DCE39C /* ItemRarityFunction.swift */,
-				CEF1EC682DAAD0EA00DCE39C /* ItemValuationFunction.swift */,
-				CEF1EC692DAAD0EA00DCE39C /* ToolDefinition.swift */,
-				CEF1EC6A2DAAD0EA00DCE39C /* WeatherFunction.swift */,
-			);
-			path = Functions;
-			sourceTree = "<group>";
-		};
-		CEF1EC712DAAD0EA00DCE39C /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC6C2DAAD0EA00DCE39C /* Banknote.swift */,
-				CEF1EC6D2DAAD0EA00DCE39C /* Collection.swift */,
-				CEF1EC6E2DAAD0EA00DCE39C /* Preview.swift */,
-				CEF1EC6F2DAAD0EA00DCE39C /* Task.swift */,
-				CEF1EC702DAAD0EA00DCE39C /* Weather.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		CEF1EC732DAAD0EA00DCE39C /* Prompts */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC722DAAD0EA00DCE39C /* BanknoteDetectionPrompt.swift */,
-			);
-			path = Prompts;
-			sourceTree = "<group>";
-		};
 		CEF1EC762DAAD0EA00DCE39C /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -632,70 +502,16 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		CEF1EC782DAAD0EA00DCE39C /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC772DAAD0EA00DCE39C /* OpenAIParser.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 		CEF1EC792DAAD0EA00DCE39C /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				CEF1EC642DAAD0EA00DCE39C /* Enums */,
-				CEF1EC6B2DAAD0EA00DCE39C /* Functions */,
-				CEF1EC712DAAD0EA00DCE39C /* Models */,
-				CEF1EC732DAAD0EA00DCE39C /* Prompts */,
 				CEF1EC762DAAD0EA00DCE39C /* Protocols */,
-				CEF1EC782DAAD0EA00DCE39C /* Utilities */,
+				26CC28CC2F6A47BA00C0447F /* Enums */,
+				26CC28CE2F6A47BA00C0447F /* Functions */,
+				26CC28D02F6A47BA00C0447F /* Models */,
+				26CC28D22F6A47BA00C0447F /* Utilities */,
 			);
 			path = Domain;
-			sourceTree = "<group>";
-		};
-		CEF1EC7B2DAAD0EA00DCE39C /* View models */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC7A2DAAD0EA00DCE39C /* SignInViewModel.swift */,
-			);
-			path = "View models";
-			sourceTree = "<group>";
-		};
-		CEF1EC7D2DAAD0EA00DCE39C /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC7C2DAAD0EA00DCE39C /* SignInView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		CEF1EC802DAAD0EA00DCE39C /* Authentication */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC7B2DAAD0EA00DCE39C /* View models */,
-				CEF1EC7D2DAAD0EA00DCE39C /* Views */,
-				CEF1EC7E2DAAD0EA00DCE39C /* AuthService.swift */,
-				CEF1EC7F2DAAD0EA00DCE39C /* AuthStore.swift */,
-			);
-			path = Authentication;
-			sourceTree = "<group>";
-		};
-		CEF1EC832DAAD0EA00DCE39C /* BanknoteDetails */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC812DAAD0EA00DCE39C /* BanknoteDetailView.swift */,
-				CEF1EC822DAAD0EA00DCE39C /* BanknoteDetailViewModel.swift */,
-			);
-			path = BanknoteDetails;
-			sourceTree = "<group>";
-		};
-		CEF1EC862DAAD0EA00DCE39C /* BanknoteDetection */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC842DAAD0EA00DCE39C /* BanknoteDetectionView.swift */,
-				CEF1EC852DAAD0EA00DCE39C /* BanknoteDetectionViewModel.swift */,
-			);
-			path = BanknoteDetection;
 			sourceTree = "<group>";
 		};
 		CEF1EC8C2DAAD0EA00DCE39C /* CameraCapture */ = {
@@ -710,24 +526,6 @@
 			path = CameraCapture;
 			sourceTree = "<group>";
 		};
-		CEF1EC8F2DAAD0EA00DCE39C /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC8D2DAAD0EA00DCE39C /* ChatView.swift */,
-				CEF1EC8E2DAAD0EA00DCE39C /* ChatViewModel.swift */,
-			);
-			path = Chat;
-			sourceTree = "<group>";
-		};
-		CEF1EC922DAAD0EA00DCE39C /* Collections */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC902DAAD0EA00DCE39C /* CollectionView.swift */,
-				CEF1EC912DAAD0EA00DCE39C /* CollectionViewModel.swift */,
-			);
-			path = Collections;
-			sourceTree = "<group>";
-		};
 		CEF1EC952DAAD0EA00DCE39C /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -735,52 +533,6 @@
 				CEF1EC942DAAD0EA00DCE39C /* HomeViewModel.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		CEF1EC992DAAD0EA00DCE39C /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC962DAAD0EA00DCE39C /* OnboardingPageConfig.swift */,
-				CEF1EC972DAAD0EA00DCE39C /* OnboardingPageView.swift */,
-				CEF1EC982DAAD0EA00DCE39C /* OnboardingView.swift */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
-		CEF1EC9A2DAAD0EA00DCE39C /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC992DAAD0EA00DCE39C /* Onboarding */,
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		CEF1EC9C2DAAD0EA00DCE39C /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC9A2DAAD0EA00DCE39C /* Screens */,
-				CEF1EC9B2DAAD0EA00DCE39C /* SplashView.swift */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
-		CEF1EC9D2DAAD0EA00DCE39C /* Layers */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC9C2DAAD0EA00DCE39C /* Presentation */,
-			);
-			path = Layers;
-			sourceTree = "<group>";
-		};
-		CEF1ECA12DAAD0EA00DCE39C /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				CEF1EC9D2DAAD0EA00DCE39C /* Layers */,
-				CEF1EC9E2DAAD0EA00DCE39C /* OnboardingDelegate.swift */,
-				CEF1EC9F2DAAD0EA00DCE39C /* OnboardingDependencies.swift */,
-				CEF1ECA02DAAD0EA00DCE39C /* OnboardingManager.swift */,
-			);
-			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		CEF1ECA32DAAD0EA00DCE39C /* Components */ = {
@@ -873,14 +625,8 @@
 		CEF1ECBD2DAAD0EA00DCE39C /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				CEF1EC802DAAD0EA00DCE39C /* Authentication */,
-				CEF1EC832DAAD0EA00DCE39C /* BanknoteDetails */,
-				CEF1EC862DAAD0EA00DCE39C /* BanknoteDetection */,
 				CEF1EC8C2DAAD0EA00DCE39C /* CameraCapture */,
-				CEF1EC8F2DAAD0EA00DCE39C /* Chat */,
-				CEF1EC922DAAD0EA00DCE39C /* Collections */,
 				CEF1EC952DAAD0EA00DCE39C /* Home */,
-				CEF1ECA12DAAD0EA00DCE39C /* Onboarding */,
 				CEF1ECA82DAAD0EA00DCE39C /* OnboardingFlow */,
 				CEF1ECB72DAAD0EA00DCE39C /* Purchases */,
 				CEF1ECBC2DAAD0EA00DCE39C /* Settings */,
@@ -894,7 +640,6 @@
 				CEF1ECBE2DAAD0EA00DCE39C /* Accordion.swift */,
 				CEF1ECBF2DAAD0EA00DCE39C /* ArcShape.swift */,
 				CEF1ECC02DAAD0EA00DCE39C /* Badge.swift */,
-				CEF1ECC12DAAD0EA00DCE39C /* BanknoteRowView.swift */,
 				CEF1ECC22DAAD0EA00DCE39C /* Banner.swift */,
 				CEF1ECC32DAAD0EA00DCE39C /* Button.swift */,
 				CEF1ECC42DAAD0EA00DCE39C /* Card.swift */,
@@ -913,7 +658,6 @@
 		CEF1ECD72DAAD0EA00DCE39C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CEF1ECCE2DAAD0EA00DCE39C /* BanknoteExtension.swift */,
 				CEF1ECCF2DAAD0EA00DCE39C /* DecodeJSON.swift */,
 				CEF1ECD02DAAD0EA00DCE39C /* FixedSizeScrollView.swift */,
 				CEF1ECD12DAAD0EA00DCE39C /* FontExtension.swift */,
@@ -1178,99 +922,71 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEA7E6BD2DDC8A580094766F /* ChatViewModel.swift in Sources */,
 				CEF1ECFE2DAAD0EA00DCE39C /* SubscriptionsRepository.swift in Sources */,
 				CEF1ECFF2DAAD0EA00DCE39C /* RatingView.swift in Sources */,
 				CEF1ED002DAAD0EA00DCE39C /* ResizableCropFrameView.swift in Sources */,
 				CEF1ED012DAAD0EA00DCE39C /* FeaturesList.swift in Sources */,
 				CEF1ED022DAAD0EA00DCE39C /* Item.swift in Sources */,
 				CEF1ED032DAAD0EA00DCE39C /* StoreKitExtension.swift in Sources */,
-				CEF1ED042DAAD0EA00DCE39C /* OnboardingDelegate.swift in Sources */,
 				CEF1ED052DAAD0EA00DCE39C /* MailView.swift in Sources */,
-				CEF1ED062DAAD0EA00DCE39C /* ItemGradeFunction.swift in Sources */,
 				CEF1ED072DAAD0EA00DCE39C /* FontExtension.swift in Sources */,
 				CEF1ED082DAAD0EA00DCE39C /* UserRepository.swift in Sources */,
 				CEF1ED092DAAD0EA00DCE39C /* OpenAIProxiedService.swift in Sources */,
-				CEF1ED0A2DAAD0EA00DCE39C /* OnboardingDependencies.swift in Sources */,
-				CEF1ED0B2DAAD0EA00DCE39C /* OnboardingPageConfig.swift in Sources */,
 				CEF1ED0C2DAAD0EA00DCE39C /* AboutAuthorView.swift in Sources */,
 				CEF1ED0D2DAAD0EA00DCE39C /* PaywallViewModel.swift in Sources */,
 				CEF1ED0E2DAAD0EA00DCE39C /* UIImageExtension.swift in Sources */,
 				CEF1ED0F2DAAD0EA00DCE39C /* SailTextField.swift in Sources */,
 				CEF1ED102DAAD0EA00DCE39C /* SettingsViewModel.swift in Sources */,
+				26CC28D72F6A47BA00C0447F /* OpenAIParser.swift in Sources */,
+				26CC28D82F6A47BA00C0447F /* SignInProviders.swift in Sources */,
+				26CC28D92F6A47BA00C0447F /* ToolDefinition.swift in Sources */,
+				26CC28DA2F6A47BA00C0447F /* Preview.swift in Sources */,
 				CEF1ED112DAAD0EA00DCE39C /* PaywallView.swift in Sources */,
 				CEF1ED122DAAD0EA00DCE39C /* ArcShape.swift in Sources */,
-				CEF1ED132DAAD0EA00DCE39C /* BanknoteDetailViewModel.swift in Sources */,
 				CEF1ED142DAAD0EA00DCE39C /* Reviews.swift in Sources */,
 				CEF1ED152DAAD0EA00DCE39C /* UserRepositoryProtocol.swift in Sources */,
 				CEF1ED162DAAD0EA00DCE39C /* Accordion.swift in Sources */,
-				CEF1ED172DAAD0EA00DCE39C /* SplashView.swift in Sources */,
 				CEF1ED182DAAD0EA00DCE39C /* OnboardingCameraView.swift in Sources */,
 				CEF1ED192DAAD0EA00DCE39C /* AppState.swift in Sources */,
 				CEF1ED1A2DAAD0EA00DCE39C /* OnboardingFeaturesView.swift in Sources */,
 				CEF1ED1B2DAAD0EA00DCE39C /* HomeViewModel.swift in Sources */,
-				CEF1ED1C2DAAD0EA00DCE39C /* ItemDetectionFunction.swift in Sources */,
 				CEF1ED1D2DAAD0EA00DCE39C /* Banner.swift in Sources */,
 				CEF1ED1E2DAAD0EA00DCE39C /* Router.swift in Sources */,
 				CEF1ED1F2DAAD0EA00DCE39C /* OpenAIService.swift in Sources */,
-				CEF1ED202DAAD0EA00DCE39C /* WeatherFunction.swift in Sources */,
 				CEF1ED212DAAD0EA00DCE39C /* Button.swift in Sources */,
 				CEF1ED222DAAD0EA00DCE39C /* AIServiceProvider.swift in Sources */,
-				CEF1ED232DAAD0EA00DCE39C /* SignInProviders.swift in Sources */,
 				CEF1ED242DAAD0EA00DCE39C /* RootView.swift in Sources */,
 				CEF1ED252DAAD0EA00DCE39C /* HomeView.swift in Sources */,
 				CEF1ED262DAAD0EA00DCE39C /* DIContainer.swift in Sources */,
 				CEF1ED272DAAD0EA00DCE39C /* UserDefaultsDatasource.swift in Sources */,
-				CEF1ED282DAAD0EA00DCE39C /* BanknoteDetailView.swift in Sources */,
-				CEF1ED292DAAD0EA00DCE39C /* BanknoteExtension.swift in Sources */,
-				CEF1ED2B2DAAD0EA00DCE39C /* BanknoteDetectionViewModel.swift in Sources */,
 				CEF1ED2C2DAAD0EA00DCE39C /* OnboardingFlowView.swift in Sources */,
-				CEF1ED2D2DAAD0EA00DCE39C /* BanknoteDetectionView.swift in Sources */,
-				CEF1ED2E2DAAD0EA00DCE39C /* ItemValuationFunction.swift in Sources */,
 				CEF1ED2F2DAAD0EA00DCE39C /* UIApplicationExtension.swift in Sources */,
 				CEF1ED302DAAD0EA00DCE39C /* LogoView.swift in Sources */,
 				CEF1ED312DAAD0EA00DCE39C /* Badge.swift in Sources */,
 				CEF1ED322DAAD0EA00DCE39C /* SwiftDataDatasource.swift in Sources */,
 				CEF1ED342DAAD0EA00DCE39C /* StringExtension.swift in Sources */,
-				CEF1ED362DAAD0EA00DCE39C /* OnboardingPageView.swift in Sources */,
 				CEF1ED372DAAD0EA00DCE39C /* PhotoPicker.swift in Sources */,
 				CEF1ED382DAAD0EA00DCE39C /* Stars.swift in Sources */,
-				CEF1ED392DAAD0EA00DCE39C /* Preview.swift in Sources */,
 				CEF1ED3A2DAAD0EA00DCE39C /* CameraView.swift in Sources */,
-				CEF1ED3B2DAAD0EA00DCE39C /* OnboardingView.swift in Sources */,
-				CEF1ED3D2DAAD0EA00DCE39C /* OnboardingManager.swift in Sources */,
 				CEF1ED3F2DAAD0EA00DCE39C /* AppMain.swift in Sources */,
 				CEF1ED402DAAD0EA00DCE39C /* Assets.swift in Sources */,
 				CEF1ED412DAAD0EA00DCE39C /* AppDelegate.swift in Sources */,
-				CEF1ED422DAAD0EA00DCE39C /* Collection.swift in Sources */,
 				CEF1ED432DAAD0EA00DCE39C /* PhotoView.swift in Sources */,
 				CEF1ED442DAAD0EA00DCE39C /* PurchasesExtension.swift in Sources */,
 				CEF1ED452DAAD0EA00DCE39C /* SubscriptionService.swift in Sources */,
 				CEF1ED472DAAD0EA00DCE39C /* OnboardingInstantValueView.swift in Sources */,
 				CEF1ED492DAAD0EA00DCE39C /* Checkbox.swift in Sources */,
-				CEF1ED4A2DAAD0EA00DCE39C /* Banknote.swift in Sources */,
-				CEF1ED4B2DAAD0EA00DCE39C /* AuthStore.swift in Sources */,
-				CEF1ED4C2DAAD0EA00DCE39C /* AuthService.swift in Sources */,
-				CEF1ED4D2DAAD0EA00DCE39C /* Task.swift in Sources */,
 				CEF1ED4E2DAAD0EA00DCE39C /* UINavigationControllerExtension.swift in Sources */,
-				CEF1ED4F2DAAD0EA00DCE39C /* CollectionViewModel.swift in Sources */,
 				CEF1ED502DAAD0EA00DCE39C /* SettingsView.swift in Sources */,
 				CEF1ED512DAAD0EA00DCE39C /* Card.swift in Sources */,
 				CEF1ED532DAAD0EA00DCE39C /* DecodeJSON.swift in Sources */,
 				CEF1ED542DAAD0EA00DCE39C /* Constants.swift in Sources */,
 				CEF1ED552DAAD0EA00DCE39C /* CameraCaptureView.swift in Sources */,
-				CEF1ED562DAAD0EA00DCE39C /* Weather.swift in Sources */,
 				CEF1ED572DAAD0EA00DCE39C /* Fonts.swift in Sources */,
-				CEF1ED582DAAD0EA00DCE39C /* BanknoteRowView.swift in Sources */,
-				CEF1ED592DAAD0EA00DCE39C /* ToolDefinition.swift in Sources */,
 				CEF1ED5A2DAAD0EA00DCE39C /* PaywallYearlyViewModel.swift in Sources */,
-				CEF1ED5B2DAAD0EA00DCE39C /* CollectionView.swift in Sources */,
 				CEF1ED5C2DAAD0EA00DCE39C /* HighlightTabBar.swift in Sources */,
-				CEF1ED5D2DAAD0EA00DCE39C /* OpenAIParser.swift in Sources */,
-				CEF1ED5E2DAAD0EA00DCE39C /* BanknoteDetectionPrompt.swift in Sources */,
 				CEF1ED5F2DAAD0EA00DCE39C /* OnboardingWelcomeView.swift in Sources */,
 				CEF1ED602DAAD0EA00DCE39C /* FixedSizeScrollView.swift in Sources */,
-				CEF1ED612DAAD0EA00DCE39C /* ItemRarityFunction.swift in Sources */,
 				CEF1ED622DAAD0EA00DCE39C /* PaywallYearlyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1285,96 +1001,65 @@
 				CEF1EDD52DAAD0EA00DCE39C /* FeaturesList.swift in Sources */,
 				CEF1EDD62DAAD0EA00DCE39C /* Item.swift in Sources */,
 				CEF1EDD72DAAD0EA00DCE39C /* StoreKitExtension.swift in Sources */,
-				CEF1EDD82DAAD0EA00DCE39C /* OnboardingDelegate.swift in Sources */,
 				CEF1EDD92DAAD0EA00DCE39C /* MailView.swift in Sources */,
-				CEF1EDDA2DAAD0EA00DCE39C /* ItemGradeFunction.swift in Sources */,
 				CEF1EDDB2DAAD0EA00DCE39C /* FontExtension.swift in Sources */,
 				CEF1EDDC2DAAD0EA00DCE39C /* UserRepository.swift in Sources */,
 				CEF1EDDD2DAAD0EA00DCE39C /* OpenAIProxiedService.swift in Sources */,
-				CEF1EDDE2DAAD0EA00DCE39C /* OnboardingDependencies.swift in Sources */,
-				CEF1EDDF2DAAD0EA00DCE39C /* OnboardingPageConfig.swift in Sources */,
 				CEF1EDE02DAAD0EA00DCE39C /* AboutAuthorView.swift in Sources */,
 				CEF1EDE12DAAD0EA00DCE39C /* PaywallViewModel.swift in Sources */,
 				CEF1EDE22DAAD0EA00DCE39C /* UIImageExtension.swift in Sources */,
 				CEF1EDE32DAAD0EA00DCE39C /* SailTextField.swift in Sources */,
 				CEF1EDE42DAAD0EA00DCE39C /* SettingsViewModel.swift in Sources */,
+				26CC28DB2F6A47BA00C0447F /* OpenAIParser.swift in Sources */,
+				26CC28DC2F6A47BA00C0447F /* SignInProviders.swift in Sources */,
+				26CC28DD2F6A47BA00C0447F /* ToolDefinition.swift in Sources */,
+				26CC28DE2F6A47BA00C0447F /* Preview.swift in Sources */,
 				CEF1EDE52DAAD0EA00DCE39C /* PaywallView.swift in Sources */,
 				CEF1EDE62DAAD0EA00DCE39C /* ArcShape.swift in Sources */,
-				CEF1EDE72DAAD0EA00DCE39C /* BanknoteDetailViewModel.swift in Sources */,
 				CEF1EDE82DAAD0EA00DCE39C /* Reviews.swift in Sources */,
 				CEF1EDE92DAAD0EA00DCE39C /* UserRepositoryProtocol.swift in Sources */,
 				CEF1EDEA2DAAD0EA00DCE39C /* Accordion.swift in Sources */,
-				CEF1EDEB2DAAD0EA00DCE39C /* SplashView.swift in Sources */,
 				CEF1EDEC2DAAD0EA00DCE39C /* OnboardingCameraView.swift in Sources */,
 				CEF1EDED2DAAD0EA00DCE39C /* AppState.swift in Sources */,
 				CEF1EDEE2DAAD0EA00DCE39C /* OnboardingFeaturesView.swift in Sources */,
 				CEF1EDEF2DAAD0EA00DCE39C /* HomeViewModel.swift in Sources */,
-				CEF1EDF02DAAD0EA00DCE39C /* ItemDetectionFunction.swift in Sources */,
 				CEF1EDF12DAAD0EA00DCE39C /* Banner.swift in Sources */,
 				CEF1EDF22DAAD0EA00DCE39C /* Router.swift in Sources */,
 				CEF1EDF32DAAD0EA00DCE39C /* OpenAIService.swift in Sources */,
-				CEF1EDF42DAAD0EA00DCE39C /* WeatherFunction.swift in Sources */,
 				CEF1EDF52DAAD0EA00DCE39C /* Button.swift in Sources */,
 				CEF1EDF62DAAD0EA00DCE39C /* AIServiceProvider.swift in Sources */,
-				CEF1EDF72DAAD0EA00DCE39C /* SignInProviders.swift in Sources */,
 				CEF1EDF82DAAD0EA00DCE39C /* RootView.swift in Sources */,
 				CEF1EDF92DAAD0EA00DCE39C /* HomeView.swift in Sources */,
 				CEF1EDFA2DAAD0EA00DCE39C /* DIContainer.swift in Sources */,
 				CEF1EDFB2DAAD0EA00DCE39C /* UserDefaultsDatasource.swift in Sources */,
-				CEF1EDFC2DAAD0EA00DCE39C /* BanknoteDetailView.swift in Sources */,
-				CEF1EDFD2DAAD0EA00DCE39C /* BanknoteExtension.swift in Sources */,
-				CEF1EDFF2DAAD0EA00DCE39C /* BanknoteDetectionViewModel.swift in Sources */,
 				CEF1EE002DAAD0EA00DCE39C /* OnboardingFlowView.swift in Sources */,
-				CEF1EE012DAAD0EA00DCE39C /* BanknoteDetectionView.swift in Sources */,
-				CEF1EE022DAAD0EA00DCE39C /* ItemValuationFunction.swift in Sources */,
 				CEF1EE032DAAD0EA00DCE39C /* UIApplicationExtension.swift in Sources */,
 				CEF1EE042DAAD0EA00DCE39C /* LogoView.swift in Sources */,
 				CEF1EE052DAAD0EA00DCE39C /* Badge.swift in Sources */,
 				CEF1EE062DAAD0EA00DCE39C /* SwiftDataDatasource.swift in Sources */,
-				CEF1EE072DAAD0EA00DCE39C /* ChatView.swift in Sources */,
 				CEF1EE082DAAD0EA00DCE39C /* StringExtension.swift in Sources */,
-				CEF1EE092DAAD0EA00DCE39C /* SignInViewModel.swift in Sources */,
-				CEF1EE0A2DAAD0EA00DCE39C /* OnboardingPageView.swift in Sources */,
 				CEF1EE0B2DAAD0EA00DCE39C /* PhotoPicker.swift in Sources */,
 				CEF1EE0C2DAAD0EA00DCE39C /* Stars.swift in Sources */,
-				CEF1EE0D2DAAD0EA00DCE39C /* Preview.swift in Sources */,
 				CEF1EE0E2DAAD0EA00DCE39C /* CameraView.swift in Sources */,
-				CEF1EE0F2DAAD0EA00DCE39C /* OnboardingView.swift in Sources */,
-				CEF1EE112DAAD0EA00DCE39C /* OnboardingManager.swift in Sources */,
 				CEF1EE132DAAD0EA00DCE39C /* AppMain.swift in Sources */,
 				CEF1EE142DAAD0EA00DCE39C /* Assets.swift in Sources */,
 				CEF1EE152DAAD0EA00DCE39C /* AppDelegate.swift in Sources */,
-				CEF1EE162DAAD0EA00DCE39C /* Collection.swift in Sources */,
 				CEF1EE172DAAD0EA00DCE39C /* PhotoView.swift in Sources */,
 				CEF1EE182DAAD0EA00DCE39C /* PurchasesExtension.swift in Sources */,
 				CEF1EE192DAAD0EA00DCE39C /* SubscriptionService.swift in Sources */,
-				CEF1EE1A2DAAD0EA00DCE39C /* SignInView.swift in Sources */,
 				CEF1EE1B2DAAD0EA00DCE39C /* OnboardingInstantValueView.swift in Sources */,
 				CEF1EE1D2DAAD0EA00DCE39C /* Checkbox.swift in Sources */,
-				CEF1EE1E2DAAD0EA00DCE39C /* Banknote.swift in Sources */,
-				CEF1EE1F2DAAD0EA00DCE39C /* AuthStore.swift in Sources */,
-				CEF1EE202DAAD0EA00DCE39C /* AuthService.swift in Sources */,
-				CEF1EE212DAAD0EA00DCE39C /* Task.swift in Sources */,
 				CEF1EE222DAAD0EA00DCE39C /* UINavigationControllerExtension.swift in Sources */,
-				CEF1EE232DAAD0EA00DCE39C /* CollectionViewModel.swift in Sources */,
 				CEF1EE242DAAD0EA00DCE39C /* SettingsView.swift in Sources */,
 				CEF1EE252DAAD0EA00DCE39C /* Card.swift in Sources */,
-				CEF1EE262DAAD0EA00DCE39C /* ChatViewModel.swift in Sources */,
 				CEF1EE272DAAD0EA00DCE39C /* DecodeJSON.swift in Sources */,
 				CEF1EE282DAAD0EA00DCE39C /* Constants.swift in Sources */,
 				CEF1EE292DAAD0EA00DCE39C /* CameraCaptureView.swift in Sources */,
-				CEF1EE2A2DAAD0EA00DCE39C /* Weather.swift in Sources */,
 				CEF1EE2B2DAAD0EA00DCE39C /* Fonts.swift in Sources */,
-				CEF1EE2C2DAAD0EA00DCE39C /* BanknoteRowView.swift in Sources */,
-				CEF1EE2D2DAAD0EA00DCE39C /* ToolDefinition.swift in Sources */,
 				CEF1EE2E2DAAD0EA00DCE39C /* PaywallYearlyViewModel.swift in Sources */,
-				CEF1EE2F2DAAD0EA00DCE39C /* CollectionView.swift in Sources */,
 				CEF1EE302DAAD0EA00DCE39C /* HighlightTabBar.swift in Sources */,
-				CEF1EE312DAAD0EA00DCE39C /* OpenAIParser.swift in Sources */,
-				CEF1EE322DAAD0EA00DCE39C /* BanknoteDetectionPrompt.swift in Sources */,
 				CEF1EE332DAAD0EA00DCE39C /* OnboardingWelcomeView.swift in Sources */,
 				CEF1EE342DAAD0EA00DCE39C /* FixedSizeScrollView.swift in Sources */,
-				CEF1EE352DAAD0EA00DCE39C /* ItemRarityFunction.swift in Sources */,
 				CEF1EE362DAAD0EA00DCE39C /* PaywallYearlyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1389,96 +1074,65 @@
 				CEF1ED662DAAD0EA00DCE39C /* FeaturesList.swift in Sources */,
 				CEF1ED672DAAD0EA00DCE39C /* Item.swift in Sources */,
 				CEF1ED682DAAD0EA00DCE39C /* StoreKitExtension.swift in Sources */,
-				CEF1ED692DAAD0EA00DCE39C /* OnboardingDelegate.swift in Sources */,
 				CEF1ED6A2DAAD0EA00DCE39C /* MailView.swift in Sources */,
-				CEF1ED6B2DAAD0EA00DCE39C /* ItemGradeFunction.swift in Sources */,
 				CEF1ED6C2DAAD0EA00DCE39C /* FontExtension.swift in Sources */,
 				CEF1ED6D2DAAD0EA00DCE39C /* UserRepository.swift in Sources */,
 				CEF1ED6E2DAAD0EA00DCE39C /* OpenAIProxiedService.swift in Sources */,
-				CEF1ED6F2DAAD0EA00DCE39C /* OnboardingDependencies.swift in Sources */,
-				CEF1ED702DAAD0EA00DCE39C /* OnboardingPageConfig.swift in Sources */,
 				CEF1ED712DAAD0EA00DCE39C /* AboutAuthorView.swift in Sources */,
 				CEF1ED722DAAD0EA00DCE39C /* PaywallViewModel.swift in Sources */,
 				CEF1ED732DAAD0EA00DCE39C /* UIImageExtension.swift in Sources */,
 				CEF1ED742DAAD0EA00DCE39C /* SailTextField.swift in Sources */,
 				CEF1ED752DAAD0EA00DCE39C /* SettingsViewModel.swift in Sources */,
+				26CC28D32F6A47BA00C0447F /* OpenAIParser.swift in Sources */,
+				26CC28D42F6A47BA00C0447F /* SignInProviders.swift in Sources */,
+				26CC28D52F6A47BA00C0447F /* ToolDefinition.swift in Sources */,
+				26CC28D62F6A47BA00C0447F /* Preview.swift in Sources */,
 				CEF1ED762DAAD0EA00DCE39C /* PaywallView.swift in Sources */,
 				CEF1ED772DAAD0EA00DCE39C /* ArcShape.swift in Sources */,
-				CEF1ED782DAAD0EA00DCE39C /* BanknoteDetailViewModel.swift in Sources */,
 				CEF1ED792DAAD0EA00DCE39C /* Reviews.swift in Sources */,
 				CEF1ED7A2DAAD0EA00DCE39C /* UserRepositoryProtocol.swift in Sources */,
 				CEF1ED7B2DAAD0EA00DCE39C /* Accordion.swift in Sources */,
-				CEF1ED7C2DAAD0EA00DCE39C /* SplashView.swift in Sources */,
 				CEF1ED7D2DAAD0EA00DCE39C /* OnboardingCameraView.swift in Sources */,
 				CEF1ED7E2DAAD0EA00DCE39C /* AppState.swift in Sources */,
 				CEF1ED7F2DAAD0EA00DCE39C /* OnboardingFeaturesView.swift in Sources */,
 				CEF1ED802DAAD0EA00DCE39C /* HomeViewModel.swift in Sources */,
-				CEF1ED812DAAD0EA00DCE39C /* ItemDetectionFunction.swift in Sources */,
 				CEF1ED822DAAD0EA00DCE39C /* Banner.swift in Sources */,
 				CEF1ED832DAAD0EA00DCE39C /* Router.swift in Sources */,
 				CEF1ED842DAAD0EA00DCE39C /* OpenAIService.swift in Sources */,
-				CEF1ED852DAAD0EA00DCE39C /* WeatherFunction.swift in Sources */,
 				CEF1ED862DAAD0EA00DCE39C /* Button.swift in Sources */,
 				CEF1ED872DAAD0EA00DCE39C /* AIServiceProvider.swift in Sources */,
-				CEF1ED882DAAD0EA00DCE39C /* SignInProviders.swift in Sources */,
 				CEF1ED892DAAD0EA00DCE39C /* RootView.swift in Sources */,
 				CEF1ED8A2DAAD0EA00DCE39C /* HomeView.swift in Sources */,
 				CEF1ED8B2DAAD0EA00DCE39C /* DIContainer.swift in Sources */,
 				CEF1ED8C2DAAD0EA00DCE39C /* UserDefaultsDatasource.swift in Sources */,
-				CEF1ED8D2DAAD0EA00DCE39C /* BanknoteDetailView.swift in Sources */,
-				CEF1ED8E2DAAD0EA00DCE39C /* BanknoteExtension.swift in Sources */,
-				CEF1ED902DAAD0EA00DCE39C /* BanknoteDetectionViewModel.swift in Sources */,
 				CEF1ED912DAAD0EA00DCE39C /* OnboardingFlowView.swift in Sources */,
-				CEF1ED922DAAD0EA00DCE39C /* BanknoteDetectionView.swift in Sources */,
-				CEF1ED932DAAD0EA00DCE39C /* ItemValuationFunction.swift in Sources */,
 				CEF1ED942DAAD0EA00DCE39C /* UIApplicationExtension.swift in Sources */,
 				CEF1ED952DAAD0EA00DCE39C /* LogoView.swift in Sources */,
 				CEF1ED962DAAD0EA00DCE39C /* Badge.swift in Sources */,
 				CEF1ED972DAAD0EA00DCE39C /* SwiftDataDatasource.swift in Sources */,
-				CEF1ED982DAAD0EA00DCE39C /* ChatView.swift in Sources */,
 				CEF1ED992DAAD0EA00DCE39C /* StringExtension.swift in Sources */,
-				CEF1ED9A2DAAD0EA00DCE39C /* SignInViewModel.swift in Sources */,
-				CEF1ED9B2DAAD0EA00DCE39C /* OnboardingPageView.swift in Sources */,
 				CEF1ED9C2DAAD0EA00DCE39C /* PhotoPicker.swift in Sources */,
 				CEF1ED9D2DAAD0EA00DCE39C /* Stars.swift in Sources */,
-				CEF1ED9E2DAAD0EA00DCE39C /* Preview.swift in Sources */,
 				CEF1ED9F2DAAD0EA00DCE39C /* CameraView.swift in Sources */,
-				CEF1EDA02DAAD0EA00DCE39C /* OnboardingView.swift in Sources */,
-				CEF1EDA22DAAD0EA00DCE39C /* OnboardingManager.swift in Sources */,
 				CEF1EDA42DAAD0EA00DCE39C /* AppMain.swift in Sources */,
 				CEF1EDA52DAAD0EA00DCE39C /* Assets.swift in Sources */,
 				CEF1EDA62DAAD0EA00DCE39C /* AppDelegate.swift in Sources */,
-				CEF1EDA72DAAD0EA00DCE39C /* Collection.swift in Sources */,
 				CEF1EDA82DAAD0EA00DCE39C /* PhotoView.swift in Sources */,
 				CEF1EDA92DAAD0EA00DCE39C /* PurchasesExtension.swift in Sources */,
 				CEF1EDAA2DAAD0EA00DCE39C /* SubscriptionService.swift in Sources */,
-				CEF1EDAB2DAAD0EA00DCE39C /* SignInView.swift in Sources */,
 				CEF1EDAC2DAAD0EA00DCE39C /* OnboardingInstantValueView.swift in Sources */,
 				CEF1EDAE2DAAD0EA00DCE39C /* Checkbox.swift in Sources */,
-				CEF1EDAF2DAAD0EA00DCE39C /* Banknote.swift in Sources */,
-				CEF1EDB02DAAD0EA00DCE39C /* AuthStore.swift in Sources */,
-				CEF1EDB12DAAD0EA00DCE39C /* AuthService.swift in Sources */,
-				CEF1EDB22DAAD0EA00DCE39C /* Task.swift in Sources */,
 				CEF1EDB32DAAD0EA00DCE39C /* UINavigationControllerExtension.swift in Sources */,
-				CEF1EDB42DAAD0EA00DCE39C /* CollectionViewModel.swift in Sources */,
 				CEF1EDB52DAAD0EA00DCE39C /* SettingsView.swift in Sources */,
 				CEF1EDB62DAAD0EA00DCE39C /* Card.swift in Sources */,
-				CEF1EDB72DAAD0EA00DCE39C /* ChatViewModel.swift in Sources */,
 				CEF1EDB82DAAD0EA00DCE39C /* DecodeJSON.swift in Sources */,
 				CEF1EDB92DAAD0EA00DCE39C /* Constants.swift in Sources */,
 				CEF1EDBA2DAAD0EA00DCE39C /* CameraCaptureView.swift in Sources */,
-				CEF1EDBB2DAAD0EA00DCE39C /* Weather.swift in Sources */,
 				CEF1EDBC2DAAD0EA00DCE39C /* Fonts.swift in Sources */,
-				CEF1EDBD2DAAD0EA00DCE39C /* BanknoteRowView.swift in Sources */,
-				CEF1EDBE2DAAD0EA00DCE39C /* ToolDefinition.swift in Sources */,
 				CEF1EDBF2DAAD0EA00DCE39C /* PaywallYearlyViewModel.swift in Sources */,
-				CEF1EDC02DAAD0EA00DCE39C /* CollectionView.swift in Sources */,
 				CEF1EDC12DAAD0EA00DCE39C /* HighlightTabBar.swift in Sources */,
-				CEF1EDC22DAAD0EA00DCE39C /* OpenAIParser.swift in Sources */,
-				CEF1EDC32DAAD0EA00DCE39C /* BanknoteDetectionPrompt.swift in Sources */,
 				CEF1EDC42DAAD0EA00DCE39C /* OnboardingWelcomeView.swift in Sources */,
 				CEF1EDC52DAAD0EA00DCE39C /* FixedSizeScrollView.swift in Sources */,
-				CEF1EDC62DAAD0EA00DCE39C /* ItemRarityFunction.swift in Sources */,
 				CEF1EDC72DAAD0EA00DCE39C /* PaywallYearlyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

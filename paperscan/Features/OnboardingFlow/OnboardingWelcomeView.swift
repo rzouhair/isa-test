@@ -34,12 +34,12 @@ struct OnboardingWelcomeView: View {
                         .scaleEffect(isAnimating ? 1 : 0.8)
                     
                     VStack(spacing: 8) {
-                        Text("Welcome to\n Money Scanner: Banknote ID")
+                        Text("Welcome to\n \(Constants.appName)")
                             .font(.system(size: 24, weight: .bold))
                             .multilineTextAlignment(.center)
                             .fixedSize(horizontal: false, vertical: true)
-                        
-                        Text("Your Smart Banknote Assistant")
+
+                        Text("Your Smart Scanning Assistant")
                             .font(.system(size: 16, weight: .regular))
                             .opacity(0.9)
                             .fixedSize(horizontal: false, vertical: true)
@@ -51,10 +51,10 @@ struct OnboardingWelcomeView: View {
                 
                 // Feature highlights
                 VStack(spacing: 16) {
-                    featureRow(icon: "camera.viewfinder", text: "Instant banknote recognition in seconds")
-                    featureRow(icon: "heart.fill", text: "Build and organize your personal collection")
-                    featureRow(icon: "globe", text: "Support for 150+ currencies")
-                    featureRow(icon: "lock.shield", text: "Secure and private scanning technology")
+                    featureRow(icon: "camera.viewfinder", text: "Instant scanning and recognition")
+                    featureRow(icon: "sparkles", text: "AI-powered analysis and insights")
+                    featureRow(icon: "doc.text.magnifyingglass", text: "Detailed results at your fingertips")
+                    featureRow(icon: "lock.shield", text: "Secure and private scanning")
                 }
                 .opacity(isAnimating ? 1 : 0)
                 .offset(y: isAnimating ? 0 : 20)
