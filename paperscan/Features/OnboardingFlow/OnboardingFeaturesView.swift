@@ -1,196 +1,122 @@
 //
-//  OnboardingFeaturesView.swift
+//  OnboardingPersonalizationView.swift
 //  paperscan
 //
-//  Created by user on 5/4/2025.
+//  Screen 2: Personalization — user selects their persona(s)
+//  to segment the experience (traveller, collector, buyer, gift finder).
 //
 
 import SwiftUI
 import Inject
 
-struct OnboardingFeaturesView: View {
+struct OnboardingPersonalizationView: View {
     @ObserveInjection var inject
-    let onSkip: () -> Void
-    let onFinish: () -> Void
-    
-    @State private var currentPage = 0
+
     @State private var isAnimating = false
-    
-    private let features = [
-        FeatureSlide(
-            title: "Instant Recognition",
-            description: "Capture and identify items in seconds with our advanced AI technology.",
-            imageName: "note",
-            iconName: "camera.viewfinder"
-        ),
-        FeatureSlide(
-            title: "AI-Powered Analysis",
-            description: "Our AI instantly analyzes your scans and provides accurate information.",
-            imageName: "magic",
-            iconName: "sparkles"
-        ),
-        FeatureSlide(
-            title: "Unlock Full Potential",
-            description: "Upgrade to Pro for unlimited scans and detailed information at your fingertips.",
-            imageName: "lock",
-            iconName: "lock.open.fill"
-        ),
-        FeatureSlide(
-            title: "Privacy First",
-            description: "We never store your images. Camera access is only used for scanning.",
-            imageName: "shield",
-            iconName: "shield.fill"
-        )
+
+    private let personas: [(icon: String, label: String, desc: String)] = [
+        ("✈️", "World Traveller", "Visiting abroad"),
+        ("🏆", "Banknote Collector", "Hunting for rarities"),
+        ("💰", "Deal Hunter", "Buying or selling"),
+        ("🎁", "Treasure Finder", "Inherited or discovered notes"),
     ]
-    
-    var body: some View {
-        ZStack {
-            Color(uiColor: .systemBackground)
-                .ignoresSafeArea()
-            
-            VStack(spacing: 0) {
-                // Stories-style progress indicator
-                HStack(spacing: 4) {
-                    ForEach(0..<features.count, id: \.self) { index in
-                        GeometryReader { geometry in
-                            ZStack(alignment: .leading) {
-                                // Background bar
-                                Rectangle()
-                                    .fill(Color.gray.opacity(0.3))
-                                
-                                // Progress bar
-                                Rectangle()
-                                    .fill(Asset.Colors.appPrimary.swiftUIColor)
-                                    .frame(width: currentPage > index ?
-                                        geometry.size.width :
-                                        (currentPage == index ? geometry.size.width : 0))
-                            }
-                        }
-                        .frame(height: 4)
-                        .animation(.linear(duration: 0.3), value: currentPage)
-                    }
-                }
-                .padding(.horizontal, 16)
-                .padding(.top, 8)
-                
-                // Header with Skip button
-                HStack {
-                    Spacer()
-                    Button(action: onSkip) {
-                        Text("Skip")
-                            .foregroundColor(.secondary)
-                            .padding(.horizontal)
-                            .padding(.vertical, 8)
-                    }
-                }
-                .padding()
-                
-                // Carousel
-                TabView(selection: $currentPage) {
-                    ForEach(0..<features.count, id: \.self) { index in
-                        FeatureSlideView(slide: features[index])
-                    }
-                }
-                .tabViewStyle(.page(indexDisplayMode: .never))
-                
-                Spacer()
-                
-                // Progress indicators and buttons
-                VStack(spacing: 24) {
-                    // Next/Finish button
-                    Button(action: {
-                        if currentPage == features.count - 1 {
-                            onFinish()
-                        } else {
-                            withAnimation {
-                                currentPage += 1
-                            }
-                        }
-                    }) {
-                        HStack {
-                            Text(currentPage == features.count - 1 ? "Get Started" : "Next")
-                                .fontWeight(.semibold)
-                            Image(systemName: "arrow.right")
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Asset.Colors.appPrimary.swiftUIColor)
-                        .foregroundColor(.white)
-                        .cornerRadius(16)
-                    }
-                    .padding(.horizontal, 24)
-                }
-                .padding(.bottom, 48)
-            }
-        }
-    }
-}
 
-struct FeatureSlide: Identifiable {
-    let id = UUID()
-    let title: String
-    let description: String
-    let imageName: String
-    let iconName: String
-}
-
-struct FeatureSlideView: View {
-    @ObserveInjection var inject
-    let slide: FeatureSlide
-    @State private var isAnimating = false
-    
     var body: some View {
-        VStack(alignment: .trailing, spacing: 16) {
-            // Image
-            Image(slide.imageName)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+        ScrollView(showsIndicators: false) {
+            VStack(alignment: .leading, spacing: 0) {
+                // Header
+                Text("COMMUNITY")
+                    .font(.system(size: 12, weight: .bold))
+                    .foregroundColor(KashColors.green300)
+                    .tracking(2)
+                    .padding(.bottom, 12)
+
+                (Text("An app for every\n")
+                    .font(.system(size: 34))
+                    .foregroundColor(.white)
+                + Text("banknote story")
+                    .font(.system(size: 34, weight: .regular, design: .serif))
+                    .italic()
+                    .foregroundColor(KashColors.green300))
+                .padding(.bottom, 12)
+
+                Text("The app suits many user profiles — from curious travellers to seasoned collectors.")
+                    .font(.system(size: 16, weight: .light))
+                    .foregroundColor(.white.opacity(0.55))
+                    .lineSpacing(3)
+                    .padding(.bottom, 28)
+
+                // Persona grid (2x2)
+                LazyVGrid(columns: [
+                    GridItem(.flexible(), spacing: 12),
+                    GridItem(.flexible(), spacing: 12)
+                ], spacing: 12) {
+                    ForEach(personas, id: \.label) { persona in
+                        personaCard(icon: persona.icon, label: persona.label, desc: persona.desc)
+                    }
+                }
+                .padding(.bottom, 24)
+
+                // Social proof hint
+                HStack(spacing: 6) {
+                    Image(systemName: "person.2.fill")
+                        .font(.system(size: 11))
+                        .foregroundColor(KashColors.green300)
+
+                    Text("Kash is suitable for a wide range of users, from curious travellers to seasoned collectors. See how it works for yourself!")
+                        .font(.system(size: 12, weight: .medium))
+                        .foregroundColor(.white.opacity(0.5))
+                }
                 .frame(maxWidth: .infinity)
-                .opacity(isAnimating ? 1 : 0)
-                .offset(y: isAnimating ? 0 : 20)
-            
-            // Icon and Text
-            VStack(spacing: 16) {
-                ZStack {
-                    Circle()
-                        .fill(Asset.Colors.appPrimary.swiftUIColor.opacity(0.3))
-                        .frame(width: 60, height: 60)
-                    
-                    Image(systemName: slide.iconName)
-                        .font(.system(size: 30))
-                        .foregroundColor(Asset.Colors.appPrimary.swiftUIColor)
-                }
-                
-                VStack(spacing: 8) {
-                    Text(slide.title)
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .multilineTextAlignment(.center)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity)
-                    
-                    Text(slide.description)
-                        .font(.body)
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.center)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .frame(maxWidth: .infinity)
-                        .padding(.horizontal, 16)
-                }
+                .multilineTextAlignment(.center)
             }
-            .frame(maxWidth: .infinity)
-            .opacity(isAnimating ? 1 : 0)
-            .offset(y: isAnimating ? 0 : 20)
+            .padding(.horizontal, 24)
+            .padding(.top, 28)
+            .padding(.bottom, 16)
         }
-        .padding()
         .onAppear {
-            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+            withAnimation(.spring(response: 0.5, dampingFraction: 0.8)) {
                 isAnimating = true
             }
         }
+        .enableInjection()
+    }
+
+    // MARK: - Persona Card
+
+    private func personaCard(icon: String, label: String, desc: String) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
+                Text(icon)
+                    .font(.system(size: 26))
+
+                Spacer()
+            }
+
+            Text(label)
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(.white)
+                .lineSpacing(1)
+
+            Text(desc)
+                .font(.system(size: 11))
+                .foregroundColor(.white.opacity(0.5))
+                .lineSpacing(1)
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.white.opacity(0.04))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .strokeBorder(Color.white.opacity(0.06), lineWidth: 1)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
 
 #Preview {
-    OnboardingFeaturesView(onSkip: {}, onFinish: {})
+    ZStack {
+        KashColors.green900.ignoresSafeArea()
+        OnboardingPersonalizationView()
+    }
 }

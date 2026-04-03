@@ -13,35 +13,38 @@ struct CameraCaptureView: View {
     @State private var showChatSheet: Bool = false
     @State private var cameraIsActive: Bool = true
     @State private var showHistory: Bool = false
-    
+
     @Environment(Router.self) private var router: Router
 
     var body: some View {
-        NavigationStack {
-            ZStack(alignment: .top) {
-                CameraView(isActive: $cameraIsActive, onCaptureImage: { images in
-                    router.presentFullscreenCover(.home)
-                }, showHistory: $showHistory)
-            }
-            .edgesIgnoringSafeArea(.all)
-            .background(Color.black)
-            .toolbar {
-                if router.presentedSheet != .camera {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button {
-                            router.dismissSheet()
-                            router.dismissFullscreenCover()
-                        } label: {
-                            Image(systemName: "xmark")
-                                .resizable()
-                                .frame(width: 18, height: 18)
-                                .padding(.top, 18)
-                                .foregroundStyle(.white)
-                        }
-                    }
+        ZStack(alignment: .topLeading) {
+            CameraView(isActive: $cameraIsActive, onCaptureImage: { images in
+                router.presentFullscreenCover(.detection(images: images))
+            }, showHistory: $showHistory)
+
+            // Close button
+            if router.presentedSheet != .camera {
+                Button {
+                    router.dismissSheet()
+                    router.dismissFullscreenCover()
+                } label: {
+                    Image(systemName: "xmark")
+                        .resizable()
+                        .frame(width: 16, height: 16)
+                        .foregroundStyle(.white)
+                        .padding(10)
+                        .background(Color.black.opacity(0.4))
+                        .clipShape(Circle())
                 }
+                .padding(.top, (UIApplication.shared.connectedScenes
+                    .compactMap { $0 as? UIWindowScene }
+                    .flatMap { $0.windows }
+                    .first?.safeAreaInsets.top ?? 0) + 8)
+                .padding(.leading, 16)
             }
         }
+        .edgesIgnoringSafeArea(.all)
+        .background(Color.black)
         .enableInjection()
     }
 }

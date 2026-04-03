@@ -1,23 +1,52 @@
 # macOS
 .DS_Store
+**/.DS_Store
 
-# Xcode user data
-*.xcuserdata/
-xcuserdata/
-*.xcworkspace/xcuserdata/
-
-# Build
+# Xcode
 build/
 DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+xcuserdata/
+*.moved-aside
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
 
-# IDE specific
-.cursor/
-.vscode/
+# Swift Package Manager
+.build/
+Packages/
+Package.pins
+Package.resolved
+*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
 
-# Dependencies
+# CocoaPods
 Pods/
-Carthage/
 
-# Secrets
-*.xcconfig
-GoogleService-Info.plist
+# Carthage
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# Code Injection
+iOSInjectionProject/
+
+# Misc
+*.swp
+*~
+.env
+*.log

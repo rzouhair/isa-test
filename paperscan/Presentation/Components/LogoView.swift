@@ -15,7 +15,7 @@ struct LogoView: View {
             Image(systemName: "magnifyingglass")
                 .font(.largeTitle)
                 .padding(.trailing, 4)
-            Text("Paper")
+            Text("Banknote")
             ZStack {
                 Text("Scanner")
                     .foregroundStyle(.white)

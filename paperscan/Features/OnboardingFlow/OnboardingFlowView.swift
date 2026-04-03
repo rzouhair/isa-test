@@ -10,130 +10,241 @@ import Inject
 import AVFoundation
 import StoreKit
 
+// MARK: - Kash Brand Colors
+
+enum KashColors {
+    static let green900 = Color(hex: "#0d2818")
+    static let green800 = Color(hex: "#133520")
+    static let green700 = Color(hex: "#1a4a2e")
+    static let green600 = Color(hex: "#1f5c38")
+    static let green500 = Color(hex: "#2a7a4a")
+    static let green400 = Color(hex: "#3a9960")
+    static let green300 = Color(hex: "#5ab87a")
+    static let green100 = Color(hex: "#b8e8c8")
+    static let green50  = Color(hex: "#e8f7ee")
+    static let gold     = Color(hex: "#c8a84b")
+    static let goldLight = Color(hex: "#f0d080")
+}
+
 struct OnboardingConstants {
-    // Colors
-    static let primaryColor: Color = Asset.Colors.appPrimary.swiftUIColor
-    static let backgroundColor = Color.black
+    static let primaryColor: Color = KashColors.green500
+    static let backgroundColor = KashColors.green900
     static let textColor = Color.white
-    static let secondaryTextColor = Color(hex: "#A0A0A0")
-    
-    // Spacing
+    static let secondaryTextColor = Color.white.opacity(0.55)
+
     static let screenPadding: CGFloat = 24
     static let elementSpacing: CGFloat = 20
     static let buttonHeight: CGFloat = 56
-    
-    // Text Sizes
+    static let buttonRadius: CGFloat = 16
+
     static let titleSize: CGFloat = 28
     static let bodySize: CGFloat = 16
-    static let buttonTextSize: CGFloat = 18
-    
-    // Animation
+    static let buttonTextSize: CGFloat = 16
+
     static let transitionDuration: Double = 0.4
 }
 
-struct OnboardingStep: Identifiable {
-    let id = UUID()
-    let title: String
-    let description: String
-    let imageName: String
-    let buttonText: String
-}
-
-// Onboarding Content
-let onboardingSteps = [
-    OnboardingStep(
-        title: "Smart Scanning",
-        description: "Point your camera to scan and identify items instantly",
-        imageName: "onboarding_scan",
-        buttonText: "Continue"
-    ),
-    OnboardingStep(
-        title: "AI-Powered Analysis",
-        description: "Get detailed information and insights powered by advanced AI",
-        imageName: "onboarding_global",
-        buttonText: "Continue"
-    ),
-    OnboardingStep(
-        title: "Detailed Results",
-        description: "Access comprehensive details and save your scan history",
-        imageName: "onboarding_details",
-        buttonText: "Get Started"
-    )
-]
+// MARK: - Flow Orchestrator
 
 struct OnboardingFlowView: View {
     @ObserveInjection var inject
     @State private var currentStep = 0
-    @State private var showPaywall = false
-    
     @State private var isCameraAuthorized = false
-    @State private var showReviewRequest = false
-    
+    @State private var trialVM = TrialCloseViewModel()
+
     @Environment(AppState.self) private var appState
     @Environment(Router.self) private var router: Router
     @Environment(\.requestReview) var requestReview
 
+    private func finishOnboardingAfterRestore() {
+        Task {
+            await SubscriptionService.shared.loadProStatus()
+            DIContainer.shared.userRepository.setOnboardingIsFinished()
+            router.navigateToRoot()
+        }
+    }
+
+    // Steps 0-3: onboarding, 4: trial screen 1, 5: trial screen 2
+    private let totalSteps = 6
+    // Only show dots for the first 4 onboarding steps
+    private let onboardingSteps = 4
+
     var body: some View {
         ZStack {
-            Group {
-                if (currentStep == 0) {
-                    OnboardingWelcomeView(onContinue: {
-                        withAnimation {
-                            currentStep = 1
-                        }
-                    })
-                }
-                
-                if (currentStep == 1) {
-                    // Instant Value View
-                    OnboardingInstantValueView(
-                        onTryNowTapped: {
-                            withAnimation {
-                                currentStep = 2
+            KashColors.green900.ignoresSafeArea()
+
+            VStack(spacing: 0) {
+                // Screen content
+                ZStack {
+                    if currentStep == 0 {
+                        OnboardingHeroView()
+                            .transition(.asymmetric(
+                                insertion: .move(edge: .trailing).combined(with: .opacity),
+                                removal: .move(edge: .leading).combined(with: .opacity)
+                            ))
+                    }
+
+                    if currentStep == 1 {
+                        OnboardingValueView()
+                            .transition(.asymmetric(
+                                insertion: .move(edge: .trailing).combined(with: .opacity),
+                                removal: .move(edge: .leading).combined(with: .opacity)
+                            ))
+                    }
+
+                    if currentStep == 2 {
+                        OnboardingPersonalizationView()
+                            .transition(.asymmetric(
+                                insertion: .move(edge: .trailing).combined(with: .opacity),
+                                removal: .move(edge: .leading).combined(with: .opacity)
+                            ))
+                    }
+
+                    if currentStep == 3 {
+                        OnboardingCameraPermissionView()
+                            .transition(.asymmetric(
+                                insertion: .move(edge: .trailing).combined(with: .opacity),
+                                removal: .move(edge: .leading).combined(with: .opacity)
+                            ))
+                    }
+
+                    if currentStep == 4 {
+                        TrialScreen1View(
+                            legalText: trialVM.legalText,
+                            onContinue: {
+                                withAnimation(.easeInOut(duration: 0.4)) {
+                                    currentStep = 5
+                                }
+                            },
+                            onRestore: {
+                                Task { await trialVM.restorePurchases() }
                             }
-                        },
-                        onLearnMoreTapped: {
-                            withAnimation {
-                                currentStep = 2
+                        )
+                        .transition(.asymmetric(
+                            insertion: .move(edge: .trailing).combined(with: .opacity),
+                            removal: .move(edge: .leading).combined(with: .opacity)
+                        ))
+                    }
+
+                    if currentStep == 5 {
+                        TrialScreen2View(
+                            legalText: trialVM.legalText,
+                            trialDays: trialVM.trialDaysText,
+                            onBack: {
+                                withAnimation(.easeInOut(duration: 0.4)) {
+                                    currentStep = 4
+                                }
+                            },
+                            onOpenPaywall: {
+                                Task {
+                                    await TrialCloseViewModel.requestNotificationPermission()
+                                    finishOnboardingAndShowPaywall()
+                                }
+                            },
+                            onRestore: {
+                                Task { await trialVM.restorePurchases() }
+                            }
+                        )
+                        .transition(.asymmetric(
+                            insertion: .move(edge: .trailing).combined(with: .opacity),
+                            removal: .move(edge: .leading).combined(with: .opacity)
+                        ))
+                    }
+                }
+                .frame(maxHeight: .infinity)
+
+                // Bottom navigation — only show for onboarding steps 0-3
+                if currentStep < onboardingSteps {
+                    VStack(spacing: 16) {
+                        // Progress dots
+                        HStack(spacing: 8) {
+                            ForEach(0..<onboardingSteps, id: \.self) { index in
+                                Capsule()
+                                    .fill(index == currentStep ? KashColors.green400 : Color.white.opacity(0.2))
+                                    .frame(width: index == currentStep ? 20 : 6, height: 6)
+                                    .animation(.easeInOut(duration: 0.3), value: currentStep)
                             }
                         }
-                    )
-                }
-                
-                if (currentStep == 2) {
-                    // Features View
-                    OnboardingFeaturesView(
-                        onSkip: {
-                            requestCameraPermission()
-                        },
-                        onFinish: {
-                            requestCameraPermission()
+
+                        // Primary button
+                        Button(action: handlePrimaryAction) {
+                            Text(primaryButtonLabel)
+                                .font(.system(size: 16, weight: .semibold))
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .frame(height: OnboardingConstants.buttonHeight)
+                                .background(KashColors.green500)
+                                .clipShape(RoundedRectangle(cornerRadius: OnboardingConstants.buttonRadius))
+                                .overlay(
+                                    LinearGradient(
+                                        colors: [Color.white.opacity(0.08), Color.clear],
+                                        startPoint: .top,
+                                        endPoint: .bottom
+                                    )
+                                    .clipShape(RoundedRectangle(cornerRadius: OnboardingConstants.buttonRadius))
+                                )
                         }
-                    )
+                        .padding(.horizontal, OnboardingConstants.screenPadding)
+
+                        // Skip button
+                        if showsSkipButton {
+                            Button(action: handleSkip) {
+                                Text("Skip")
+                                    .font(.system(size: 13))
+                                    .foregroundColor(.white.opacity(0.35))
+                            }
+                            .padding(.vertical, 4)
+                        }
+                    }
+                    .padding(.bottom, 28)
                 }
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            .ignoresSafeArea(edges: .bottom)
-            
         }
         .onAppear {
             checkCameraAuthorization()
+            trialVM.onRestoreSuccess = {
+                finishOnboardingAfterRestore()
+            }
+        }
+        .enableInjection()
+    }
+
+    private var primaryButtonLabel: String {
+        switch currentStep {
+        case 0: return "Get started"
+        case 1: return "Continue"
+        case 2: return "Continue"
+        case 3: return "Allow camera access"
+        default: return "Continue"
         }
     }
-    
+
+    private var showsSkipButton: Bool {
+        currentStep == 1 || currentStep == 2
+    }
+
+    private func handlePrimaryAction() {
+        if currentStep < onboardingSteps - 1 {
+            withAnimation(.easeInOut(duration: 0.4)) {
+                currentStep += 1
+            }
+        } else if currentStep == 3 {
+            requestCameraPermission()
+        }
+    }
+
+    private func handleSkip() {
+        withAnimation(.easeInOut(duration: 0.4)) {
+            currentStep = 4
+        }
+    }
+
     private func checkCameraAuthorization() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
             isCameraAuthorized = true
-        case .notDetermined:
+        default:
             isCameraAuthorized = false
-            break
-        case .denied, .restricted:
-            isCameraAuthorized = false
-            break
-        @unknown default:
-            isCameraAuthorized = false
-            break
         }
     }
 
@@ -141,70 +252,73 @@ struct OnboardingFlowView: View {
         AVCaptureDevice.requestAccess(for: .video) { granted in
             DispatchQueue.main.async {
                 isCameraAuthorized = granted
-                DIContainer.shared.userRepository.setOnboardingIsFinished()
-                print(DIContainer.shared.userRepository.onboardingIsFinished())
-                showReviewRequest = true
-                requestReview()
-                router.navigateToRoot()
-                appState.showPaywall()
+                // Advance to trial screen 1
+                withAnimation(.easeInOut(duration: 0.4)) {
+                    currentStep = 4
+                }
             }
         }
     }
+
+    private func finishOnboardingAndShowPaywall() {
+        DIContainer.shared.userRepository.setOnboardingIsFinished()
+        requestReview()
+        router.navigateToRoot()
+        appState.showPaywall()
+    }
 }
+
+// MARK: - Review Request View (kept for compatibility)
 
 struct ReviewRequestView: View {
     @ObserveInjection var inject
     @Environment(\.requestReview) var requestReview
     var onContinue: () -> Void
-    
+
     var body: some View {
         ZStack {
             OnboardingConstants.backgroundColor.ignoresSafeArea()
-            
+
             VStack(spacing: OnboardingConstants.elementSpacing) {
                 Spacer()
-                
+
                 Image(systemName: "star.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 100, height: 100)
                     .foregroundColor(OnboardingConstants.primaryColor)
-                
+
                 Spacer()
-                
+
                 VStack(alignment: .center, spacing: 16) {
-                    Text("Enjoying \(Constants.appName)?")
+                    Text("Enjoying Kash?")
                         .font(.system(size: OnboardingConstants.titleSize, weight: .bold))
                         .foregroundColor(OnboardingConstants.textColor)
 
-                    Text("Your feedback helps us improve the app and provide better service for everyone.")
+                    Text("Your feedback helps us improve the app.")
                         .font(.system(size: OnboardingConstants.bodySize))
                         .foregroundColor(OnboardingConstants.secondaryTextColor)
                         .multilineTextAlignment(.center)
                 }
                 .padding(.horizontal, OnboardingConstants.screenPadding)
-                
+
                 Spacer()
-                
+
                 Button(action: {
-                    // Request app review
                     requestReview()
-                    // Continue to next screen
                     onContinue()
                 }) {
-                    Text("Rate \(Constants.appName)")
+                    Text("Rate Kash")
                         .font(.system(size: OnboardingConstants.buttonTextSize, weight: .semibold))
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: OnboardingConstants.buttonHeight)
                         .background(OnboardingConstants.primaryColor)
-                        .cornerRadius(16)
+                        .cornerRadius(OnboardingConstants.buttonRadius)
                         .padding(.horizontal, OnboardingConstants.screenPadding)
                 }
-                
-                Button(action: {
-                    onContinue()
-                }) {
+
+                Button(action: onContinue) {
                     Text("Maybe Later")
                         .font(.system(size: OnboardingConstants.bodySize))
                         .foregroundColor(OnboardingConstants.secondaryTextColor)
@@ -233,11 +347,11 @@ extension Color {
         Scanner(string: hex).scanHexInt64(&int)
         let a, r, g, b: UInt64
         switch hex.count {
-        case 3: // RGB (12-bit)
+        case 3:
             (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6: // RGB (24-bit)
+        case 6:
             (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8: // ARGB (32-bit)
+        case 8:
             (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
         default:
             (a, r, g, b) = (1, 1, 1, 0)

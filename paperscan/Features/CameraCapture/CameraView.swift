@@ -84,6 +84,20 @@ struct CameraView: View {
     }
   }
 
+  private var safeAreaTop: CGFloat {
+    UIApplication.shared.connectedScenes
+      .compactMap { $0 as? UIWindowScene }
+      .flatMap { $0.windows }
+      .first?.safeAreaInsets.top ?? 0
+  }
+
+  private var safeAreaBottom: CGFloat {
+    UIApplication.shared.connectedScenes
+      .compactMap { $0 as? UIWindowScene }
+      .flatMap { $0.windows }
+      .first?.safeAreaInsets.bottom ?? 0
+  }
+
   var body: some View {
     ZStack(alignment: .topLeading) {
       ZStack {
@@ -95,12 +109,10 @@ struct CameraView: View {
                 photoCaptureDelegate: photoCaptureDelegate
               )
               .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-              .scaleEffect(1.0)
               .onAppear {
                 checkCameraPermission()
                 previewSize = geometry.size
               }
-
             }
           }
         }
@@ -117,7 +129,7 @@ struct CameraView: View {
           Text("Camera access is required.")
             .font(.headline)
             .padding()
-          Text("Please grant camera access in Settings to use the scanning feature")
+          Text("Please grant camera access in Settings to use the banknote capture feature")
             .font(.subheadline)
             .multilineTextAlignment(.center)
             .padding(.horizontal)
@@ -185,7 +197,7 @@ struct CameraView: View {
           Spacer()
         }
         .padding(.horizontal)
-        .padding(.top, (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0))
+        .padding(.top, safeAreaTop + 8)
 
         VStack {
           Spacer()
@@ -230,7 +242,7 @@ struct CameraView: View {
           }
           .padding(.horizontal)
         }
-        .padding(.bottom, 120 + (UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0))
+        .padding(.bottom, 120 + safeAreaBottom)
 
         VStack {
           Spacer()
@@ -303,7 +315,7 @@ struct CameraView: View {
           }
           .padding(.horizontal)
         }
-        .padding(.bottom, 20 + (UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0))
+        .padding(.bottom, 20 + safeAreaBottom)
 
         //white flash shows that the photo has been taken but also hides the transition from live to still
 
@@ -560,7 +572,13 @@ struct CameraPreviewView: UIViewRepresentable {
     return view
   }
 
-  func updateUIView(_ uiView: UIView, context: Context) {}
+  func updateUIView(_ uiView: UIView, context: Context) {
+    DispatchQueue.main.async {
+      if let previewLayer = uiView.layer.sublayers?.first(where: { $0 is AVCaptureVideoPreviewLayer }) {
+        previewLayer.frame = uiView.bounds
+      }
+    }
+  }
 }
 
 class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {

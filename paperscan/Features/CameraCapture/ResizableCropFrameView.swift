@@ -39,7 +39,7 @@ struct ResizableCropFrameView: View {
                                 .blendMode(.destinationOut)
                         )
                 )
-            
+
             // Crop Frame Border
             Rectangle()
                 .stroke(Color.white, lineWidth: 2)
@@ -55,6 +55,8 @@ struct ResizableCropFrameView: View {
                     .gesture(resizeGesture(for: corner))
             }
         }
+        .frame(width: parentSize.width, height: parentSize.height)
+        .ignoresSafeArea()
     }
 
     // MARK: - Dragging Gesture
