@@ -50,6 +50,7 @@ import UIKit
 
     var tabViewRoutes: [Route] = [
         .home,
+        .home
     ]
     
     var navigationPath: [Route] = [] {
