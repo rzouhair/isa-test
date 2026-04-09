@@ -2,7 +2,7 @@
 //  OnboardingHeroView.swift
 //  paperscan
 //
-//  Screen 0: Hero splash with floating banknote, scan ring animation,
+//  Screen 0: Hero splash with floating TCG card, scan ring animation,
 //  and a notification teaser that slides in after 1 second.
 //
 
@@ -17,8 +17,8 @@ struct OnboardingHeroView: View {
     @State private var isAnimating = false
     @State private var showNotification = false
     @State private var pulseScale: CGFloat = 1.0
-    @State private var noteOffset: CGFloat = 0
-    @State private var noteRotation: Double = -1
+    @State private var cardOffset: CGFloat = 0
+    @State private var cardRotation: Double = -1
 
     var body: some View {
         GeometryReader { geo in
@@ -29,8 +29,8 @@ struct OnboardingHeroView: View {
                 VStack(spacing: 0) {
                     Spacer()
 
-                    // Floating banknote with scan ring
-                    banknoteView
+                    // Floating TCG card with scan ring
+                    cardView
                         .padding(.bottom, 32)
 
                     // Hero content
@@ -41,7 +41,7 @@ struct OnboardingHeroView: View {
                 }
                 .frame(maxWidth: .infinity)
 
-                // Notification overlay - positioned within safe area
+                // Notification overlay
                 notificationOverlay
                     .padding(.horizontal, 16)
                     .padding(.top, 8)
@@ -50,22 +50,18 @@ struct OnboardingHeroView: View {
                 withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
                     isAnimating = true
                 }
-                // Float animation
                 withAnimation(.easeInOut(duration: 5).repeatForever(autoreverses: true)) {
-                    noteOffset = -10
-                    noteRotation = 0.5
+                    cardOffset = -10
+                    cardRotation = 0.5
                 }
-                // Pulse animation
                 withAnimation(.easeInOut(duration: 4).repeatForever(autoreverses: true)) {
                     pulseScale = 1.08
                 }
-                // Show notification after 1s
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
                     withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
                         showNotification = true
                     }
                 }
-                // Hide notification after 4s
                 DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
                     withAnimation(.easeOut(duration: 0.3)) {
                         showNotification = false
@@ -82,7 +78,7 @@ struct OnboardingHeroView: View {
         Circle()
             .fill(
                 RadialGradient(
-                    colors: [KashColors.green500.opacity(0.35), Color.clear],
+                    colors: [theme.accent.opacity(0.35), Color.clear],
                     center: .center,
                     startRadius: 0,
                     endRadius: min(geo.size.width, geo.size.height) * 0.6
@@ -93,99 +89,123 @@ struct OnboardingHeroView: View {
             .scaleEffect(pulseScale)
     }
 
-    // MARK: - Banknote
+    // MARK: - TCG Card
 
-    private var banknoteView: some View {
+    private var cardView: some View {
         ZStack {
-            // Scan ring
-            RoundedRectangle(cornerRadius: 18)
+            // Scan ring — card portrait ratio
+            RoundedRectangle(cornerRadius: 14)
                 .strokeBorder(
                     LinearGradient(
-                        colors: [KashColors.green400, KashColors.gold, KashColors.green400],
+                        colors: [theme.ctaFill, theme.accentWarm, theme.ctaFill],
                         startPoint: .leading,
                         endPoint: .trailing
                     ),
                     lineWidth: 2
                 )
-                .frame(width: 256, height: 136)
+                .frame(width: 170, height: 236)
                 .opacity(isAnimating ? 1 : 0)
                 .modifier(ScanRingPulse())
 
-            // Banknote card
+            // TCG Card
             ZStack {
-                // Watermark
-                Text("KASH")
-                    .font(.system(size: 10, weight: .medium))
-                    .foregroundColor(.white.opacity(0.12))
-                    .tracking(1)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-                    .padding(.top, 8)
-                    .padding(.trailing, 18)
+                // Card art area (top portion)
+                VStack(spacing: 0) {
+                    // Card art placeholder
+                    ZStack {
+                        LinearGradient(
+                            colors: [theme.accent.opacity(0.4), theme.accentBright.opacity(0.2)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
 
-                HStack {
-                    // Left: denomination
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("£10")
-                            .font(.system(size: 36, weight: .black, design: .serif))
+                        // Card art icon
+                        Image(systemName: "flame.fill")
+                            .font(.system(size: 36))
+                            .foregroundColor(.white.opacity(0.3))
+
+                        // Holo shimmer overlay
+                        LinearGradient(
+                            colors: [.clear, .white.opacity(0.08), .clear],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    }
+                    .frame(height: 110)
+
+                    // Card info area (bottom portion)
+                    VStack(spacing: 6) {
+                        // Card name
+                        Text("Charizard EX")
+                            .font(.system(size: 14, weight: .bold))
                             .foregroundColor(.white)
 
-                        Text("STERLING · 2015")
+                        // Set info
+                        Text("Scarlet & Violet · 006/198")
                             .font(.system(size: 9, weight: .medium))
-                            .foregroundColor(.white.opacity(0.6))
-                            .tracking(1.5)
+                            .foregroundColor(.white.opacity(0.5))
+                            .tracking(0.5)
+
+                        // Price tag
+                        HStack(spacing: 4) {
+                            Image(systemName: "tag.fill")
+                                .font(.system(size: 10))
+                                .foregroundColor(theme.accentWarm)
+                            Text("$328.50")
+                                .font(.system(size: 16, weight: .black, design: .rounded))
+                                .foregroundColor(theme.accentWarm)
+                        }
+                        .padding(.top, 4)
+
+                        // Rarity indicator
+                        HStack(spacing: 4) {
+                            ForEach(0..<4, id: \.self) { i in
+                                Image(systemName: "star.fill")
+                                    .font(.system(size: 8))
+                                    .foregroundColor(i < 3 ? theme.accentWarm : .white.opacity(0.15))
+                            }
+                            Text("Ultra Rare")
+                                .font(.system(size: 9, weight: .medium))
+                                .foregroundColor(.white.opacity(0.5))
+                        }
                     }
-
-                    Spacer()
-
-                    // Right: portrait oval
-                    ZStack {
-                        Ellipse()
-                            .strokeBorder(Color.white.opacity(0.2), lineWidth: 2)
-                            .background(Ellipse().fill(Color.white.opacity(0.07)))
-                            .frame(width: 56, height: 70)
-
-                        Text("👑")
-                            .font(.system(size: 28))
-                    }
+                    .padding(.vertical, 12)
+                    .padding(.horizontal, 14)
+                    .frame(maxWidth: .infinity)
                 }
-                .padding(.horizontal, 18)
-                .padding(.vertical, 14)
-
-                // Serial number
-                Text("N#207333")
-                    .font(.system(size: 8, design: .monospaced))
-                    .foregroundColor(.white.opacity(0.4))
-                    .tracking(1.5)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-                    .padding(.bottom, 10)
-                    .padding(.trailing, 14)
             }
-            .frame(width: 240, height: 120)
+            .frame(width: 155, height: 220)
             .background(
                 LinearGradient(
                     colors: [
-                        Color(hex: "#2d6a3f"),
-                        Color(hex: "#1a4a2e"),
-                        Color(hex: "#0f3020")
+                        theme.onboardingCardBg,
+                        theme.onboardingBg
                     ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
+                    startPoint: .top,
+                    endPoint: .bottom
                 )
             )
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .clipShape(RoundedRectangle(cornerRadius: 10))
             .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .strokeBorder(Color.white.opacity(0.12), lineWidth: 1)
+                RoundedRectangle(cornerRadius: 10)
+                    .strokeBorder(
+                        LinearGradient(
+                            colors: [theme.accentBright.opacity(0.3), theme.accentWarm.opacity(0.2), theme.accentBright.opacity(0.1)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        lineWidth: 1.5
+                    )
             )
-            .shadow(color: .black.opacity(0.5), radius: 30, y: 20)
+            .shadow(color: theme.accent.opacity(0.4), radius: 30, y: 20)
 
-            // Scan line — clipped to banknote bounds
+            // Scan line — clipped to card bounds
             ScanLineView()
-                .frame(width: 240, height: 120)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .frame(width: 155, height: 220)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
         }
-        .offset(y: noteOffset)
-        .rotationEffect(.degrees(noteRotation))
+        .offset(y: cardOffset)
+        .rotationEffect(.degrees(cardRotation))
         .opacity(isAnimating ? 1 : 0)
         .scaleEffect(isAnimating ? 1 : 0.8)
     }
@@ -197,13 +217,13 @@ struct OnboardingHeroView: View {
             // Badge
             HStack(spacing: 8) {
                 Circle()
-                    .fill(KashColors.green300)
+                    .fill(theme.accentBright)
                     .frame(width: 6, height: 6)
                     .modifier(BlinkingDot())
 
-                Text("Instant identification")
+                Text("Instant card identification")
                     .font(.system(size: 12))
-                    .foregroundColor(KashColors.green100)
+                    .foregroundColor(theme.accentMuted)
                     .tracking(0.5)
             }
             .padding(.horizontal, 16)
@@ -215,19 +235,19 @@ struct OnboardingHeroView: View {
             .clipShape(Capsule())
 
             // Title
-            (Text("Know what your\nbanknote is ")
+            (Text("Know What Your\nCards Are Really ")
                 .font(.system(size: 34))
                 .foregroundStyle(.white)
-            + Text("worth.")
+            + Text("Worth.")
                 .font(.system(size: 34, weight: .regular, design: .serif))
                 .italic()
-                .foregroundColor(KashColors.gold))
+                .foregroundColor(theme.accentWarm))
             .multilineTextAlignment(.center)
             .lineSpacing(2)
             .fixedSize(horizontal: false, vertical: true)
 
             // Subtitle
-            Text("Scan any paper money and get its real market value, rarity rating, and details — in seconds.")
+            Text("Scan any collectible card and get its real market value, price trends, and details — in seconds.")
                 .font(.system(size: 16, weight: .light))
                 .foregroundColor(.white.opacity(0.55))
                 .multilineTextAlignment(.center)
@@ -242,20 +262,20 @@ struct OnboardingHeroView: View {
 
     private var notificationOverlay: some View {
         HStack(alignment: .top, spacing: 12) {
-            Text("💵")
+            Text("🃏")
                 .font(.system(size: 28))
 
             VStack(alignment: .leading, spacing: 2) {
-                Text("Kash identified your note")
+                Text("PaperScan identified your card")
                     .font(.system(size: 13, weight: .semibold))
                     .foregroundColor(.black)
 
-                (Text("Two Dollars, 1953 · ")
+                (Text("Charizard EX · ")
                     .foregroundColor(Color(hex: "#555555"))
-                + Text("Rarity 85")
+                + Text("Ultra Rare")
                     .fontWeight(.semibold)
                     .foregroundColor(Color(hex: "#1a4a2e"))
-                + Text(" · Worth up to $261")
+                + Text(" · $328.50")
                     .foregroundColor(Color(hex: "#555555")))
                     .font(.system(size: 12))
                     .lineLimit(2)
@@ -303,7 +323,7 @@ struct ScanLineView: View {
             Rectangle()
                 .fill(
                     LinearGradient(
-                        colors: [.clear, KashColors.green300, KashColors.goldLight, KashColors.green300, .clear],
+                        colors: [.clear, theme.accentBright, theme.accentWarmLight, theme.accentBright, .clear],
                         startPoint: .leading,
                         endPoint: .trailing
                     )
@@ -337,7 +357,7 @@ struct BlinkingDot: ViewModifier {
 
 #Preview {
     ZStack {
-        KashColors.green900.ignoresSafeArea()
+        theme.onboardingBg.ignoresSafeArea()
         OnboardingHeroView()
     }
 }

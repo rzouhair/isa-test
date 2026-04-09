@@ -15,8 +15,8 @@ struct HighlightTabBar: View {
     @Environment(Router.self) private var router: Router
     @Environment(\.colorScheme) private var colorScheme
 
-    var tint: Color = Asset.Colors.appPrimary.swiftUIColor
-    var inactiveTint: Color = Asset.Colors.appPrimary.swiftUIColor
+    var tint: Color = theme.accent
+    var inactiveTint: Color = theme.accent
     
     @Binding var selectedPage: Int
 
@@ -31,15 +31,15 @@ struct HighlightTabBar: View {
                     tabIndex: 0,
                     activeTab: $selectedPage
                 )
-                
+
                 Spacer()
                 Spacer()
 
                 TabItem(
                     tint: tint,
                     inactiveTint: inactiveTint,
-                    tab: Router.Route.home,
-                    tabIndex: 1,
+                    tab: Router.Route.collection,
+                    tabIndex: 2,
                     activeTab: $selectedPage
                 )
             }
@@ -60,21 +60,22 @@ struct HighlightTabBar: View {
                     .frame(width: 58, height: 58)
                     .background {
                         Circle()
-                            .fill(tint.gradient)
+                            .fill(theme.fabFill.gradient)
                     }
             }
+            .shadow(color: theme.fabShadow, radius: 8, y: 4)
             .frame(minWidth: 0)
             .contentShape(Rectangle())
             .onTapGesture {
                 if (appState.isProUser) {
-                    router.presentFullscreenCover(.camera)
+                    router.presentFullscreenCover(.scanner)
                 } else {
                     appState.showPaywall()
                 }
             }
             .offset(y: -33)
         }
-        .tint(Asset.Colors.appPrimary.swiftUIColor)
+        .tint(theme.accent)
     }
     
     private var backgroundColorForColorScheme: Color {

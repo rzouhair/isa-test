@@ -55,7 +55,7 @@ public struct SailButton: View {
 
     var color: Color {
         switch style {
-        case .primary: return Asset.Colors.appPrimary.swiftUIColor
+        case .primary: return theme.accent
         case .secondary: return .clear
         case .neutral: return .white
         case .link: return .clear
@@ -65,7 +65,7 @@ public struct SailButton: View {
     var borderColor: Color {
         switch style {
         case .primary: return .clear
-        case .secondary: return Asset.Colors.appPrimary.swiftUIColor
+        case .secondary: return theme.accent
         case .neutral: return .clear
         case .link: return .clear
         }
@@ -74,9 +74,9 @@ public struct SailButton: View {
     var textColor: Color {
         switch style {
         case .primary: return .white
-        case .secondary: return Asset.Colors.appPrimary.swiftUIColor
+        case .secondary: return theme.accent
         case .neutral: return .black
-        case .link: return Asset.Colors.appPrimary.swiftUIColor
+        case .link: return theme.accent
         }
     }
 }

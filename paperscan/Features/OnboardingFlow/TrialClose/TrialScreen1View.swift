@@ -30,7 +30,7 @@ struct TrialScreen1View: View {
             // Content
             VStack(spacing: 0) {
                 // Eyebrow
-                Text("THE #1 BANKNOTE VALUE APP")
+                Text("THE #1 CARD VALUE APP")
                     .font(.system(size: 12, weight: .bold))
                     .kerning(1.8)
                     .foregroundColor(Color.white.opacity(0.5))
@@ -42,10 +42,10 @@ struct TrialScreen1View: View {
                         .font(.system(size: 34))
                         .foregroundColor(.white)
 
-                    Text("try Kash for free")
+                    Text("try PaperScan for free")
                         .font(.system(size: 34, weight: .regular, design: .serif))
                         .italic()
-                        .foregroundColor(KashColors.green300)
+                        .foregroundColor(theme.accentBright)
                 }
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 24)
@@ -66,7 +66,7 @@ struct TrialScreen1View: View {
                 action: onContinue
             )
         }
-        .background(KashColors.green900)
+        .background(theme.onboardingBg)
         .onAppear {
             // Analytics: trial_close_screen_1_viewed
         }

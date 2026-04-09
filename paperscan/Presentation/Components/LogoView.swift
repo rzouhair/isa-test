@@ -24,7 +24,7 @@ struct LogoView: View {
             .padding(.horizontal, 8)
             .background(
                 RoundedRectangle(cornerRadius: 6)
-                    .fill(Asset.Colors.appPrimary.swiftUIColor)
+                    .fill(theme.accent)
                     .rotationEffect(.degrees(-2))
             )
         }

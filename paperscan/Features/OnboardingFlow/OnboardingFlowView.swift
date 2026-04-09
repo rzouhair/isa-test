@@ -8,27 +8,11 @@
 import SwiftUI
 import Inject
 import AVFoundation
-import StoreKit
 
-// MARK: - Kash Brand Colors
-
-enum KashColors {
-    static let green900 = Color(hex: "#0d2818")
-    static let green800 = Color(hex: "#133520")
-    static let green700 = Color(hex: "#1a4a2e")
-    static let green600 = Color(hex: "#1f5c38")
-    static let green500 = Color(hex: "#2a7a4a")
-    static let green400 = Color(hex: "#3a9960")
-    static let green300 = Color(hex: "#5ab87a")
-    static let green100 = Color(hex: "#b8e8c8")
-    static let green50  = Color(hex: "#e8f7ee")
-    static let gold     = Color(hex: "#c8a84b")
-    static let goldLight = Color(hex: "#f0d080")
-}
 
 struct OnboardingConstants {
-    static let primaryColor: Color = KashColors.green500
-    static let backgroundColor = KashColors.green900
+    static var primaryColor: Color { theme.accent }
+    static var backgroundColor: Color { theme.onboardingBg }
     static let textColor = Color.white
     static let secondaryTextColor = Color.white.opacity(0.55)
 
@@ -54,7 +38,6 @@ struct OnboardingFlowView: View {
 
     @Environment(AppState.self) private var appState
     @Environment(Router.self) private var router: Router
-    @Environment(\.requestReview) var requestReview
 
     private func finishOnboardingAfterRestore() {
         Task {
@@ -64,14 +47,13 @@ struct OnboardingFlowView: View {
         }
     }
 
-    // Steps 0-3: onboarding, 4: trial screen 1, 5: trial screen 2
-    private let totalSteps = 6
-    // Only show dots for the first 4 onboarding steps
-    private let onboardingSteps = 4
+    // Steps 0-5: onboarding screens, 6: trial 1, 7: trial 2
+    private let totalSteps = 8
+    private let onboardingSteps = 6
 
     var body: some View {
         ZStack {
-            KashColors.green900.ignoresSafeArea()
+            theme.onboardingBg.ignoresSafeArea()
 
             VStack(spacing: 0) {
                 // Screen content
@@ -93,7 +75,7 @@ struct OnboardingFlowView: View {
                     }
 
                     if currentStep == 2 {
-                        OnboardingPersonalizationView()
+                        OnboardingCorrectionView()
                             .transition(.asymmetric(
                                 insertion: .move(edge: .trailing).combined(with: .opacity),
                                 removal: .move(edge: .leading).combined(with: .opacity)
@@ -101,7 +83,7 @@ struct OnboardingFlowView: View {
                     }
 
                     if currentStep == 3 {
-                        OnboardingCameraPermissionView()
+                        OnboardingBulkScanView()
                             .transition(.asymmetric(
                                 insertion: .move(edge: .trailing).combined(with: .opacity),
                                 removal: .move(edge: .leading).combined(with: .opacity)
@@ -109,11 +91,27 @@ struct OnboardingFlowView: View {
                     }
 
                     if currentStep == 4 {
+                        OnboardingExportImportView()
+                            .transition(.asymmetric(
+                                insertion: .move(edge: .trailing).combined(with: .opacity),
+                                removal: .move(edge: .leading).combined(with: .opacity)
+                            ))
+                    }
+
+                    if currentStep == 5 {
+                        OnboardingCameraPermissionView()
+                            .transition(.asymmetric(
+                                insertion: .move(edge: .trailing).combined(with: .opacity),
+                                removal: .move(edge: .leading).combined(with: .opacity)
+                            ))
+                    }
+
+                    if currentStep == 6 {
                         TrialScreen1View(
                             legalText: trialVM.legalText,
                             onContinue: {
                                 withAnimation(.easeInOut(duration: 0.4)) {
-                                    currentStep = 5
+                                    currentStep = 7
                                 }
                             },
                             onRestore: {
@@ -126,13 +124,13 @@ struct OnboardingFlowView: View {
                         ))
                     }
 
-                    if currentStep == 5 {
+                    if currentStep == 7 {
                         TrialScreen2View(
                             legalText: trialVM.legalText,
                             trialDays: trialVM.trialDaysText,
                             onBack: {
                                 withAnimation(.easeInOut(duration: 0.4)) {
-                                    currentStep = 4
+                                    currentStep = 6
                                 }
                             },
                             onOpenPaywall: {
@@ -153,14 +151,14 @@ struct OnboardingFlowView: View {
                 }
                 .frame(maxHeight: .infinity)
 
-                // Bottom navigation — only show for onboarding steps 0-3
+                // Bottom navigation — only for onboarding steps 0-4
                 if currentStep < onboardingSteps {
                     VStack(spacing: 16) {
                         // Progress dots
                         HStack(spacing: 8) {
                             ForEach(0..<onboardingSteps, id: \.self) { index in
                                 Capsule()
-                                    .fill(index == currentStep ? KashColors.green400 : Color.white.opacity(0.2))
+                                    .fill(index == currentStep ? theme.dotActive : Color.white.opacity(0.2))
                                     .frame(width: index == currentStep ? 20 : 6, height: 6)
                                     .animation(.easeInOut(duration: 0.3), value: currentStep)
                             }
@@ -173,7 +171,7 @@ struct OnboardingFlowView: View {
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
                                 .frame(height: OnboardingConstants.buttonHeight)
-                                .background(KashColors.green500)
+                                .background(theme.accent)
                                 .clipShape(RoundedRectangle(cornerRadius: OnboardingConstants.buttonRadius))
                                 .overlay(
                                     LinearGradient(
@@ -212,15 +210,13 @@ struct OnboardingFlowView: View {
     private var primaryButtonLabel: String {
         switch currentStep {
         case 0: return "Get started"
-        case 1: return "Continue"
-        case 2: return "Continue"
-        case 3: return "Allow camera access"
+        case 5: return "Allow camera access"
         default: return "Continue"
         }
     }
 
     private var showsSkipButton: Bool {
-        currentStep == 1 || currentStep == 2
+        currentStep >= 1 && currentStep <= 4
     }
 
     private func handlePrimaryAction() {
@@ -228,14 +224,14 @@ struct OnboardingFlowView: View {
             withAnimation(.easeInOut(duration: 0.4)) {
                 currentStep += 1
             }
-        } else if currentStep == 3 {
+        } else if currentStep == 5 {
             requestCameraPermission()
         }
     }
 
     private func handleSkip() {
         withAnimation(.easeInOut(duration: 0.4)) {
-            currentStep = 4
+            currentStep = 5 // Skip to camera permission
         }
     }
 
@@ -252,9 +248,8 @@ struct OnboardingFlowView: View {
         AVCaptureDevice.requestAccess(for: .video) { granted in
             DispatchQueue.main.async {
                 isCameraAuthorized = granted
-                // Advance to trial screen 1
                 withAnimation(.easeInOut(duration: 0.4)) {
-                    currentStep = 4
+                    currentStep = 6
                 }
             }
         }
@@ -262,72 +257,8 @@ struct OnboardingFlowView: View {
 
     private func finishOnboardingAndShowPaywall() {
         DIContainer.shared.userRepository.setOnboardingIsFinished()
-        requestReview()
         router.navigateToRoot()
         appState.showPaywall()
-    }
-}
-
-// MARK: - Review Request View (kept for compatibility)
-
-struct ReviewRequestView: View {
-    @ObserveInjection var inject
-    @Environment(\.requestReview) var requestReview
-    var onContinue: () -> Void
-
-    var body: some View {
-        ZStack {
-            OnboardingConstants.backgroundColor.ignoresSafeArea()
-
-            VStack(spacing: OnboardingConstants.elementSpacing) {
-                Spacer()
-
-                Image(systemName: "star.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 100)
-                    .foregroundColor(OnboardingConstants.primaryColor)
-
-                Spacer()
-
-                VStack(alignment: .center, spacing: 16) {
-                    Text("Enjoying Kash?")
-                        .font(.system(size: OnboardingConstants.titleSize, weight: .bold))
-                        .foregroundColor(OnboardingConstants.textColor)
-
-                    Text("Your feedback helps us improve the app.")
-                        .font(.system(size: OnboardingConstants.bodySize))
-                        .foregroundColor(OnboardingConstants.secondaryTextColor)
-                        .multilineTextAlignment(.center)
-                }
-                .padding(.horizontal, OnboardingConstants.screenPadding)
-
-                Spacer()
-
-                Button(action: {
-                    requestReview()
-                    onContinue()
-                }) {
-                    Text("Rate Kash")
-                        .font(.system(size: OnboardingConstants.buttonTextSize, weight: .semibold))
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: OnboardingConstants.buttonHeight)
-                        .background(OnboardingConstants.primaryColor)
-                        .cornerRadius(OnboardingConstants.buttonRadius)
-                        .padding(.horizontal, OnboardingConstants.screenPadding)
-                }
-
-                Button(action: onContinue) {
-                    Text("Maybe Later")
-                        .font(.system(size: OnboardingConstants.bodySize))
-                        .foregroundColor(OnboardingConstants.secondaryTextColor)
-                        .padding()
-                }
-            }
-            .padding(.vertical, OnboardingConstants.screenPadding)
-        }
-        .enableInjection()
     }
 }
 

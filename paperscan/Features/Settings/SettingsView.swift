@@ -19,23 +19,32 @@ struct SettingsView: View {
         VStack {
             VStack(alignment: .leading, spacing: 16) {
                 List {
-                    ForEach(SettingsViewModel.SettingsSection.allCases, id: \.id) { section in
+                    ForEach(SettingsViewModel.SettingsSection.allCases) { section in
                         Section(section.name) {
-                            ForEach(section.items, id: \.id) { item in
-                                Button {
-                                    viewModel.handleItemTap(item)
-                                } label: {
-                                    HStack {
+                            ForEach(section.items) { item in
+                                if item == .importExport {
+                                    NavigationLink {
+                                        ImportExportView()
+                                    } label: {
                                         Label(item.name, systemImage: item.icon)
-                                        Spacer()
-                                        if item == .restorePurchase && viewModel.isLoadingRestoration {
-                                            ProgressView()
-                                        } else {
-                                            Image(systemName: "chevron.right")
+                                    }
+                                    .listRowBackground(Color.gray.opacity(0.08))
+                                } else {
+                                    Button {
+                                        viewModel.handleItemTap(item)
+                                    } label: {
+                                        HStack {
+                                            Label(item.name, systemImage: item.icon)
+                                            Spacer()
+                                            if item == .restorePurchase && viewModel.isLoadingRestoration {
+                                                ProgressView()
+                                            } else {
+                                                Image(systemName: "chevron.right")
+                                            }
                                         }
                                     }
+                                    .listRowBackground(Color.gray.opacity(0.08))
                                 }
-                                .listRowBackground(Color.gray.opacity(0.08))
                             }
                         }
                     }
@@ -54,7 +63,7 @@ struct SettingsView: View {
             .font(.defaultText.regular)
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
-            .tint(Asset.Colors.appPrimary.swiftUIColor)
+            .tint(theme.accent)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -62,7 +71,7 @@ struct SettingsView: View {
                     } label: {
                         Image(systemName: "xmark")
                     }
-                    .tint(Asset.Colors.appPrimary.swiftUIColor)
+                    .tint(theme.accent)
                 }
             }
         }

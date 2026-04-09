@@ -32,7 +32,7 @@ struct Badge: View {
                     .fill(backgroundColor)
                     .background(
                         Capsule()
-                            .stroke(style == .outline ? Asset.Colors.appPrimary.swiftUIColor : .clear, style: .init())
+                            .stroke(style == .outline ? theme.accent : .clear, style: .init())
                     )
             )
         .enableInjection()
@@ -40,7 +40,7 @@ struct Badge: View {
 
     var backgroundColor: Color {
         switch style {
-        case .primary: return Asset.Colors.appPrimary.swiftUIColor
+        case .primary: return theme.accent
         case .secondary: return .secondary
         case .outline: return .clear
         case .destructive: return .red
@@ -51,7 +51,7 @@ struct Badge: View {
         switch style {
         case .primary: return .white
         case .secondary: return .white
-        case .outline: return Asset.Colors.appPrimary.swiftUIColor
+        case .outline: return theme.accent
         case .destructive: return .white
         }
     }

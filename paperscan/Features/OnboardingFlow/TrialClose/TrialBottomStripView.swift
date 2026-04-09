@@ -27,7 +27,7 @@ struct TrialBottomStripView: View {
                     Text("NO PAYMENT DUE NOW")
                         .font(.system(size: 12, weight: .semibold))
                         .kerning(0.22)
-                        .foregroundColor(KashColors.green100)
+                        .foregroundColor(theme.accentMuted)
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 6)
@@ -38,10 +38,10 @@ struct TrialBottomStripView: View {
                 Button(action: action) {
                     Text(ctaLabel)
                         .font(.system(size: 17, weight: .bold))
-                        .foregroundColor(KashColors.green900)
+                        .foregroundColor(theme.onboardingBg)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 17)
-                        .background(KashColors.green400)
+                        .background(theme.ctaFill)
                         .clipShape(RoundedRectangle(cornerRadius: 14))
                 }
                 .buttonStyle(ScaleButtonStyle())
@@ -56,7 +56,7 @@ struct TrialBottomStripView: View {
             .padding(.top, 12)
             .padding(.bottom, 20)
         }
-        .background(KashColors.green900)
+        .background(theme.onboardingBg)
         .enableInjection()
     }
 }
@@ -80,5 +80,5 @@ struct ScaleButtonStyle: ButtonStyle {
             action: {}
         )
     }
-    .background(KashColors.green900)
+    .background(theme.onboardingBg)
 }

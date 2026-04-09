@@ -12,5 +12,10 @@ final class DIContainer {
         userDefaultsDatasource: userDefaultsDatasource
     )
 
+    // Services
+    lazy var cardIdentifierService: CardIdentifierServiceProtocol = CardIdentifierService(
+        baseURL: URL(string: Constants.cardIdentifierBaseURL)!
+    )
+
     private init() {}
 }

@@ -1,5 +1,6 @@
 @_exported import Inject
 import SwiftUI
+import SwiftData
 import RevenueCat
 import RevenueCatUI
 
@@ -36,46 +37,72 @@ struct RootView: View {
         )
     }
     
-    @State private var isCameraViewShown = true
-    
+    #if DEBUG
+    @State private var debugAPIStatus: String = ""
+    #endif
+
+
     var body: some View {
         NavigationStack(path: $router.navigationPath) {
             Group {
                 if !DIContainer.shared.userRepository.onboardingIsFinished() {
                     setupOnboardingView()
                 } else {
-                    TabView(selection: $selectedPage) {
-                        ForEach(Array(router.tabViewRoutes.enumerated()), id: \.element) { index, route in
-                            ScrollView {
-                                getDestinationView(destination: route)
-                            }
-                            .tag(index)
+                    ZStack(alignment: .bottomTrailing) {
+                        TabView(selection: $selectedPage) {
+                            HomeView()
+                                .tabItem { Label("Home", systemImage: "house") }
+                                .tag(0)
+
+                            WatchlistView()
+                                .tabItem { Label("Watchlist", systemImage: "eye") }
+                                .tag(1)
+
+                            CollectionsGridView()
+                                .tabItem { Label("Collections", systemImage: "square.stack") }
+                                .tag(2)
                         }
+
+                        // Floating scan button
+                        Button {
+                            if appState.isProUser {
+                                router.presentFullscreenCover(.scanner)
+                            } else {
+                                appState.showPaywall()
+                            }
+                        } label: {
+                            Image(systemName: "camera.viewfinder")
+                                .font(.title2.weight(.semibold))
+                                .foregroundStyle(.white)
+                                .frame(width: 56, height: 56)
+                                .background(theme.accent)
+                                .clipShape(Circle())
+                                .shadow(color: theme.accent.opacity(0.4), radius: 8, y: 4)
+                        }
+                        .padding(.trailing, 20)
+                        .padding(.bottom, 70)
                     }
-                    .navigationTitle(router.tabViewRoutes[selectedPage].title)
-                    .navigationBarTitleDisplayMode(.automatic)
+                    .navigationTitle(tabTitle)
+                    .navigationBarTitleDisplayMode(.large)
                     .onAppear {
-                        UITabBar.appearance().isHidden = true
                         showPaywallCrown = !appState.isProUser
                     }
-                    
-                    HighlightTabBar(selectedPage: $selectedPage)
                 }
             }
             .navigationDestination(for: Router.Route.self) { route in
                 getDestinationView(destination: route)
             }
             .sheet(item: $router.presentedSheet) { route in
-                getDestinationView(destination: route)
+                NavigationStack {
+                    getDestinationView(destination: route)
+                }
             }
             .toolbar {
                 if DIContainer.shared.userRepository.onboardingIsFinished() {
                     if showPaywallCrown {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button {
-                                if !appState.isProUser {
-                                    appState.showPaywall()
-                                }
+                                if !appState.isProUser { appState.showPaywall() }
                             } label: {
                                 Image(systemName: "crown")
                             }
@@ -138,6 +165,16 @@ struct RootView: View {
         .enableInjection()
     }
 
+
+    private var tabTitle: String {
+        switch selectedPage {
+        case 0: return "Home"
+        case 1: return "Watchlist"
+        case 2: return "Collections"
+        default: return ""
+        }
+    }
+
     @ViewBuilder
     func setupOnboardingView () -> some View {
         /* OnboardingView(onEvent: { event in
@@ -172,16 +209,80 @@ struct RootView: View {
             DetectionView(images: images)
         case .settings:
             setupSettingsView()
+        case .scanner:
+            ScannerView()
+        case .collection:
+            CollectionView()
+        case .cardDetail(let card):
+            CardDetailView(card: card)
+        case .collectionDetail(let collection):
+            CollectionDetailView(collection: collection)
+        case .search:
+            SearchView()
+        case .watchlist:
+            WatchlistView()
         default:
             Text("Screen Not Found")
         }
     }
 }
 
+// MARK: - Debug API Validation
+
+#if DEBUG
+extension RootView {
+    func debugTestCardIdentifier() async {
+        let service = DIContainer.shared.cardIdentifierService
+        print("🔵 [DEBUG] Starting card identifier API test...")
+
+        // Use a tiny 1x1 white PNG as test payload
+        let testImageData = Data(base64Encoded: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==")!
+
+        do {
+            let submitResponse = try await service.submitJob(imageData: testImageData)
+            print("🟢 [DEBUG] Job submitted — jobId: \(submitResponse.jobId), status: \(submitResponse.status)")
+
+            // Poll until complete or failed
+            var attempts = 0
+            let maxAttempts = 30
+            while attempts < maxAttempts {
+                try await Task.sleep(for: .seconds(2))
+                attempts += 1
+
+                let statusResponse = try await service.checkStatus(jobId: submitResponse.jobId)
+                let scanStatus = ScanStatus(apiStatus: statusResponse.status)
+                print("🔵 [DEBUG] Poll \(attempts) — API status: \(statusResponse.status), mapped: \(scanStatus)")
+
+                switch scanStatus {
+                case .complete:
+                    if let result = statusResponse.result {
+                        print("🟢 [DEBUG] Card identified!")
+                        print("  Name: \(result.cardData?.product.name ?? "nil")")
+                        print("  Platform: \(result.cardData?.product.platform ?? "nil")")
+                        print("  Market price: \(result.cardData?.pricing?.marketPrice.map { String($0) } ?? "nil")")
+                        print("  Confidence: \(result.metadata?.confidence ?? 0)")
+                        print("  Game: \(result.metadata?.game ?? "nil")")
+                    }
+                    return
+                case .failed:
+                    print("🔴 [DEBUG] Job failed: \(statusResponse.error ?? "unknown")")
+                    return
+                case .pending, .processing:
+                    continue
+                }
+            }
+            print("🟡 [DEBUG] Timed out after \(maxAttempts) polls")
+        } catch {
+            print("🔴 [DEBUG] Error: \(error)")
+        }
+    }
+}
+#endif
+
 #Preview {
     var appState = AppState()
     
     RootView()
         .environment(appState)
-        .tint(.appPrimary)
+        .tint(theme.accent)
 }

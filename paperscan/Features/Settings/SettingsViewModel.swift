@@ -70,6 +70,8 @@ class SettingsViewModel {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
+        case .importExport:
+            break // Handled via NavigationLink in SettingsView
         case .signOut:
             onEvent(.logout)
         case .deleteAccount:
@@ -115,49 +117,46 @@ class SettingsViewModel {
         return "Version \(appVersion ?? "") (\(buildNumber ?? ""))"
     }
     
-    enum SettingsSection: CaseIterable {
+    enum SettingsSection: String, CaseIterable, Identifiable {
         case personal
         case membership
+        case data
         case help
-        // case signOut
-        
-        var id: UUID {
-            UUID()
-        }
-        
+
+        var id: String { rawValue }
+
         var name: String {
             switch self {
             case .personal: return "Personal settings"
             case .membership: return "Membership"
+            case .data: return "Data"
             case .help: return "Help"
-            // case .signOut: return ""
             }
         }
-        
+
         var items: [SettingsItem] {
             switch self {
             case .personal: return [.manageSubscriptions]
             case .membership: return [.restorePurchase]
+            case .data: return [.importExport]
             case .help: return [.reportBug, .messageUs, .writeReview]
-            // case .signOut: return [.deleteAccount, .signOut]
             }
         }
     }
     
-    enum SettingsItem: CaseIterable {
+    enum SettingsItem: String, CaseIterable, Identifiable {
         case manageSubscriptions
         case restorePurchase
         case aboutAuthor
         case reportBug
         case messageUs
         case writeReview
+        case importExport
         case signOut
         case deleteAccount
-        
-        var id: UUID {
-            UUID()
-        }
-        
+
+        var id: String { rawValue }
+
         var name: String {
             switch self {
             case .manageSubscriptions: return "Manage Subscriptions"
@@ -166,11 +165,12 @@ class SettingsViewModel {
             case .reportBug: return "Report a Bug"
             case .messageUs: return "Send Us a Message"
             case .writeReview: return "Write a Review"
+            case .importExport: return "Import & Export"
             case .deleteAccount: return "Delete account"
             case .signOut: return "Sign Out"
             }
         }
-        
+
         var icon: String {
             switch self {
             case .manageSubscriptions: return "person.circle"
@@ -179,6 +179,7 @@ class SettingsViewModel {
             case .reportBug: return "ladybug"
             case .messageUs: return "envelope"
             case .writeReview: return "star"
+            case .importExport: return "arrow.up.arrow.down"
             case .deleteAccount: return "trash"
             case .signOut: return "door.left.hand.open"
             }

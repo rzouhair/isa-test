@@ -48,7 +48,7 @@ struct Card<Content: View>: View {
                 HStack {
                     if let icon {
                         Image(systemName: icon)
-                            .foregroundStyle(Asset.Colors.appPrimary.swiftUIColor)
+                            .foregroundStyle(theme.accent)
                     }
                     Text(title)
                     Spacer()
@@ -117,7 +117,7 @@ struct Card<Content: View>: View {
                 HStack(alignment: .firstTextBaseline) {
                     Image(systemName: "circle.fill")
                         .font(.system(size: 8))
-                        .foregroundStyle(Asset.Colors.appPrimary.swiftUIColor)
+                        .foregroundStyle(theme.accent)
                     VStack(alignment: .leading) {
                         Text("Your payment was successfull!")
                         Text("32 minutes ago")
@@ -128,7 +128,7 @@ struct Card<Content: View>: View {
                 HStack(alignment: .firstTextBaseline) {
                     Image(systemName: "circle.fill")
                         .font(.system(size: 8))
-                        .foregroundStyle(Asset.Colors.appPrimary.swiftUIColor)
+                        .foregroundStyle(theme.accent)
                     VStack(alignment: .leading) {
                         Text("You have received a new message.")
                         Text("1 hour ago")
@@ -139,7 +139,7 @@ struct Card<Content: View>: View {
                 HStack(alignment: .firstTextBaseline) {
                     Image(systemName: "circle.fill")
                         .font(.system(size: 8))
-                        .foregroundStyle(Asset.Colors.appPrimary.swiftUIColor)
+                        .foregroundStyle(theme.accent)
                     VStack(alignment: .leading) {
                         Text("Your account was created!")
                         Text("2 days ago")

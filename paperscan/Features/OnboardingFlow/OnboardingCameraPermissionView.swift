@@ -19,22 +19,22 @@ struct OnboardingCameraPermissionView: View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 0) {
                 // Header
-                Text("ONE LAST THING")
+                Text("ALMOST THERE")
                     .font(.system(size: 12, weight: .bold))
-                    .foregroundColor(KashColors.green300)
+                    .foregroundColor(theme.accentBright)
                     .tracking(2)
                     .padding(.bottom, 12)
 
-                (Text("Allow ")
+                (Text("Ready to Scan\nYour First ")
                     .font(.system(size: 34))
                     .foregroundColor(.white)
-                + Text("camera access")
+                + Text("Card?")
                     .font(.system(size: 34, weight: .regular, design: .serif))
                     .italic()
-                    .foregroundColor(KashColors.green300))
+                    .foregroundColor(theme.accentBright))
                 .padding(.bottom, 8)
 
-                Text("Kash needs your camera to scan and identify banknotes. Nothing is stored without your approval.")
+                Text("PaperScan needs your camera to scan and identify cards. Nothing is stored without your approval.")
                     .font(.system(size: 16, weight: .light))
                     .foregroundColor(.white.opacity(0.55))
                     .lineSpacing(4)
@@ -48,7 +48,7 @@ struct OnboardingCameraPermissionView: View {
                 infoCard(
                     icon: "🔒",
                     title: "Your privacy",
-                    body: "Photos are processed on-device whenever possible. We never access your camera roll automatically."
+                    body: "Your collection is saved on your device. We never access your camera roll automatically."
                 )
                 .padding(.bottom, 16)
 
@@ -56,7 +56,7 @@ struct OnboardingCameraPermissionView: View {
                 infoCard(
                     icon: "📖",
                     title: "What the camera sees",
-                    body: "Only the frame you point at a banknote. No background photos, no location, no contacts."
+                    body: "Only the frame you point at a card. No background photos, no location, no contacts."
                 )
             }
             .padding(.horizontal, 28)
@@ -77,7 +77,7 @@ struct OnboardingCameraPermissionView: View {
         ZStack {
             // Dark camera background
             LinearGradient(
-                colors: [Color(hex: "#1a2a1e"), Color(hex: "#0a1510")],
+                colors: [theme.onboardingCardBg, theme.onboardingBg],
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
@@ -96,7 +96,7 @@ struct OnboardingCameraPermissionView: View {
                             Rectangle()
                                 .fill(
                                     LinearGradient(
-                                        colors: [.clear, KashColors.green300, KashColors.goldLight, KashColors.green300, .clear],
+                                        colors: [.clear, theme.accentBright, theme.accentWarmLight, theme.accentBright, .clear],
                                         startPoint: .leading,
                                         endPoint: .trailing
                                     )
@@ -111,14 +111,14 @@ struct OnboardingCameraPermissionView: View {
                         }
                         .padding(3)
 
-                        // Ghost banknote
+                        // Ghost card
                         RoundedRectangle(cornerRadius: 7)
                             .fill(Color.white.opacity(0.06))
                             .overlay(
                                 RoundedRectangle(cornerRadius: 7)
                                     .strokeBorder(Color.white.opacity(0.12), lineWidth: 1)
                             )
-                            .frame(width: 140, height: 70)
+                            .frame(width: 60, height: 84)
                     }
                     .frame(width: 180, height: 100)
                     Spacer()
@@ -148,7 +148,7 @@ struct OnboardingCameraPermissionView: View {
                 path.addQuadCurve(to: CGPoint(x: lineWidth, y: 0), control: CGPoint(x: 0, y: 0))
                 path.addLine(to: CGPoint(x: w, y: 0))
             }
-            .stroke(KashColors.green300, lineWidth: lineWidth)
+            .stroke(theme.accentBright, lineWidth: lineWidth)
 
             // Top-right
             Path { path in
@@ -157,7 +157,7 @@ struct OnboardingCameraPermissionView: View {
                 path.addQuadCurve(to: CGPoint(x: geo.size.width, y: lineWidth), control: CGPoint(x: geo.size.width, y: 0))
                 path.addLine(to: CGPoint(x: geo.size.width, y: h))
             }
-            .stroke(KashColors.green300, lineWidth: lineWidth)
+            .stroke(theme.accentBright, lineWidth: lineWidth)
 
             // Bottom-left
             Path { path in
@@ -166,7 +166,7 @@ struct OnboardingCameraPermissionView: View {
                 path.addQuadCurve(to: CGPoint(x: lineWidth, y: geo.size.height), control: CGPoint(x: 0, y: geo.size.height))
                 path.addLine(to: CGPoint(x: w, y: geo.size.height))
             }
-            .stroke(KashColors.green300, lineWidth: lineWidth)
+            .stroke(theme.accentBright, lineWidth: lineWidth)
 
             // Bottom-right
             Path { path in
@@ -175,7 +175,7 @@ struct OnboardingCameraPermissionView: View {
                 path.addQuadCurve(to: CGPoint(x: geo.size.width - lineWidth, y: geo.size.height), control: CGPoint(x: geo.size.width, y: geo.size.height))
                 path.addLine(to: CGPoint(x: geo.size.width - w, y: geo.size.height))
             }
-            .stroke(KashColors.green300, lineWidth: lineWidth)
+            .stroke(theme.accentBright, lineWidth: lineWidth)
         }
     }
 
@@ -210,7 +210,7 @@ struct OnboardingCameraPermissionView: View {
 
 #Preview {
     ZStack {
-        KashColors.green900.ignoresSafeArea()
+        theme.onboardingBg.ignoresSafeArea()
         OnboardingCameraPermissionView()
     }
 }

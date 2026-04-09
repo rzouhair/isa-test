@@ -33,7 +33,7 @@ struct PaywallYearlyView: View {
 
     @State private var selectedProductId: String = ""
     
-    let color: Color = Color.appPrimary
+    let color: Color = theme.accent
     
     private let allowCloseAfter: CGFloat = 5.0 //time in seconds until close is allows
     
@@ -476,6 +476,6 @@ struct PaywallYearlyView: View {
 
 #Preview {
     PaywallYearlyView(isPresented: .constant(true))
-        .tint(.appPrimary)
+        .tint(theme.accent)
         .environment(AppState())
 }

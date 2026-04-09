@@ -201,7 +201,7 @@ struct OnboardingCameraView: View {
                                 .padding(25)
                                 .background(
                                     Circle()
-                                        .fill(Color.appPrimary.gradient)
+                                        .fill(theme.accent.gradient)
                                 )
                                 .foregroundColor(.white)
                                 .clipShape(Circle())

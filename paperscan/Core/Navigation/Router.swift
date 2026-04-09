@@ -9,10 +9,18 @@ import UIKit
         case home
         case camera
         case detection(images: [UIImage])
+        case scanner
+        case collection
+        case cardDetail(CardRecord)
+        case collectionDetail(CardCollection)
+        case search
+        case watchlist
 
         var id: String {
             switch self {
             case .detection: return "detection"
+            case .cardDetail(let card): return "cardDetail-\(card.id)"
+            case .collectionDetail(let col): return "collectionDetail-\(col.id)"
             default: return String(describing: self)
             }
         }
@@ -33,6 +41,12 @@ import UIKit
             case .home: return "Home"
             case .camera: return "Camera"
             case .detection: return "Detection"
+            case .scanner: return "Scanner"
+            case .collection: return "Collection"
+            case .cardDetail: return "Card Detail"
+            case .collectionDetail: return "Collection"
+            case .search: return "Search"
+            case .watchlist: return "Watchlist"
             }
         }
 
@@ -44,6 +58,12 @@ import UIKit
             case .home: return "house"
             case .camera: return "camera.fill"
             case .detection: return "magnifyingglass"
+            case .scanner: return "camera.viewfinder"
+            case .collection: return "square.stack"
+            case .cardDetail: return "creditcard"
+            case .collectionDetail: return "square.stack"
+            case .search: return "magnifyingglass"
+            case .watchlist: return "eye"
             }
         }
     }

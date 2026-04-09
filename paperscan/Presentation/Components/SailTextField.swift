@@ -48,14 +48,14 @@ struct SailTextField: View {
             HStack(spacing: 16) {
                 if let leftIcon {
                     Image(systemName: leftIcon)
-                        .foregroundStyle(disabled ? .gray : Asset.Colors.appPrimary.swiftUIColor)
+                        .foregroundStyle(disabled ? .gray : theme.accent)
                 }
                 TextField(placeholder, text: $text)
                     .focused($isFocused)
                     .disabled(disabled)
                 if let rightIcon {
                     Image(systemName: rightIcon)
-                        .foregroundStyle(disabled ? .gray : Asset.Colors.appPrimary.swiftUIColor)
+                        .foregroundStyle(disabled ? .gray : theme.accent)
                 }
             }
             .frame(height: 48)

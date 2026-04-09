@@ -56,7 +56,7 @@ struct TrialScreen2View: View {
                     .clipShape(Circle())
                     .overlay(
                         Circle()
-                            .stroke(KashColors.green900, lineWidth: 2)
+                            .stroke(theme.onboardingBg, lineWidth: 2)
                     )
                     .shadow(color: Color.red.opacity(0.3), radius: 4, y: 0)
                     .offset(x: 4, y: -4)
@@ -95,7 +95,7 @@ struct TrialScreen2View: View {
                 }
             )
         }
-        .background(KashColors.green900)
+        .background(theme.onboardingBg)
         .onAppear {
             // Analytics: trial_close_screen_2_viewed
         }

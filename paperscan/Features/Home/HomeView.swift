@@ -1,67 +1,139 @@
 import SwiftUI
+import SwiftData
 import Inject
 
 struct HomeView: View {
     @ObserveInjection var inject
-    @Environment(Router.self) private var router: Router
-    @Environment(AppState.self) private var appState: AppState
-    @State private var viewModel: HomeViewModel?
+    @Environment(Router.self) private var router
+    @Environment(AppState.self) private var appState
+    @Query(sort: \CardRecord.addedAt, order: .reverse) private var allCards: [CardRecord]
+
+    private var recentCards: [CardRecord] { Array(allCards.prefix(10)) }
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 32) {
-                // Scan CTA Button
-                Button {
-                    viewModel?.openCamera()
-                } label: {
-                    HStack {
-                        Image(systemName: "camera.fill")
-                            .font(.title2)
-                        Text("Start Scanning")
-                            .font(.title3.weight(.semibold))
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 20)
-                    .background(Color.appPrimary.gradient)
-                    .foregroundColor(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                }
-                .padding(.horizontal)
-
-                VStack {
-                    Spacer()
-
-                    ContentUnavailableView {
-                        Label("Ready to scan", systemImage: "camera.viewfinder")
-                    } description: {
-                        Text("Tap the button above or use the camera to get started")
-                    }
-
-                    Spacer()
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            VStack(spacing: 20) {
+                heroBanner
+                recentSection
             }
-            .padding(.vertical)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(.vertical, 8)
         }
-        .background(Color(.systemBackground))
-        .navigationBarTitleDisplayMode(.automatic)
-        .onAppear {
-            if viewModel == nil {
-                viewModel = HomeViewModel(router: router, appState: appState)
-            }
-        }
+        .background(Color(.systemGroupedBackground))
         .enableInjection()
     }
-}
 
-#Preview {
-    let router = Router()
-    let appState = AppState()
+    // MARK: - Hero
 
-    return NavigationStack {
-        HomeView()
-            .environment(router)
-            .environment(appState)
+    private var heroBanner: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "camera.viewfinder")
+                .font(.system(size: 44))
+                .foregroundStyle(.white.opacity(0.8))
+
+            Text("Identify Your\nCards Instantly")
+                .font(.title2.weight(.bold))
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [.white, .white.opacity(0.7)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                .multilineTextAlignment(.center)
+
+            Button {
+                if appState.isProUser {
+                    router.presentFullscreenCover(.scanner)
+                } else {
+                    appState.showPaywall()
+                }
+            } label: {
+                Text("Scan Now")
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(theme.accent)
+                    .padding(.horizontal, 28)
+                    .padding(.vertical, 10)
+                    .background(.white)
+                    .clipShape(Capsule())
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 28)
+        .background(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(theme.summaryGradientDiagonal)
+        )
+        .padding(.horizontal, 16)
+    }
+
+    // MARK: - Recent
+
+    private var recentSection: some View {
+        VStack(spacing: 0) {
+            HStack {
+                Text("Recent Cards")
+                    .font(.headline)
+                Spacer()
+                if !allCards.isEmpty {
+                    Button {
+                        router.navigate(to: .collection)
+                    } label: {
+                        Text("See All")
+                            .font(.subheadline.weight(.medium))
+                            .foregroundStyle(theme.accent)
+                    }
+                }
+            }
+            .padding(.horizontal, 16)
+            .padding(.bottom, 8)
+
+            if recentCards.isEmpty {
+                VStack(spacing: 8) {
+                    Image(systemName: "square.stack")
+                        .font(.system(.title))
+                        .foregroundStyle(.tertiary)
+                    Text("No cards yet")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                    Text("Scan your first card to get started")
+                        .font(.caption)
+                        .foregroundStyle(.tertiary)
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 32)
+            } else {
+                LazyVStack(spacing: 0) {
+                    ForEach(recentCards) { card in
+                        Button { router.navigate(to: .cardDetail(card)) } label: {
+                            CollectionCardRow(card: card)
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 6)
+                        }
+                        .buttonStyle(.plain)
+                        if card.id != recentCards.last?.id {
+                            Divider().padding(.leading, 78)
+                        }
+                    }
+                }
+                .background(Color(.secondarySystemGroupedBackground))
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                .padding(.horizontal, 16)
+
+                if !allCards.isEmpty {
+                    Button {
+                        router.navigate(to: .collection)
+                    } label: {
+                        Text("View All \(allCards.count) Cards")
+                            .font(.subheadline.weight(.medium))
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .background(Color(.secondarySystemGroupedBackground))
+                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.top, 8)
+                }
+            }
+        }
     }
 }

@@ -28,6 +28,7 @@ class Constants {
     static let mixpanel = "c05ffe94852ccb674634dbde5ba28118" /// IMPORTANT: Change this API key to your MixPanel key...
     
     static let proxyLambdaURL = "https://edvrtovrdvcx3ghayyvy3sooe40qrlob.lambda-url.us-east-1.on.aws"
+    static let cardIdentifierBaseURL = "http://192.168.100.98:8000"
 
     static let appStoreId = "6479833602" /// IMPORTANT: set this to your App Store ID
 }

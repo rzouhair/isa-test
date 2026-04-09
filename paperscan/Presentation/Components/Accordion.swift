@@ -28,7 +28,7 @@ struct Accordion: View {
         }
         .padding(16)
         .font(.defaultText.regular)
-        .tint(Asset.Colors.appPrimary.swiftUIColor)
+        .tint(theme.accent)
         .enableInjection()
     }
 }

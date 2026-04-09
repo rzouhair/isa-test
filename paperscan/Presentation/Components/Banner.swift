@@ -62,7 +62,7 @@ struct Banner: View {
 
     var strokeColor: Color {
         switch style {
-        case .info: return Asset.Colors.appPrimary.swiftUIColor
+        case .info: return theme.accent
         case .error: return .red
         case .success: return .green
         }

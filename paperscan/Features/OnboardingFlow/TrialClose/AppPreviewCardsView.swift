@@ -17,43 +17,43 @@ struct AppPreviewCardsView: View {
                 .frame(width: 200, height: 260)
                 .rotationEffect(.degrees(6))
                 .offset(x: 60, y: 20)
-                .shadow(color: Color.black.opacity(0.12), radius: 16, y: 8)
+                .shadow(color: Color.black.opacity(0.25), radius: 16, y: 8)
 
             // Front card - Scanner UI
             frontCard
                 .frame(width: 190, height: 280)
                 .rotationEffect(.degrees(-4))
                 .offset(x: -40, y: 16)
-                .shadow(color: Color.black.opacity(0.14), radius: 16, y: 8)
+                .shadow(color: Color.black.opacity(0.3), radius: 16, y: 8)
         }
         .enableInjection()
     }
 
-    // MARK: - Back Card (Scan Result)
+    // MARK: - Back Card (Scan Result — dark themed)
 
     private var backCard: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Scan result")
                 .font(.system(size: 10, weight: .medium))
-                .foregroundColor(Color(hex: "1E4A2C").opacity(0.6))
+                .foregroundColor(theme.accentBright.opacity(0.6))
                 .padding(.bottom, 2)
 
-            Text("$2 United States")
+            Text("Charizard EX")
                 .font(.system(size: 13, weight: .semibold))
-                .foregroundColor(Color(hex: "1A1A14"))
+                .foregroundColor(.white)
 
-            Text("Thomas Jefferson")
+            Text("Scarlet & Violet · 006/198")
                 .font(.system(size: 11))
-                .foregroundColor(Color(hex: "5A5548"))
+                .foregroundColor(.white.opacity(0.5))
 
             HStack(spacing: 4) {
                 Text("Market value")
                     .font(.system(size: 10))
-                    .foregroundColor(Color(hex: "9A9080"))
+                    .foregroundColor(.white.opacity(0.4))
                 Spacer()
-                Text("$261")
+                Text("$328.50")
                     .font(.system(size: 16, weight: .bold))
-                    .foregroundColor(Color(hex: "C49A28"))
+                    .foregroundColor(theme.accentWarm)
             }
             .padding(.top, 4)
 
@@ -61,32 +61,32 @@ struct AppPreviewCardsView: View {
             GeometryReader { geo in
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 3)
-                        .fill(Color(hex: "EDE7DB"))
+                        .fill(Color.white.opacity(0.1))
                         .frame(height: 6)
 
                     RoundedRectangle(cornerRadius: 3)
                         .fill(
                             LinearGradient(
-                                colors: [Color(hex: "1E4A2C"), Color(hex: "C49A28")],
+                                colors: [theme.ctaFill, theme.accentWarm],
                                 startPoint: .leading,
                                 endPoint: .trailing
                             )
                         )
-                        .frame(width: geo.size.width * 0.72, height: 6)
+                        .frame(width: geo.size.width * 0.85, height: 6)
                 }
             }
             .frame(height: 6)
             .padding(.top, 4)
 
-            // Grade pills
+            // Rarity pills
             HStack(spacing: 6) {
-                ForEach(["XF", "VF", "F"], id: \.self) { grade in
-                    Text(grade)
+                ForEach(["Ultra Rare", "Holo"], id: \.self) { tag in
+                    Text(tag)
                         .font(.system(size: 9, weight: .medium))
-                        .foregroundColor(Color(hex: "1E4A2C"))
+                        .foregroundColor(theme.accentBright)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 3)
-                        .background(Color(hex: "1E4A2C").opacity(0.1))
+                        .background(theme.accentBright.opacity(0.12))
                         .clipShape(Capsule())
                 }
             }
@@ -95,21 +95,34 @@ struct AppPreviewCardsView: View {
             Spacer()
         }
         .padding(16)
-        .background(Color(hex: "D0E8D8"))
+        .background(theme.onboardingCardBg)
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .strokeBorder(Color.white.opacity(0.08), lineWidth: 1)
+        )
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 
-    // MARK: - Front Card (Scanner UI)
+    // MARK: - Front Card (Scanner UI — TCG card style)
 
     private var frontCard: some View {
         VStack(alignment: .leading, spacing: 8) {
-            // Viewfinder area
+            // Viewfinder area — dark with card shape
             GeometryReader { geo in
                 ZStack {
-                    // Banknote placeholder
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(hex: "D0E8D8").opacity(0.5))
-                        .frame(width: geo.size.width * 0.7, height: geo.size.height * 0.5)
+                    // TCG card placeholder (portrait)
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(Color.white.opacity(0.06))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 6)
+                                .strokeBorder(theme.accentBright.opacity(0.2), lineWidth: 1)
+                        )
+                        .frame(width: geo.size.width * 0.4, height: geo.size.height * 0.7)
+
+                    // Card art hint
+                    Image(systemName: "sparkle")
+                        .font(.system(size: 16))
+                        .foregroundColor(theme.accentBright.opacity(0.3))
 
                     // Scan line
                     Rectangle()
@@ -117,9 +130,9 @@ struct AppPreviewCardsView: View {
                             LinearGradient(
                                 colors: [
                                     .clear,
-                                    Color(hex: "3A8855"),
-                                    Color(hex: "F0D880"),
-                                    Color(hex: "3A8855"),
+                                    theme.accentBright,
+                                    theme.accentWarmLight,
+                                    theme.accentBright,
                                     .clear
                                 ],
                                 startPoint: .leading,
@@ -140,7 +153,7 @@ struct AppPreviewCardsView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .frame(height: 130)
-            .background(Color(hex: "EDE7DB"))
+            .background(theme.onboardingBg)
             .clipShape(RoundedRectangle(cornerRadius: 12))
 
             // Value row
@@ -148,34 +161,34 @@ struct AppPreviewCardsView: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Identified")
                         .font(.system(size: 9))
-                        .foregroundColor(Color(hex: "9A9080"))
-                    Text("$2 Note")
+                        .foregroundColor(.white.opacity(0.4))
+                    Text("Charizard EX")
                         .font(.system(size: 12, weight: .semibold))
-                        .foregroundColor(Color(hex: "1A1A14"))
+                        .foregroundColor(.white)
                 }
                 Spacer()
-                Text("$261")
+                Text("$328.50")
                     .font(.system(size: 14, weight: .bold))
-                    .foregroundColor(Color(hex: "C49A28"))
+                    .foregroundColor(theme.accentWarm)
             }
 
             // Rarity bar
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 3)
-                    .fill(Color(hex: "EDE7DB"))
+                    .fill(Color.white.opacity(0.1))
                     .frame(height: 5)
 
                 RoundedRectangle(cornerRadius: 3)
-                    .fill(Color(hex: "1E4A2C"))
+                    .fill(theme.accent)
                     .frame(width: 90, height: 5)
             }
 
             // Icon row
             HStack(spacing: 12) {
-                ForEach(["doc.text.magnifyingglass", "chart.bar", "star"], id: \.self) { icon in
+                ForEach(["doc.text.magnifyingglass", "chart.line.uptrend.xyaxis", "tag"], id: \.self) { icon in
                     Image(systemName: icon)
                         .font(.system(size: 11))
-                        .foregroundColor(Color(hex: "9A9080"))
+                        .foregroundColor(.white.opacity(0.4))
                 }
                 Spacer()
             }
@@ -183,7 +196,11 @@ struct AppPreviewCardsView: View {
             Spacer()
         }
         .padding(14)
-        .background(Color.white)
+        .background(theme.onboardingCardBg)
+        .overlay(
+            RoundedRectangle(cornerRadius: 20)
+                .strokeBorder(Color.white.opacity(0.08), lineWidth: 1)
+        )
         .clipShape(RoundedRectangle(cornerRadius: 20))
     }
 }
@@ -192,5 +209,5 @@ struct AppPreviewCardsView: View {
     AppPreviewCardsView()
         .frame(height: 340)
         .padding()
-        .background(Color(hex: "F5F0E8"))
+        .background(theme.onboardingBg)
 }

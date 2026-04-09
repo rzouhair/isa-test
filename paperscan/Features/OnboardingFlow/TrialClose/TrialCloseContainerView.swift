@@ -18,7 +18,7 @@ struct TrialCloseContainerView: View {
 
     var body: some View {
         ZStack {
-            KashColors.green900.ignoresSafeArea()
+            theme.onboardingBg.ignoresSafeArea()
 
             ZStack {
                 if step == 0 {
