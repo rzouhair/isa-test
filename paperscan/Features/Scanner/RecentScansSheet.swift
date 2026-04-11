@@ -6,6 +6,7 @@ struct RecentScansSheet: View {
     @ObserveInjection var inject
     @Environment(\.modelContext) private var modelContext
     @Environment(Router.self) private var router
+    @Environment(AppState.self) private var appState
     let scanStore: ScanStore
 
     @State private var showClearConfirmation = false
@@ -103,7 +104,11 @@ struct RecentScansSheet: View {
                     .controlSize(.small)
 
                     Button {
+                        router.navigateToRoot()
                         router.dismissFullscreenCover()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                            appState.selectedTab = 2
+                        }
                     } label: {
                         Label("Collection", systemImage: "square.stack")
                             .font(.caption.weight(.medium))

@@ -10,8 +10,11 @@ struct CollectionsGridView: View {
 
     @State private var showCreate = false
     @State private var searchText = ""
+    @State private var cachedTotalValue: Double = 0
+    @State private var cachedDistinctSets: Int = 0
+    @State private var cachedCardCount: Int = 0
 
-    private var totalValue: Double { allCards.reduce(0) { $0 + $1.tcgplayerPrice } }
+    private var totalValue: Double { cachedTotalValue }
 
     private var filteredCollections: [CardCollection] {
         guard !searchText.isEmpty else { return collections }
@@ -34,6 +37,17 @@ struct CollectionsGridView: View {
         }
         .background(Color(.systemGroupedBackground))
         .searchable(text: $searchText, prompt: "Search collections")
+        .task(id: allCards.count) {
+            let cards = allCards
+            let (value, sets, count) = await Task.detached(priority: .userInitiated) {
+                let v = cards.reduce(0.0) { $0 + $1.tcgplayerPrice }
+                let s = Set(cards.map(\.setName)).subtracting([""]).count
+                return (v, s, cards.count)
+            }.value
+            cachedTotalValue = value
+            cachedDistinctSets = sets
+            cachedCardCount = count
+        }
         .sheet(isPresented: $showCreate) {
             NavigationStack {
                 CreateCollectionView { collection in
@@ -46,9 +60,7 @@ struct CollectionsGridView: View {
 
     // MARK: - All Cards Summary
 
-    private var distinctSets: Int {
-        Set(allCards.map(\.setName)).subtracting([""]).count
-    }
+    private var distinctSets: Int { cachedDistinctSets }
 
     private var allCardsSummary: some View {
         VStack(spacing: 0) {
@@ -84,7 +96,7 @@ struct CollectionsGridView: View {
             HStack(spacing: 0) {
                 summaryStatItem(icon: "square.stack", value: "\(collections.count)", label: "Collections")
                 Rectangle().fill(.white.opacity(0.15)).frame(width: 1, height: 36)
-                summaryStatItem(icon: "creditcard", value: "\(allCards.count)", label: "Cards")
+                summaryStatItem(icon: "creditcard", value: "\(cachedCardCount)", label: "Cards")
                 Rectangle().fill(.white.opacity(0.15)).frame(width: 1, height: 36)
                 summaryStatItem(icon: "globe", value: "\(distinctSets)", label: "Sets")
             }
@@ -141,13 +153,12 @@ struct CollectionsGridView: View {
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)
-        .frame(minHeight: 130)
+        .frame(minHeight: 120)
         .background(Color(.secondarySystemGroupedBackground))
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .strokeBorder(style: StrokeStyle(lineWidth: 1.5, dash: [6]))
-                .foregroundStyle(Color(.separator).opacity(0.6))
+                .strokeBorder(theme.accent.opacity(0.2), lineWidth: 1.5)
         )
     }
 }

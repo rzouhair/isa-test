@@ -46,11 +46,13 @@ struct AddToCollectionSheet: View {
                     }
                 }
 
-                Section {
-                    Button {
-                        showCreate = true
-                    } label: {
-                        Label("Create New Collection", systemImage: "plus.circle.fill")
+                if !collections.isEmpty {
+                    Section {
+                        Button {
+                            showCreate = true
+                        } label: {
+                            Label("Create New Collection", systemImage: "plus.circle.fill")
+                        }
                     }
                 }
             }

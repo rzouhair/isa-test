@@ -8,6 +8,7 @@ struct AppMain: App {
 
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
 
+    @Environment(\.scenePhase) private var scenePhase
     @State private var appState = AppState()
 
     let modelContainer: ModelContainer
@@ -25,6 +26,8 @@ struct AppMain: App {
         } catch {
             fatalError("Failed to create ModelContainer: \(error)")
         }
+
+        WatchlistPriceService.modelContainer = modelContainer
     }
 
     var body: some Scene {
@@ -33,6 +36,14 @@ struct AppMain: App {
                 .environment(appState)
                 .modelContainer(modelContainer)
                 .tint(theme.accent)
+                .task {
+                    await WatchlistPriceService.shared.checkOnAppOpen()
+                }
+                .onChange(of: scenePhase) { _, newPhase in
+                    if newPhase == .active {
+                        Task { await WatchlistPriceService.shared.checkOnAppOpen() }
+                    }
+                }
         }
     }
 }

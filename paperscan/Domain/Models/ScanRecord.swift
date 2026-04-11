@@ -67,6 +67,7 @@ final class ScanRecord {
     var candidatesCount: Int?
     var cardTypeDetected: String?
 
+    var cardRecordId: UUID?
     var addedToCollection: Bool = false
     var errorMessage: String?
     var createdAt: Date

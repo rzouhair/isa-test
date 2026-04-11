@@ -97,8 +97,11 @@ struct ScannerView: View {
             HStack {
                 // Close button
                 Button {
-                    router.dismissFullscreenCover()
-                    router.navigateToRoot()
+                    showSheet = false
+                    viewModel.teardown()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                        router.dismissFullscreenCover()
+                    }
                 } label: {
                     Image(systemName: "xmark")
                         .font(.system(size: 18, weight: .semibold))

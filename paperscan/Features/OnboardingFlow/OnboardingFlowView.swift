@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 import Inject
 import AVFoundation
 
@@ -47,9 +48,11 @@ struct OnboardingFlowView: View {
         }
     }
 
-    // Steps 0-5: onboarding screens, 6: trial 1, 7: trial 2
-    private let totalSteps = 8
-    private let onboardingSteps = 6
+    @Environment(\.requestReview) private var requestReview
+
+    // Steps 0-9: onboarding screens, 10: trial 1, 11: trial 2
+    private let totalSteps = 12
+    private let onboardingSteps = 10
 
     var body: some View {
         ZStack {
@@ -91,7 +94,7 @@ struct OnboardingFlowView: View {
                     }
 
                     if currentStep == 4 {
-                        OnboardingExportImportView()
+                        OnboardingPortfolioView()
                             .transition(.asymmetric(
                                 insertion: .move(edge: .trailing).combined(with: .opacity),
                                 removal: .move(edge: .leading).combined(with: .opacity)
@@ -99,7 +102,7 @@ struct OnboardingFlowView: View {
                     }
 
                     if currentStep == 5 {
-                        OnboardingCameraPermissionView()
+                        OnboardingWatchlistView()
                             .transition(.asymmetric(
                                 insertion: .move(edge: .trailing).combined(with: .opacity),
                                 removal: .move(edge: .leading).combined(with: .opacity)
@@ -107,11 +110,43 @@ struct OnboardingFlowView: View {
                     }
 
                     if currentStep == 6 {
+                        OnboardingMultiGameView()
+                            .transition(.asymmetric(
+                                insertion: .move(edge: .trailing).combined(with: .opacity),
+                                removal: .move(edge: .leading).combined(with: .opacity)
+                            ))
+                    }
+
+                    if currentStep == 7 {
+                        OnboardingExportImportView()
+                            .transition(.asymmetric(
+                                insertion: .move(edge: .trailing).combined(with: .opacity),
+                                removal: .move(edge: .leading).combined(with: .opacity)
+                            ))
+                    }
+
+                    if currentStep == 8 {
+                        OnboardingRateUsView()
+                            .transition(.asymmetric(
+                                insertion: .move(edge: .trailing).combined(with: .opacity),
+                                removal: .move(edge: .leading).combined(with: .opacity)
+                            ))
+                    }
+
+                    if currentStep == 9 {
+                        OnboardingCameraPermissionView()
+                            .transition(.asymmetric(
+                                insertion: .move(edge: .trailing).combined(with: .opacity),
+                                removal: .move(edge: .leading).combined(with: .opacity)
+                            ))
+                    }
+
+                    if currentStep == 10 {
                         TrialScreen1View(
                             legalText: trialVM.legalText,
                             onContinue: {
                                 withAnimation(.easeInOut(duration: 0.4)) {
-                                    currentStep = 7
+                                    currentStep = 11
                                 }
                             },
                             onRestore: {
@@ -124,13 +159,13 @@ struct OnboardingFlowView: View {
                         ))
                     }
 
-                    if currentStep == 7 {
+                    if currentStep == 11 {
                         TrialScreen2View(
                             legalText: trialVM.legalText,
                             trialDays: trialVM.trialDaysText,
                             onBack: {
                                 withAnimation(.easeInOut(duration: 0.4)) {
-                                    currentStep = 6
+                                    currentStep = 10
                                 }
                             },
                             onOpenPaywall: {
@@ -200,6 +235,7 @@ struct OnboardingFlowView: View {
         }
         .onAppear {
             checkCameraAuthorization()
+            analytics.capture(.onboardingStarted)
             trialVM.onRestoreSuccess = {
                 finishOnboardingAfterRestore()
             }
@@ -210,28 +246,40 @@ struct OnboardingFlowView: View {
     private var primaryButtonLabel: String {
         switch currentStep {
         case 0: return "Get started"
-        case 5: return "Allow camera access"
+        case 8: return "Rate us"
+        case 9: return "Allow camera access"
         default: return "Continue"
         }
     }
 
     private var showsSkipButton: Bool {
-        currentStep >= 1 && currentStep <= 4
+        currentStep >= 1 && currentStep <= 8
     }
 
+    private let analytics = DIContainer.shared.analyticsService
+
     private func handlePrimaryAction() {
-        if currentStep < onboardingSteps - 1 {
+        if currentStep == 8 {
+            // Rate step — request review then advance
+            requestReview()
             withAnimation(.easeInOut(duration: 0.4)) {
                 currentStep += 1
             }
-        } else if currentStep == 5 {
+            analytics.capture(.onboardingStepViewed, properties: ["step": currentStep])
+        } else if currentStep == 9 {
             requestCameraPermission()
+        } else if currentStep < onboardingSteps - 1 {
+            withAnimation(.easeInOut(duration: 0.4)) {
+                currentStep += 1
+            }
+            analytics.capture(.onboardingStepViewed, properties: ["step": currentStep])
         }
     }
 
     private func handleSkip() {
+        analytics.capture(.onboardingStepSkipped, properties: ["from_step": currentStep])
         withAnimation(.easeInOut(duration: 0.4)) {
-            currentStep = 5 // Skip to camera permission
+            currentStep = 9 // Skip to camera permission
         }
     }
 
@@ -248,14 +296,16 @@ struct OnboardingFlowView: View {
         AVCaptureDevice.requestAccess(for: .video) { granted in
             DispatchQueue.main.async {
                 isCameraAuthorized = granted
+                analytics.capture(.onboardingCameraPermission, properties: ["granted": granted])
                 withAnimation(.easeInOut(duration: 0.4)) {
-                    currentStep = 6
+                    currentStep = 10
                 }
             }
         }
     }
 
     private func finishOnboardingAndShowPaywall() {
+        analytics.capture(.onboardingCompleted)
         DIContainer.shared.userRepository.setOnboardingIsFinished()
         router.navigateToRoot()
         appState.showPaywall()

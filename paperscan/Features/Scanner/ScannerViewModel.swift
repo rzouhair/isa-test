@@ -6,6 +6,7 @@ import SwiftData
 final class ScannerViewModel {
     let cameraService = CameraService()
     let scanStore = ScanStore.shared
+    private let analytics: AnalyticsServiceProtocol = DIContainer.shared.analyticsService
 
     var showCaptureFlash = false
     var selectedZoom: CGFloat = 1.0
@@ -40,6 +41,7 @@ final class ScannerViewModel {
 
     /// Fires haptic + flash instantly, inserts placeholder record, THEN waits for photo.
     func captureWithImmediateFeedback() {
+        analytics.capture(.scanStarted, properties: ["source": "camera"])
         // Instant feedback — before AVFoundation even starts processing
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         showCaptureFlash = true
@@ -60,6 +62,7 @@ final class ScannerViewModel {
 
     /// Import from gallery — no crop, just optimize and submit.
     func importFromGallery(_ image: UIImage) {
+        analytics.capture(.scanStarted, properties: ["source": "gallery"])
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         let record = scanStore.insertPending()
         Task.detached(priority: .userInitiated) { [weak self] in

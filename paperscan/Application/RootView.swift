@@ -11,7 +11,12 @@ struct RootView: View {
     @State private var showPaywallCrown: Bool = false
     @ObserveInjection var inject
     
-    @State private var selectedPage: Int = 0
+    private var selectedPage: Binding<Int> {
+        Binding(
+            get: { appState.selectedTab },
+            set: { appState.selectedTab = $0 }
+        )
+    }
     
     init() {
         InjectConfiguration.animation = .interactiveSpring()
@@ -49,7 +54,7 @@ struct RootView: View {
                     setupOnboardingView()
                 } else {
                     ZStack(alignment: .bottomTrailing) {
-                        TabView(selection: $selectedPage) {
+                        TabView(selection: selectedPage) {
                             HomeView()
                                 .tabItem { Label("Home", systemImage: "house") }
                                 .tag(0)
@@ -67,7 +72,9 @@ struct RootView: View {
                         Button {
                             if appState.isProUser {
                                 router.presentFullscreenCover(.scanner)
+                                DIContainer.shared.analyticsService.capture(.scanStarted)
                             } else {
+                                DIContainer.shared.analyticsService.capture(.paywallViewed, properties: ["source": "scan_button"])
                                 appState.showPaywall()
                             }
                         } label: {
@@ -102,7 +109,10 @@ struct RootView: View {
                     if showPaywallCrown {
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button {
-                                if !appState.isProUser { appState.showPaywall() }
+                                if !appState.isProUser {
+                                    DIContainer.shared.analyticsService.capture(.paywallViewed, properties: ["source": "crown_tap"])
+                                    appState.showPaywall()
+                                }
                             } label: {
                                 Image(systemName: "crown")
                             }
@@ -154,9 +164,10 @@ struct RootView: View {
                     print(DIContainer.shared.userRepository.onboardingIsFinished())
                     print(appState.isProUser)
                     if appState.shouldShowPaywall && DIContainer.shared.userRepository.onboardingIsFinished() && !appState.isProUser {
-                        print("Requested")
+                        DIContainer.shared.analyticsService.capture(.paywallViewed, properties: ["source": "auto"])
                         appState.showPaywall()
                     }
+                    DIContainer.shared.analyticsService.capture(.appOpened)
                     print("====== root appearance ======")
                 }
             }
@@ -167,7 +178,7 @@ struct RootView: View {
 
 
     private var tabTitle: String {
-        switch selectedPage {
+        switch appState.selectedTab {
         case 0: return "Home"
         case 1: return "Watchlist"
         case 2: return "Collections"

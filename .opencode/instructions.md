@@ -49,7 +49,7 @@ PaperScan is an iOS app built with **SwiftUI** and **Swift 6**, following **MVVM
 
 ## Key Dependencies
 
-RevenueCat, SwiftData, AVFoundation, SwiftGen, Inject, Mixpanel
+RevenueCat, SwiftData, AVFoundation, SwiftGen, Inject, PostHog, Sentry
 
 ## Guidelines
 

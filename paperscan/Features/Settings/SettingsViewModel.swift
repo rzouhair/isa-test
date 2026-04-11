@@ -70,7 +70,7 @@ class SettingsViewModel {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
-        case .importExport:
+        case .importExport, .priceCheckInterval:
             break // Handled via NavigationLink in SettingsView
         case .signOut:
             onEvent(.logout)
@@ -117,9 +117,19 @@ class SettingsViewModel {
         return "Version \(appVersion ?? "") (\(buildNumber ?? ""))"
     }
     
+    var selectedRefreshInterval: Int {
+        let stored = UserDefaults.standard.double(forKey: WatchlistPriceService.intervalKey)
+        return stored > 0 ? Int(stored / 3600) : 12
+    }
+
+    func setRefreshInterval(_ hours: Int) {
+        WatchlistPriceService.setRefreshInterval(hours: hours)
+    }
+
     enum SettingsSection: String, CaseIterable, Identifiable {
         case personal
         case membership
+        case notifications
         case data
         case help
 
@@ -129,6 +139,7 @@ class SettingsViewModel {
             switch self {
             case .personal: return "Personal settings"
             case .membership: return "Membership"
+            case .notifications: return "Notifications"
             case .data: return "Data"
             case .help: return "Help"
             }
@@ -138,6 +149,7 @@ class SettingsViewModel {
             switch self {
             case .personal: return [.manageSubscriptions]
             case .membership: return [.restorePurchase]
+            case .notifications: return [.priceCheckInterval]
             case .data: return [.importExport]
             case .help: return [.reportBug, .messageUs, .writeReview]
             }
@@ -152,6 +164,7 @@ class SettingsViewModel {
         case messageUs
         case writeReview
         case importExport
+        case priceCheckInterval
         case signOut
         case deleteAccount
 
@@ -166,6 +179,7 @@ class SettingsViewModel {
             case .messageUs: return "Send Us a Message"
             case .writeReview: return "Write a Review"
             case .importExport: return "Import & Export"
+            case .priceCheckInterval: return "Price Check Reminder"
             case .deleteAccount: return "Delete account"
             case .signOut: return "Sign Out"
             }
@@ -180,6 +194,7 @@ class SettingsViewModel {
             case .messageUs: return "envelope"
             case .writeReview: return "star"
             case .importExport: return "arrow.up.arrow.down"
+            case .priceCheckInterval: return "bell.badge"
             case .deleteAccount: return "trash"
             case .signOut: return "door.left.hand.open"
             }

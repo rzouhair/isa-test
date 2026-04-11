@@ -5,9 +5,10 @@ import Inject
 struct CardDetailView: View {
     @ObserveInjection var inject
     @Environment(\.modelContext) var modelContext
+    @Environment(Router.self) var router
     let card: CardRecord
 
-    @Query var watchlistItems: [WatchlistItem]
+    @Query(sort: \WatchlistItem.addedAt, order: .reverse) var watchlistItems: [WatchlistItem]
 
     @State private var appeared = false
     @State private var dragOffset: CGSize = .zero
@@ -35,6 +36,8 @@ struct CardDetailView: View {
                 cardHero
                 priceSection
                 actionBar
+                    .padding(.horizontal, 16)
+                marketplaceLinks
                     .padding(.horizontal, 16)
                 priceChartSection
                     .padding(.horizontal, 16)
@@ -166,15 +169,20 @@ struct CardDetailView: View {
 
     private var actionBar: some View {
         HStack(spacing: 12) {
-            // Add to collection — large button
+            // Collection button — navigate if assigned, add if not
             Button {
-                if !isInCollection { showAddToCollection = true }
+                if let collection = card.collection {
+                    router.navigate(to: .collectionDetail(collection))
+                } else {
+                    showAddToCollection = true
+                }
             } label: {
                 HStack(spacing: 8) {
-                    Image(systemName: isInCollection ? "checkmark.circle.fill" : "plus.rectangle.on.folder")
+                    Image(systemName: isInCollection ? "folder.fill" : "plus.rectangle.on.folder")
                         .font(.body.weight(.semibold))
-                    Text(isInCollection ? "In Collection" : "Add to Collection")
+                    Text(isInCollection ? card.collection?.name ?? "Collection" : "Add to Collection")
                         .font(.body.weight(.bold))
+                        .lineLimit(1)
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 52)
@@ -182,7 +190,6 @@ struct CardDetailView: View {
                 .background(isInCollection ? theme.accent : theme.accentSubtle)
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             }
-            .disabled(isInCollection)
 
             // Watchlist — square button
             Button { toggleWatchlist() } label: {
@@ -218,6 +225,8 @@ struct CardDetailView: View {
         } else {
             let item = WatchlistItem(from: card)
             modelContext.insert(item)
+            print("[Watchlist] 1️⃣ Item added: \(card.name) — scheduling reminder")
+            WatchlistPriceService.scheduleRecurringReminder()
         }
     }
 
@@ -366,6 +375,50 @@ struct CardDetailView: View {
         } catch {
             // Silent fail — chart stays as-is
             print("Price update failed: \(error.localizedDescription)")
+        }
+    }
+
+    // MARK: - Marketplace Links
+
+    private var marketplaceLinks: some View {
+        HStack(spacing: 12) {
+            Button {
+                let query = card.name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                if let url = URL(string: "https://www.tcgplayer.com/search/all/product?q=\(query)") {
+                    UIApplication.shared.open(url)
+                }
+            } label: {
+                HStack(spacing: 6) {
+                    Image(systemName: "magnifyingglass")
+                        .font(.caption.weight(.semibold))
+                    Text("TCGPlayer")
+                        .font(.subheadline.weight(.semibold))
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 44)
+                .foregroundStyle(theme.accent)
+                .background(theme.accentSubtle)
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            }
+
+            Button {
+                let query = card.name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                if let url = URL(string: "https://www.ebay.com/sch/i.html?_nkw=\(query)") {
+                    UIApplication.shared.open(url)
+                }
+            } label: {
+                HStack(spacing: 6) {
+                    Image(systemName: "magnifyingglass")
+                        .font(.caption.weight(.semibold))
+                    Text("eBay")
+                        .font(.subheadline.weight(.semibold))
+                }
+                .frame(maxWidth: .infinity)
+                .frame(height: 44)
+                .foregroundStyle(theme.accent)
+                .background(theme.accentSubtle)
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            }
         }
     }
 

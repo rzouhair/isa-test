@@ -9,6 +9,8 @@ struct CollectionView: View {
 
     @State private var sortMode: CollectionSortMode = .valueDesc
     @State private var searchText = ""
+    @State private var visibleCount: Int = 40
+    private let pageSize = 40
 
     private var filtered: [CardRecord] {
         guard !searchText.isEmpty else { return Array(cards) }
@@ -29,6 +31,9 @@ struct CollectionView: View {
         }
     }
 
+    private var visibleCards: [CardRecord] { Array(sorted.prefix(visibleCount)) }
+    private var hasMore: Bool { visibleCount < sorted.count }
+
     private var totalValue: Double { cards.reduce(0) { $0 + $1.tcgplayerPrice } }
     private var distinctSets: Int { Set(cards.map(\.setName)).count }
 
@@ -48,11 +53,22 @@ struct CollectionView: View {
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
                 } else {
-                    ForEach(sorted) { card in
+                    ForEach(visibleCards) { card in
                         Button { router.navigate(to: .cardDetail(card)) } label: {
                             CollectionCardRow(card: card)
                         }
                         .buttonStyle(.plain)
+                        .onAppear {
+                            if card.id == visibleCards.last?.id, hasMore {
+                                visibleCount += pageSize
+                            }
+                        }
+                    }
+                    if hasMore {
+                        ProgressView()
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 8)
+                            .listRowSeparator(.hidden)
                     }
                 }
             } header: {
@@ -66,6 +82,7 @@ struct CollectionView: View {
                         ForEach(CollectionSortMode.allCases, id: \.self) { mode in
                             Button {
                                 sortMode = mode
+                                visibleCount = pageSize
                             } label: {
                                 if sortMode == mode {
                                     Label(mode.rawValue, systemImage: "checkmark")
@@ -88,6 +105,7 @@ struct CollectionView: View {
         .navigationTitle("All Cards")
         .navigationBarTitleDisplayMode(.large)
         .searchable(text: $searchText, prompt: "Search cards")
+        .onChange(of: searchText) { visibleCount = pageSize }
         .enableInjection()
     }
 

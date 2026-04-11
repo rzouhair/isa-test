@@ -13,6 +13,8 @@ final class ScanStore {
     private var modelContext: ModelContext?
 
     private let service: CardIdentifierServiceProtocol = DIContainer.shared.cardIdentifierService
+    private let analytics: AnalyticsServiceProtocol = DIContainer.shared.analyticsService
+    private let crashReporting: CrashReportingServiceProtocol = DIContainer.shared.crashReportingService
     private let maxScansPerSession = 50
 
     private init() {}
@@ -47,11 +49,13 @@ final class ScanStore {
             guard let (imageData, imagePath) = prepared else {
                 record.scanStatus = .failed
                 record.errorMessage = "Image encoding failed"
+                crashReporting.captureMessage("Scan image encoding failed")
                 return
             }
 
             record.capturedImagePath = imagePath
             trySave()
+            analytics.capture(.scanSubmitted)
 
             do {
                 let response = try await service.submitJob(imageData: imageData)
@@ -64,6 +68,8 @@ final class ScanStore {
                 record.errorMessage = error.localizedDescription
                 record.updatedAt = Date()
                 trySave()
+                analytics.capture(.scanFailed, properties: ["error": error.localizedDescription])
+                crashReporting.captureError(error, context: ["action": "submit_job"])
             }
         }
     }
@@ -94,18 +100,24 @@ final class ScanStore {
                         if let result = status.result {
                             record.update(from: result)
                         }
+                        analytics.capture(.scanCompleted, properties: [
+                            "game": record.game ?? "unknown",
+                            "has_price": record.marketPrice != nil
+                        ])
+                        self.autoCreateCardRecord(from: record)
                         trySave()
                         return
                     case .failed:
                         record.errorMessage = status.error ?? "Unknown error"
+                        analytics.capture(.scanFailed, properties: ["error": record.errorMessage ?? "unknown"])
                         trySave()
                         return
                     case .pending, .processing:
-                        trySave()
+                        break
                     }
                 } catch {
                     if Task.isCancelled { return }
-                    print("[ScanStore] Poll error for \(jobId): \(error)")
+                    crashReporting.captureError(error, context: ["action": "poll", "job_id": jobId])
                 }
                 attempts += 1
             }
@@ -134,6 +146,7 @@ final class ScanStore {
         guard record.scanStatus == .failed else { return }
         guard let imageData = loadImageFromDisk(path: record.capturedImagePath) else { return }
 
+        analytics.capture(.scanRetried)
         record.scanStatus = .pending
         record.errorMessage = nil
         record.updatedAt = Date()
@@ -151,6 +164,7 @@ final class ScanStore {
                 record.errorMessage = error.localizedDescription
                 record.updatedAt = Date()
                 trySave()
+                crashReporting.captureError(error, context: ["action": "retry_submit"])
             }
         }
     }
@@ -182,20 +196,30 @@ final class ScanStore {
 
     func addToCollection(_ record: ScanRecord, to collection: CardCollection) -> CardRecord? {
         guard record.scanStatus == .complete else { return nil }
-        // Prevent duplicates: same productId in same collection
-        if let productId = record.productId, !productId.isEmpty {
-            let alreadyExists = collection.cards.contains { $0.tcgplayerProductId == productId }
-            if alreadyExists {
+
+        // Find auto-created CardRecord by stored ID
+        if let cardId = record.cardRecordId {
+            var descriptor = FetchDescriptor<CardRecord>()
+            descriptor.predicate = #Predicate { $0.id == cardId }
+            descriptor.fetchLimit = 1
+
+            if let existing = try? modelContext?.fetch(descriptor).first {
+                existing.collection = collection
                 record.addedToCollection = true
                 trySave()
-                return nil
+                analytics.capture(.cardAddedToCollection)
+                return existing
             }
         }
+
+        // Fallback: create new CardRecord if auto-created one not found
         let card = CardRecord(from: record)
         card.collection = collection
         modelContext?.insert(card)
         record.addedToCollection = true
+        record.cardRecordId = card.id
         trySave()
+        analytics.capture(.cardAddedToCollection)
         return card
     }
 
@@ -208,6 +232,17 @@ final class ScanStore {
             }
         }
         return count
+    }
+
+    // MARK: - Auto Card Creation
+
+    /// Automatically create a CardRecord when scan completes (no collection required).
+    private func autoCreateCardRecord(from record: ScanRecord) {
+        guard record.scanStatus == .complete else { return }
+
+        let card = CardRecord(from: record)
+        modelContext?.insert(card)
+        record.cardRecordId = card.id
     }
 
     // MARK: - Session Management
@@ -229,7 +264,7 @@ final class ScanStore {
         var descriptor = FetchDescriptor<ScanRecord>(
             sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
         )
-        descriptor.fetchLimit = 3
+        descriptor.fetchLimit = 10
         records = (try? modelContext.fetch(descriptor)) ?? []
 
         // Resume polling for any pending/processing records

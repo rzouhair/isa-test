@@ -30,6 +30,9 @@ extension DetectionView {
             ]
         }
 
+        private let analytics = DIContainer.shared.analyticsService
+        private let crashReporting = DIContainer.shared.crashReportingService
+
         init(context: ModelContext, router: Router, images: [UIImage] = []) {
             self.images = images
             self.context = context
@@ -39,6 +42,7 @@ extension DetectionView {
         // MARK: - Detection
 
         func detect() async {
+            analytics.capture(.detectionStarted, properties: ["image_count": images.count])
             do {
                 let (imageNames, base64Images) = try processImages()
 
@@ -52,13 +56,13 @@ extension DetectionView {
                 context.insert(result)
                 try context.save()
 
+                analytics.capture(.detectionCompleted)
                 requestReviewIfNeeded()
 
                 router.navigateToRoot()
-                // TODO: Navigate to a detail view for the result
-                // router.presentFullscreenCover(.detectionResult(result: result))
             } catch {
-                print("Detection error: \(error)")
+                analytics.capture(.detectionFailed, properties: ["error": error.localizedDescription])
+                crashReporting.captureError(error, context: ["action": "detection"])
                 isErrorModalPresented = true
             }
         }

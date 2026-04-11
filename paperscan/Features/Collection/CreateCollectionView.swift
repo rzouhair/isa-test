@@ -72,6 +72,7 @@ struct CreateCollectionView: View {
         let collection = CardCollection(name: name.trimmingCharacters(in: .whitespaces), tcgType: selectedType)
         modelContext.insert(collection)
         try? modelContext.save()
+        DIContainer.shared.analyticsService.capture(.collectionCreated, properties: ["type": selectedType.rawValue])
         onCreate(collection)
         dismiss()
     }

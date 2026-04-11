@@ -7,6 +7,7 @@ import Observation
       return SubscriptionService.shared.isProUser
     }
     
+    var selectedTab: Int = 0
     var wasPaywallShown: Bool = false
     var isPaywallShown: Bool = false
     

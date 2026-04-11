@@ -19,6 +19,8 @@ public class PaywallViewModel: ObservableObject {
     @Published var purchaseCompleted = false
 
     let subscriptionRepository: SubscriptionsRepository = SubscriptionsRepository.shared
+    private let analytics = DIContainer.shared.analyticsService
+    private let crashReporting = DIContainer.shared.crashReportingService
 
     public init() {
         Task {
@@ -68,32 +70,33 @@ public class PaywallViewModel: ObservableObject {
             switch result {
             case .success(let restored):
                 if restored {
-                    // UIApplication.showAlert(title: "Purchase restored", message: "Your purchase was successfully restored. All of the Pro feature were unlocked!")
-                } else {
-                    // UIApplication.showAlert(title: "Purchase not found", message: "Your purchase was not restored because it was not found. If you think this is a mistake, please reach out at \(Constants.supportEmail)")
+                    analytics.capture(.purchaseRestored)
                 }
-            case .failure(_):
-                print("Purchase restoration failed")
-                // UIApplication.showAlert(title: "Purchase restoration failed", message: "An unknown error occured while restoring your purchase. Please try again later or contact support at \(Constants.supportEmail)")
+            case .failure(let error):
+                analytics.capture(.purchaseFailed, properties: ["action": "restore", "error": error.localizedDescription])
+                crashReporting.captureError(error, context: ["action": "restore_purchase"])
             }
         })
     }
 
     func purchase(_ package: Package?) async {
         guard let package else { return }
+        analytics.capture(.purchaseStarted, properties: ["package": package.identifier])
         await MainActor.run(body: { isLoading = true })
         let result = await subscriptionRepository.purchase(package: package)
         await MainActor.run(body: {
             switch result {
             case .success(let success):
                 if success {
+                    analytics.capture(.purchaseCompleted, properties: ["package": package.identifier])
                     UIApplication.showAlert(title: "🎉 Congratulations!", message: "Your Pro subscription was successfully activated and all Pro features were unlocked!") {
                          UIApplication.topViewController()?.dismiss(animated: true)
                     }
                 }
-            case .failure(_):
+            case .failure(let error):
+                analytics.capture(.purchaseFailed, properties: ["package": package.identifier, "error": error.localizedDescription])
+                crashReporting.captureError(error, context: ["action": "purchase", "package": package.identifier])
                 UIApplication.showAlert(title: "Something went wrong", message: "An unknown error occured while trying to purchase the subscription. Please try again later or contact support at \(Constants.supportEmail)")
-                print("Something went wrong")
             }
         })
         await MainActor.run(body: { isLoading = false })

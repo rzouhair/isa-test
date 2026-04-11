@@ -6,40 +6,36 @@ struct CollectionTileView: View {
     let collection: CardCollection
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 8) {
+            // Icon + card count
             HStack(alignment: .top) {
                 Image(systemName: collection.tcgType.iconName)
-                    .font(.title3)
+                    .font(.caption)
                     .foregroundStyle(theme.accent.opacity(0.7))
-                    .frame(width: 36, height: 36)
+                    .frame(width: 30, height: 30)
                     .background(theme.accent.opacity(0.08))
-                    .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: 7, style: .continuous))
                 Spacer()
-                HStack(spacing: 3) {
-                    Text("\(collection.cardCount)")
-                        .font(.caption.weight(.bold).monospacedDigit())
-                        .foregroundStyle(.secondary)
-                    Image(systemName: "creditcard")
-                        .font(.caption2)
-                        .foregroundStyle(.tertiary)
-                }
+                Text("\(collection.cardCount) cards")
+                    .font(.caption2.weight(.medium))
+                    .foregroundStyle(.secondary)
             }
 
-            VStack(alignment: .leading, spacing: 3) {
-                Text(collection.name)
-                    .font(.subheadline.weight(.bold))
-                    .foregroundStyle(.primary)
-                    .lineLimit(2)
-                    .multilineTextAlignment(.leading)
+            // Name
+            Text(collection.name)
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(.primary)
+                .lineLimit(2)
+                .multilineTextAlignment(.leading)
 
-                Text(String(format: "$%.2f", collection.totalValue))
-                    .font(.footnote.weight(.semibold).monospacedDigit())
-                    .foregroundStyle(theme.valueGradient)
-            }
+            // Value
+            Text(String(format: "$%.2f", collection.totalValue))
+                .font(.footnote.weight(.bold).monospacedDigit())
+                .foregroundStyle(theme.valueGradient)
         }
         .padding(14)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .frame(minHeight: 130)
+        .frame(minHeight: 120)
         .background(Color(.secondarySystemGroupedBackground))
         .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
         .enableInjection()

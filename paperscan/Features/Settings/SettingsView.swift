@@ -29,6 +29,29 @@ struct SettingsView: View {
                                         Label(item.name, systemImage: item.icon)
                                     }
                                     .listRowBackground(Color.gray.opacity(0.08))
+                                } else if item == .priceCheckInterval {
+                                    HStack {
+                                        Label(item.name, systemImage: item.icon)
+                                        Spacer()
+                                        Menu {
+                                            ForEach(WatchlistPriceService.intervalOptions, id: \.self) { hours in
+                                                Button {
+                                                    viewModel.setRefreshInterval(hours)
+                                                } label: {
+                                                    if viewModel.selectedRefreshInterval == hours {
+                                                        Label("Every \(hours)h", systemImage: "checkmark")
+                                                    } else {
+                                                        Text("Every \(hours)h")
+                                                    }
+                                                }
+                                            }
+                                        } label: {
+                                            Text("Every \(viewModel.selectedRefreshInterval)h")
+                                                .font(.subheadline)
+                                                .foregroundStyle(.secondary)
+                                        }
+                                    }
+                                    .listRowBackground(Color.gray.opacity(0.08))
                                 } else {
                                     Button {
                                         viewModel.handleItemTap(item)

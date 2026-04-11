@@ -59,19 +59,17 @@ struct CollectionDetailView: View {
                             CollectionCardRow(card: card)
                         }
                         .buttonStyle(.plain)
+                        .onAppear {
+                            if card.id == visibleCards.last?.id, hasMore {
+                                visibleCount += pageSize
+                            }
+                        }
                     }
                     if hasMore {
-                        Button {
-                            visibleCount += pageSize
-                        } label: {
-                            HStack {
-                                Spacer()
-                                Text("Show More (\(sorted.count - visibleCount) remaining)")
-                                    .font(.subheadline.weight(.medium))
-                                Spacer()
-                            }
+                        ProgressView()
+                            .frame(maxWidth: .infinity)
                             .padding(.vertical, 8)
-                        }
+                            .listRowSeparator(.hidden)
                     }
                 }
             } header: {
@@ -108,6 +106,7 @@ struct CollectionDetailView: View {
         .navigationTitle(collection.name)
         .navigationBarTitleDisplayMode(.large)
         .searchable(text: $searchText, prompt: "Search cards")
+        .onChange(of: searchText) { visibleCount = pageSize }
         .enableInjection()
     }
 

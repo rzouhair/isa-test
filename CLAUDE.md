@@ -138,7 +138,8 @@ paperscan/
 - **AVFoundation** - Camera capture
 - **SwiftGen** - Asset code generation
 - **Inject** - Hot reload during development
-- **Mixpanel** - Analytics
+- **PostHog** - Analytics
+- **Sentry** - Error & crash tracking
 
 ## Guidelines
 
