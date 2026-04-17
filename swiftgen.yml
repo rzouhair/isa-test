@@ -1,15 +1,15 @@
 xcassets:
   - inputs:
-    - paperscan/Presentation/Resources/Colors.xcassets
-    - paperscan/Presentation/Resources/Images.xcassets
+    - poke/Presentation/Resources/Colors.xcassets
+    - poke/Presentation/Resources/Images.xcassets
     outputs:
       templateName: swift5
-      output: paperscan/Presentation/Generated/Assets.swift
+      output: poke/Presentation/Generated/Assets.swift
       params:
         publicAccess: true
 
 fonts:
-  inputs: paperscan/Presentation/Resources/Fonts
+  inputs: poke/Presentation/Resources/Fonts
   outputs:
     templateName: swift5
-    output: paperscan/Presentation/Generated/Fonts.swift
+    output: poke/Presentation/Generated/Fonts.swift

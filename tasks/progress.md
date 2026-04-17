@@ -84,7 +84,7 @@ Raw capture (12MP, ~4032x3024)
 ## Current File Map
 
 ```
-paperscan/
+poke/
 ├── Application/
 │   ├── AppMain.swift              ← modified (SwiftData ModelContainer)
 │   └── RootView.swift             ← modified (scanner routing, debug button)

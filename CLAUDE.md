@@ -9,7 +9,7 @@ PaperScan is an iOS app built with **SwiftUI** and **Swift 6**, following **MVVM
 ## Architecture
 
 ```
-paperscan/
+poke/
 │
 ├── Application/
 │   App lifecycle and bootstrap. AppMain.swift is the @main entry point
