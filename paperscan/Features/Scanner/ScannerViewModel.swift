@@ -41,20 +41,22 @@ final class ScannerViewModel {
 
     /// Fires haptic + flash instantly, inserts placeholder record, THEN waits for photo.
     func captureWithImmediateFeedback() {
-        analytics.capture(.scanStarted, properties: ["source": "camera"])
-        // Instant feedback — before AVFoundation even starts processing
+        // 1. INSTANT FEEDBACK FIRST — before any other work
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         showCaptureFlash = true
         withAnimation(.easeOut(duration: 0.1)) { showCaptureFlash = false }
 
-        // Insert placeholder so "Identifying…" row appears immediately
-        let record = scanStore.insertPending()
-
-        // Trigger AVFoundation capture — delegate will deliver the image async
+        // 2. Trigger camera capture immediately
         cameraService.capturePhoto()
 
-        // When the photo arrives, process and update the placeholder
+        // 3. Insert placeholder record synchronously (needed before photo delegate fires)
+        let record = scanStore.insertPending()
         pendingRecord = record
+
+        // 4. Defer analytics to next runloop — no need to block on it
+        Task { @MainActor [analytics] in
+            analytics.capture(.scanStarted, properties: ["source": "camera"])
+        }
     }
 
     /// Holds the record waiting for a photo from AVFoundation

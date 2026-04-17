@@ -68,6 +68,7 @@ struct CSVService {
         var cardsCreated: Int = 0
         var collectionsCreated: Int = 0
         var watchlistCreated: Int = 0
+        var gradesCreated: Int = 0
         var errors: [String] = []
     }
 
@@ -296,6 +297,138 @@ struct CSVService {
             lines.append(fields.joined(separator: ","))
         }
         return lines.joined(separator: "\n")
+    }
+
+    // MARK: - Grades Export
+
+    private static let gradeHeaders = [
+        "centering_score", "corners_score", "edges_score", "surface_score",
+        "centering_notes", "corners_notes", "edges_notes", "surface_notes",
+        "centering_defects", "corners_defects", "edges_defects", "surface_defects",
+        "front_centering_lr", "front_centering_tb", "back_centering_lr", "back_centering_tb",
+        "psa_range", "bgs_range", "confidence",
+        "tips", "disclaimer", "created_at"
+    ]
+
+    static func exportGradesCSV(grades: [GradeRecord]) -> String {
+        var lines = [gradeHeaders.joined(separator: ",")]
+        let encoder = JSONEncoder()
+        for grade in grades {
+            let fields: [String] = [
+                String(format: "%.1f", grade.centeringScore),
+                String(format: "%.1f", grade.cornersScore),
+                String(format: "%.1f", grade.edgesScore),
+                String(format: "%.1f", grade.surfaceScore),
+                escape(grade.centeringNotes ?? ""),
+                escape(grade.cornersNotes ?? ""),
+                escape(grade.edgesNotes ?? ""),
+                escape(grade.surfaceNotes ?? ""),
+                escape(encodeArray(grade.centeringDefects)),
+                escape(encodeArray(grade.cornersDefects)),
+                escape(encodeArray(grade.edgesDefects)),
+                escape(encodeArray(grade.surfaceDefects)),
+                escape(grade.frontCenteringLR ?? ""),
+                escape(grade.frontCenteringTB ?? ""),
+                escape(grade.backCenteringLR ?? ""),
+                escape(grade.backCenteringTB ?? ""),
+                escape(grade.psaRange ?? ""),
+                escape(grade.bgsRange ?? ""),
+                escape(grade.confidence),
+                escape(encodeArray(grade.tips)),
+                escape(grade.disclaimer ?? ""),
+                ISO8601DateFormatter().string(from: grade.createdAt)
+            ]
+            lines.append(fields.joined(separator: ","))
+        }
+        return lines.joined(separator: "\n")
+    }
+
+    private static func encodeArray(_ arr: [String]) -> String {
+        arr.joined(separator: "|")
+    }
+
+    private static func decodeArray(_ str: String) -> [String] {
+        guard !str.isEmpty else { return [] }
+        return str.components(separatedBy: "|")
+    }
+
+    // MARK: - Grades Import
+
+    static func importGradesCSV(
+        csvString: String,
+        context: ModelContext,
+        mode: ImportMode,
+        existingGrades: [GradeRecord]
+    ) -> ImportResult {
+        var result = ImportResult()
+
+        if mode == .replace {
+            for grade in existingGrades { context.delete(grade) }
+        }
+
+        let lines = parseCSVLines(csvString)
+        guard lines.count > 1 else {
+            result.errors.append("CSV file is empty or has no data rows")
+            return result
+        }
+
+        let headerRow = parseCSVFields(lines[0])
+        let columnMap = buildColumnMap(headerRow)
+
+        for i in 1..<lines.count {
+            let line = lines[i].trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !line.isEmpty else { continue }
+
+            let fields = parseCSVFields(line)
+            guard fields.count >= 4 else {
+                result.errors.append("Row \(i): too few columns")
+                continue
+            }
+
+            let record = GradeRecord(
+                centeringScore: doubleField(fields, columnMap, "centering_score"),
+                cornersScore: doubleField(fields, columnMap, "corners_score"),
+                edgesScore: doubleField(fields, columnMap, "edges_score"),
+                surfaceScore: doubleField(fields, columnMap, "surface_score"),
+                confidence: fieldOr(fields, columnMap, "confidence", default: "low")
+            )
+
+            record.centeringNotes = nilIfEmpty(field(fields, columnMap, "centering_notes"))
+            record.cornersNotes = nilIfEmpty(field(fields, columnMap, "corners_notes"))
+            record.edgesNotes = nilIfEmpty(field(fields, columnMap, "edges_notes"))
+            record.surfaceNotes = nilIfEmpty(field(fields, columnMap, "surface_notes"))
+
+            let cDefects = field(fields, columnMap, "centering_defects")
+            let coDefects = field(fields, columnMap, "corners_defects")
+            let eDefects = field(fields, columnMap, "edges_defects")
+            let sDefects = field(fields, columnMap, "surface_defects")
+            if !cDefects.isEmpty { record.centeringDefectsJSON = try? JSONEncoder().encode(decodeArray(cDefects)) }
+            if !coDefects.isEmpty { record.cornersDefectsJSON = try? JSONEncoder().encode(decodeArray(coDefects)) }
+            if !eDefects.isEmpty { record.edgesDefectsJSON = try? JSONEncoder().encode(decodeArray(eDefects)) }
+            if !sDefects.isEmpty { record.surfaceDefectsJSON = try? JSONEncoder().encode(decodeArray(sDefects)) }
+
+            record.frontCenteringLR = nilIfEmpty(field(fields, columnMap, "front_centering_lr"))
+            record.frontCenteringTB = nilIfEmpty(field(fields, columnMap, "front_centering_tb"))
+            record.backCenteringLR = nilIfEmpty(field(fields, columnMap, "back_centering_lr"))
+            record.backCenteringTB = nilIfEmpty(field(fields, columnMap, "back_centering_tb"))
+
+            record.psaRange = nilIfEmpty(field(fields, columnMap, "psa_range"))
+            record.bgsRange = nilIfEmpty(field(fields, columnMap, "bgs_range"))
+
+            let tips = field(fields, columnMap, "tips")
+            if !tips.isEmpty { record.tipsJSON = try? JSONEncoder().encode(decodeArray(tips)) }
+            record.disclaimer = nilIfEmpty(field(fields, columnMap, "disclaimer"))
+
+            let dateStr = field(fields, columnMap, "created_at")
+            if !dateStr.isEmpty, let date = ISO8601DateFormatter().date(from: dateStr) {
+                record.createdAt = date
+            }
+
+            context.insert(record)
+            result.gradesCreated += 1
+        }
+
+        return result
     }
 
     // MARK: - Watchlist Import

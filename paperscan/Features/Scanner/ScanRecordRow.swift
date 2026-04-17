@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 import Inject
 
 struct ScanRecordRow: View {
@@ -63,9 +64,9 @@ struct ScanRecordRow: View {
             }
         }
         .task(id: record.capturedImagePath) {
-            guard !record.capturedImagePath.isEmpty else { return }
+            guard let url = ScanStore.resolveImageURL(record.capturedImagePath) else { return }
             capturedImage = await Task.detached(priority: .utility) {
-                guard let data = try? Data(contentsOf: URL(fileURLWithPath: record.capturedImagePath)) else { return nil }
+                guard let data = try? Data(contentsOf: url) else { return nil }
                 return UIImage(data: data)
             }.value
         }
@@ -100,6 +101,7 @@ struct ScanRecordRow: View {
                     .font(.subheadline.weight(.medium))
                     .foregroundStyle(.primary)
                     .lineLimit(1)
+                ScanCollectionLabel(cardRecordId: record.cardRecordId)
                 if let price = record.marketPrice ?? record.medianPrice ?? record.lowestPrice {
                     Text(String(format: "$%.2f", price))
                         .font(.caption.weight(.semibold))
@@ -153,6 +155,29 @@ struct ScanRecordRow: View {
     private var priceString: String {
         guard let price = record.marketPrice ?? record.medianPrice ?? record.lowestPrice else { return "—" }
         return String(format: "$%.2f", price)
+    }
+}
+
+// MARK: - Collection Label (resolves collection name from auto-created CardRecord)
+
+struct ScanCollectionLabel: View {
+    let cardRecordId: UUID?
+    @Environment(\.modelContext) private var modelContext
+    @State private var name: String?
+
+    var body: some View {
+        Text(name ?? "Unassigned")
+            .font(.caption2.weight(.medium))
+            .foregroundStyle(theme.accent)
+            .lineLimit(1)
+            .task(id: cardRecordId) { resolve() }
+    }
+
+    private func resolve() {
+        guard let id = cardRecordId else { name = nil; return }
+        var descriptor = FetchDescriptor<CardRecord>(predicate: #Predicate { $0.id == id })
+        descriptor.fetchLimit = 1
+        name = (try? modelContext.fetch(descriptor).first)?.collection?.name
     }
 }
 

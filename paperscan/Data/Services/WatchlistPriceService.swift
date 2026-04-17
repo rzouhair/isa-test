@@ -7,6 +7,8 @@ final class WatchlistPriceService: Sendable {
 
     nonisolated(unsafe) static var modelContainer: ModelContainer?
 
+    private let crashReporting: CrashReportingServiceProtocol = DIContainer.shared.crashReportingService
+
     private static let lastRefreshKey = "watchlist_last_refresh"
     static let intervalKey = "watchlist_refresh_interval"
     static let defaultInterval: TimeInterval = 12 * 3600 // 12h
@@ -74,12 +76,23 @@ final class WatchlistPriceService: Sendable {
         let context = ModelContext(container)
         let descriptor = FetchDescriptor<WatchlistItem>()
 
-        guard let items = try? context.fetch(descriptor), !items.isEmpty else {
+        let items: [WatchlistItem]
+        do {
+            items = try context.fetch(descriptor)
+        } catch {
+            crashReporting.captureError(error, context: ["action": "watchlist_fetch_for_refresh"])
             return (0, 0)
         }
+        guard !items.isEmpty else { return (0, 0) }
 
         let cardDescriptor = FetchDescriptor<CardRecord>()
-        let allCards = (try? context.fetch(cardDescriptor)) ?? []
+        let allCards: [CardRecord]
+        do {
+            allCards = try context.fetch(cardDescriptor)
+        } catch {
+            crashReporting.captureError(error, context: ["action": "cards_fetch_for_price_refresh"])
+            allCards = []
+        }
 
         var success = 0
         var failed = 0
@@ -107,12 +120,20 @@ final class WatchlistPriceService: Sendable {
                 success += 1
             } catch {
                 failed += 1
+                crashReporting.captureError(error, context: [
+                    "action": "watchlist_price_fetch",
+                    "product_id": item.tcgplayerProductId
+                ])
             }
 
             try? await Task.sleep(for: .milliseconds(200))
         }
 
-        try? context.save()
+        do {
+            try context.save()
+        } catch {
+            crashReporting.captureError(error, context: ["action": "watchlist_price_save"])
+        }
         return (success, failed)
     }
 

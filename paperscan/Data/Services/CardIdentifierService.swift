@@ -1,4 +1,7 @@
 import Foundation
+import OSLog
+
+private let log = Logger(subsystem: "com.paperscan.app", category: "CardIdentifierService")
 
 enum CardIdentifierError: Error, LocalizedError {
     case invalidURL
@@ -34,6 +37,9 @@ final class CardIdentifierService: CardIdentifierServiceProtocol, Sendable {
 
     func submitJob(imageData: Data) async throws -> JobSubmitResponse {
         let url = baseURL.appendingPathComponent("identify/async")
+        #if DEBUG
+        log.debug("submitJob POST \(url.absoluteString, privacy: .public) imageBytes=\(imageData.count)")
+        #endif
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -44,23 +50,52 @@ final class CardIdentifierService: CardIdentifierServiceProtocol, Sendable {
         request.httpBody = try JSONEncoder().encode(body)
 
         let (data, response) = try await session.data(for: request)
+        #if DEBUG
+        let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
+        let rawBody = String(data: data, encoding: .utf8) ?? "<non-utf8 \(data.count) bytes>"
+        log.debug("submitJob response status=\(statusCode) body=\(rawBody, privacy: .public)")
+        #endif
         try validateHTTPResponse(response)
 
         do {
-            return try JSONDecoder().decode(JobSubmitResponse.self, from: data)
+            let decoded = try JSONDecoder().decode(JobSubmitResponse.self, from: data)
+            #if DEBUG
+            log.info("submitJob decoded jobId=\(decoded.jobId, privacy: .public) status=\(decoded.status, privacy: .public)")
+            #endif
+            return decoded
         } catch {
+            #if DEBUG
+            let body = String(data: data, encoding: .utf8) ?? "<non-utf8>"
+            log.error("submitJob decode failed: \(error.localizedDescription, privacy: .public) body=\(body, privacy: .public)")
+            #endif
             throw CardIdentifierError.decodingFailed(error)
         }
     }
 
     func checkStatus(jobId: String) async throws -> JobStatusResponse {
         let url = baseURL.appendingPathComponent("status/\(jobId)")
+        #if DEBUG
+        log.debug("checkStatus GET \(url.absoluteString, privacy: .public) jobId=\(jobId, privacy: .public)")
+        #endif
         let (data, response) = try await session.data(from: url)
+        #if DEBUG
+        let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
+        let rawBody = String(data: data, encoding: .utf8) ?? "<non-utf8 \(data.count) bytes>"
+        log.info("checkStatus response status=\(statusCode) jobId=\(jobId, privacy: .public) body=\(rawBody, privacy: .public)")
+        #endif
         try validateHTTPResponse(response)
 
         do {
-            return try JSONDecoder().decode(JobStatusResponse.self, from: data)
+            let decoded = try JSONDecoder().decode(JobStatusResponse.self, from: data)
+            #if DEBUG
+            log.info("checkStatus decoded jobId=\(decoded.jobId, privacy: .public) status=\(decoded.status, privacy: .public) hasResult=\(decoded.result != nil) error=\(decoded.error ?? "nil", privacy: .public)")
+            #endif
+            return decoded
         } catch {
+            #if DEBUG
+            let body = String(data: data, encoding: .utf8) ?? "<non-utf8>"
+            log.error("checkStatus decode failed jobId=\(jobId, privacy: .public): \(error.localizedDescription, privacy: .public) body=\(body, privacy: .public)")
+            #endif
             throw CardIdentifierError.decodingFailed(error)
         }
     }

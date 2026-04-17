@@ -5,7 +5,7 @@ struct OnboardingMultiGameView: View {
     @ObserveInjection var inject
 
     @State private var isAnimating = false
-    @State private var gameReveals: [Bool] = Array(repeating: false, count: 4)
+    @State private var gameReveals: [Bool] = Array(repeating: false, count: 3)
     @State private var activeGame: Int = 0
     @State private var cardFlip: Bool = false
 
@@ -13,7 +13,6 @@ struct OnboardingMultiGameView: View {
         ("flame.fill", "Pokemon", "Charizard EX", "$328.50"),
         ("wand.and.stars", "Magic: The Gathering", "Black Lotus", "$520,000"),
         ("bolt.fill", "Yu-Gi-Oh!", "Blue-Eyes White Dragon", "$425.00"),
-        ("trophy.fill", "Sports Cards", "Shohei Ohtani RC", "$1,200"),
     ]
 
     var body: some View {
@@ -35,7 +34,7 @@ struct OnboardingMultiGameView: View {
                     .foregroundColor(theme.accentBright))
                 .padding(.bottom, 8)
 
-                Text("Pokemon, Magic, Yu-Gi-Oh!, sports cards — all identified and valued instantly.")
+                Text("Pokemon, Magic, Yu-Gi-Oh! — all identified and valued instantly.")
                     .font(.system(size: 16, weight: .light))
                     .foregroundColor(.white.opacity(0.55))
                     .lineSpacing(4)
@@ -75,7 +74,7 @@ struct OnboardingMultiGameView: View {
             }
 
             // Games reveal sequentially
-            for i in 0..<4 {
+            for i in 0..<3 {
                 withAnimation(.spring(response: 0.35, dampingFraction: 0.7).delay(0.3 + Double(i) * 0.15)) {
                     gameReveals[i] = true
                 }
@@ -176,7 +175,6 @@ struct OnboardingMultiGameView: View {
         Color(.systemRed),
         Color(.systemBlue),
         Color(.systemPurple),
-        Color(.systemOrange),
     ]
 
     private var gameGrid: some View {
@@ -192,7 +190,7 @@ struct OnboardingMultiGameView: View {
                 GridItem(.flexible(), spacing: 10),
                 GridItem(.flexible(), spacing: 10),
             ], spacing: 10) {
-                ForEach(0..<4, id: \.self) { i in
+                ForEach(0..<3, id: \.self) { i in
                     gameCell(
                         icon: games[i].icon,
                         name: games[i].name,

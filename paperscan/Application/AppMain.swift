@@ -22,8 +22,12 @@ struct AppMain: App {
         )
 
         do {
-            modelContainer = try ModelContainer(for: ScanRecord.self, CardRecord.self, CardCollection.self, WatchlistItem.self)
+            modelContainer = try ModelContainer(for: ScanRecord.self, CardRecord.self, CardCollection.self, WatchlistItem.self, GradeRecord.self)
         } catch {
+            DIContainer.shared.crashReportingService.captureError(
+                error,
+                context: ["action": "model_container_init", "critical": true]
+            )
             fatalError("Failed to create ModelContainer: \(error)")
         }
 

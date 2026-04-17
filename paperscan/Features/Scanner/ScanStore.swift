@@ -29,47 +29,59 @@ final class ScanStore {
     // MARK: - Capture
 
     /// Insert a pending placeholder immediately (before photo is ready) so UI updates instantly.
+    /// Does NOT call save — defers it to avoid blocking main thread during capture.
     func insertPending() -> ScanRecord {
         let record = ScanRecord(capturedImagePath: "")
         modelContext?.insert(record)
         records.insert(record, at: 0)
-        trySave()
+        // Defer save so the UI updates instantly — save happens on next runloop
+        Task { @MainActor in
+            self.trySave()
+        }
         return record
     }
 
     /// Called once the camera delivers and processes the image for a pending record.
+    /// Image encoding + disk write happen on a background thread and never block main.
     func fulfillPending(_ record: ScanRecord, image: UIImage) {
-        Task {
-            let prepared: (Data, String)? = await Task.detached(priority: .userInitiated) {
-                guard let data = image.jpegData(compressionQuality: 0.6) else { return nil }
-                let path = ScanStore.writeImageToDisk(data)
-                return (data, path)
-            }.value
-
-            guard let (imageData, imagePath) = prepared else {
-                record.scanStatus = .failed
-                record.errorMessage = "Image encoding failed"
-                crashReporting.captureMessage("Scan image encoding failed")
+        // Fire-and-forget: encode image off main thread, then hop back to update record
+        Task.detached(priority: .userInitiated) {
+            guard let data = image.jpegData(compressionQuality: 0.6) else {
+                await MainActor.run {
+                    record.scanStatus = .failed
+                    record.errorMessage = "Image encoding failed"
+                    self.crashReporting.captureMessage("Scan image encoding failed")
+                    self.trySave()
+                }
                 return
             }
+            let path = ScanStore.writeImageToDisk(data)
 
-            record.capturedImagePath = imagePath
-            trySave()
-            analytics.capture(.scanSubmitted)
+            // Hop back to main only to mutate SwiftData
+            await MainActor.run {
+                record.capturedImagePath = path
+                self.trySave()
+                self.analytics.capture(.scanSubmitted)
+            }
 
+            // Submit job off main thread
             do {
-                let response = try await service.submitJob(imageData: imageData)
-                record.jobId = response.jobId
-                record.updatedAt = Date()
-                trySave()
-                startPolling(record)
+                let response = try await self.service.submitJob(imageData: data)
+                await MainActor.run {
+                    record.jobId = response.jobId
+                    record.updatedAt = Date()
+                    self.trySave()
+                    self.startPolling(record)
+                }
             } catch {
-                record.scanStatus = .failed
-                record.errorMessage = error.localizedDescription
-                record.updatedAt = Date()
-                trySave()
-                analytics.capture(.scanFailed, properties: ["error": error.localizedDescription])
-                crashReporting.captureError(error, context: ["action": "submit_job"])
+                await MainActor.run {
+                    record.scanStatus = .failed
+                    record.errorMessage = error.localizedDescription
+                    record.updatedAt = Date()
+                    self.trySave()
+                    self.analytics.capture(.scanFailed, properties: ["error": error.localizedDescription])
+                    self.crashReporting.captureError(error, context: ["action": "submit_job"])
+                }
             }
         }
     }
@@ -85,9 +97,10 @@ final class ScanStore {
         pollTasks[record.id] = Task {
             var attempts = 0
             let maxAttempts = 60 // 2min max
+            var pollingRateSeconds = 4
             while !Task.isCancelled && attempts < maxAttempts {
                 do {
-                    try await Task.sleep(for: .seconds(2))
+                    try await Task.sleep(for: .seconds(pollingRateSeconds))
                     let status = try await service.checkStatus(jobId: jobId)
                     let mapped = ScanStatus(apiStatus: status.status)
                     print("[ScanStore] Poll \(attempts+1) for \(jobId) — status: \(status.status)")
@@ -133,8 +146,15 @@ final class ScanStore {
 
     func deleteRecord(_ record: ScanRecord) {
         cancelPolling(for: record.id)
-        // Remove saved image
-        try? FileManager.default.removeItem(atPath: record.capturedImagePath)
+        // Remove saved image (non-fatal if file doesn't exist)
+        if let url = ScanStore.resolveImageURL(record.capturedImagePath),
+           FileManager.default.fileExists(atPath: url.path) {
+            do {
+                try FileManager.default.removeItem(at: url)
+            } catch {
+                crashReporting.captureError(error, context: ["action": "delete_scan_image"])
+            }
+        }
         records.removeAll { $0.id == record.id }
         modelContext?.delete(record)
         trySave()
@@ -191,6 +211,27 @@ final class ScanStore {
         record.addedToCollection = false  // identity changed — require re-save
         record.scanStatus    = .complete
         record.updatedAt     = Date()
+
+        // Update the auto-created CardRecord so detail view shows corrected data
+        if let cardId = record.cardRecordId {
+            var descriptor = FetchDescriptor<CardRecord>()
+            descriptor.predicate = #Predicate { $0.id == cardId }
+            descriptor.fetchLimit = 1
+            if let existing = try? modelContext?.fetch(descriptor).first {
+                existing.tcgplayerProductId = candidate.productId ?? ""
+                existing.name = candidate.name ?? "Unknown"
+                existing.setName = candidate.setName ?? ""
+                existing.setCode = candidate.setCode ?? ""
+                existing.number = candidate.cardNumber ?? ""
+                existing.rarity = candidate.rarity ?? ""
+                existing.variant = candidate.variant ?? "STANDARD"
+                existing.game = candidate.game ?? ""
+                existing.tcgplayerPrice = candidate.marketPrice ?? 0
+                existing.scanImageUrl = candidate.image
+                existing.candidatesJSON = record.candidatesJSON
+            }
+        }
+
         trySave()
     }
 
@@ -265,7 +306,12 @@ final class ScanStore {
             sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
         )
         descriptor.fetchLimit = 10
-        records = (try? modelContext.fetch(descriptor)) ?? []
+        do {
+            records = try modelContext.fetch(descriptor)
+        } catch {
+            records = []
+            crashReporting.captureError(error, context: ["action": "load_recent_scans"])
+        }
 
         // Resume polling for any pending/processing records
         for record in records where record.scanStatus == .pending || record.scanStatus == .processing {
@@ -280,7 +326,12 @@ final class ScanStore {
         let descriptor = FetchDescriptor<ScanRecord>(
             sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
         )
-        records = (try? modelContext.fetch(descriptor)) ?? []
+        do {
+            records = try modelContext.fetch(descriptor)
+        } catch {
+            records = []
+            crashReporting.captureError(error, context: ["action": "load_all_scans"])
+        }
     }
 
     // MARK: - Computed
@@ -299,24 +350,58 @@ final class ScanStore {
     // MARK: - Persistence Helpers
 
     private func trySave() {
-        try? modelContext?.save()
+        do {
+            try modelContext?.save()
+        } catch {
+            crashReporting.captureError(error, context: ["action": "scan_store_save"])
+        }
     }
 
-    private nonisolated static func writeImageToDisk(_ imageData: Data) -> String {
+    /// Writes image and returns a **filename** (not absolute path).
+    /// Absolute Documents paths include the app container UUID which changes across dev reinstalls,
+    /// so we persist the filename only and resolve it against `scansDirectory` at read time.
+    nonisolated static func writeImageToDisk(_ imageData: Data) -> String {
         let filename = UUID().uuidString + ".jpg"
         let url = scansDirectory.appendingPathComponent(filename)
-        try? imageData.write(to: url)
-        return url.path
+        do {
+            try imageData.write(to: url)
+        } catch {
+            DIContainer.shared.crashReportingService.captureError(
+                error,
+                context: ["action": "scan_image_write", "path": url.path]
+            )
+        }
+        return filename
+    }
+
+    /// Resolves a stored value (filename or legacy absolute path) to a current URL.
+    nonisolated static func resolveImageURL(_ stored: String) -> URL? {
+        guard !stored.isEmpty else { return nil }
+        let filename = (stored as NSString).lastPathComponent
+        return scansDirectory.appendingPathComponent(filename)
     }
 
     private func loadImageFromDisk(path: String) -> Data? {
-        try? Data(contentsOf: URL(fileURLWithPath: path))
+        guard let url = ScanStore.resolveImageURL(path) else { return nil }
+        do {
+            return try Data(contentsOf: url)
+        } catch {
+            crashReporting.captureError(error, context: ["action": "scan_image_read", "path": url.path])
+            return nil
+        }
     }
 
-    private nonisolated static var scansDirectory: URL {
+    nonisolated static var scansDirectory: URL {
         let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("Scans", isDirectory: true)
-        try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        do {
+            try FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
+        } catch {
+            DIContainer.shared.crashReportingService.captureError(
+                error,
+                context: ["action": "create_scans_directory"]
+            )
+        }
         return dir
     }
 }

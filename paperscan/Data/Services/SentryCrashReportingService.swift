@@ -7,8 +7,21 @@ final class SentryCrashReportingService: CrashReportingServiceProtocol, @uncheck
         SentrySDK.start { options in
             options.dsn = Constants.sentryDSN
             options.tracesSampleRate = 0.2
+            options.profilesSampleRate = 0.2
             options.attachScreenshot = true
+            options.attachViewHierarchy = true
             options.enableMetricKit = true
+            options.enableAutoBreadcrumbTracking = true
+            options.enableUIViewControllerTracing = true
+            options.enableNetworkTracking = true
+            options.enableNetworkBreadcrumbs = true
+            options.enableFileIOTracing = true
+            options.enableCoreDataTracing = true
+            options.enableAutoPerformanceTracing = true
+            options.enableCaptureFailedRequests = true
+            options.enableAppHangTracking = true
+            options.enableWatchdogTerminationTracking = true
+            options.swiftAsyncStacktraces = true
         }
         #endif
     }

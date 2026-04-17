@@ -13,6 +13,7 @@ final class ScanCorrectionViewModel {
     var selectedProductId: String?
 
     private let service: CardIdentifierServiceProtocol = DIContainer.shared.cardIdentifierService
+    private let crashReporting: CrashReportingServiceProtocol = DIContainer.shared.crashReportingService
 
     func load(jobId: String) async {
         loadState = .loading
@@ -27,6 +28,10 @@ final class ScanCorrectionViewModel {
             }
         } catch {
             loadState = .failed(error.localizedDescription)
+            crashReporting.captureError(error, context: [
+                "action": "scan_correction_load",
+                "job_id": jobId
+            ])
         }
     }
 }

@@ -191,15 +191,9 @@ struct CollectionCardRow: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            AsyncImage(url: URL(string: card.scanImageUrl ?? "")) { image in
-                image.resizable().scaledToFill()
-            } placeholder: {
-                RoundedRectangle(cornerRadius: 5, style: .continuous)
-                    .fill(Color(.tertiarySystemFill))
-                    .overlay(Image(systemName: "creditcard").foregroundStyle(.quaternary))
-            }
-            .frame(width: 46, height: 64)
-            .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
+            cardThumbnail
+                .frame(width: 46, height: 64)
+                .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
 
             VStack(alignment: .leading, spacing: 3) {
                 Text(card.name)
@@ -209,6 +203,10 @@ struct CollectionCardRow: View {
                 Text([card.setName, card.rarity].filter { !$0.isEmpty }.joined(separator: " · "))
                     .font(.caption)
                     .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                Text(card.collection?.name ?? "Unassigned")
+                    .font(.caption2.weight(.medium))
+                    .foregroundStyle(theme.accent)
                     .lineLimit(1)
             }
 
@@ -228,5 +226,35 @@ struct CollectionCardRow: View {
             }
         }
         .padding(.vertical, 4)
+    }
+
+    @ViewBuilder
+    private var cardThumbnail: some View {
+        if let urlString = card.scanImageUrl, !urlString.isEmpty, let url = URL(string: urlString) {
+            AsyncImage(url: url) { phase in
+                switch phase {
+                case .success(let image):
+                    image.resizable().scaledToFill()
+                default:
+                    capturedOrPlaceholder
+                }
+            }
+        } else {
+            capturedOrPlaceholder
+        }
+    }
+
+    @ViewBuilder
+    private var capturedOrPlaceholder: some View {
+        if let path = card.capturedImagePath,
+           let url = ScanStore.resolveImageURL(path),
+           let data = try? Data(contentsOf: url),
+           let uiImage = UIImage(data: data) {
+            Image(uiImage: uiImage).resizable().scaledToFill()
+        } else {
+            RoundedRectangle(cornerRadius: 5, style: .continuous)
+                .fill(Color(.tertiarySystemFill))
+                .overlay(Image(systemName: "creditcard").foregroundStyle(.quaternary))
+        }
     }
 }

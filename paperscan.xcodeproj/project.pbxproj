@@ -107,18 +107,57 @@
 		96D36F1F52C1A641DAD11027 /* CollectionTileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9141D7AE23C53D8954FE711 /* CollectionTileView.swift */; };
 		A138AC49D465B5E758A8BEBF /* OnboardingBulkScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB99B1B45259846AF6F51F4 /* OnboardingBulkScanView.swift */; };
 		A6F02CD9F964DBC43663FF3D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283617966809C66F137114B4 /* Theme.swift */; };
+		AA000200000000000000A001 /* GradingCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A001 /* GradingCaptureView.swift */; };
+		AA000200000000000000A002 /* GradingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A002 /* GradingFlowView.swift */; };
+		AA000200000000000000A003 /* GradingHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A003 /* GradingHistoryView.swift */; };
+		AA000200000000000000A004 /* GradingProcessingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A004 /* GradingProcessingView.swift */; };
+		AA000200000000000000A005 /* GradingResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A005 /* GradingResultsView.swift */; };
+		AA000200000000000000A006 /* GradingStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A006 /* GradingStep.swift */; };
+		AA000200000000000000A007 /* GradingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A007 /* GradingViewModel.swift */; };
+		AA000200000000000000A008 /* GradeRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A008 /* GradeRecord.swift */; };
+		AA000200000000000000A009 /* GradingAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A009 /* GradingAPIModels.swift */; };
+		AA000200000000000000A00A /* GradingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A00A /* GradingServiceProtocol.swift */; };
+		AA000200000000000000A00B /* GradingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A00B /* GradingService.swift */; };
+		AA000200000000000000A00C /* GradeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A00C /* GradeDetailView.swift */; };
+		AA000200000000000000A00D /* OnboardingGradingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A00D /* OnboardingGradingView.swift */; };
 		AA00020000000000000AA001 /* TrialCloseContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00010000000000000AA001 /* TrialCloseContainerView.swift */; };
 		AA00020000000000000AA002 /* TrialScreen1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00010000000000000AA002 /* TrialScreen1View.swift */; };
 		AA00020000000000000AA003 /* TrialScreen2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00010000000000000AA003 /* TrialScreen2View.swift */; };
 		AA00020000000000000AA004 /* AppPreviewCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00010000000000000AA004 /* AppPreviewCardsView.swift */; };
 		AA00020000000000000AA005 /* TrialBottomStripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00010000000000000AA005 /* TrialBottomStripView.swift */; };
 		AA00020000000000000AA006 /* TrialCloseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00010000000000000AA006 /* TrialCloseViewModel.swift */; };
+		AA000300000000000000A001 /* GradingCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A001 /* GradingCaptureView.swift */; };
+		AA000300000000000000A002 /* GradingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A002 /* GradingFlowView.swift */; };
+		AA000300000000000000A003 /* GradingHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A003 /* GradingHistoryView.swift */; };
+		AA000300000000000000A004 /* GradingProcessingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A004 /* GradingProcessingView.swift */; };
+		AA000300000000000000A005 /* GradingResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A005 /* GradingResultsView.swift */; };
+		AA000300000000000000A006 /* GradingStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A006 /* GradingStep.swift */; };
+		AA000300000000000000A007 /* GradingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A007 /* GradingViewModel.swift */; };
+		AA000300000000000000A008 /* GradeRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A008 /* GradeRecord.swift */; };
+		AA000300000000000000A009 /* GradingAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A009 /* GradingAPIModels.swift */; };
+		AA000300000000000000A00A /* GradingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A00A /* GradingServiceProtocol.swift */; };
+		AA000300000000000000A00B /* GradingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A00B /* GradingService.swift */; };
+		AA000300000000000000A00C /* GradeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A00C /* GradeDetailView.swift */; };
+		AA000300000000000000A00D /* OnboardingGradingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A00D /* OnboardingGradingView.swift */; };
 		AA00030000000000000AA001 /* TrialCloseContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00010000000000000AA001 /* TrialCloseContainerView.swift */; };
 		AA00030000000000000AA002 /* TrialScreen1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00010000000000000AA002 /* TrialScreen1View.swift */; };
 		AA00030000000000000AA003 /* TrialScreen2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00010000000000000AA003 /* TrialScreen2View.swift */; };
 		AA00030000000000000AA004 /* AppPreviewCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00010000000000000AA004 /* AppPreviewCardsView.swift */; };
 		AA00030000000000000AA005 /* TrialBottomStripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00010000000000000AA005 /* TrialBottomStripView.swift */; };
 		AA00030000000000000AA006 /* TrialCloseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00010000000000000AA006 /* TrialCloseViewModel.swift */; };
+		AA000400000000000000A001 /* GradingCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A001 /* GradingCaptureView.swift */; };
+		AA000400000000000000A002 /* GradingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A002 /* GradingFlowView.swift */; };
+		AA000400000000000000A003 /* GradingHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A003 /* GradingHistoryView.swift */; };
+		AA000400000000000000A004 /* GradingProcessingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A004 /* GradingProcessingView.swift */; };
+		AA000400000000000000A005 /* GradingResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A005 /* GradingResultsView.swift */; };
+		AA000400000000000000A006 /* GradingStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A006 /* GradingStep.swift */; };
+		AA000400000000000000A007 /* GradingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A007 /* GradingViewModel.swift */; };
+		AA000400000000000000A008 /* GradeRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A008 /* GradeRecord.swift */; };
+		AA000400000000000000A009 /* GradingAPIModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A009 /* GradingAPIModels.swift */; };
+		AA000400000000000000A00A /* GradingServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A00A /* GradingServiceProtocol.swift */; };
+		AA000400000000000000A00B /* GradingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A00B /* GradingService.swift */; };
+		AA000400000000000000A00C /* GradeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A00C /* GradeDetailView.swift */; };
+		AA000400000000000000A00D /* OnboardingGradingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000100000000000000A00D /* OnboardingGradingView.swift */; };
 		AA00040000000000000AA001 /* TrialCloseContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00010000000000000AA001 /* TrialCloseContainerView.swift */; };
 		AA00040000000000000AA002 /* TrialScreen1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00010000000000000AA002 /* TrialScreen1View.swift */; };
 		AA00040000000000000AA003 /* TrialScreen2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00010000000000000AA003 /* TrialScreen2View.swift */; };
@@ -448,6 +487,19 @@
 		7752A2C6D842881AB004468F /* OnboardingExportImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingExportImportView.swift; sourceTree = "<group>"; };
 		93C18F2E0AE7AFF158F22C57 /* OnboardingCorrectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCorrectionView.swift; sourceTree = "<group>"; };
 		9C0341692A8229FA42D44E0C /* AddToCollectionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToCollectionSheet.swift; sourceTree = "<group>"; };
+		AA000100000000000000A001 /* GradingCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradingCaptureView.swift; sourceTree = "<group>"; };
+		AA000100000000000000A002 /* GradingFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradingFlowView.swift; sourceTree = "<group>"; };
+		AA000100000000000000A003 /* GradingHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradingHistoryView.swift; sourceTree = "<group>"; };
+		AA000100000000000000A004 /* GradingProcessingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradingProcessingView.swift; sourceTree = "<group>"; };
+		AA000100000000000000A005 /* GradingResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradingResultsView.swift; sourceTree = "<group>"; };
+		AA000100000000000000A006 /* GradingStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradingStep.swift; sourceTree = "<group>"; };
+		AA000100000000000000A007 /* GradingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradingViewModel.swift; sourceTree = "<group>"; };
+		AA000100000000000000A008 /* GradeRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeRecord.swift; sourceTree = "<group>"; };
+		AA000100000000000000A009 /* GradingAPIModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradingAPIModels.swift; sourceTree = "<group>"; };
+		AA000100000000000000A00A /* GradingServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradingServiceProtocol.swift; sourceTree = "<group>"; };
+		AA000100000000000000A00B /* GradingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradingService.swift; sourceTree = "<group>"; };
+		AA000100000000000000A00C /* GradeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeDetailView.swift; sourceTree = "<group>"; };
+		AA000100000000000000A00D /* OnboardingGradingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingGradingView.swift; sourceTree = "<group>"; };
 		AA00010000000000000AA001 /* TrialCloseContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialCloseContainerView.swift; sourceTree = "<group>"; };
 		AA00010000000000000AA002 /* TrialScreen1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialScreen1View.swift; sourceTree = "<group>"; };
 		AA00010000000000000AA003 /* TrialScreen2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrialScreen2View.swift; sourceTree = "<group>"; };
@@ -629,6 +681,21 @@
 			path = TrialClose;
 			sourceTree = "<group>";
 		};
+		AA000500000000000000A001 /* Grading */ = {
+			isa = PBXGroup;
+			children = (
+				AA000100000000000000A001 /* GradingCaptureView.swift */,
+				AA000100000000000000A002 /* GradingFlowView.swift */,
+				AA000100000000000000A003 /* GradingHistoryView.swift */,
+				AA000100000000000000A004 /* GradingProcessingView.swift */,
+				AA000100000000000000A005 /* GradingResultsView.swift */,
+				AA000100000000000000A006 /* GradingStep.swift */,
+				AA000100000000000000A007 /* GradingViewModel.swift */,
+				AA000100000000000000A00C /* GradeDetailView.swift */,
+			);
+			path = Grading;
+			sourceTree = "<group>";
+		};
 		BB00010000000000000BB004 /* Detection */ = {
 			isa = PBXGroup;
 			children = (
@@ -737,6 +804,7 @@
 				26124F802F881E9A0043C162 /* PostHogAnalyticsService.swift */,
 				26124F812F881E9A0043C162 /* SentryCrashReportingService.swift */,
 				268806D52F89897800D80EA1 /* WatchlistPriceService.swift */,
+				AA000100000000000000A00B /* GradingService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -779,6 +847,8 @@
 				26AF3AA82F82CF4C005AC1E5 /* ScanRecord.swift */,
 				6EFB78FBB097876932491D42 /* CardCollection.swift */,
 				CC02B0002FA6F00100000003 /* WatchlistItem.swift */,
+				AA000100000000000000A008 /* GradeRecord.swift */,
+				AA000100000000000000A009 /* GradingAPIModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -791,6 +861,7 @@
 				26AF3AB22F82CF52005AC1E5 /* CardIdentifierServiceProtocol.swift */,
 				26124F742F881E700043C162 /* AnalyticsServiceProtocol.swift */,
 				26124F752F881E700043C162 /* CrashReportingServiceProtocol.swift */,
+				AA000100000000000000A00A /* GradingServiceProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -869,6 +940,7 @@
 				AA00010000000000000AA007 /* TrialClose */,
 				CEAABB012DAB000000DCE39C /* OnboardingCameraPermissionView.swift */,
 				CEF1ECA42DAAD0EA00DCE39C /* OnboardingFeaturesView.swift */,
+				AA000100000000000000A00D /* OnboardingGradingView.swift */,
 				7752A2C6D842881AB004468F /* OnboardingExportImportView.swift */,
 				DDB99B1B45259846AF6F51F4 /* OnboardingBulkScanView.swift */,
 				93C18F2E0AE7AFF158F22C57 /* OnboardingCorrectionView.swift */,
@@ -962,6 +1034,7 @@
 				CEF1ECB72DAAD0EA00DCE39C /* Purchases */,
 				CEF1ECBC2DAAD0EA00DCE39C /* Settings */,
 				26AF3A932F82CE78005AC1E5 /* Scanner */,
+				AA000500000000000000A001 /* Grading */,
 				26AF3ABC2F833E22005AC1E5 /* Collection */,
 				26AF3ACE2F8347AE005AC1E5 /* Search */,
 				CC02B0082FA6F00100000005 /* Watchlist */,
@@ -1384,6 +1457,19 @@
 				26AF3A982F82CE78005AC1E5 /* ScanRecordRow.swift in Sources */,
 				26AF3A992F82CE78005AC1E5 /* ScannerView.swift in Sources */,
 				BB00020000000000000BB003 /* DetectionResult.swift in Sources */,
+				AA000200000000000000A001 /* GradingCaptureView.swift in Sources */,
+				AA000200000000000000A002 /* GradingFlowView.swift in Sources */,
+				AA000200000000000000A003 /* GradingHistoryView.swift in Sources */,
+				AA000200000000000000A004 /* GradingProcessingView.swift in Sources */,
+				AA000200000000000000A005 /* GradingResultsView.swift in Sources */,
+				AA000200000000000000A006 /* GradingStep.swift in Sources */,
+				AA000200000000000000A007 /* GradingViewModel.swift in Sources */,
+				AA000200000000000000A008 /* GradeRecord.swift in Sources */,
+				AA000200000000000000A009 /* GradingAPIModels.swift in Sources */,
+				AA000200000000000000A00A /* GradingServiceProtocol.swift in Sources */,
+				AA000200000000000000A00B /* GradingService.swift in Sources */,
+				AA000200000000000000A00C /* GradeDetailView.swift in Sources */,
+				AA000200000000000000A00D /* OnboardingGradingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1509,6 +1595,19 @@
 				1C1F92A13DDDB0D8D9889D42 /* CollectionDetailView.swift in Sources */,
 				26AF3AC22F833E22005AC1E5 /* CardDetailView.swift in Sources */,
 				BB00030000000000000BB003 /* DetectionResult.swift in Sources */,
+				AA000300000000000000A001 /* GradingCaptureView.swift in Sources */,
+				AA000300000000000000A002 /* GradingFlowView.swift in Sources */,
+				AA000300000000000000A003 /* GradingHistoryView.swift in Sources */,
+				AA000300000000000000A004 /* GradingProcessingView.swift in Sources */,
+				AA000300000000000000A005 /* GradingResultsView.swift in Sources */,
+				AA000300000000000000A006 /* GradingStep.swift in Sources */,
+				AA000300000000000000A007 /* GradingViewModel.swift in Sources */,
+				AA000300000000000000A008 /* GradeRecord.swift in Sources */,
+				AA000300000000000000A009 /* GradingAPIModels.swift in Sources */,
+				AA000300000000000000A00A /* GradingServiceProtocol.swift in Sources */,
+				AA000300000000000000A00B /* GradingService.swift in Sources */,
+				AA000300000000000000A00C /* GradeDetailView.swift in Sources */,
+				AA000300000000000000A00D /* OnboardingGradingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1634,6 +1733,19 @@
 				6E564415A269CFC537648DD5 /* CollectionDetailView.swift in Sources */,
 				26AF3ABE2F833E22005AC1E5 /* CardDetailView.swift in Sources */,
 				BB00040000000000000BB003 /* DetectionResult.swift in Sources */,
+				AA000400000000000000A001 /* GradingCaptureView.swift in Sources */,
+				AA000400000000000000A002 /* GradingFlowView.swift in Sources */,
+				AA000400000000000000A003 /* GradingHistoryView.swift in Sources */,
+				AA000400000000000000A004 /* GradingProcessingView.swift in Sources */,
+				AA000400000000000000A005 /* GradingResultsView.swift in Sources */,
+				AA000400000000000000A006 /* GradingStep.swift in Sources */,
+				AA000400000000000000A007 /* GradingViewModel.swift in Sources */,
+				AA000400000000000000A008 /* GradeRecord.swift in Sources */,
+				AA000400000000000000A009 /* GradingAPIModels.swift in Sources */,
+				AA000400000000000000A00A /* GradingServiceProtocol.swift in Sources */,
+				AA000400000000000000A00B /* GradingService.swift in Sources */,
+				AA000400000000000000A00C /* GradeDetailView.swift in Sources */,
+				AA000400000000000000A00D /* OnboardingGradingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1794,12 +1906,12 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = paperscan/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Gradz - TCG Card Scanner";
+				INFOPLIST_KEY_CFBundleDisplayName = Poke;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "We use the camera to scan banknotes and identify them.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We use photo library to allow users to import banknote images for identification";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We use the camera to scan cards, identify, and grade them.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We use photo library to allow users to import cards images for identification and grading";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1815,7 +1927,7 @@
 					"-interposable",
 				);
 				OTHER_LIBTOOLFLAGS = "\"-XCExpApple true\" \"-WLinkingC true\" \"-XCBuildForPre true\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tcgscanner.gradz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tcgscanner.poke;
 				PRODUCT_NAME = PaperScan;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1841,12 +1953,12 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = paperscan/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Gradz - TCG Card Scanner";
+				INFOPLIST_KEY_CFBundleDisplayName = Poke;
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.reference";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "We use the camera to scan banknotes and identify them.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We use photo library to allow users to import banknote images for identification";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We use the camera to scan cards, identify, and grade them.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We use photo library to allow users to import cards images for identification and grading";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1859,7 +1971,7 @@
 				MARKETING_VERSION = 1.0.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "\"-XCExpApple true\" \"-WLinkingC true\" \"-XCBuildForPre true\"";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tcgscanner.gradz;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tcgscanner.poke;
 				PRODUCT_NAME = PaperScan;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

@@ -18,6 +18,9 @@ final class DIContainer {
     )
     lazy var analyticsService: AnalyticsServiceProtocol = PostHogAnalyticsService()
     lazy var crashReportingService: CrashReportingServiceProtocol = SentryCrashReportingService()
+    lazy var gradingService: GradingServiceProtocol = GradingService(
+        baseURL: URL(string: Constants.cardIdentifierBaseURL)!
+    )
 
     private init() {}
 }

@@ -66,6 +66,10 @@ struct RootView: View {
                             CollectionsGridView()
                                 .tabItem { Label("Collections", systemImage: "square.stack") }
                                 .tag(2)
+
+                            GradingHistoryView()
+                                .tabItem { Label("Grades", systemImage: "star.circle") }
+                                .tag(3)
                         }
 
                         // Floating scan button
@@ -182,6 +186,7 @@ struct RootView: View {
         case 0: return "Home"
         case 1: return "Watchlist"
         case 2: return "Collections"
+        case 3: return "Grades"
         default: return ""
         }
     }
@@ -232,6 +237,12 @@ struct RootView: View {
             SearchView()
         case .watchlist:
             WatchlistView()
+        case .grading:
+            GradingFlowView()
+        case .gradingHistory:
+            GradingHistoryView()
+        case .gradeDetail(let record):
+            GradeDetailView(record: record)
         default:
             Text("Screen Not Found")
         }

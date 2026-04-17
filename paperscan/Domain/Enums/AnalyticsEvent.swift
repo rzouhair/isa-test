@@ -31,6 +31,12 @@ enum AnalyticsEvent: String, Sendable {
     case collectionCreated = "collection_created"
     case cardAddedToCollection = "card_added_to_collection"
 
+    // Grading
+    case gradingStepCaptured = "grading_step_captured"
+    case gradingCompleted = "grading_completed"
+    case gradingFailed = "grading_failed"
+    case gradingSaved = "grading_saved"
+
     // General
     case appOpened = "app_opened"
 }

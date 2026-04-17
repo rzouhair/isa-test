@@ -63,23 +63,52 @@ struct CardDetailView: View {
         .enableInjection()
     }
 
+    // MARK: - Card Image (remote → captured fallback → placeholder)
+
+    @ViewBuilder
+    private var cardImageView: some View {
+        if let urlString = card.scanImageUrl, let url = URL(string: urlString), !urlString.isEmpty {
+            AsyncImage(url: url) { phase in
+                switch phase {
+                case .success(let image):
+                    image.resizable()
+                case .failure:
+                    capturedOrPlaceholder
+                default:
+                    capturedOrPlaceholder
+                }
+            }
+        } else {
+            capturedOrPlaceholder
+        }
+    }
+
+    @ViewBuilder
+    private var capturedOrPlaceholder: some View {
+        if let path = card.capturedImagePath,
+           let url = ScanStore.resolveImageURL(path),
+           let data = try? Data(contentsOf: url),
+           let uiImage = UIImage(data: data) {
+            Image(uiImage: uiImage).resizable()
+        } else {
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .fill(Color(.tertiarySystemFill))
+                .aspectRatio(0.71, contentMode: .fit)
+                .overlay(
+                    Image(systemName: "creditcard")
+                        .font(.largeTitle)
+                        .foregroundStyle(.quaternary)
+                )
+        }
+    }
+
     // MARK: - 3D Card Hero
 
     private var cardHero: some View {
         VStack(spacing: 12) {
             ZStack {
-                AsyncImage(url: URL(string: card.scanImageUrl ?? "")) { image in
-                    image.resizable().scaledToFit()
-                } placeholder: {
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(Color(.tertiarySystemFill))
-                        .aspectRatio(0.71, contentMode: .fit)
-                        .overlay(
-                            Image(systemName: "creditcard")
-                                .font(.largeTitle)
-                                .foregroundStyle(.quaternary)
-                        )
-                }
+                cardImageView
+                    .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                 .overlay(
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
@@ -373,8 +402,13 @@ struct CardDetailView: View {
 
             card.priceUpdatedAt = Date()
         } catch {
-            // Silent fail — chart stays as-is
-            print("Price update failed: \(error.localizedDescription)")
+            DIContainer.shared.crashReportingService.captureError(
+                error,
+                context: [
+                    "action": "card_detail_price_refresh",
+                    "product_id": card.tcgplayerProductId
+                ]
+            )
         }
     }
 

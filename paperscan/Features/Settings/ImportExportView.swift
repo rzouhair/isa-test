@@ -12,6 +12,7 @@ struct ImportExportView: View {
     @Query(filter: #Predicate<CardRecord> { $0.collection == nil })
     var uncollectedCards: [CardRecord]
     @Query var watchlistItems: [WatchlistItem]
+    @Query(sort: \GradeRecord.createdAt, order: .reverse) var gradeRecords: [GradeRecord]
 
     // Export
     @State private var exportScope: ExportScope = .all
@@ -37,12 +38,14 @@ struct ImportExportView: View {
     enum ImportDataType: String, CaseIterable {
         case collections = "Collections"
         case watchlist = "Watchlist"
+        case grades = "Grades"
     }
 
     var body: some View {
         List {
             exportSection
             watchlistExportSection
+            gradesExportSection
             importSection
         }
         .navigationTitle("Import & Export")
@@ -63,18 +66,19 @@ struct ImportExportView: View {
             Button("Cancel", role: .cancel) { pendingImportURL = nil }
             Button("Replace", role: .destructive) { performImport() }
         } message: {
-            Text(importDataType == .collections
-                 ? "This will delete all existing cards and collections, then import from the CSV file."
-                 : "This will delete all existing watchlist items, then import from the CSV file.")
+            Text("This will delete all existing \(importDataType.rawValue.lowercased()), then import from the CSV file.")
         }
         .alert("Import Complete", isPresented: $showImportResult) {
             Button("OK") {}
         } message: {
             if let r = importResult {
-                if importDataType == .collections {
+                switch importDataType {
+                case .collections:
                     Text("\(r.cardsCreated) cards imported\n\(r.collectionsCreated) collections created\(r.errors.isEmpty ? "" : "\n\(r.errors.count) rows skipped")")
-                } else {
+                case .watchlist:
                     Text("\(r.watchlistCreated) watchlist items imported\(r.errors.isEmpty ? "" : "\n\(r.errors.count) rows skipped")")
+                case .grades:
+                    Text("\(r.gradesCreated) grades imported\(r.errors.isEmpty ? "" : "\n\(r.errors.count) rows skipped")")
                 }
             }
         }
@@ -162,6 +166,29 @@ struct ImportExportView: View {
         }
     }
 
+    // MARK: - Export Grades Section
+
+    private var gradesExportSection: some View {
+        Section {
+            Button {
+                exportGrades()
+            } label: {
+                HStack {
+                    Image(systemName: "square.and.arrow.up")
+                    Text("Export Grades CSV")
+                        .fontWeight(.semibold)
+                }
+                .frame(maxWidth: .infinity)
+            }
+            .disabled(gradeRecords.isEmpty)
+            .listRowBackground(Color.gray.opacity(0.08))
+        } header: {
+            Text("Export Grades")
+        } footer: {
+            Text("\(gradeRecords.count) grade\(gradeRecords.count == 1 ? "" : "s") recorded")
+        }
+    }
+
     // MARK: - Import Section
 
     private var importSection: some View {
@@ -234,6 +261,11 @@ struct ImportExportView: View {
         shareCSV(csv, fileName: "paperscan_watchlist_\(dateStamp()).csv")
     }
 
+    private func exportGrades() {
+        let csv = CSVService.exportGradesCSV(grades: gradeRecords)
+        shareCSV(csv, fileName: "paperscan_grades_\(dateStamp()).csv")
+    }
+
     private func shareCSV(_ csv: String, fileName: String) {
         let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
         do {
@@ -241,7 +273,10 @@ struct ImportExportView: View {
             exportFileURL = tempURL
             showShareSheet = true
         } catch {
-            print("Export failed: \(error)")
+            DIContainer.shared.crashReportingService.captureError(
+                error,
+                context: ["action": "csv_export_write", "file": fileName]
+            )
         }
     }
 
@@ -281,6 +316,13 @@ struct ImportExportView: View {
                     context: modelContext,
                     mode: importMode,
                     existingItems: watchlistItems
+                )
+            case .grades:
+                result = CSVService.importGradesCSV(
+                    csvString: csvString,
+                    context: modelContext,
+                    mode: importMode,
+                    existingGrades: gradeRecords
                 )
             }
 

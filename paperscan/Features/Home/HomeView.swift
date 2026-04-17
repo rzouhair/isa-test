@@ -8,19 +8,23 @@ struct HomeView: View {
     @Environment(AppState.self) private var appState
     @Query(sort: \CardRecord.addedAt, order: .reverse) private var allCards: [CardRecord]
     @Query(
-        filter: #Predicate<ScanRecord> { $0.status == "complete" },
         sort: \ScanRecord.createdAt,
         order: .reverse
-    ) private var completedScans: [ScanRecord]
+    ) private var allScans: [ScanRecord]
+    @Query(sort: \GradeRecord.createdAt, order: .reverse) private var gradeRecords: [GradeRecord]
 
+    /// In-progress scans first, then completed — so user always sees pending identifications
     private var recentScans: [ScanRecord] {
-        Array(completedScans.prefix(5))
+        let inProgress = allScans.filter { $0.scanStatus == .pending || $0.scanStatus == .processing }
+        let completed = allScans.filter { $0.scanStatus == .complete }
+        return Array((inProgress + completed).prefix(5))
     }
 
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
                 heroBanner
+                recentGradesSection
                 recentSection
             }
             .padding(.vertical, 8)
@@ -48,20 +52,38 @@ struct HomeView: View {
                 )
                 .multilineTextAlignment(.center)
 
-            Button {
-                if appState.isProUser {
-                    router.presentFullscreenCover(.scanner)
-                } else {
-                    appState.showPaywall()
+            HStack(spacing: 12) {
+                Button {
+                    if appState.isProUser {
+                        router.presentFullscreenCover(.scanner)
+                    } else {
+                        appState.showPaywall()
+                    }
+                } label: {
+                    Text("Scan Now")
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(theme.accent)
+                        .padding(.horizontal, 28)
+                        .padding(.vertical, 10)
+                        .background(.white)
+                        .clipShape(Capsule())
                 }
-            } label: {
-                Text("Scan Now")
-                    .font(.subheadline.weight(.bold))
-                    .foregroundStyle(theme.accent)
-                    .padding(.horizontal, 28)
-                    .padding(.vertical, 10)
-                    .background(.white)
-                    .clipShape(Capsule())
+
+                Button {
+                    if appState.isProUser {
+                        router.presentFullscreenCover(.grading)
+                    } else {
+                        appState.showPaywall()
+                    }
+                } label: {
+                    Label("Grade", systemImage: "star.circle")
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 10)
+                        .background(.white.opacity(0.2))
+                        .clipShape(Capsule())
+                }
             }
         }
         .frame(maxWidth: .infinity)
@@ -116,16 +138,28 @@ struct HomeView: View {
             } else {
                 LazyVStack(spacing: 0) {
                     ForEach(recentScans) { scan in
-                        Button {
-                            if let card = cardFor(scan) {
-                                router.navigate(to: .cardDetail(card))
+                        Group {
+                            if scan.scanStatus == .complete, let card = cardFor(scan) {
+                                Button {
+                                    router.navigate(to: .cardDetail(card))
+                                } label: {
+                                    scanRow(scan)
+                                }
+                                .buttonStyle(.plain)
+                            } else if scan.scanStatus == .pending || scan.scanStatus == .processing {
+                                Button {
+                                    // Re-open scanner to see progress
+                                    router.presentFullscreenCover(.scanner)
+                                } label: {
+                                    scanRow(scan)
+                                }
+                                .buttonStyle(.plain)
+                            } else {
+                                scanRow(scan)
                             }
-                        } label: {
-                            scanRow(scan)
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 6)
                         }
-                        .buttonStyle(.plain)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 6)
                         if scan.id != recentScans.last?.id {
                             Divider().padding(.leading, 78)
                         }
@@ -171,14 +205,26 @@ struct HomeView: View {
             .clipShape(RoundedRectangle(cornerRadius: 5, style: .continuous))
 
             VStack(alignment: .leading, spacing: 3) {
-                Text(scan.productName ?? "Unknown")
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.primary)
-                    .lineLimit(1)
-                Text([scan.setName ?? "", scan.rarity ?? ""].filter { !$0.isEmpty }.joined(separator: " · "))
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(1)
+                if scan.scanStatus == .pending || scan.scanStatus == .processing {
+                    Text("Identifying...")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                    Text("Tap to open scanner")
+                        .font(.caption)
+                        .foregroundStyle(.tertiary)
+                        .lineLimit(1)
+                } else {
+                    Text(scan.productName ?? "Unknown")
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.primary)
+                        .lineLimit(1)
+                    Text([scan.setName ?? "", scan.rarity ?? ""].filter { !$0.isEmpty }.joined(separator: " · "))
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(1)
+                    ScanCollectionLabel(cardRecordId: scan.cardRecordId)
+                }
             }
 
             Spacer(minLength: 8)
@@ -200,8 +246,8 @@ struct HomeView: View {
 
     private func capturedThumbnail(for scan: ScanRecord) -> some View {
         Group {
-            if !scan.capturedImagePath.isEmpty,
-               let data = try? Data(contentsOf: URL(fileURLWithPath: scan.capturedImagePath)),
+            if let url = ScanStore.resolveImageURL(scan.capturedImagePath),
+               let data = try? Data(contentsOf: url),
                let uiImage = UIImage(data: data) {
                 Image(uiImage: uiImage)
                     .resizable()
@@ -217,5 +263,127 @@ struct HomeView: View {
     private func cardFor(_ scan: ScanRecord) -> CardRecord? {
         guard let cardId = scan.cardRecordId else { return nil }
         return allCards.first { $0.id == cardId }
+    }
+
+    // MARK: - Last Grade
+
+    private var recentGradesSection: some View {
+        Group {
+            if let record = gradeRecords.first {
+                VStack(spacing: 0) {
+                    HStack {
+                        Text("Last Grade")
+                            .font(.headline)
+                        Spacer()
+                        if gradeRecords.count > 1 {
+                            Button {
+                                router.navigate(to: .gradingHistory)
+                            } label: {
+                                Text("History")
+                                    .font(.subheadline.weight(.medium))
+                                    .foregroundStyle(theme.accent.opacity(0.8))
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 10)
+
+                    Button {
+                        router.navigate(to: .gradeDetail(record))
+                    } label: {
+                        lastGradeCard(record)
+                    }
+                    .buttonStyle(.plain)
+                    .padding(.horizontal, 16)
+                }
+            }
+        }
+    }
+
+    private func lastGradeCard(_ record: GradeRecord) -> some View {
+        VStack(spacing: 14) {
+            // Header: PSA range + confidence
+            HStack(alignment: .firstTextBaseline) {
+                if let psa = record.psaRange {
+                    Text("PSA \(psa)")
+                        .font(.system(size: 22, weight: .bold, design: .rounded).monospacedDigit())
+                        .foregroundStyle(.primary)
+                }
+                if let bgs = record.bgsRange {
+                    Text("· BGS \(bgs)")
+                        .font(.subheadline.weight(.medium))
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Text(record.confidence.capitalized)
+                    .font(.caption2.weight(.medium))
+                    .foregroundStyle(confidenceTint(record.confidence))
+                    .padding(.horizontal, 7)
+                    .padding(.vertical, 3)
+                    .background(confidenceTint(record.confidence).opacity(0.08))
+                    .clipShape(Capsule())
+            }
+
+            // Sub-scores grid
+            HStack(spacing: 0) {
+                gradeScoreItem("Centering", record.centeringScore)
+                gradeScoreItem("Corners", record.cornersScore)
+                gradeScoreItem("Edges", record.edgesScore)
+                gradeScoreItem("Surface", record.surfaceScore)
+            }
+
+            // Date
+            HStack {
+                Text(record.createdAt.formatted(date: .abbreviated, time: .shortened))
+                    .font(.caption2)
+                    .foregroundStyle(.quaternary)
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.caption2)
+                    .foregroundStyle(.quaternary)
+            }
+        }
+        .padding(14)
+        .background(Color(.secondarySystemGroupedBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+    }
+
+    private func gradeScoreItem(_ label: String, _ score: Double) -> some View {
+        VStack(spacing: 5) {
+            Text(String(format: "%.1f", score))
+                .font(.system(size: 16, weight: .semibold, design: .rounded).monospacedDigit())
+                .foregroundStyle(scoreTint(score))
+
+            // Thin bar
+            RoundedRectangle(cornerRadius: 1.5)
+                .fill(scoreTint(score).opacity(0.25))
+                .frame(height: 3)
+                .overlay(alignment: .leading) {
+                    GeometryReader { geo in
+                        RoundedRectangle(cornerRadius: 1.5)
+                            .fill(scoreTint(score))
+                            .frame(width: geo.size.width * CGFloat(score / 10.0))
+                    }
+                }
+
+            Text(label)
+                .font(.system(size: 10, weight: .medium))
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity)
+    }
+
+    private func scoreTint(_ score: Double) -> Color {
+        if score >= 8.5 { return .green.opacity(0.75) }
+        if score >= 6.5 { return .orange.opacity(0.7) }
+        return .red.opacity(0.65)
+    }
+
+    private func confidenceTint(_ confidence: String) -> Color {
+        switch confidence {
+        case "high": .green.opacity(0.75)
+        case "medium": .orange.opacity(0.7)
+        default: .red.opacity(0.65)
+        }
     }
 }

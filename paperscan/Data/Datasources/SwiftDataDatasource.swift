@@ -12,6 +12,8 @@ class SwiftDataDatasource {
 
     var modelContainer: ModelContainer?
 
+    private let crashReporting: CrashReportingServiceProtocol = DIContainer.shared.crashReportingService
+
     @MainActor
     init(modelContainer: ModelContainer) {
         self.modelContainer = modelContainer
@@ -23,8 +25,11 @@ class SwiftDataDatasource {
             let modelContext = ModelContext(modelContainer)
             let fetchDescriptor = FetchDescriptor<T>(sortBy: [])
             return try modelContext.fetch(fetchDescriptor)
-        } catch let error {
-            print(error)
+        } catch {
+            crashReporting.captureError(error, context: [
+                "action": "swiftdata_fetch_all",
+                "type": String(describing: T.self)
+            ])
             return []
         }
     }
@@ -35,8 +40,11 @@ class SwiftDataDatasource {
             let modelContext = ModelContext(modelContainer)
             modelContext.insert(model)
             try modelContext.save()
-        } catch let error {
-            print(error)
+        } catch {
+            crashReporting.captureError(error, context: [
+                "action": "swiftdata_create",
+                "type": String(describing: T.self)
+            ])
         }
     }
 
@@ -45,8 +53,11 @@ class SwiftDataDatasource {
         do {
             let modelContext = ModelContext(modelContainer)
             try modelContext.save()
-        } catch let error {
-            print(error)
+        } catch {
+            crashReporting.captureError(error, context: [
+                "action": "swiftdata_save",
+                "type": String(describing: T.self)
+            ])
         }
     }
 

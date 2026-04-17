@@ -171,7 +171,7 @@ struct ScannerView: View {
                     .foregroundColor(.white.opacity(0.75))
                     .padding(.horizontal, 14)
                     .padding(.vertical, 7)
-                    .background(.ultraThinMaterial)
+                    .background(.black.opacity(0.5))
                     .clipShape(Capsule())
                     .position(x: cardRect.midX, y: cardRect.midY)
             }
@@ -191,24 +191,18 @@ struct ScannerView: View {
         .ignoresSafeArea()
     }
 
-    /// Blurred frosted-glass overlay with a transparent cutout for the card area.
+    /// Solid dark overlay with a transparent cutout for the card area.
     private func darkOverlay(fullSize: CGSize, cutout: CGRect) -> some View {
-        ZStack {
-            Rectangle().fill(.ultraThinMaterial)
-            Rectangle().fill(.black.opacity(0.3))
-        }
-        .mask(
-            Canvas { context, size in
-                context.fill(Path(CGRect(origin: .zero, size: size)), with: .color(.white))
-                context.blendMode = .destinationOut
-                // Flat corners so the overlay edge meets the bracket lines cleanly
-                context.fill(
-                    Path(cutout),
-                    with: .color(.white)
-                )
-            }
-            .compositingGroup()
-        )
+        Rectangle()
+            .fill(.black.opacity(0.55))
+            .mask(
+                Canvas { context, size in
+                    context.fill(Path(CGRect(origin: .zero, size: size)), with: .color(.white))
+                    context.blendMode = .destinationOut
+                    context.fill(Path(cutout), with: .color(.white))
+                }
+                .compositingGroup()
+            )
     }
 
     private func cornerBracket(rotation: Double) -> some View {

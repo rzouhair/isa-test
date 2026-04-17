@@ -1,5 +1,24 @@
 import Foundation
 
+// MARK: - Flexible number decoding helpers
+// The grading API sometimes returns numeric fields as JSON strings ("0.5", "97").
+// These helpers accept either form so decode doesn't fail on server-side type drift.
+
+enum FlexibleNumber {
+    static func double<K: CodingKey>(_ c: KeyedDecodingContainer<K>, _ key: K) -> Double? {
+        if let d = try? c.decodeIfPresent(Double.self, forKey: key) { return d }
+        if let s = try? c.decodeIfPresent(String.self, forKey: key) { return Double(s) }
+        return nil
+    }
+
+    static func int<K: CodingKey>(_ c: KeyedDecodingContainer<K>, _ key: K) -> Int? {
+        if let i = try? c.decodeIfPresent(Int.self, forKey: key) { return i }
+        if let s = try? c.decodeIfPresent(String.self, forKey: key), let v = Int(s) ?? Double(s).map(Int.init) { return v }
+        if let d = try? c.decodeIfPresent(Double.self, forKey: key) { return Int(d) }
+        return nil
+    }
+}
+
 // MARK: - Job Submit Response (POST /identify)
 
 struct JobSubmitResponse: Codable, Sendable {
@@ -29,6 +48,16 @@ struct JobStatusResponse: Codable, Sendable {
         case updatedAt = "updated_at"
         case result
         case error
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        jobId = try c.decode(String.self, forKey: .jobId)
+        status = try c.decode(String.self, forKey: .status)
+        createdAt = FlexibleNumber.int(c, .createdAt)
+        updatedAt = FlexibleNumber.int(c, .updatedAt)
+        result = try c.decodeIfPresent(CardResponse.self, forKey: .result)
+        error = try c.decodeIfPresent(String.self, forKey: .error)
     }
 }
 
@@ -166,6 +195,18 @@ struct Pricing: Codable, Sendable {
         case gradedLeastPrice = "graded_least_price"
         case currency, history
     }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        marketPrice = FlexibleNumber.double(c, .marketPrice)
+        lowestPrice = FlexibleNumber.double(c, .lowestPrice)
+        lowestPriceWithShipping = FlexibleNumber.double(c, .lowestPriceWithShipping)
+        medianPrice = FlexibleNumber.double(c, .medianPrice)
+        rawLeastPrice = FlexibleNumber.double(c, .rawLeastPrice)
+        gradedLeastPrice = FlexibleNumber.double(c, .gradedLeastPrice)
+        currency = (try? c.decode(String.self, forKey: .currency)) ?? "USD"
+        history = try c.decodeIfPresent(PriceHistory.self, forKey: .history)
+    }
 }
 
 // MARK: - Price History
@@ -274,6 +315,21 @@ struct CardMetadata: Codable, Sendable {
         case candidatesCount = "candidates_count"
         case candidates
     }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        cacheHit = (try? c.decode(Bool.self, forKey: .cacheHit)) ?? false
+        searchQuery = try c.decodeIfPresent(String.self, forKey: .searchQuery)
+        game = try c.decodeIfPresent(String.self, forKey: .game)
+        sport = try c.decodeIfPresent(String.self, forKey: .sport)
+        cardTypeDetected = try c.decodeIfPresent(String.self, forKey: .cardTypeDetected)
+        confidence = FlexibleNumber.double(c, .confidence) ?? 0
+        confidenceBreakdown = try c.decodeIfPresent(ConfidenceBreakdown.self, forKey: .confidenceBreakdown)
+        productUrl = try c.decodeIfPresent(String.self, forKey: .productUrl)
+        productId = try c.decodeIfPresent(String.self, forKey: .productId)
+        candidatesCount = FlexibleNumber.int(c, .candidatesCount) ?? 0
+        candidates = (try? c.decode([Candidate].self, forKey: .candidates)) ?? []
+    }
 }
 
 struct ConfidenceBreakdown: Codable, Sendable {
@@ -281,6 +337,18 @@ struct ConfidenceBreakdown: Codable, Sendable {
     let number: Double?
     let variant: Double?
     let set: Double?
+
+    enum CodingKeys: String, CodingKey {
+        case name, number, variant, set
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        name = FlexibleNumber.double(c, .name)
+        number = FlexibleNumber.double(c, .number)
+        variant = FlexibleNumber.double(c, .variant)
+        set = FlexibleNumber.double(c, .set)
+    }
 }
 
 struct Candidate: Codable, Sendable {
@@ -322,5 +390,30 @@ struct Candidate: Codable, Sendable {
         case medianPrice = "median_price"
         case totalListings = "total_listings"
         case image, url, source
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        productId = try c.decodeIfPresent(String.self, forKey: .productId)
+        confidence = FlexibleNumber.double(c, .confidence)
+        name = try c.decodeIfPresent(String.self, forKey: .name)
+        setName = try c.decodeIfPresent(String.self, forKey: .setName)
+        setCode = try c.decodeIfPresent(String.self, forKey: .setCode)
+        cardNumber = try c.decodeIfPresent(String.self, forKey: .cardNumber)
+        rarity = try c.decodeIfPresent(String.self, forKey: .rarity)
+        year = try c.decodeIfPresent(String.self, forKey: .year)
+        game = try c.decodeIfPresent(String.self, forKey: .game)
+        sport = try c.decodeIfPresent(String.self, forKey: .sport)
+        playerName = try c.decodeIfPresent(String.self, forKey: .playerName)
+        teamName = try c.decodeIfPresent(String.self, forKey: .teamName)
+        variant = try c.decodeIfPresent(String.self, forKey: .variant)
+        edition = try c.decodeIfPresent(String.self, forKey: .edition)
+        lowestPrice = FlexibleNumber.double(c, .lowestPrice)
+        marketPrice = FlexibleNumber.double(c, .marketPrice)
+        medianPrice = FlexibleNumber.double(c, .medianPrice)
+        totalListings = FlexibleNumber.double(c, .totalListings)
+        image = try c.decodeIfPresent(String.self, forKey: .image)
+        url = try c.decodeIfPresent(String.self, forKey: .url)
+        source = try c.decodeIfPresent(String.self, forKey: .source)
     }
 }

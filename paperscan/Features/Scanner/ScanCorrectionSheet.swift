@@ -30,9 +30,9 @@ struct ScanCorrectionSheet: View {
             }
         }
         .task {
-            let path = record.capturedImagePath
+            guard let url = ScanStore.resolveImageURL(record.capturedImagePath) else { return }
             capturedImage = await Task.detached(priority: .utility) {
-                guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else { return nil }
+                guard let data = try? Data(contentsOf: url) else { return nil }
                 return UIImage(data: data)
             }.value
         }

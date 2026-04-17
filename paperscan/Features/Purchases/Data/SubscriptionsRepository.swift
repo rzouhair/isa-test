@@ -45,6 +45,10 @@ public class SubscriptionsRepository {
             customerInfo = try await Purchases.shared.customerInfo()
         } catch {
             customerInfo = nil
+            DIContainer.shared.crashReportingService.captureError(
+                error,
+                context: ["action": "revenuecat_load_customer_info"]
+            )
             return
         }
     }

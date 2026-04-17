@@ -15,12 +15,16 @@ import UIKit
         case collectionDetail(CardCollection)
         case search
         case watchlist
+        case grading
+        case gradingHistory
+        case gradeDetail(GradeRecord)
 
         var id: String {
             switch self {
             case .detection: return "detection"
             case .cardDetail(let card): return "cardDetail-\(card.id)"
             case .collectionDetail(let col): return "collectionDetail-\(col.id)"
+            case .gradeDetail(let grade): return "gradeDetail-\(grade.id)"
             default: return String(describing: self)
             }
         }
@@ -47,6 +51,9 @@ import UIKit
             case .collectionDetail: return "Collection"
             case .search: return "Search"
             case .watchlist: return "Watchlist"
+            case .grading: return "Grading"
+            case .gradingHistory: return "Grading History"
+            case .gradeDetail: return "Grade Detail"
             }
         }
 
@@ -64,6 +71,9 @@ import UIKit
             case .collectionDetail: return "square.stack"
             case .search: return "magnifyingglass"
             case .watchlist: return "eye"
+            case .grading: return "star.circle"
+            case .gradingHistory: return "star.circle"
+            case .gradeDetail: return "star.circle"
             }
         }
     }

@@ -22,6 +22,7 @@ final class CardRecord {
     var gradeCompany: String?
     var gradeValue: String?
     var notes: String?
+    var capturedImagePath: String?
     var collection: CardCollection?
 
     // Price history (JSON-encoded for SwiftData)
@@ -99,6 +100,7 @@ final class CardRecord {
             confidenceScore: scan.confidence ?? 0
         )
         self.scanImageUrl = scan.imageSmall ?? scan.imageMedium
+        self.capturedImagePath = scan.capturedImagePath.isEmpty ? nil : scan.capturedImagePath
         self.priceHistoryJSON = scan.priceHistoryJSON
         self.candidatesJSON = scan.candidatesJSON
     }

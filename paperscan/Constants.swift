@@ -30,7 +30,7 @@ class Constants {
     static let sentryDSN = "https://6a565a2c385b8220ded6c0accc7ab6b8@o4511191277371392.ingest.us.sentry.io/4511191343169536" /// IMPORTANT: Replace with your Sentry project DSN
     
     static let proxyLambdaURL = "https://edvrtovrdvcx3ghayyvy3sooe40qrlob.lambda-url.us-east-1.on.aws"
-    static let cardIdentifierBaseURL = "http://192.168.100.98:8000"
+    static let cardIdentifierBaseURL = "https://d7myl3nxhryo7jlgpf5xi4j46e0oilfc.lambda-url.us-east-1.on.aws"
 
     static let appStoreId = "6479833602" /// IMPORTANT: set this to your App Store ID
 }
