@@ -96,14 +96,16 @@ final class ScanStore {
 
         pollTasks[record.id] = Task {
             var attempts = 0
-            let maxAttempts = 60 // 2min max
-            var pollingRateSeconds = 4
+            let maxAttempts = 150 // 5min max (150 × 2s avg)
+            let pollingRateSeconds = 4
             while !Task.isCancelled && attempts < maxAttempts {
                 do {
                     try await Task.sleep(for: .seconds(pollingRateSeconds))
                     let status = try await service.checkStatus(jobId: jobId)
                     let mapped = ScanStatus(apiStatus: status.status)
+                    #if DEBUG
                     print("[ScanStore] Poll \(attempts+1) for \(jobId) — status: \(status.status)")
+                    #endif
 
                     record.scanStatus = mapped
                     record.updatedAt = Date()
@@ -134,6 +136,14 @@ final class ScanStore {
                 }
                 attempts += 1
             }
+
+            if !Task.isCancelled {
+                record.scanStatus = .failed
+                record.errorMessage = "Identification timed out. Tap to retry."
+                record.updatedAt = Date()
+                analytics.capture(.scanFailed, properties: ["error": "poll_timeout"])
+                trySave()
+            }
         }
     }
 
@@ -158,6 +168,63 @@ final class ScanStore {
         records.removeAll { $0.id == record.id }
         modelContext?.delete(record)
         trySave()
+    }
+
+    /// Remove any ScanRecords linked to a deleted CardRecord. Cancels polling,
+    /// deletes image files, removes from the in-memory `records` array, and
+    /// issues `modelContext.delete` — caller is responsible for saving.
+    ///
+    /// Matches by `cardRecordId` first; falls back to `productId` so scans from
+    /// pre-Wave-1 builds (before auto-linkage existed) are still cleaned up.
+    /// Also sweeps `records` in-memory as a final safety net so the Scanner
+    /// recent-scans UI reacts immediately even if SwiftData indexing lags.
+    func purgeScans(forCardId cardId: UUID, productId: String? = nil, in context: ModelContext? = nil) {
+        let ctx = context ?? modelContext
+        guard let ctx else {
+            // No context — still sweep in-memory so UI reflects the delete.
+            records.removeAll { $0.cardRecordId == cardId }
+            return
+        }
+
+        var matches: [ScanRecord] = []
+
+        let idDescriptor: FetchDescriptor<ScanRecord> = {
+            var d = FetchDescriptor<ScanRecord>(predicate: #Predicate { $0.cardRecordId == cardId })
+            d.fetchLimit = 20
+            return d
+        }()
+        if let byId = try? ctx.fetch(idDescriptor) {
+            matches.append(contentsOf: byId)
+        }
+
+        if let pid = productId, !pid.isEmpty {
+            let productDescriptor: FetchDescriptor<ScanRecord> = {
+                var d = FetchDescriptor<ScanRecord>(predicate: #Predicate { $0.productId == pid })
+                d.fetchLimit = 20
+                return d
+            }()
+            if let byProduct = try? ctx.fetch(productDescriptor) {
+                for rec in byProduct where !matches.contains(where: { $0.id == rec.id }) {
+                    matches.append(rec)
+                }
+            }
+        }
+
+        for record in matches {
+            cancelPolling(for: record.id)
+            if let url = ScanStore.resolveImageURL(record.capturedImagePath),
+               FileManager.default.fileExists(atPath: url.path) {
+                try? FileManager.default.removeItem(at: url)
+            }
+            records.removeAll { $0.id == record.id }
+            ctx.delete(record)
+        }
+
+        // Final in-memory sweep in case fetch missed something.
+        records.removeAll { record in
+            record.cardRecordId == cardId ||
+            (productId != nil && !productId!.isEmpty && record.productId == productId)
+        }
     }
 
     // MARK: - Retry
@@ -229,10 +296,28 @@ final class ScanStore {
                 existing.tcgplayerPrice = candidate.marketPrice ?? 0
                 existing.scanImageUrl = candidate.image
                 existing.candidatesJSON = record.candidatesJSON
+                existing.isUserConfirmed = true
             }
         }
 
         trySave()
+    }
+
+    /// Marks the auto-created identification as user-confirmed without changing identity.
+    func confirmCard(_ card: CardRecord) {
+        card.isUserConfirmed = true
+        trySave()
+    }
+
+    /// Finds the originating ScanRecord for a CardRecord, if still present.
+    func scanRecord(for card: CardRecord) -> ScanRecord? {
+        guard let modelContext else { return nil }
+        let cardId = card.id
+        var descriptor = FetchDescriptor<ScanRecord>(
+            predicate: #Predicate { $0.cardRecordId == cardId }
+        )
+        descriptor.fetchLimit = 1
+        return try? modelContext.fetch(descriptor).first
     }
 
     func addToCollection(_ record: ScanRecord, to collection: CardCollection) -> CardRecord? {
@@ -280,10 +365,26 @@ final class ScanStore {
     /// Automatically create a CardRecord when scan completes (no collection required).
     private func autoCreateCardRecord(from record: ScanRecord) {
         guard record.scanStatus == .complete else { return }
+        guard record.cardRecordId == nil else { return }
+
+        if let productId = record.productId, !productId.isEmpty,
+           let existing = findCardRecord(productId: productId) {
+            record.cardRecordId = existing.id
+            return
+        }
 
         let card = CardRecord(from: record)
         modelContext?.insert(card)
         record.cardRecordId = card.id
+    }
+
+    private func findCardRecord(productId: String) -> CardRecord? {
+        guard let modelContext else { return nil }
+        var descriptor = FetchDescriptor<CardRecord>(
+            predicate: #Predicate { $0.tcgplayerProductId == productId }
+        )
+        descriptor.fetchLimit = 1
+        return try? modelContext.fetch(descriptor).first
     }
 
     // MARK: - Session Management
@@ -302,6 +403,8 @@ final class ScanStore {
 
     func loadRecent() {
         guard let modelContext else { return }
+        sweepOrphanedScans(in: modelContext)
+
         var descriptor = FetchDescriptor<ScanRecord>(
             sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
         )
@@ -317,6 +420,45 @@ final class ScanStore {
         for record in records where record.scanStatus == .pending || record.scanStatus == .processing {
             if record.jobId != nil {
                 startPolling(record)
+            }
+        }
+    }
+
+    /// Purges completed ScanRecords whose linked CardRecord no longer exists.
+    /// Cleans up rows left over from builds before the purge-on-delete fix.
+    private func sweepOrphanedScans(in context: ModelContext) {
+        var completedDescriptor = FetchDescriptor<ScanRecord>(
+            predicate: #Predicate { $0.status == "complete" }
+        )
+        completedDescriptor.fetchLimit = 500
+        guard let completed = try? context.fetch(completedDescriptor), !completed.isEmpty else {
+            return
+        }
+
+        let cardDescriptor = FetchDescriptor<CardRecord>()
+        let allCards = (try? context.fetch(cardDescriptor)) ?? []
+        let validCardIds = Set(allCards.map(\.id))
+        let validProductIds = Set(allCards.map(\.tcgplayerProductId).filter { !$0.isEmpty })
+
+        var purged = 0
+        for scan in completed {
+            let hasCardLink = scan.cardRecordId.map { validCardIds.contains($0) } ?? false
+            let hasProductMatch = (scan.productId.map { !$0.isEmpty && validProductIds.contains($0) }) ?? false
+            if !hasCardLink && !hasProductMatch {
+                if let url = ScanStore.resolveImageURL(scan.capturedImagePath),
+                   FileManager.default.fileExists(atPath: url.path) {
+                    try? FileManager.default.removeItem(at: url)
+                }
+                context.delete(scan)
+                purged += 1
+            }
+        }
+
+        if purged > 0 {
+            do {
+                try context.save()
+            } catch {
+                crashReporting.captureError(error, context: ["action": "sweep_orphaned_scans"])
             }
         }
     }

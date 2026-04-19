@@ -15,6 +15,11 @@ struct AppMain: App {
 
     @MainActor
     init() {
+        #if DEBUG
+        Purchases.logLevel = .debug
+        #else
+        Purchases.logLevel = .warn
+        #endif
         Purchases.configure(
             with: Configuration.builder(withAPIKey: Constants.revenueCat)
                 .with(storeKitVersion: .storeKit2)

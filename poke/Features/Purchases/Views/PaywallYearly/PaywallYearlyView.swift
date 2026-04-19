@@ -358,7 +358,7 @@ struct PaywallYearlyView: View {
               }
           }
           .padding(.horizontal)
-          .onChange(of: purchaseModel.productIds) { prods in
+          .onChange(of: purchaseModel.productIds) { _, prods in
               if let trialProduct = purchaseModel.productDetails.first(where: { $0.hasTrial }) {
                   selectedProductId = trialProduct.productId
               } else if let firstProduct = prods.first {
@@ -393,7 +393,7 @@ struct PaywallYearlyView: View {
                 isPresented = false
             }
         }
-        .onChange(of: purchaseModel.isSubscribed) { isSubscribed in
+        .onChange(of: purchaseModel.isSubscribed) { _, isSubscribed in
             if(isSubscribed) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     isPresented = false

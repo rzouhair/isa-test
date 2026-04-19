@@ -12,8 +12,8 @@
 	"argv": [
 		"/opt/homebrew/bin/xcode-build-server"
 	],
-	"workspace": "/Users/user/Developer/iOS/paperscan/paperscan.xcodeproj/project.xcworkspace",
-	"build_root": "/Users/user/Library/Developer/Xcode/DerivedData/paperscan-fwndrzovswhhhsamegflxaablaxj",
-	"scheme": "paperscan",
+	"workspace": "/Users/ceejay/Developer/iOS/poke/poke.xcodeproj/project.xcworkspace",
+	"build_root": "/Users/ceejay/Library/Developer/Xcode/DerivedData",
+	"scheme": "poke",
 	"kind": "xcode"
 }

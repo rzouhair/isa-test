@@ -20,6 +20,29 @@ public extension UIApplication {
     }
 
     static func showAlert(title: String, message: String, action: (() -> Void)? = nil) {
+        // Callers often trigger this right after dismissing a fullScreenCover
+        // (e.g. paywall). The hosting controller is still being torn down on
+        // the current runloop, so `topViewController` returns a view that's
+        // already leaving the window hierarchy — leading to:
+        //   "Attempt to present … whose view is not in the window hierarchy"
+        // Defer to the next runloop so the dismissal completes first, then
+        // retry on the now-stable top controller.
+        DispatchQueue.main.async {
+            presentAlertWhenReady(title: title, message: message, action: action, attempt: 0)
+        }
+    }
+
+    private static func presentAlertWhenReady(title: String, message: String, action: (() -> Void)?, attempt: Int) {
+        guard let top = topViewController(), top.view.window != nil, top.presentedViewController == nil else {
+            // Up to ~500ms of retries; anything longer is a genuine bug, not a race.
+            if attempt < 5 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    presentAlertWhenReady(title: title, message: message, action: action, attempt: attempt + 1)
+                }
+            }
+            return
+        }
+
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             if let action {
@@ -29,7 +52,7 @@ public extension UIApplication {
             }
         }
         alertController.addAction(okAction)
-        topViewController()?.present(alertController, animated: true)
+        top.present(alertController, animated: true)
     }
 
     var keyWindow: UIWindow? {

@@ -14,6 +14,10 @@ struct WatchlistView: View {
     @State private var sortMode: WatchlistSortMode = .newest
     @State private var gameFilter: String?
     @State private var isUpdating = false
+    @State private var isSelecting: Bool = false
+    @State private var selection: Set<UUID> = []
+    @State private var showAddToCollection: Bool = false
+    @State private var showDeleteConfirm: Bool = false
 
     // MARK: - Filtering & Sorting
 
@@ -82,11 +86,20 @@ struct WatchlistView: View {
                     Section {
                         ForEach(sorted) { item in
                             Button {
-                                if let card = cardFor(item) {
+                                if isSelecting {
+                                    toggleSelection(item.id)
+                                } else if let card = cardFor(item) {
                                     router.navigate(to: .cardDetail(card))
                                 }
                             } label: {
-                                watchlistRow(item)
+                                HStack(spacing: 10) {
+                                    if isSelecting {
+                                        Image(systemName: selection.contains(item.id) ? "checkmark.circle.fill" : "circle")
+                                            .font(.title3)
+                                            .foregroundStyle(selection.contains(item.id) ? theme.accent : Color(.tertiaryLabel))
+                                    }
+                                    watchlistRow(item)
+                                }
                             }
                             .tint(.primary)
                         }
@@ -173,7 +186,124 @@ struct WatchlistView: View {
                 .searchable(text: $searchText, prompt: "Search watchlist")
             }
         }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                if !items.isEmpty {
+                    Button(isSelecting ? "Done" : "Select") {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            isSelecting.toggle()
+                            if !isSelecting { selection.removeAll() }
+                        }
+                    }
+                    .tint(theme.accent)
+                }
+            }
+        }
+        .safeAreaInset(edge: .bottom) {
+            if isSelecting { selectionActionBar }
+        }
+        .sheet(isPresented: $showAddToCollection) {
+            AddToCollectionSheet { collection in
+                addSelectedToCollection(collection)
+            }
+        }
+        .confirmationDialog(
+            "Remove \(selection.count) item\(selection.count == 1 ? "" : "s")?",
+            isPresented: $showDeleteConfirm,
+            titleVisibility: .visible
+        ) {
+            Button("Remove", role: .destructive) { deleteSelected() }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Items will be removed from your watchlist.")
+        }
         .enableInjection()
+    }
+
+    // MARK: - Selection Actions
+
+    private func toggleSelection(_ id: UUID) {
+        if selection.contains(id) {
+            selection.remove(id)
+        } else {
+            selection.insert(id)
+        }
+    }
+
+    private var selectionActionBar: some View {
+        HStack(spacing: 10) {
+            Button {
+                showAddToCollection = true
+            } label: {
+                Label("Add to Collection", systemImage: "folder.badge.plus")
+                    .font(.subheadline.weight(.semibold))
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 44)
+                    .foregroundStyle(theme.accent)
+                    .background(theme.accentSubtle)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            }
+            .disabled(selection.isEmpty)
+
+            Button(role: .destructive) {
+                showDeleteConfirm = true
+            } label: {
+                Label("Remove", systemImage: "trash")
+                    .font(.subheadline.weight(.semibold))
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 44)
+                    .foregroundStyle(.white)
+                    .background(Color.red)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            }
+            .disabled(selection.isEmpty)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 8)
+        .background(.ultraThinMaterial)
+        .overlay(alignment: .top) {
+            Text(selection.isEmpty ? "Tap items to select" : "\(selection.count) selected")
+                .font(.caption.weight(.medium))
+                .foregroundStyle(.secondary)
+                .padding(.top, -22)
+                .frame(maxWidth: .infinity)
+        }
+    }
+
+    private func addSelectedToCollection(_ collection: CardCollection) {
+        guard !selection.isEmpty else { return }
+        let targets = items.filter { selection.contains($0.id) }
+        for item in targets {
+            if let card = cardFor(item) {
+                card.collection = collection
+            }
+        }
+        collection.updatedAt = Date()
+        trySave()
+        selection.removeAll()
+        isSelecting = false
+    }
+
+    private func deleteSelected() {
+        guard !selection.isEmpty else { return }
+        let targets = items.filter { selection.contains($0.id) }
+        for item in targets {
+            modelContext.delete(item)
+        }
+        trySave()
+        selection.removeAll()
+        isSelecting = false
+    }
+
+    private func trySave() {
+        do {
+            try modelContext.save()
+        } catch {
+            DIContainer.shared.crashReportingService.captureError(
+                error,
+                context: ["action": "watchlist_bulk_action"]
+            )
+        }
     }
 
     // MARK: - Manual Refresh

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 public class OpenAIProxiedProvider: AIServiceProvider {
-    private let baseURL = URL(string: Constants.proxyLambdaURL)!
+    private let baseURL = DIContainer.safeURL(Constants.proxyLambdaURL, context: "proxyLambdaURL")
     private let defaultModel: String
     
     private var functionRegistry: [String: ([String: Any]) async throws -> String] = [:]
@@ -27,7 +27,7 @@ public class OpenAIProxiedProvider: AIServiceProvider {
 
         let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
 
-        var request = URLRequest(url: URL(string: Constants.proxyLambdaURL)!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: DIContainer.safeURL(Constants.proxyLambdaURL, context: "proxyLambdaURL"),timeoutInterval: 240)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         request.httpBody = jsonData
@@ -52,25 +52,24 @@ public class OpenAIProxiedProvider: AIServiceProvider {
         
         let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         
-        var request = URLRequest(url: URL(string: Constants.proxyLambdaURL)!,
-                               timeoutInterval: Double.infinity)
+        var request = URLRequest(url: DIContainer.safeURL(Constants.proxyLambdaURL, context: "proxyLambdaURL"),
+                               timeoutInterval: 240)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         request.httpBody = jsonData
         
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
-            print(data)
-            
+
             guard let responseString = String(data: data, encoding: .utf8) else {
-                print("Some error here")
                 throw AIServiceError.functionHandlingFailed
             }
-            
+
             return responseString
         } catch {
-            print(error)
-            print("Error: \(error.localizedDescription)")
+            #if DEBUG
+            print("[OpenAIProxied] sendCompletion error: \(error.localizedDescription)")
+            #endif
             throw error
         }
     }
@@ -103,7 +102,7 @@ public class OpenAIProxiedProvider: AIServiceProvider {
                 
                 // 4. Create and send the request
                 var request = URLRequest(
-                    url: URL(string: Constants.proxyLambdaURL)!,
+                    url: DIContainer.safeURL(Constants.proxyLambdaURL, context: "proxyLambdaURL"),
                     timeoutInterval: 60
                 )
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -116,41 +115,32 @@ public class OpenAIProxiedProvider: AIServiceProvider {
                 guard let responseString = String(data: data, encoding: .utf8) else {
                     throw AIServiceError.functionHandlingFailed
                 }
-                
-                print("Response from OpenAI: \(responseString)")
 
                 let parsedResponse = parseOpenAIResponse(jsonString: responseString) as? FunctionCallResponse
-                
-                print("Parsed Response:")
-                print(parsedResponse)
 
                 guard (parsedResponse?.functionCall) != nil else {
                     return nil
                 }
                 if let functionCall = parsedResponse?.functionCall {
-                    print("Function Call Output:")
-                    print(functionCall)
                     let handledResponse = try await self.handleFunctionCall(functionCall)
-                    print("Handled Response:")
-                    print(handledResponse)
-                    
-                    // CHANGE: Parse the handled response string to the generic type T
+
                     if let jsonData = handledResponse.data(using: .utf8) {
                         do {
-                            let decodedResult = try JSONDecoder().decode(T.self, from: jsonData)
-                            print("Decoded Result:")
-                            print(decodedResult)
-                            return decodedResult
+                            return try JSONDecoder().decode(T.self, from: jsonData)
                         } catch {
-                            print("Error decoding to type \(T.self): \(error)")
+                            #if DEBUG
+                            print("[OpenAIProxied] decode error for \(T.self): \(error)")
+                            #endif
                             throw AIServiceError.functionHandlingFailed
                         }
                     }
                 }
-                
+
                 return nil
             } catch {
-                print("Error: \(error)")
+                #if DEBUG
+                print("[OpenAIProxied] sendToolCompletion error: \(error)")
+                #endif
                 throw error
             }
     }
@@ -171,8 +161,8 @@ public class OpenAIProxiedProvider: AIServiceProvider {
         
         let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
         
-        var request = URLRequest(url: URL(string: Constants.proxyLambdaURL)!,
-                               timeoutInterval: Double.infinity)
+        var request = URLRequest(url: DIContainer.safeURL(Constants.proxyLambdaURL, context: "proxyLambdaURL"),
+                               timeoutInterval: 240)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         request.httpBody = jsonData
@@ -204,7 +194,9 @@ public class OpenAIProxiedProvider: AIServiceProvider {
     
     public func handleFunctionCall(_ functionCall: FunctionCallOutput) async throws -> String {
         guard let handler = functionRegistry[functionCall.name] else {
-            print("No handler registered for function '\(functionCall.name)'")
+            #if DEBUG
+            print("[OpenAIProxied] No handler registered for function '\(functionCall.name)'")
+            #endif
             throw AIServiceError.functionHandlingFailed
         }
         

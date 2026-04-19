@@ -87,8 +87,15 @@ struct CSVService {
             }
             // Also delete uncollected cards
             let descriptor = FetchDescriptor<CardRecord>(predicate: #Predicate { $0.collection == nil })
-            if let orphans = try? context.fetch(descriptor) {
+            do {
+                let orphans = try context.fetch(descriptor)
                 for card in orphans { context.delete(card) }
+            } catch {
+                DIContainer.shared.crashReportingService.captureError(
+                    error,
+                    context: ["action": "csv_import_orphan_fetch"]
+                )
+                result.errors.append("Could not clean up existing cards: \(error.localizedDescription)")
             }
         }
 
@@ -157,6 +164,8 @@ struct CSVService {
                 tcgplayerPrice: doubleField(fields, columnMap, "tcgplayer_price"),
                 confidenceScore: doubleField(fields, columnMap, "confidence_score")
             )
+
+            card.isUserConfirmed = true
 
             // Optional fields
             let graded = field(fields, columnMap, "is_graded").lowercased()
@@ -312,7 +321,6 @@ struct CSVService {
 
     static func exportGradesCSV(grades: [GradeRecord]) -> String {
         var lines = [gradeHeaders.joined(separator: ",")]
-        let encoder = JSONEncoder()
         for grade in grades {
             let fields: [String] = [
                 String(format: "%.1f", grade.centeringScore),

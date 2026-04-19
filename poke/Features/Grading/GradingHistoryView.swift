@@ -5,7 +5,12 @@ import Inject
 struct GradingHistoryView: View {
     @ObserveInjection var inject
     @Environment(Router.self) private var router
+    @Environment(\.modelContext) private var modelContext
     @Query(sort: \GradeRecord.createdAt, order: .reverse) private var records: [GradeRecord]
+
+    @State private var isSelecting: Bool = false
+    @State private var selection: Set<UUID> = []
+    @State private var showDeleteConfirm: Bool = false
 
     var body: some View {
         Group {
@@ -15,9 +20,20 @@ struct GradingHistoryView: View {
                 List {
                     ForEach(records) { record in
                         Button {
-                            router.navigate(to: .gradeDetail(record))
+                            if isSelecting {
+                                toggleSelection(record.id)
+                            } else {
+                                router.navigate(to: .gradeDetail(record))
+                            }
                         } label: {
-                            gradeRow(record)
+                            HStack(spacing: 10) {
+                                if isSelecting {
+                                    Image(systemName: selection.contains(record.id) ? "checkmark.circle.fill" : "circle")
+                                        .font(.title3)
+                                        .foregroundStyle(selection.contains(record.id) ? theme.accent : Color(.tertiaryLabel))
+                                }
+                                gradeRow(record)
+                            }
                         }
                         .buttonStyle(.plain)
                     }
@@ -26,7 +42,88 @@ struct GradingHistoryView: View {
             }
         }
         .navigationTitle("Grading History")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                if !records.isEmpty {
+                    Button(isSelecting ? "Done" : "Select") {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            isSelecting.toggle()
+                            if !isSelecting { selection.removeAll() }
+                        }
+                    }
+                    .tint(theme.accent)
+                }
+            }
+        }
+        .safeAreaInset(edge: .bottom) {
+            if isSelecting { selectionActionBar }
+        }
+        .confirmationDialog(
+            "Delete \(selection.count) grade\(selection.count == 1 ? "" : "s")?",
+            isPresented: $showDeleteConfirm,
+            titleVisibility: .visible
+        ) {
+            Button("Delete", role: .destructive) { deleteSelected() }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Grade records will be permanently removed.")
+        }
         .enableInjection()
+    }
+
+    // MARK: - Selection
+
+    private func toggleSelection(_ id: UUID) {
+        if selection.contains(id) {
+            selection.remove(id)
+        } else {
+            selection.insert(id)
+        }
+    }
+
+    private var selectionActionBar: some View {
+        HStack {
+            Button(role: .destructive) {
+                showDeleteConfirm = true
+            } label: {
+                Label("Delete", systemImage: "trash")
+                    .font(.subheadline.weight(.semibold))
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 44)
+                    .foregroundStyle(.white)
+                    .background(Color.red)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            }
+            .disabled(selection.isEmpty)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 8)
+        .background(.ultraThinMaterial)
+        .overlay(alignment: .top) {
+            Text(selection.isEmpty ? "Tap grades to select" : "\(selection.count) selected")
+                .font(.caption.weight(.medium))
+                .foregroundStyle(.secondary)
+                .padding(.top, -22)
+                .frame(maxWidth: .infinity)
+        }
+    }
+
+    private func deleteSelected() {
+        guard !selection.isEmpty else { return }
+        let targets = records.filter { selection.contains($0.id) }
+        for record in targets {
+            modelContext.delete(record)
+        }
+        do {
+            try modelContext.save()
+        } catch {
+            DIContainer.shared.crashReportingService.captureError(
+                error,
+                context: ["action": "grade_bulk_delete"]
+            )
+        }
+        selection.removeAll()
+        isSelecting = false
     }
 
     private var emptyState: some View {

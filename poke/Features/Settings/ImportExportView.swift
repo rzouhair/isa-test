@@ -28,6 +28,11 @@ struct ImportExportView: View {
     @State private var showImportConfirm = false
     @State private var pendingImportURL: URL?
     @State private var importResult: CSVService.ImportResult?
+
+    private var importAlertTitle: String {
+        guard let r = importResult, !r.errors.isEmpty else { return "Import Complete" }
+        return "Imported with \(r.errors.count) issue\(r.errors.count == 1 ? "" : "s")"
+    }
     @State private var showImportResult = false
 
     enum ExportScope: String, CaseIterable {
@@ -68,17 +73,17 @@ struct ImportExportView: View {
         } message: {
             Text("This will delete all existing \(importDataType.rawValue.lowercased()), then import from the CSV file.")
         }
-        .alert("Import Complete", isPresented: $showImportResult) {
+        .alert(importAlertTitle, isPresented: $showImportResult) {
             Button("OK") {}
         } message: {
             if let r = importResult {
                 switch importDataType {
                 case .collections:
-                    Text("\(r.cardsCreated) cards imported\n\(r.collectionsCreated) collections created\(r.errors.isEmpty ? "" : "\n\(r.errors.count) rows skipped")")
+                    Text("\(r.cardsCreated) cards imported\n\(r.collectionsCreated) collections created\(r.errors.isEmpty ? "" : "\n⚠️ \(r.errors.count) rows skipped — see first error: \(r.errors.first ?? "")")")
                 case .watchlist:
-                    Text("\(r.watchlistCreated) watchlist items imported\(r.errors.isEmpty ? "" : "\n\(r.errors.count) rows skipped")")
+                    Text("\(r.watchlistCreated) watchlist items imported\(r.errors.isEmpty ? "" : "\n⚠️ \(r.errors.count) rows skipped — see first error: \(r.errors.first ?? "")")")
                 case .grades:
-                    Text("\(r.gradesCreated) grades imported\(r.errors.isEmpty ? "" : "\n\(r.errors.count) rows skipped")")
+                    Text("\(r.gradesCreated) grades imported\(r.errors.isEmpty ? "" : "\n⚠️ \(r.errors.count) rows skipped — see first error: \(r.errors.first ?? "")")")
                 }
             }
         }

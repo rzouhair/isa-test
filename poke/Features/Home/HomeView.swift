@@ -13,10 +13,24 @@ struct HomeView: View {
     ) private var allScans: [ScanRecord]
     @Query(sort: \GradeRecord.createdAt, order: .reverse) private var gradeRecords: [GradeRecord]
 
-    /// In-progress scans first, then completed — so user always sees pending identifications
+    /// In-progress scans first, then completed — so user always sees pending identifications.
+    /// Completed scans whose linked CardRecord has been deleted are excluded so
+    /// stale rows never resurface after a card is removed from the collection.
     private var recentScans: [ScanRecord] {
+        let validCardIds = Set(allCards.map(\.id))
         let inProgress = allScans.filter { $0.scanStatus == .pending || $0.scanStatus == .processing }
-        let completed = allScans.filter { $0.scanStatus == .complete }
+        let completed = allScans.filter { scan in
+            guard scan.scanStatus == .complete else { return false }
+            // If the scan was linked to a card, that card must still exist.
+            if let cardId = scan.cardRecordId {
+                return validCardIds.contains(cardId)
+            }
+            // Also drop completed scans that share a productId with no surviving card.
+            if let productId = scan.productId, !productId.isEmpty {
+                return allCards.contains { $0.tcgplayerProductId == productId }
+            }
+            return true
+        }
         return Array((inProgress + completed).prefix(5))
     }
 

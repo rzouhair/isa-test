@@ -40,16 +40,16 @@ final class CardIdentifierService: CardIdentifierServiceProtocol, Sendable {
         #if DEBUG
         log.debug("submitJob POST \(url.absoluteString, privacy: .public) imageBytes=\(imageData.count)")
         #endif
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-
         let body: [String: String] = [
             "image_base64": imageData.base64EncodedString()
         ]
-        request.httpBody = try JSONEncoder().encode(body)
+        var mutableRequest = URLRequest(url: url, timeoutInterval: 120)
+        mutableRequest.httpMethod = "POST"
+        mutableRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        mutableRequest.httpBody = try JSONEncoder().encode(body)
+        let request = mutableRequest
 
-        let (data, response) = try await session.data(for: request)
+        let (data, response) = try await performWithRetry { try await self.session.data(for: request) }
         #if DEBUG
         let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
         let rawBody = String(data: data, encoding: .utf8) ?? "<non-utf8 \(data.count) bytes>"
@@ -77,7 +77,10 @@ final class CardIdentifierService: CardIdentifierServiceProtocol, Sendable {
         #if DEBUG
         log.debug("checkStatus GET \(url.absoluteString, privacy: .public) jobId=\(jobId, privacy: .public)")
         #endif
-        let (data, response) = try await session.data(from: url)
+        var mutableRequest = URLRequest(url: url, timeoutInterval: 30)
+        mutableRequest.httpMethod = "GET"
+        let request = mutableRequest
+        let (data, response) = try await performWithRetry { try await self.session.data(for: request) }
         #if DEBUG
         let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
         let rawBody = String(data: data, encoding: .utf8) ?? "<non-utf8 \(data.count) bytes>"
@@ -102,7 +105,10 @@ final class CardIdentifierService: CardIdentifierServiceProtocol, Sendable {
 
     func fetchPriceHistory(productId: String) async throws -> PriceHistory {
         let url = baseURL.appendingPathComponent("price-history/\(productId)")
-        let (data, response) = try await session.data(from: url)
+        var mutableRequest = URLRequest(url: url, timeoutInterval: 30)
+        mutableRequest.httpMethod = "GET"
+        let request = mutableRequest
+        let (data, response) = try await performWithRetry { try await self.session.data(for: request) }
         try validateHTTPResponse(response)
 
         do {
@@ -116,6 +122,42 @@ final class CardIdentifierService: CardIdentifierServiceProtocol, Sendable {
         guard let http = response as? HTTPURLResponse else { return }
         guard (200...299).contains(http.statusCode) else {
             throw CardIdentifierError.invalidResponse(statusCode: http.statusCode)
+        }
+    }
+
+    /// Retries on transient failures (429, 5xx, URLError timeouts/network loss).
+    /// Exponential backoff: 0.5s → 1s → 2s. Does NOT retry 4xx (except 429).
+    private func performWithRetry(
+        attempts: Int = 3,
+        _ block: @Sendable () async throws -> (Data, URLResponse)
+    ) async throws -> (Data, URLResponse) {
+        var lastError: Error?
+        for attempt in 0..<attempts {
+            do {
+                let (data, response) = try await block()
+                if let http = response as? HTTPURLResponse,
+                   http.statusCode == 429 || (500...599).contains(http.statusCode),
+                   attempt < attempts - 1 {
+                    try await Task.sleep(for: .milliseconds(500 * Int(pow(2.0, Double(attempt)))))
+                    continue
+                }
+                return (data, response)
+            } catch let error as URLError where isTransient(error) && attempt < attempts - 1 {
+                lastError = error
+                try await Task.sleep(for: .milliseconds(500 * Int(pow(2.0, Double(attempt)))))
+            } catch {
+                throw error
+            }
+        }
+        throw lastError ?? CardIdentifierError.invalidResponse(statusCode: -1)
+    }
+
+    private func isTransient(_ error: URLError) -> Bool {
+        switch error.code {
+        case .timedOut, .networkConnectionLost, .notConnectedToInternet, .dnsLookupFailed, .cannotFindHost:
+            return true
+        default:
+            return false
         }
     }
 }

@@ -90,14 +90,14 @@ struct TrialScreen2View: View {
                 ctaLabel: "Continue for free",
                 legal: legalText,
                 action: {
-                    // Analytics: trial_close_screen_2_tapped
+                    DIContainer.shared.analyticsService.capture(.trialCloseScreen2Tapped)
                     onOpenPaywall()
                 }
             )
         }
         .background(theme.onboardingBg)
         .onAppear {
-            // Analytics: trial_close_screen_2_viewed
+            DIContainer.shared.analyticsService.capture(.trialCloseScreen2Viewed)
         }
         .enableInjection()
     }

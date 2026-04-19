@@ -34,6 +34,11 @@ final class CardRecord {
     var periodHigh: Double?
     var periodLow: Double?
 
+    // True once the user explicitly confirms or corrects the identification.
+    // Auto-created records start false so the detail screen can show a
+    // "confirm or correct" affordance until the user commits.
+    var isUserConfirmed: Bool = false
+
     init(
         id: UUID = UUID(),
         tcgplayerProductId: String,

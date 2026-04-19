@@ -69,10 +69,24 @@ final class CameraService {
         guard captureSession.inputs.isEmpty else { return }
         captureSession.sessionPreset = .photo
 
-        guard let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back),
-              let input = try? AVCaptureDeviceInput(device: device),
-              captureSession.canAddInput(input)
-        else { return }
+        guard let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
+            DIContainer.shared.crashReportingService.captureMessage("CameraService: no wide-angle back camera available")
+            return
+        }
+        let input: AVCaptureDeviceInput
+        do {
+            input = try AVCaptureDeviceInput(device: device)
+        } catch {
+            DIContainer.shared.crashReportingService.captureError(
+                error,
+                context: ["action": "camera_input_init"]
+            )
+            return
+        }
+        guard captureSession.canAddInput(input) else {
+            DIContainer.shared.crashReportingService.captureMessage("CameraService: session refused input")
+            return
+        }
 
         captureSession.addInput(input)
 
@@ -81,8 +95,8 @@ final class CameraService {
         
         // Lock to portrait for consistent preview and capture orientation
         if let captureConnection = photoOutput.connection(with: .video),
-           captureConnection.isVideoOrientationSupported {
-            captureConnection.videoOrientation = .portrait
+           captureConnection.isVideoRotationAngleSupported(90) {
+            captureConnection.videoRotationAngle = 90
         }
 
         captureDelegate.onCapture = { [weak self] image in
@@ -145,7 +159,9 @@ struct ScannerCameraPreview: UIViewRepresentable {
         override init(frame: CGRect) {
             super.init(frame: frame)
             previewLayer.videoGravity = .resizeAspectFill
-            previewLayer.connection?.videoOrientation = .portrait
+            if let connection = previewLayer.connection, connection.isVideoRotationAngleSupported(90) {
+                connection.videoRotationAngle = 90
+            }
             layer.addSublayer(previewLayer)
         }
 

@@ -1,4 +1,4 @@
-# PaperScan — Onboarding Competitive Analysis & Recommendation
+# Poke — Onboarding Competitive Analysis & Recommendation
 
 > Analyzed: 4 competitor apps × 20 screens total
 > Date: 2026-04-09
@@ -135,9 +135,9 @@
 
 ---
 
-## 3. Feature Gap Analysis — PaperScan vs Competition
+## 3. Feature Gap Analysis — Poke vs Competition
 
-### Current PaperScan features:
+### Current Poke features:
 - ✅ AI-powered scan & identification (banknotes, 150+ countries)
 - ✅ Market value estimation
 - ✅ Collection management
@@ -151,7 +151,7 @@
 
 ### Feature gaps vs competition:
 
-| Feature | Competitors | PaperScan | Priority | Impact |
+| Feature | Competitors | Poke | Priority | Impact |
 |---------|------------|-----------|----------|--------|
 | **Multi-marketplace pricing** (eBay, TCGPlayer, etc.) | App 1 ✅ | ❌ Single source | 🔴 HIGH | Killer differentiator — users want to compare |
 | **Live price links** to buy/sell | App 1 ✅ | ❌ | 🔴 HIGH | Drives action, proves value |
@@ -166,7 +166,7 @@
 
 ### Onboarding-specific gaps:
 
-| Element | Competitors | PaperScan Current | Fix Priority |
+| Element | Competitors | Poke Current | Fix Priority |
 |---------|------------|-------------------|-------------|
 | **Trial timeline visualization** | App 2 ✅ | ❌ | 🔴 HIGH |
 | **"No Payment Due Now" copy** | App 2 ✅ | ❌ | 🔴 HIGH |
@@ -177,7 +177,7 @@
 | **Reviews match actual app** | Most ✅ | ❌ Reviews are from wrong app | 🔴 CRITICAL |
 
 ### Critical issues in current onboarding:
-1. **Reviews are from a trading journal app** — not PaperScan. This destroys trust if noticed
+1. **Reviews are from a trading journal app** — not Poke. This destroys trust if noticed
 2. **`isProUser` hardcoded to `true`** — paywall never triggers in production?
 3. **Privacy policy & terms URLs are empty** — App Store compliance risk
 4. **6-step onboarding** (steps 0-5) — above average, some drop-off expected
@@ -457,7 +457,7 @@ These aren't onboarding screens but boost Day-1 conversion:
 
 | Issue | Severity | Fix |
 |-------|----------|-----|
-| Reviews reference wrong app (trading journal) | 🔴 CRITICAL | Replace with real PaperScan/Kash reviews |
+| Reviews reference wrong app (trading journal) | 🔴 CRITICAL | Replace with real Poke/Kash reviews |
 | `isProUser` hardcoded to `true` | 🔴 CRITICAL | Remove debug override before shipping |
 | Privacy policy URL empty | 🔴 CRITICAL | Required for App Store compliance |
 | Terms of use URL empty | 🔴 CRITICAL | Required for App Store compliance |

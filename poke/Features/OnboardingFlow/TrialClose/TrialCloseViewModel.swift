@@ -9,6 +9,7 @@ import RevenueCat
 import UserNotifications
 import UIKit
 
+@MainActor
 @Observable
 final class TrialCloseViewModel {
     var step: Int = 0
@@ -58,7 +59,7 @@ final class TrialCloseViewModel {
                 } else {
                     trialDaysCount = 3
                     trialDaysText = "3"
-                    legalText = "\(priceString)/\(periodUnit)"
+                    legalText = "\(trialDaysText)-day free trial, then \(priceString)/\(periodUnit)"
                 }
             }
             isLoading = false
@@ -72,32 +73,49 @@ final class TrialCloseViewModel {
         _ = try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])
     }
 
+    // Legacy identifiers from the Kash codebase. Keep in the removal list so
+    // installs upgraded from early builds clear their orphan notifications.
+    private static let trialReminderIdentifiers = [
+        "poke_trial_reminder", "poke_trial_confirmation",
+        "kash_trial_reminder", "kash_trial_confirmation"
+    ]
+
     static func clearTrialNotifications() {
         let center = UNUserNotificationCenter.current()
-        center.removePendingNotificationRequests(withIdentifiers: ["kash_trial_reminder", "kash_trial_confirmation"])
-        center.removeDeliveredNotifications(withIdentifiers: ["kash_trial_reminder", "kash_trial_confirmation"])
+        center.removePendingNotificationRequests(withIdentifiers: trialReminderIdentifiers)
+        center.removeDeliveredNotifications(withIdentifiers: trialReminderIdentifiers)
     }
 
     /// Schedules a reminder 1 day before trial/intro expiration.
     /// Call after a successful purchase or restore with the resulting CustomerInfo.
     static func scheduleTrialReminderIfNeeded(customerInfo: CustomerInfo) {
+        #if DEBUG
         print("[TrialReminder] called — entitlements: \(customerInfo.entitlements.active.keys.joined(separator: ", "))")
+        #endif
 
-        guard let entitlement = customerInfo.entitlements.active["Pro"] else {
-            print("[TrialReminder] EXIT: no 'Pro' entitlement")
+        guard let entitlement = customerInfo.entitlements.active[Constants.revenueCatProEntitlement] else {
+            #if DEBUG
+            print("[TrialReminder] EXIT: no '\(Constants.revenueCatProEntitlement)' entitlement")
+            #endif
             return
         }
 
+        #if DEBUG
         print("[TrialReminder] periodType=\(entitlement.periodType) expiration=\(String(describing: entitlement.expirationDate))")
+        #endif
 
         guard entitlement.periodType == .trial || entitlement.periodType == .intro else {
+            #if DEBUG
             print("[TrialReminder] EXIT: periodType is not trial/intro, clearing pending notifications")
+            #endif
             clearTrialNotifications()
             return
         }
 
         guard let expirationDate = entitlement.expirationDate else {
+            #if DEBUG
             print("[TrialReminder] EXIT: no expiration date")
+            #endif
             return
         }
 
@@ -105,15 +123,19 @@ final class TrialCloseViewModel {
         let reminderDate = Calendar.current.date(byAdding: .day, value: -1, to: expirationDate) ?? expirationDate
         let interval = reminderDate.timeIntervalSinceNow
 
+        #if DEBUG
         print("[TrialReminder] interval=\(interval)s")
+        #endif
 
         guard interval > 0 else {
+            #if DEBUG
             print("[TrialReminder] EXIT: less than 1 day remaining")
+            #endif
             return
         }
 
         let center = UNUserNotificationCenter.current()
-        center.removePendingNotificationRequests(withIdentifiers: ["kash_trial_reminder", "kash_trial_confirmation"])
+        center.removePendingNotificationRequests(withIdentifiers: trialReminderIdentifiers)
 
         // 1. Confirmation notification — 30s after purchase
         let confirmContent = UNMutableNotificationContent()
@@ -123,7 +145,7 @@ final class TrialCloseViewModel {
 
         let confirmTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 30, repeats: false)
         let confirmRequest = UNNotificationRequest(
-            identifier: "kash_trial_confirmation",
+            identifier: "poke_trial_confirmation",
             content: confirmContent,
             trigger: confirmTrigger
         )
@@ -133,12 +155,12 @@ final class TrialCloseViewModel {
         // 2. Actual reminder — 1 day before trial ends
         let reminderContent = UNMutableNotificationContent()
         reminderContent.title = "Your free trial ends tomorrow"
-        reminderContent.body = "Your Kash free trial expires soon. Open the app to keep your access or cancel — no charge if you do."
+        reminderContent.body = "Your \(Constants.appName) free trial expires soon. Open the app to keep your access or cancel — no charge if you do."
         reminderContent.sound = .default
 
         let reminderTrigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
         let reminderRequest = UNNotificationRequest(
-            identifier: "kash_trial_reminder",
+            identifier: "poke_trial_reminder",
             content: reminderContent,
             trigger: reminderTrigger
         )

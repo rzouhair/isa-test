@@ -78,14 +78,11 @@ import UIKit
         }
     }
 
-    var tabViewRoutes: [Route] = [
-        .home,
-        .home
-    ]
-    
     var navigationPath: [Route] = [] {
         didSet {
+            #if DEBUG
             print(navigationPath)
+            #endif
         }
     }
     var presentedSheet: Route?

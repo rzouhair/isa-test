@@ -7,6 +7,27 @@
 //  Created by Marko Tadic on 8/1/16.
 //  Copyright © 2016 appculture. All rights reserved.
 //
+//  --------------------------------------------------------------------------
+//  PROJECT-SPECIFIC USAGE (Poke)
+//  --------------------------------------------------------------------------
+//  Historical display name was "PaperScan". The Xcode target, scheme, product
+//  name, CFBundleDisplayName, and docs have been migrated to "Poke".
+//
+//  Invoke from the repo root to re-apply (idempotent — no-op if no match):
+//
+//      swift scripts/rename.swift PaperScan Poke
+//
+//  Or run the wrapper:
+//
+//      ./scripts/rename-paperscan-to-poke.sh
+//
+//  Notes:
+//  - Script is CASE-SENSITIVE. Run once with exact case ("PaperScan" → "Poke"),
+//    then again with ("paperscan" → "poke") if any lowercase stragglers remain.
+//  - graphify-out/ is a regeneratable cache; after a rename run
+//      graphify update .
+//    to refresh it instead of renaming inside.
+//  --------------------------------------------------------------------------
 
 import Foundation
 

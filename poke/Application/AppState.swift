@@ -3,8 +3,7 @@ import Observation
 
 @Observable final class AppState {
     var isProUser: Bool {
-        return true;
-      return SubscriptionService.shared.isProUser
+        return SubscriptionService.shared.isProUser
     }
     
     var selectedTab: Int = 0

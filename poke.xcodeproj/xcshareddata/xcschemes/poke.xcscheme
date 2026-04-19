@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CE46EF9E2D57C17E004CFB49"
-               BuildableName = "PaperScan.app"
+               BuildableName = "Poke.app"
                BlueprintName = "poke"
                ReferencedContainer = "container:poke.xcodeproj">
             </BuildableReference>
@@ -69,7 +69,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CE46EF9E2D57C17E004CFB49"
-            BuildableName = "PaperScan.app"
+            BuildableName = "Poke.app"
             BlueprintName = "poke"
             ReferencedContainer = "container:poke.xcodeproj">
          </BuildableReference>
@@ -86,7 +86,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CE46EF9E2D57C17E004CFB49"
-            BuildableName = "PaperScan.app"
+            BuildableName = "Poke.app"
             BlueprintName = "poke"
             ReferencedContainer = "container:poke.xcodeproj">
          </BuildableReference>

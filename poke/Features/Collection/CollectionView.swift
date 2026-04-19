@@ -5,11 +5,16 @@ import Inject
 struct CollectionView: View {
     @ObserveInjection var inject
     @Environment(Router.self) private var router
+    @Environment(\.modelContext) private var modelContext
     @Query private var cards: [CardRecord]
 
     @State private var sortMode: CollectionSortMode = .valueDesc
     @State private var searchText = ""
     @State private var visibleCount: Int = 40
+    @State private var isSelecting: Bool = false
+    @State private var selection: Set<UUID> = []
+    @State private var showMoveSheet: Bool = false
+    @State private var showDeleteConfirm: Bool = false
     private let pageSize = 40
 
     private var filtered: [CardRecord] {
@@ -54,8 +59,21 @@ struct CollectionView: View {
                     .listRowSeparator(.hidden)
                 } else {
                     ForEach(visibleCards) { card in
-                        Button { router.navigate(to: .cardDetail(card)) } label: {
-                            CollectionCardRow(card: card)
+                        Button {
+                            if isSelecting {
+                                toggleSelection(card.id)
+                            } else {
+                                router.navigate(to: .cardDetail(card))
+                            }
+                        } label: {
+                            HStack(spacing: 10) {
+                                if isSelecting {
+                                    Image(systemName: selection.contains(card.id) ? "checkmark.circle.fill" : "circle")
+                                        .font(.title3)
+                                        .foregroundStyle(selection.contains(card.id) ? theme.accent : Color(.tertiaryLabel))
+                                }
+                                CollectionCardRow(card: card)
+                            }
                         }
                         .buttonStyle(.plain)
                         .onAppear {
@@ -106,7 +124,127 @@ struct CollectionView: View {
         .navigationBarTitleDisplayMode(.large)
         .searchable(text: $searchText, prompt: "Search cards")
         .onChange(of: searchText) { visibleCount = pageSize }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                if !cards.isEmpty {
+                    Button(isSelecting ? "Done" : "Select") {
+                        withAnimation(.easeInOut(duration: 0.2)) {
+                            isSelecting.toggle()
+                            if !isSelecting { selection.removeAll() }
+                        }
+                    }
+                    .tint(theme.accent)
+                }
+            }
+        }
+        .safeAreaInset(edge: .bottom) {
+            if isSelecting { selectionActionBar }
+        }
+        .sheet(isPresented: $showMoveSheet) {
+            AddToCollectionSheet { destination in
+                moveSelected(to: destination)
+            }
+        }
+        .confirmationDialog(
+            "Delete \(selection.count) card\(selection.count == 1 ? "" : "s")?",
+            isPresented: $showDeleteConfirm,
+            titleVisibility: .visible
+        ) {
+            Button("Delete", role: .destructive) { deleteSelected() }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This permanently removes the cards from your library.")
+        }
         .enableInjection()
+    }
+
+    // MARK: - Selection Actions
+
+    private func toggleSelection(_ id: UUID) {
+        if selection.contains(id) {
+            selection.remove(id)
+        } else {
+            selection.insert(id)
+        }
+    }
+
+    private var selectionActionBar: some View {
+        HStack(spacing: 10) {
+            Button {
+                showMoveSheet = true
+            } label: {
+                Label("Assign Collection", systemImage: "folder.badge.plus")
+                    .font(.subheadline.weight(.semibold))
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 44)
+                    .foregroundStyle(theme.accent)
+                    .background(theme.accentSubtle)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            }
+            .disabled(selection.isEmpty)
+
+            Button(role: .destructive) {
+                showDeleteConfirm = true
+            } label: {
+                Label("Delete", systemImage: "trash")
+                    .font(.subheadline.weight(.semibold))
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 44)
+                    .foregroundStyle(.white)
+                    .background(Color.red)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            }
+            .disabled(selection.isEmpty)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 8)
+        .background(.ultraThinMaterial)
+        .overlay(alignment: .top) {
+            Text(selection.isEmpty ? "Tap cards to select" : "\(selection.count) selected")
+                .font(.caption.weight(.medium))
+                .foregroundStyle(.secondary)
+                .padding(.top, -22)
+                .frame(maxWidth: .infinity)
+        }
+    }
+
+    private func moveSelected(to destination: CardCollection) {
+        guard !selection.isEmpty else { return }
+        let targets = cards.filter { selection.contains($0.id) }
+        for card in targets {
+            card.collection = destination
+        }
+        destination.updatedAt = Date()
+        trySave()
+        selection.removeAll()
+        isSelecting = false
+    }
+
+    private func deleteSelected() {
+        guard !selection.isEmpty else { return }
+        let targets = cards.filter { selection.contains($0.id) }
+        for card in targets {
+            ScanStore.shared.purgeScans(
+                forCardId: card.id,
+                productId: card.tcgplayerProductId,
+                in: modelContext
+            )
+            modelContext.delete(card)
+        }
+        trySave()
+        selection.removeAll()
+        isSelecting = false
+    }
+
+    private func trySave() {
+        do {
+            try modelContext.save()
+        } catch {
+            DIContainer.shared.crashReportingService.captureError(
+                error,
+                context: ["action": "all_cards_bulk_action"]
+            )
+        }
     }
 
     // MARK: - Summary

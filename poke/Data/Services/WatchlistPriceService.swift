@@ -2,40 +2,67 @@ import Foundation
 import SwiftData
 import UserNotifications
 
-final class WatchlistPriceService: Sendable {
+@MainActor
+final class WatchlistPriceService {
     static let shared = WatchlistPriceService()
 
-    nonisolated(unsafe) static var modelContainer: ModelContainer?
+    static var modelContainer: ModelContainer?
 
     private let crashReporting: CrashReportingServiceProtocol = DIContainer.shared.crashReportingService
 
-    private static let lastRefreshKey = "watchlist_last_refresh"
-    static let intervalKey = "watchlist_refresh_interval"
-    static let defaultInterval: TimeInterval = 12 * 3600 // 12h
+    nonisolated private static let lastRefreshKey = "watchlist_last_refresh"
+    nonisolated static let intervalKey = "watchlist_refresh_interval"
+    nonisolated static let defaultInterval: TimeInterval = 12 * 3600 // 12h
 
     /// Available interval options (hours)
-    static let intervalOptions: [Int] = [6, 8, 10, 12, 16, 24]
+    nonisolated static let intervalOptions: [Int] = [6, 8, 10, 12, 16, 24]
+
+    // Reminder notification preferences
+    nonisolated static let reminderEnabledKey = "watchlist_reminder_enabled"
+    nonisolated static let reminderHourKey = "watchlist_reminder_hour"
+    nonisolated static let reminderMinuteKey = "watchlist_reminder_minute"
+    nonisolated static let defaultReminderHour = 9
+    nonisolated static let defaultReminderMinute = 0
+
+    nonisolated static var remindersEnabled: Bool {
+        UserDefaults.standard.object(forKey: reminderEnabledKey) as? Bool ?? true
+    }
+
+    nonisolated static var reminderHour: Int {
+        UserDefaults.standard.object(forKey: reminderHourKey) as? Int ?? defaultReminderHour
+    }
+
+    nonisolated static var reminderMinute: Int {
+        UserDefaults.standard.object(forKey: reminderMinuteKey) as? Int ?? defaultReminderMinute
+    }
+
+    nonisolated static var reminderDate: Date {
+        var comps = DateComponents()
+        comps.hour = reminderHour
+        comps.minute = reminderMinute
+        return Calendar.current.date(from: comps) ?? Date()
+    }
 
     /// Current interval from UserDefaults
-    static var refreshInterval: TimeInterval {
+    nonisolated static var refreshInterval: TimeInterval {
         let stored = UserDefaults.standard.double(forKey: intervalKey)
         return stored > 0 ? stored : defaultInterval
     }
 
     /// Timestamp of last refresh
-    static var lastRefreshDate: Date {
+    nonisolated static var lastRefreshDate: Date {
         let ts = UserDefaults.standard.double(forKey: lastRefreshKey)
         return ts > 0 ? Date(timeIntervalSince1970: ts) : .distantPast
     }
 
     /// Seconds remaining until next refresh is allowed
-    static var cooldownRemaining: TimeInterval {
+    nonisolated static var cooldownRemaining: TimeInterval {
         let elapsed = Date().timeIntervalSince(lastRefreshDate)
         return max(0, refreshInterval - elapsed)
     }
 
     /// Whether a manual refresh is currently allowed
-    static var canRefresh: Bool {
+    nonisolated static var canRefresh: Bool {
         cooldownRemaining <= 0
     }
 
@@ -50,7 +77,13 @@ final class WatchlistPriceService: Sendable {
 
         let context = ModelContext(container)
         let descriptor = FetchDescriptor<WatchlistItem>()
-        let count = (try? context.fetchCount(descriptor)) ?? 0
+        let count: Int
+        do {
+            count = try context.fetchCount(descriptor)
+        } catch {
+            crashReporting.captureError(error, context: ["action": "watchlist_fetch_count_on_open"])
+            return
+        }
 
         if count > 0 {
             Self.scheduleRecurringReminder()
@@ -126,7 +159,12 @@ final class WatchlistPriceService: Sendable {
                 ])
             }
 
-            try? await Task.sleep(for: .milliseconds(200))
+            do {
+                try await Task.sleep(for: .milliseconds(200))
+            } catch {
+                // Cancellation propagates out so callers can bail.
+                return (success, failed)
+            }
         }
 
         do {
@@ -139,7 +177,7 @@ final class WatchlistPriceService: Sendable {
 
     // MARK: - Timestamp
 
-    static func recordRefreshTimestamp() {
+    nonisolated static func recordRefreshTimestamp() {
         UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: lastRefreshKey)
     }
 
@@ -157,7 +195,7 @@ final class WatchlistPriceService: Sendable {
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         let request = UNNotificationRequest(
-            identifier: "poke_watchlist_refresh",
+            identifier: "poke_watchlist_refresh_\(UUID().uuidString)",
             content: content,
             trigger: trigger
         )
@@ -166,19 +204,23 @@ final class WatchlistPriceService: Sendable {
 
     // MARK: - Recurring Reminder
 
-    private static let reminderIdentifier = "poke_watchlist_reminder"
+    nonisolated private static let reminderIdentifier = "poke_watchlist_reminder"
 
-    static func scheduleRecurringReminder() {
-        let interval = refreshInterval
+    nonisolated static func scheduleRecurringReminder() {
         let center = UNUserNotificationCenter.current()
         center.removePendingNotificationRequests(withIdentifiers: [reminderIdentifier])
+
+        guard remindersEnabled else { return }
 
         let content = UNMutableNotificationContent()
         content.title = "Time to check your watchlist"
         content.body = "Open Poke to see the latest prices on your watched cards."
         content.sound = .default
 
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: max(60, interval), repeats: true)
+        var comps = DateComponents()
+        comps.hour = reminderHour
+        comps.minute = reminderMinute
+        let trigger = UNCalendarNotificationTrigger(dateMatching: comps, repeats: true)
         let request = UNNotificationRequest(
             identifier: reminderIdentifier,
             content: content,
@@ -187,15 +229,65 @@ final class WatchlistPriceService: Sendable {
         center.add(request)
     }
 
-    static func cancelRecurringReminder() {
+    nonisolated static func cancelRecurringReminder() {
         UNUserNotificationCenter.current()
             .removePendingNotificationRequests(withIdentifiers: [reminderIdentifier])
     }
 
-    /// Update interval and reschedule
-    static func setRefreshInterval(hours: Int) {
+    /// Update refresh cooldown interval (governs background refresh on app open).
+    nonisolated static func setRefreshInterval(hours: Int) {
         let interval = TimeInterval(hours * 3600)
         UserDefaults.standard.set(interval, forKey: intervalKey)
+    }
+
+    /// Enable/disable the daily reminder notification.
+    /// Returns true if the state was applied; false if user denied notification permission.
+    @discardableResult
+    nonisolated static func setRemindersEnabled(_ enabled: Bool) async -> Bool {
+        if enabled {
+            let granted = await requestNotificationAuthorizationIfNeeded()
+            guard granted else {
+                UserDefaults.standard.set(false, forKey: reminderEnabledKey)
+                return false
+            }
+        }
+        UserDefaults.standard.set(enabled, forKey: reminderEnabledKey)
+        if enabled {
+            scheduleRecurringReminder()
+        } else {
+            cancelRecurringReminder()
+        }
+        return true
+    }
+
+    /// Requests notification auth if status is `.notDetermined`; returns true if granted.
+    nonisolated private static func requestNotificationAuthorizationIfNeeded() async -> Bool {
+        let center = UNUserNotificationCenter.current()
+        let settings = await center.notificationSettings()
+        switch settings.authorizationStatus {
+        case .authorized, .provisional, .ephemeral:
+            return true
+        case .denied:
+            return false
+        case .notDetermined:
+            do {
+                return try await center.requestAuthorization(options: [.alert, .sound, .badge])
+            } catch {
+                DIContainer.shared.crashReportingService.captureError(
+                    error,
+                    context: ["action": "notification_auth_request"]
+                )
+                return false
+            }
+        @unknown default:
+            return false
+        }
+    }
+
+    /// Update daily reminder time.
+    nonisolated static func setReminderTime(hour: Int, minute: Int) {
+        UserDefaults.standard.set(hour, forKey: reminderHourKey)
+        UserDefaults.standard.set(minute, forKey: reminderMinuteKey)
         scheduleRecurringReminder()
     }
 }

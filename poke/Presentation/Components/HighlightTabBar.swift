@@ -132,8 +132,6 @@ struct TabItem: View {
     @Previewable
     @State var selectedPage: Int = 0
     
-    var router = Router()
-    
     HighlightTabBar(selectedPage: $selectedPage)
         .environment(Router())
 }

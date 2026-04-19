@@ -19,7 +19,13 @@ public class SubscriptionsRepository {
 
     var customerInfo: CustomerInfo?
     var isProUser: Bool {
-        customerInfo?.entitlements.active.contains(where: {$0.key.lowercased() == Subscription.pro.name}) ?? false
+        customerInfo?.entitlements.active[Subscription.pro.name] != nil
+    }
+
+    /// Convenience: the active pro entitlement, if any. Use for expiry dates /
+    /// renewal info in UI.
+    var activeProEntitlement: EntitlementInfo? {
+        customerInfo?.entitlements.active[Subscription.pro.name]
     }
 
     var customerId: String {
@@ -29,16 +35,15 @@ public class SubscriptionsRepository {
     enum Subscription {
         case pro
 
+        /// Must match the entitlement identifier configured in RevenueCat.
         var name: String {
             switch self {
-            case .pro: return "pro"
+            case .pro: return Constants.revenueCatProEntitlement
             }
         }
     }
 
-    private init() {
-      print(customerInfo)
-    }
+    private init() {}
 
     public func loadProData() async {
         do {
@@ -65,13 +70,13 @@ public class SubscriptionsRepository {
     public func loadOffering() async -> Offering? {
         await withCheckedContinuation { continuation in
             Purchases.shared.getOfferings { offerings, error in
-                guard let currentOffering = offerings?.all.values.first else {
-                    continuation.resume(returning: nil)
-                    print(offerings?.all)
-                    return
+                if let error {
+                    DIContainer.shared.crashReportingService.captureError(
+                        error,
+                        context: ["action": "revenuecat_load_offerings"]
+                    )
                 }
-
-                continuation.resume(returning: currentOffering)
+                continuation.resume(returning: offerings?.all.values.first)
             }
         }
     }
@@ -79,11 +84,13 @@ public class SubscriptionsRepository {
     public func getCurrentOffering() async -> Offering? {
         await withCheckedContinuation { continuation in
             Purchases.shared.getOfferings { offerings, error in
-                guard let currentOffering = offerings?.current else {
-                    continuation.resume(returning: nil)
-                    return
+                if let error {
+                    DIContainer.shared.crashReportingService.captureError(
+                        error,
+                        context: ["action": "revenuecat_get_current_offering"]
+                    )
                 }
-                continuation.resume(returning: currentOffering)
+                continuation.resume(returning: offerings?.current)
             }
         }
     }

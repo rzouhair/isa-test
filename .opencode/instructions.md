@@ -1,10 +1,10 @@
-# PaperScan - AI Context Guide
+# Poke - AI Context Guide
 
 > OpenCode instructions file. See also: CLAUDE.md (canonical source, with full folder descriptions).
 
 ## Project Overview
 
-PaperScan is an iOS app built with **SwiftUI** and **Swift 6**, following **MVVM + Clean Architecture**. Subscriptions via **RevenueCat**.
+Poke is an iOS app built with **SwiftUI** and **Swift 6**, following **MVVM + Clean Architecture**. Subscriptions via **RevenueCat**.
 
 ## Architecture
 

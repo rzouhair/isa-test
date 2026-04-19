@@ -7,6 +7,9 @@ enum AnalyticsEvent: String, Sendable {
     case onboardingStepSkipped = "onboarding_step_skipped"
     case onboardingCameraPermission = "onboarding_camera_permission"
     case onboardingCompleted = "onboarding_completed"
+    case trialCloseScreen1Viewed = "trial_close_screen_1_viewed"
+    case trialCloseScreen2Viewed = "trial_close_screen_2_viewed"
+    case trialCloseScreen2Tapped = "trial_close_screen_2_tapped"
 
     // Scanning (Scanner flow)
     case scanStarted = "scan_started"

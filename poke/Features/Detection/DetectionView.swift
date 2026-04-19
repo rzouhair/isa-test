@@ -75,9 +75,9 @@ struct DetectionView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color(.secondarySystemBackground).ignoresSafeArea())
-        .onAppear {
-            vm = ViewModel(context: context, router: router, images: images)
-            Task {
+        .task {
+            if vm == nil {
+                vm = ViewModel(context: context, router: router, images: images)
                 await vm?.detect()
             }
         }
@@ -121,23 +121,20 @@ struct ImageCardView: View {
                 )
         }
         .frame(width: 400, height: 350)
-        .onAppear {
-            if backImage != nil {
-                startAutoFlip()
+        .task {
+            guard backImage != nil else { return }
+            while !Task.isCancelled {
+                try? await Task.sleep(for: .seconds(6))
+                if Task.isCancelled { return }
+                withAnimation(.timingCurve(0.4, 0.8, 0.2, 1, duration: flipDuration)) {
+                    isFlipped.toggle()
+                    flipProgress = isFlipped ? 1 : 0
+                }
             }
         }
         .onTapGesture {
             if backImage != nil {
                 manualFlip()
-            }
-        }
-    }
-
-    private func startAutoFlip() {
-        Timer.scheduledTimer(withTimeInterval: 6, repeats: true) { _ in
-            withAnimation(.timingCurve(0.4, 0.8, 0.2, 1, duration: flipDuration)) {
-                isFlipped.toggle()
-                flipProgress = isFlipped ? 1 : 0
             }
         }
     }

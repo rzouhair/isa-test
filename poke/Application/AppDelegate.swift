@@ -5,17 +5,18 @@
 //  Created by user on 15/2/2025.
 //
 
-import RevenueCat
 import Foundation
 import SwiftUI
 import UserNotifications
 
+// RevenueCat is configured in AppMain.init so that the @main struct owns the
+// SDK lifecycle and StoreKit 2 is selected before any `Purchases.shared`
+// access. Do not re-configure here.
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         DIContainer.shared.crashReportingService.initialize()
         DIContainer.shared.analyticsService.initialize()
-        configurePurchases()
         UNUserNotificationCenter.current().delegate = self
         return true
     }
@@ -25,14 +26,6 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.banner, .sound])
-    }
-    
-    private func configurePurchases() {
-        Purchases.logLevel = .debug
-        Purchases.configure(
-            with: Configuration.Builder(withAPIKey: Constants.revenueCat)
-                .build()
-        )
     }
 }
 

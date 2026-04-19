@@ -130,7 +130,9 @@ final class GradeRecord {
     var capturedImagePaths: [String: String] {
         guard let data = capturedImagePathsJSON else { return [:] }
         let stored = (try? JSONDecoder().decode([String: String].self, from: data)) ?? [:]
-        let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        guard let docsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return [:]
+        }
         var resolved: [String: String] = [:]
         for (key, path) in stored {
             if path.hasPrefix("/") {

@@ -147,7 +147,7 @@ struct OnboardingCameraView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
-                .padding(.top, (UIApplication.shared.windows.first?.safeAreaInsets.top ?? 0))
+                .padding(.top, (UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0))
                 
                 
                 VStack {
@@ -183,7 +183,7 @@ struct OnboardingCameraView: View {
                     }
                     .padding(.horizontal)
                 }
-                .padding(.bottom, 120 + (UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0))
+                .padding(.bottom, 120 + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0))
                 
                 VStack {
                     Spacer()
@@ -210,7 +210,7 @@ struct OnboardingCameraView: View {
                     }
                     .padding(.horizontal)
                 }
-                .padding(.bottom, 20 + (UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0))
+                .padding(.bottom, 20 + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0))
                 
                 //white flash shows that the photo has been taken but also hides the transition from live to still
                 
@@ -219,12 +219,12 @@ struct OnboardingCameraView: View {
                 
             }
         }
-        .onChange(of: isProcessing) { value in
+        .onChange(of: isProcessing) { _, value in
             if value {
                 shutterFlash = true
             }
         }
-        .onChange(of: showHistory) { value in
+        .onChange(of: showHistory) { _, value in
             if value {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
                     isActive = false
@@ -236,7 +236,7 @@ struct OnboardingCameraView: View {
                 }
             }
         }
-        .onChange(of: selectedImage) { selectedImage in
+        .onChange(of: selectedImage) { _, selectedImage in
             DispatchQueue.main.async {
                 print("Captured")
                 if let selectedImage = selectedImage {

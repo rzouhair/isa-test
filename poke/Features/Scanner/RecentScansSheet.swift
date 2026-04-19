@@ -7,6 +7,7 @@ struct RecentScansSheet: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(Router.self) private var router
     @Environment(AppState.self) private var appState
+    @Query private var allCards: [CardRecord]
     let scanStore: ScanStore
 
     @State private var showClearConfirmation = false
@@ -15,17 +16,35 @@ struct RecentScansSheet: View {
     @State private var recordToAdd: ScanRecord?
     @State private var showAddAllSheet = false
 
+    /// Filter out completed scans whose linked card has been deleted from the
+    /// library. Keeps pending/processing/failed scans untouched so the user can
+    /// still manage in-flight identifications.
+    private var visibleRecords: [ScanRecord] {
+        let validCardIds = Set(allCards.map(\.id))
+        let validProductIds = Set(allCards.map(\.tcgplayerProductId).filter { !$0.isEmpty })
+        return scanStore.records.filter { scan in
+            guard scan.scanStatus == .complete else { return true }
+            if let cardId = scan.cardRecordId {
+                return validCardIds.contains(cardId)
+            }
+            if let productId = scan.productId, !productId.isEmpty {
+                return validProductIds.contains(productId)
+            }
+            return true
+        }
+    }
+
     var body: some View {
         VStack(spacing: 0) {
             header
-            if scanStore.records.isEmpty {
+            if visibleRecords.isEmpty {
                 emptyState
             } else {
                 recordsList
             }
         }
         .background(Color(.systemBackground))
-        .alert("Clear all \(scanStore.records.count) scans?", isPresented: $showClearConfirmation) {
+        .alert("Clear all \(visibleRecords.count) scans?", isPresented: $showClearConfirmation) {
             Button("Clear", role: .destructive) { scanStore.clearSession() }
             Button("Cancel", role: .cancel) {}
         }
@@ -91,7 +110,7 @@ struct RecentScansSheet: View {
                     .foregroundStyle(.secondary)
             }
 
-            if scanStore.records.count >= 2 {
+            if visibleRecords.count >= 2 {
                 HStack(spacing: 8) {
                     Spacer()
                     Button {
@@ -131,7 +150,7 @@ struct RecentScansSheet: View {
 
     private var recordsList: some View {
         List {
-            ForEach(scanStore.records, id: \.id) { record in
+            ForEach(visibleRecords, id: \.id) { record in
                 ScanRecordRow(
                     record: record,
                     onAdd:     { recordToAdd = record },

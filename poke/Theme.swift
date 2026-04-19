@@ -125,6 +125,18 @@ extension AppTheme {
     )
 
     /// Purple theme — Anime / Japanese TCG
+    /// Hex reference (no code change — `Color(red:green:blue:)` values below):
+    ///   accent / value / fabFill    → 0x8C59D9
+    ///   scannerBracket / accentBright → 0xBF99FF
+    ///   fabShadow                   → 0x8C59D9 @ 30%
+    ///   onboardingBg                → 0x140D29
+    ///   onboardingCardBg            → 0x1F1438
+    ///   accentWarm                  → 0xE6B373
+    ///   accentWarmLight             → 0xF2CC8C
+    ///   accentMuted                 → 0xD1B8FF
+    ///   ctaFill / dotActive         → 0xA673F2
+    ///   gradientStart               → 0x4D3373
+    ///   gradientEnd                 → 0x2E1F52
     static let animeTCG = AppTheme(
         accent: Color(red: 0.55, green: 0.35, blue: 0.85),
         value: Color(red: 0.55, green: 0.35, blue: 0.85),

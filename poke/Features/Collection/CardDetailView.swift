@@ -19,8 +19,12 @@ struct CardDetailView: View {
     @State private var priceInitialized = false
     @State private var watchlistAdded = false
     @State private var showAddToCollection = false
+    @State private var showCorrectionSheet = false
+    @State private var previewCandidate: CandidatePreview?
+    @State private var hasScanRecord = false
 
     private let service = DIContainer.shared.cardIdentifierService
+    private let scanStore = ScanStore.shared
 
     private var isInCollection: Bool {
         card.collection != nil
@@ -35,13 +39,14 @@ struct CardDetailView: View {
             VStack(spacing: 20) {
                 cardHero
                 priceSection
+                unconfirmedBanner
                 actionBar
-                    .padding(.horizontal, 16)
-                marketplaceLinks
                     .padding(.horizontal, 16)
                 priceChartSection
                     .padding(.horizontal, 16)
                 infoSection
+                marketplaceLinks
+                    .padding(.horizontal, 16)
                 candidatesSection
             }
             .padding(.bottom, 24)
@@ -52,6 +57,20 @@ struct CardDetailView: View {
         .sheet(isPresented: $showShareSheet) {
             ShareSheet(card: card)
         }
+        .sheet(isPresented: $showCorrectionSheet) {
+            if let record = fetchScanRecord() {
+                ScanCorrectionSheet(record: record, scanStore: scanStore)
+            } else {
+                correctionUnavailableView
+            }
+        }
+        .sheet(item: $previewCandidate) { preview in
+            CandidatePreviewSheet(
+                candidate: preview.candidate,
+                canApply: !card.isUserConfirmed && hasScanRecord,
+                onUse: { applyCandidate(preview.candidate) }
+            )
+        }
         .onAppear {
             withAnimation(.spring(response: 0.7, dampingFraction: 0.7)) {
                 appeared = true
@@ -59,6 +78,7 @@ struct CardDetailView: View {
             withAnimation(.linear(duration: 2.5).repeatForever(autoreverses: false)) {
                 shimmerPhase = 2
             }
+            hasScanRecord = fetchScanRecord() != nil
         }
         .enableInjection()
     }
@@ -105,56 +125,34 @@ struct CardDetailView: View {
     // MARK: - 3D Card Hero
 
     private var cardHero: some View {
-        VStack(spacing: 12) {
-            ZStack {
-                cardImageView
-                    .scaledToFit()
+        VStack(spacing: 14) {
+            cardImageView
+                .scaledToFit()
                 .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
                 .overlay(
                     RoundedRectangle(cornerRadius: 12, style: .continuous)
                         .fill(
                             LinearGradient(
-                                colors: [
-                                    .clear,
-                                    .white.opacity(0.05),
-                                    .white.opacity(0.15),
-                                    .white.opacity(0.05),
-                                    .clear
-                                ],
+                                colors: [.clear, .white.opacity(0.05), .white.opacity(0.15), .white.opacity(0.05), .clear],
                                 startPoint: UnitPoint(x: shimmerPhase - 0.3, y: shimmerPhase - 0.3),
                                 endPoint: UnitPoint(x: shimmerPhase, y: shimmerPhase)
                             )
                         )
                         .allowsHitTesting(false)
                 )
-                .rotation3DEffect(
-                    .degrees(Double(dragOffset.width) / 8),
-                    axis: (x: 0, y: 1, z: 0),
-                    perspective: 0.5
-                )
-                .rotation3DEffect(
-                    .degrees(Double(-dragOffset.height) / 8),
-                    axis: (x: 1, y: 0, z: 0),
-                    perspective: 0.5
-                )
-                .shadow(
-                    color: rarityColor.opacity(0.4),
-                    radius: appeared ? 20 : 0,
-                    y: 8
-                )
-                .scaleEffect(appeared ? 1 : 0.85)
+                .rotation3DEffect(.degrees(Double(dragOffset.width) / 8), axis: (x: 0, y: 1, z: 0), perspective: 0.5)
+                .rotation3DEffect(.degrees(Double(-dragOffset.height) / 8), axis: (x: 1, y: 0, z: 0), perspective: 0.5)
+                .shadow(color: rarityColor.opacity(0.35), radius: appeared ? 18 : 0, y: 6)
+                .scaleEffect(appeared ? 1 : 0.9)
                 .opacity(appeared ? 1 : 0)
-            }
-            .frame(height: 280)
-            .gesture(
-                DragGesture()
-                    .onChanged { value in dragOffset = value.translation }
-                    .onEnded { _ in
-                        withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
-                            dragOffset = .zero
+                .frame(height: 260)
+                .gesture(
+                    DragGesture()
+                        .onChanged { value in dragOffset = value.translation }
+                        .onEnded { _ in
+                            withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) { dragOffset = .zero }
                         }
-                    }
-            )
+                )
 
             if !card.rarity.isEmpty {
                 Text(card.rarity.uppercased())
@@ -179,6 +177,92 @@ struct CardDetailView: View {
         .padding(.top, 8)
     }
 
+    // MARK: - Unconfirmed Banner
+
+    @ViewBuilder
+    private var unconfirmedBanner: some View {
+        if !card.isUserConfirmed && hasScanRecord {
+            HStack(spacing: 10) {
+                Image(systemName: "sparkles")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(theme.accent)
+                VStack(alignment: .leading, spacing: 1) {
+                    Text("Auto-matched")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.primary)
+                    Text("Confirm or correct")
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer(minLength: 8)
+                Button { showCorrectionSheet = true } label: {
+                    Text("Correct")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(theme.accent)
+                        .padding(.horizontal, 10).padding(.vertical, 6)
+                        .background(theme.accentSubtle)
+                        .clipShape(Capsule())
+                }
+                Button {
+                    withAnimation(.easeOut(duration: 0.2)) {
+                        scanStore.confirmCard(card)
+                    }
+                } label: {
+                    Text("Confirm")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 10).padding(.vertical, 6)
+                        .background(theme.accent)
+                        .clipShape(Capsule())
+                }
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 10)
+            .background(Color(.secondarySystemGroupedBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .stroke(theme.accent.opacity(0.15), lineWidth: 1)
+            )
+            .padding(.horizontal, 16)
+        }
+    }
+
+    private var correctionUnavailableView: some View {
+        VStack(spacing: 16) {
+            Image(systemName: "clock.badge.exclamationmark")
+                .font(.system(size: 44))
+                .foregroundStyle(.secondary)
+            Text("Scan unavailable")
+                .font(.headline)
+            Text("The original scan is no longer on this device, so the candidate list can't be loaded. Re-scan the card to identify it again.")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 32)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding()
+        .presentationDetents([.medium])
+    }
+
+    private func applyCandidate(_ candidate: Candidate) {
+        guard let record = fetchScanRecord() else {
+            scanStore.confirmCard(card)
+            return
+        }
+        scanStore.applyCandidate(candidate, to: record)
+    }
+
+    private func fetchScanRecord() -> ScanRecord? {
+        let cardId = card.id
+        var descriptor = FetchDescriptor<ScanRecord>(
+            predicate: #Predicate { $0.cardRecordId == cardId }
+        )
+        descriptor.fetchLimit = 1
+        return try? modelContext.fetch(descriptor).first
+    }
+
     // MARK: - Price
 
     private var priceSection: some View {
@@ -197,8 +281,7 @@ struct CardDetailView: View {
     // MARK: - Action Bar
 
     private var actionBar: some View {
-        HStack(spacing: 12) {
-            // Collection button — navigate if assigned, add if not
+        HStack(spacing: 10) {
             Button {
                 if let collection = card.collection {
                     router.navigate(to: .collectionDetail(collection))
@@ -207,37 +290,35 @@ struct CardDetailView: View {
                 }
             } label: {
                 HStack(spacing: 8) {
-                    Image(systemName: isInCollection ? "folder.fill" : "plus.rectangle.on.folder")
+                    Image(systemName: isInCollection ? "folder.fill" : "plus")
+                        .font(.subheadline.weight(.semibold))
+                    Text(isInCollection ? (card.collection?.name ?? "Collection") : "Add to Collection")
                         .font(.body.weight(.semibold))
-                    Text(isInCollection ? card.collection?.name ?? "Collection" : "Add to Collection")
-                        .font(.body.weight(.bold))
                         .lineLimit(1)
                 }
                 .frame(maxWidth: .infinity)
-                .frame(height: 52)
-                .foregroundStyle(isInCollection ? .white : theme.accent)
-                .background(isInCollection ? theme.accent : theme.accentSubtle)
-                .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                .frame(height: 48)
+                .foregroundStyle(.white)
+                .background(theme.accent)
+                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             }
 
-            // Watchlist — square button
             Button { toggleWatchlist() } label: {
                 Image(systemName: isOnWatchlist ? "eye.fill" : "eye")
                     .font(.body.weight(.semibold))
-                    .frame(width: 52, height: 52)
+                    .frame(width: 48, height: 48)
                     .foregroundStyle(isOnWatchlist ? .white : theme.accent)
                     .background(isOnWatchlist ? theme.accent : theme.accentSubtle)
-                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             }
 
-            // Share — square button
             Button { showShareSheet = true } label: {
                 Image(systemName: "square.and.arrow.up")
                     .font(.body.weight(.semibold))
-                    .frame(width: 52, height: 52)
+                    .frame(width: 48, height: 48)
                     .foregroundStyle(theme.accent)
                     .background(theme.accentSubtle)
-                    .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             }
         }
         .sheet(isPresented: $showAddToCollection) {
@@ -249,13 +330,29 @@ struct CardDetailView: View {
     }
 
     private func toggleWatchlist() {
-        if let existing = watchlistItems.first(where: { $0.tcgplayerProductId == card.tcgplayerProductId }) {
+        guard !card.tcgplayerProductId.isEmpty else { return }
+        let productId = card.tcgplayerProductId
+        var descriptor = FetchDescriptor<WatchlistItem>(
+            predicate: #Predicate { $0.tcgplayerProductId == productId }
+        )
+        descriptor.fetchLimit = 1
+        let existing = (try? modelContext.fetch(descriptor).first)
+
+        if let existing {
             modelContext.delete(existing)
         } else {
             let item = WatchlistItem(from: card)
             modelContext.insert(item)
-            print("[Watchlist] 1️⃣ Item added: \(card.name) — scheduling reminder")
             WatchlistPriceService.scheduleRecurringReminder()
+        }
+
+        do {
+            try modelContext.save()
+        } catch {
+            DIContainer.shared.crashReportingService.captureError(
+                error,
+                context: ["action": "watchlist_toggle", "product_id": productId]
+            )
         }
     }
 
@@ -302,7 +399,12 @@ struct CardDetailView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 10) {
                         ForEach(Array(items.prefix(10).enumerated()), id: \.offset) { _, candidate in
-                            candidateCard(candidate)
+                            Button {
+                                previewCandidate = CandidatePreview(candidate: candidate)
+                            } label: {
+                                candidateCard(candidate)
+                            }
+                            .buttonStyle(.plain)
                         }
                     }
                     .padding(.horizontal, 16)
@@ -415,7 +517,7 @@ struct CardDetailView: View {
     // MARK: - Marketplace Links
 
     private var marketplaceLinks: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 10) {
             Button {
                 let query = card.name.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
                 if let url = URL(string: "https://www.tcgplayer.com/search/all/product?q=\(query)") {
@@ -505,4 +607,130 @@ private struct ShareSheet: UIViewControllerRepresentable {
     }
 
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
+}
+
+// MARK: - Candidate Preview
+
+struct CandidatePreview: Identifiable {
+    let id = UUID()
+    let candidate: Candidate
+}
+
+private struct CandidatePreviewSheet: View {
+    @Environment(\.dismiss) private var dismiss
+    let candidate: Candidate
+    let canApply: Bool
+    let onUse: () -> Void
+
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                VStack(spacing: 20) {
+                    AsyncImage(url: URL(string: candidate.image ?? "")) { image in
+                        image.resizable().scaledToFit()
+                    } placeholder: {
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .fill(Color(.tertiarySystemFill))
+                            .aspectRatio(0.71, contentMode: .fit)
+                            .overlay(Image(systemName: "creditcard").font(.largeTitle).foregroundStyle(.quaternary))
+                    }
+                    .frame(maxHeight: 260)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .padding(.horizontal, 16)
+
+                    VStack(spacing: 6) {
+                        Text(candidate.name ?? "Unknown")
+                            .font(.title3.weight(.bold))
+                            .multilineTextAlignment(.center)
+                        Text([candidate.setName, candidate.cardNumber.map { "#\($0)" }].compactMap { $0 }.joined(separator: " · "))
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                        if let price = candidate.marketPrice ?? candidate.medianPrice ?? candidate.lowestPrice {
+                            Text(String(format: "$%.2f", price))
+                                .font(.title2.weight(.heavy).monospacedDigit())
+                                .foregroundStyle(theme.value)
+                        }
+                    }
+                    .padding(.horizontal, 16)
+
+                    VStack(spacing: 0) {
+                        infoRow("Rarity", candidate.rarity)
+                        Divider().padding(.leading, 16)
+                        infoRow("Variant", candidate.variant?.uppercased() == "STANDARD" ? nil : candidate.variant)
+                        Divider().padding(.leading, 16)
+                        infoRow("Year", candidate.year)
+                        Divider().padding(.leading, 16)
+                        infoRow("Game", candidate.game)
+                        if let confidence = candidate.confidence {
+                            Divider().padding(.leading, 16)
+                            infoRow("Confidence", "\(Int(confidence * 100))%")
+                        }
+                    }
+                    .background(Color(.secondarySystemGroupedBackground))
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .padding(.horizontal, 16)
+
+                    if let urlString = candidate.url, let url = URL(string: urlString) {
+                        Button {
+                            UIApplication.shared.open(url)
+                        } label: {
+                            HStack(spacing: 6) {
+                                Image(systemName: "safari")
+                                Text("View on TCGPlayer")
+                            }
+                            .font(.subheadline.weight(.semibold))
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 44)
+                            .foregroundStyle(theme.accent)
+                            .background(theme.accentSubtle)
+                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        }
+                        .padding(.horizontal, 16)
+                    }
+                }
+                .padding(.vertical, 20)
+            }
+            .background(Color(.systemGroupedBackground))
+            .navigationTitle("Candidate")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Close") { dismiss() }
+                }
+            }
+            .safeAreaInset(edge: .bottom) {
+                if canApply {
+                    VStack(spacing: 0) {
+                        Divider()
+                        Button {
+                            onUse()
+                            dismiss()
+                        } label: {
+                            Text("Use This Card")
+                                .font(.body.weight(.semibold))
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 50)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 12)
+                    }
+                    .background(Color(.systemBackground))
+                }
+            }
+        }
+    }
+
+    private func infoRow(_ label: String, _ value: String?) -> some View {
+        HStack {
+            Text(label).foregroundStyle(.secondary)
+            Spacer()
+            Text(value?.isEmpty == false ? value! : "—")
+                .foregroundStyle(.primary)
+                .multilineTextAlignment(.trailing)
+        }
+        .font(.subheadline)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+    }
 }

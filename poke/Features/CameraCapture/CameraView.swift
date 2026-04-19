@@ -336,12 +336,12 @@ struct CameraView: View {
         secondaryButton: .cancel()
       )
     }
-    .onChange(of: isProcessing) { value in
+    .onChange(of: isProcessing) { _, value in
       if value {
         shutterFlash = true
       }
     }
-    .onChange(of: showHistory) { value in
+    .onChange(of: showHistory) { _, value in
       if value {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
           isActive = false
@@ -352,14 +352,14 @@ struct CameraView: View {
         }
       }
     }
-    .onChange(of: isActive) { value in
+    .onChange(of: isActive) { _, _ in
       if isActive {
         self.startCameraSession()
       } else {
         self.stopCameraSession()
       }
     }
-    .onChange(of: selectedImage) { selectedImage in
+    .onChange(of: selectedImage) { _, selectedImage in
       DispatchQueue.main.async {
         print("Captured from picker")
         if let selectedImage = selectedImage {
@@ -561,7 +561,9 @@ struct CameraPreviewView: UIViewRepresentable {
 
       previewLayer.videoGravity = .resizeAspectFill
 
-      previewLayer.connection?.videoOrientation = .portrait
+      if let connection = previewLayer.connection, connection.isVideoRotationAngleSupported(90) {
+        connection.videoRotationAngle = 90
+      }
       view.layer.addSublayer(previewLayer)
 
       DispatchQueue.global(qos: .userInitiated).async {

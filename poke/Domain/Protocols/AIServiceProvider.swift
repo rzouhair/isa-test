@@ -90,6 +90,10 @@ public struct Message: Codable, Identifiable {
     public var content: MessageContentValue
     public var functionCall: FunctionCallOutput?
     public var functionName: String?
+
+    private enum CodingKeys: String, CodingKey {
+        case role, content, functionCall, functionName
+    }
     
     public init(role: MessageRole, content: String, functionCall: FunctionCallOutput? = nil, functionName: String? = nil) {
         self.role = role

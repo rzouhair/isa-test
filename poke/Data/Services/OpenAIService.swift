@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 public class OpenAIProvider: AIServiceProvider {
-    private let baseURL = URL(string: "https://api.openai.com/v1")!
+    private let baseURL = DIContainer.safeURL("https://api.openai.com/v1", context: "openAIBaseURL")
     private let apiKey: String
     private let defaultModel: String
     

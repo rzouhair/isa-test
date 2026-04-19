@@ -7,6 +7,8 @@
 
 import SwiftUI
 import Inject
+import RevenueCat
+import RevenueCatUI
 
 struct SettingsView: View {
     @ObserveInjection var inject
@@ -19,7 +21,7 @@ struct SettingsView: View {
         VStack {
             VStack(alignment: .leading, spacing: 16) {
                 List {
-                    ForEach(SettingsViewModel.SettingsSection.allCases) { section in
+                    ForEach(SettingsViewModel.SettingsSection.allCases.filter { !$0.items.isEmpty }) { section in
                         Section(section.name) {
                             ForEach(section.items) { item in
                                 if item == .importExport {
@@ -51,6 +53,45 @@ struct SettingsView: View {
                                                 .foregroundStyle(.secondary)
                                         }
                                     }
+                                    .listRowBackground(Color.gray.opacity(0.08))
+                                } else if item == .priceCheckRemindersEnabled {
+                                    Toggle(isOn: Binding(
+                                        get: { viewModel.remindersEnabled },
+                                        set: { viewModel.remindersEnabled = $0 }
+                                    )) {
+                                        Label(item.name, systemImage: item.icon)
+                                    }
+                                    .tint(theme.accent)
+                                    .listRowBackground(Color.gray.opacity(0.08))
+                                    .alert("Notifications disabled", isPresented: Binding(
+                                        get: { viewModel.reminderPermissionDenied },
+                                        set: { viewModel.reminderPermissionDenied = $0 }
+                                    )) {
+                                        Button("Open Settings") {
+                                            if let url = URL(string: UIApplication.openSettingsURLString) {
+                                                UIApplication.shared.open(url)
+                                            }
+                                        }
+                                        Button("Cancel", role: .cancel) {}
+                                    } message: {
+                                        Text("Enable notifications in Settings to receive daily reminders.")
+                                    }
+                                } else if item == .priceCheckReminderTime {
+                                    HStack {
+                                        Label(item.name, systemImage: item.icon)
+                                        Spacer()
+                                        DatePicker(
+                                            "",
+                                            selection: Binding(
+                                                get: { viewModel.reminderTime },
+                                                set: { viewModel.reminderTime = $0 }
+                                            ),
+                                            displayedComponents: .hourAndMinute
+                                        )
+                                        .labelsHidden()
+                                        .disabled(!viewModel.remindersEnabled)
+                                    }
+                                    .opacity(viewModel.remindersEnabled ? 1 : 0.5)
                                     .listRowBackground(Color.gray.opacity(0.08))
                                 } else {
                                     Button {
@@ -99,10 +140,36 @@ struct SettingsView: View {
             }
         }
         .manageSubscriptionsSheet(isPresented: $viewModel.isShowingManageSubscriptionsSheet)
+        .sheet(isPresented: $viewModel.isShowingCustomerCenter) {
+            CustomerCenterView()
+        }
         .fullScreenCover(isPresented: $viewModel.isShowingMailComposer) {
             MailView()
         }
+        .modifier(SentryTestAlertModifier(viewModel: viewModel))
         .enableInjection()
+    }
+}
+
+private struct SentryTestAlertModifier: ViewModifier {
+    let viewModel: SettingsViewModel
+
+    func body(content: Content) -> some View {
+        #if DEBUG
+        content.alert(
+            "Sentry Test Event",
+            isPresented: Binding(
+                get: { viewModel.sentryTestResult != nil },
+                set: { if !$0 { viewModel.sentryTestResult = nil } }
+            )
+        ) {
+            Button("OK") { viewModel.sentryTestResult = nil }
+        } message: {
+            Text(viewModel.sentryTestResult ?? "")
+        }
+        #else
+        content
+        #endif
     }
 }
 

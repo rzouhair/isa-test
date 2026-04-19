@@ -1,10 +1,10 @@
-# PaperScan - AI Context Guide
+# Poke - AI Context Guide
 
 > This file provides context for AI assistants (Claude Code, OpenCode, Cursor, etc.)
 
 ## Project Overview
 
-PaperScan is an iOS app built with **SwiftUI** and **Swift 6**, following **MVVM + Clean Architecture**. Subscriptions are managed through **RevenueCat**.
+Poke is an iOS app built with **SwiftUI** and **Swift 6**, following **MVVM + Clean Architecture**. Subscriptions are managed through **RevenueCat**.
 
 ## Architecture
 

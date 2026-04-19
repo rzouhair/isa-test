@@ -23,6 +23,8 @@ final class GradingViewModel {
     var currentStepIndex: Int = 0
     var capturedImages: [GradingStep: UIImage] = [:]
 
+    private var submitTask: Task<Void, Never>?
+
     // Processing
     var processingMessage: String = "Uploading images..."
 
@@ -145,10 +147,11 @@ final class GradingViewModel {
     // MARK: - Submit
 
     private func submitAll() {
+        submitTask?.cancel()
         phase = .processing
         processingMessage = "Uploading images..."
 
-        Task {
+        submitTask = Task {
             // Start cycling messages
             let messageTask = Task {
                 let messages = [

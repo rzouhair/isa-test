@@ -68,7 +68,7 @@ struct TrialScreen1View: View {
         }
         .background(theme.onboardingBg)
         .onAppear {
-            // Analytics: trial_close_screen_1_viewed
+            DIContainer.shared.analyticsService.capture(.trialCloseScreen1Viewed)
         }
         .enableInjection()
     }

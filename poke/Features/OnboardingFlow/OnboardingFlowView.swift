@@ -227,15 +227,8 @@ struct OnboardingFlowView: View {
                         }
                         .padding(.horizontal, OnboardingConstants.screenPadding)
 
-                        // Skip button
-                        if showsSkipButton {
-                            Button(action: handleSkip) {
-                                Text("Skip")
-                                    .font(.system(size: 13))
-                                    .foregroundColor(.white.opacity(0.35))
-                            }
-                            .padding(.vertical, 4)
-                        }
+                        // Skip intentionally removed — see QA plan Wave 2.
+                        // If drop-off exceeds 20% at step 3, reintroduce skip to paywall (not scanner).
                     }
                     .padding(.bottom, 28)
                 }
@@ -244,50 +237,68 @@ struct OnboardingFlowView: View {
         .onAppear {
             checkCameraAuthorization()
             analytics.capture(.onboardingStarted)
+            analytics.capture(.onboardingStepViewed, properties: stepProperties(for: 0))
             trialVM.onRestoreSuccess = {
                 finishOnboardingAfterRestore()
             }
         }
+        .onChange(of: currentStep) { _, newStep in
+            analytics.capture(.onboardingStepViewed, properties: stepProperties(for: newStep))
+        }
         .enableInjection()
+    }
+
+    private func stepProperties(for index: Int) -> [String: Any] {
+        ["step": index, "step_name": stepName(for: index)]
+    }
+
+    private func stepName(for index: Int) -> String {
+        switch index {
+        case 0: return "hero"
+        case 1: return "value"
+        case 2: return "correction"
+        case 3: return "bulk_scan"
+        case 4: return "portfolio"
+        case 5: return "grading"
+        case 6: return "watchlist"
+        case 7: return "multi_game"
+        case 8: return "export_import"
+        case 9: return "rate_us"
+        case 10: return "camera_permission"
+        case 11: return "trial_close_1"
+        case 12: return "trial_close_2"
+        default: return "unknown"
+        }
     }
 
     private var primaryButtonLabel: String {
         switch currentStep {
         case 0: return "Get started"
         case 9: return "Rate us"
-        case 10: return "Allow camera access"
+        case 10:
+            let status = AVCaptureDevice.authorizationStatus(for: .video)
+            if status == .denied || status == .restricted {
+                return "Open Settings"
+            }
+            return "Allow camera access"
         default: return "Continue"
         }
-    }
-
-    private var showsSkipButton: Bool {
-        currentStep >= 1 && currentStep <= 9
     }
 
     private let analytics = DIContainer.shared.analyticsService
 
     private func handlePrimaryAction() {
         if currentStep == 9 {
-            // Rate step — request review then advance
             requestReview()
             withAnimation(.easeInOut(duration: 0.4)) {
                 currentStep += 1
             }
-            analytics.capture(.onboardingStepViewed, properties: ["step": currentStep])
         } else if currentStep == 10 {
             requestCameraPermission()
         } else if currentStep < onboardingSteps - 1 {
             withAnimation(.easeInOut(duration: 0.4)) {
                 currentStep += 1
             }
-            analytics.capture(.onboardingStepViewed, properties: ["step": currentStep])
-        }
-    }
-
-    private func handleSkip() {
-        analytics.capture(.onboardingStepSkipped, properties: ["from_step": currentStep])
-        withAnimation(.easeInOut(duration: 0.4)) {
-            currentStep = 10 // Skip to camera permission
         }
     }
 
@@ -301,6 +312,15 @@ struct OnboardingFlowView: View {
     }
 
     private func requestCameraPermission() {
+        let currentStatus = AVCaptureDevice.authorizationStatus(for: .video)
+        if currentStatus == .denied || currentStatus == .restricted {
+            // Permission permanently denied — open Settings instead of silently advancing.
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url)
+            }
+            analytics.capture(.onboardingCameraPermission, properties: ["granted": false, "deep_linked_to_settings": true])
+            return
+        }
         AVCaptureDevice.requestAccess(for: .video) { granted in
             DispatchQueue.main.async {
                 isCameraAuthorized = granted
@@ -321,8 +341,8 @@ struct OnboardingFlowView: View {
 }
 
 #Preview {
-    var router: Router = Router()
-    var appState: AppState = AppState()
+    let router: Router = Router()
+    let appState: AppState = AppState()
     OnboardingFlowView()
         .environment(router)
         .environment(appState)

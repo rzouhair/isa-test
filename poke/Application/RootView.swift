@@ -6,9 +6,11 @@ import RevenueCatUI
 
 struct RootView: View {
     @Environment(AppState.self) private var appState
-    
+    @Environment(\.modelContext) private var modelContext
+
     @State private var router = Router()
     @State private var showPaywallCrown: Bool = false
+    @State private var isBootstrapped: Bool = false
     @ObserveInjection var inject
     
     private var selectedPage: Binding<Int> {
@@ -50,7 +52,9 @@ struct RootView: View {
     var body: some View {
         NavigationStack(path: $router.navigationPath) {
             Group {
-                if !DIContainer.shared.userRepository.onboardingIsFinished() {
+                if !isBootstrapped {
+                    bootstrapSplash
+                } else if !DIContainer.shared.userRepository.onboardingIsFinished() {
                     setupOnboardingView()
                 } else {
                     ZStack(alignment: .bottomTrailing) {
@@ -158,28 +162,41 @@ struct RootView: View {
                     getDestinationView(destination: router.presentedFullscreenCover!)
                 }
             }
-            .onAppear {
-                Task {
-                    await SubscriptionService.shared.loadProStatus()
+            .task {
+                guard !isBootstrapped else { return }
+                ScanStore.shared.configure(modelContext: modelContext)
+                await SubscriptionService.shared.loadProStatus()
 
-                    showPaywallCrown = !appState.isProUser
-                    print("====== root appearance ======")
-                    print(appState.shouldShowPaywall)
-                    print(DIContainer.shared.userRepository.onboardingIsFinished())
-                    print(appState.isProUser)
-                    if appState.shouldShowPaywall && DIContainer.shared.userRepository.onboardingIsFinished() && !appState.isProUser {
-                        DIContainer.shared.analyticsService.capture(.paywallViewed, properties: ["source": "auto"])
-                        appState.showPaywall()
-                    }
-                    DIContainer.shared.analyticsService.capture(.appOpened)
-                    print("====== root appearance ======")
+                DIContainer.shared.crashReportingService.identifyUser(
+                    revenueCatId: SubscriptionService.shared.customerId
+                )
+
+                showPaywallCrown = !appState.isProUser
+                isBootstrapped = true
+
+                if appState.shouldShowPaywall && DIContainer.shared.userRepository.onboardingIsFinished() && !appState.isProUser {
+                    DIContainer.shared.analyticsService.capture(.paywallViewed, properties: ["source": "auto"])
+                    appState.showPaywall()
                 }
+                DIContainer.shared.analyticsService.capture(.appOpened)
             }
         }
         .environment(router)
         .enableInjection()
     }
 
+
+    private var bootstrapSplash: some View {
+        VStack(spacing: 12) {
+            Image(systemName: "sparkles")
+                .font(.system(size: 44, weight: .semibold))
+                .foregroundStyle(theme.accent)
+            ProgressView()
+                .controlSize(.small)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(.systemBackground))
+    }
 
     private var tabTitle: String {
         switch appState.selectedTab {
@@ -302,8 +319,8 @@ extension RootView {
 #endif
 
 #Preview {
-    var appState = AppState()
-    
+    let appState = AppState()
+
     RootView()
         .environment(appState)
         .tint(theme.accent)
