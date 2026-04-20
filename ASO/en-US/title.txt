@@ -1,0 +1,7 @@
+Karten: Pokemon Card Scanner
+
+# ALT (if Pokemon rejected — pick one, replace line 1):
+# Karten: TCG Card Value Scanner   (30c — max coverage: tcg+card+value+scanner)
+# Karten: Trading Card Scanner     (28c — trading card scanner pop)
+# Karten: TCG & Sports Scanner     (28c — sports pivot)
+# Karten: TCG Card Scanner Value   (30c — current pre-edit)

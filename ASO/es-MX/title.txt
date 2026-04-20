@@ -1,0 +1,7 @@
+Karten: Escáner Cartas Pokemon
+
+# ALT (if Pokemon rejected — pick one, replace line 1):
+# Karten: Escáner de Cartas TCG    (29c — de-Cartas-TCG combo)
+# Karten: Escáner Cartas TCG       (26c — compact TCG pivot)
+# Karten: Escáner y Valor TCG      (27c — adds valor hook, dups subtitle)
+# Karten: Valor Cartas TCG         (24c — valor-cartas combo, pop 45)

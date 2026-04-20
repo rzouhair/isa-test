@@ -1,0 +1,5 @@
+app_identifier("com.tcgscanner.poke")
+apple_id("zwrouika@gmail.com")
+team_id("C59DFZPQVH")
+
+# itc_team_id("YOUR_ASC_TEAM_ID") # find via: fastlane spaceauth or App Store Connect > Users > membership

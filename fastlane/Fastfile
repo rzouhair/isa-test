@@ -1,0 +1,21 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Sync ASO/ → fastlane/metadata/ then push metadata only to App Store Connect"
+  lane :push_metadata do
+    sh("../scripts/sync-aso.sh")
+    deliver(
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      skip_app_version_update: true,
+      force: true,
+      precheck_include_in_app_purchases: false,
+      run_precheck_before_submit: false
+    )
+  end
+
+  desc "Sync only — regenerate fastlane/metadata/ from ASO/ (no upload)"
+  lane :sync do
+    sh("../scripts/sync-aso.sh")
+  end
+end

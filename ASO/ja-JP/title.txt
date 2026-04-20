@@ -1,0 +1,7 @@
+Karten: ポケカ・トレカ価格スキャナー
+
+# ALT (pick one, replace line 1):
+# Karten: トレカ価格スキャナー           (18c — no ポケカ, safest)
+# Karten: Pokémon Card Scanner      (28c — English, bilingual)
+# Karten: ポケカ価値・トレカ鑑定          (20c — value/grading pivot)
+# Karten: カード価値スキャナー            (17c — generic JP)

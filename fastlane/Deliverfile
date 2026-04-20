@@ -1,0 +1,4 @@
+app_identifier "com.tcgscanner.poke"
+username "zwrouika@gmail.com"
+
+# metadata_path defaults to ./fastlane/metadata — sync-aso.sh populates this

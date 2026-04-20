@@ -1,0 +1,7 @@
+Karten: Scanner Cartas Pokemon
+
+# ALT (if Pokemon rejected — pick one, replace line 1):
+# Karten: Scanner de Cartas TCG    (29c — tcg pivot)
+# Karten: Scanner Cartas TCG       (26c — compact)
+# Karten: Valor Cartas TCG         (24c — valor hook)
+# Karten: TCG Cartas Scanner       (26c — reordered)

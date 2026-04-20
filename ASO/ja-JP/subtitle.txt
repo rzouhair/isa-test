@@ -1,0 +1,7 @@
+ポケカ・トレカ 価値 PSA鑑定 スキャナー
+
+# ALT (pick one, replace line 1):
+# Pokemon Card Value PSA鑑定
+# ポケカ・トレカ 価値 PSA鑑定 スキャナー   (22c — original, JP-heavy)
+# Pokémon TCG Value & PSA        (23c — English-only)
+# ポケモンカード 価値 PSA鑑定 管理      (20c — JP + 管理)
