@@ -19,11 +19,11 @@
 //
 //  Or run the wrapper:
 //
-//      ./scripts/rename-paperscan-to-poke.sh
+//      ./scripts/rename-paperscan-to-examprep.sh
 //
 //  Notes:
 //  - Script is CASE-SENSITIVE. Run once with exact case ("PaperScan" → "Poke"),
-//    then again with ("paperscan" → "poke") if any lowercase stragglers remain.
+//    then again with ("paperscan" → "examprep") if any lowercase stragglers remain.
 //  - graphify-out/ is a regeneratable cache; after a rename run
 //      graphify update .
 //    to refresh it instead of renaming inside.

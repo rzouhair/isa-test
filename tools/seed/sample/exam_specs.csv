@@ -1,0 +1,6 @@
+state_code,license_code,category_code,question_count,pass_threshold,time_limit_sec
+CA,car,,36,0.8333,
+CA,cdl,general_knowledge,50,0.80,
+CA,cdl,air_brakes,25,0.80,
+CA,cdl,hazmat,30,0.80,
+CA,cdl,school_bus,20,0.80,

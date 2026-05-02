@@ -1,0 +1,41 @@
+question_external_id,text,is_correct,sort_order
+Q001,"Stop and wait for green",0,1
+Q001,"Slow down and proceed with caution",1,2
+Q001,"Speed up through the intersection",0,3
+Q001,"The signal is broken",0,4
+Q002,"The largest vehicle",0,1
+Q002,"The one honking first",0,2
+Q002,"The vehicle that arrived first",1,3
+Q002,"The one turning right",0,4
+Q003,"Circle",0,1
+Q003,"Triangle",0,2
+Q003,"Octagon",1,3
+Q003,"Square",0,4
+Q004,"Action is required",0,1
+Q004,"Action is prohibited",1,2
+Q004,"Action is recommended",0,3
+Q004,"Construction ahead",0,4
+Q005,"0.02%",0,1
+Q005,"0.05%",0,2
+Q005,"0.08%",1,3
+Q005,"0.10%",0,4
+Q006,"0.5 seconds",0,1
+Q006,"1 second",1,2
+Q006,"2 seconds",0,3
+Q006,"3 seconds",0,4
+Q007,"Reduce engine noise",0,1
+Q007,"Compensate for brake shoe wear",1,2
+Q007,"Lubricate the drive shaft",0,3
+Q007,"Monitor tire pressure",0,4
+Q008,"A regular driver's license",0,1
+Q008,"A CDL with HazMat endorsement",1,2
+Q008,"Only a passenger endorsement",0,3
+Q008,"Liability insurance only",0,4
+Q009,"Open all windows",0,1
+Q009,"Honk to alert nearby drivers",0,2
+Q009,"Activate flashing lights and confirm students are clear",1,3
+Q009,"Start the engine in neutral",0,4
+Q010,"1/32 inch",0,1
+Q010,"2/32 inch",0,2
+Q010,"4/32 inch",1,3
+Q010,"6/32 inch",0,4

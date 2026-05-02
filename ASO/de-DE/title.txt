@@ -1,7 +1,1 @@
-Karten Scanner: Pokemon & TCG
-
-# ALT (if Pokemon rejected — pick one, replace line 1):
-# Karten: TCG Kartenscanner Wert   (30c — covers tcg+kartenscanner+wert)
-# Karten: TCG Kartenscanner KI     (28c — adds AI hook)
-# Karten: Sammelkarten Scanner     (28c — sammelkarten pop, dups subtitle)
-# Karten: TCG Scanner & Wert       (26c — minimal, clean)
+CDL Prep: Practice Test 2026

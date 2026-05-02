@@ -1,15 +1,15 @@
 xcassets:
   - inputs:
-    - poke/Presentation/Resources/Colors.xcassets
-    - poke/Presentation/Resources/Images.xcassets
+    - examprep/Presentation/Resources/Colors.xcassets
+    - examprep/Presentation/Resources/Images.xcassets
     outputs:
       templateName: swift5
-      output: poke/Presentation/Generated/Assets.swift
+      output: examprep/Presentation/Generated/Assets.swift
       params:
         publicAccess: true
 
 fonts:
-  inputs: poke/Presentation/Resources/Fonts
+  inputs: examprep/Presentation/Resources/Fonts
   outputs:
     templateName: swift5
-    output: poke/Presentation/Generated/Fonts.swift
+    output: examprep/Presentation/Generated/Fonts.swift

@@ -1,7 +1,1 @@
-Karten: Scanner Cartes Pokemon
-
-# ALT (if Pokemon rejected — pick one, replace line 1):
-# Karten: Scanner de Cartes TCG    (29c — tcg pivot)
-# Karten: Scanner Cartes TCG       (26c — compact)
-# Karten: Valeur Cartes TCG        (25c — valeur hook, pop 49)
-# Karten: TCG Cartes Scanner       (26c — reordered)
+CDL Hazmat Practice Test Prep

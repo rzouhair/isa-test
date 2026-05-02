@@ -1,0 +1,15 @@
+license_code,code,name,kind,sort_order
+car,general_knowledge,General Knowledge,core,10
+car,road_signs,Road Signs,core,20
+car,traffic_rules,Traffic Rules,core,30
+motorcycle,motorcycle_basics,Motorcycle Basics,core,10
+motorcycle,motorcycle_signs,Road Signs,core,20
+cdl,general_knowledge,General Knowledge,core,10
+cdl,air_brakes,Air Brakes,endorsement,20
+cdl,combination_vehicles,Combination Vehicles,endorsement,30
+cdl,hazmat,Hazardous Materials,endorsement,40
+cdl,tanker,Tanker,endorsement,50
+cdl,passenger,Passenger,endorsement,60
+cdl,school_bus,School Bus,endorsement,70
+cdl,doubles_triples,Doubles/Triples,endorsement,80
+cdl,pre_trip,Pre-Trip Inspection,core,90

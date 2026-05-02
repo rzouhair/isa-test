@@ -1,124 +1,117 @@
-# Graph Report - .  (2026-04-16)
+# Graph Report - .  (2026-04-20)
 
 ## Corpus Check
-- Large corpus: 160 files · ~677,902 words. Semantic extraction will be expensive (many Claude tokens). Consider running on a subfolder, or use --no-semantic to run AST-only.
+- 72 files · ~2,215,482 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1348 nodes · 2081 edges · 86 communities detected
-- Extraction: 75% EXTRACTED · 25% INFERRED · 0% AMBIGUOUS · INFERRED: 511 edges (avg confidence: 0.8)
+- 583 nodes · 657 edges · 78 communities detected
+- Extraction: 84% EXTRACTED · 16% INFERRED · 0% AMBIGUOUS · INFERRED: 106 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
-- [[_COMMUNITY_Shared UI Components|Shared UI Components]]
-- [[_COMMUNITY_AI Service Layer|AI Service Layer]]
-- [[_COMMUNITY_Card API Models|Card API Models]]
-- [[_COMMUNITY_Card Detail View|Card Detail View]]
-- [[_COMMUNITY_Card Model Coding Keys|Card Model Coding Keys]]
-- [[_COMMUNITY_App Lifecycle & Delegates|App Lifecycle & Delegates]]
-- [[_COMMUNITY_App Bootstrap & Analytics|App Bootstrap & Analytics]]
-- [[_COMMUNITY_Paywall & Subscriptions|Paywall & Subscriptions]]
-- [[_COMMUNITY_Collection Sorting & Filters|Collection Sorting & Filters]]
-- [[_COMMUNITY_OpenAI Parser & Detection|OpenAI Parser & Detection]]
-- [[_COMMUNITY_Camera Service|Camera Service]]
-- [[_COMMUNITY_Home & App State|Home & App State]]
-- [[_COMMUNITY_Swift API Model Docs|Swift API Model Docs]]
-- [[_COMMUNITY_CSV ImportExport Service|CSV Import/Export Service]]
-- [[_COMMUNITY_AI Service Errors|AI Service Errors]]
-- [[_COMMUNITY_MVP PRD Concepts|MVP PRD Concepts]]
-- [[_COMMUNITY_Grading API Models|Grading API Models]]
-- [[_COMMUNITY_Analytics Events Enum|Analytics Events Enum]]
-- [[_COMMUNITY_Grading Capture Steps|Grading Capture Steps]]
-- [[_COMMUNITY_Generated Color Assets|Generated Color Assets]]
-- [[_COMMUNITY_Onboarding Welcome Flow|Onboarding Welcome Flow]]
-- [[_COMMUNITY_Generated Fonts|Generated Fonts]]
-- [[_COMMUNITY_UI Tests|UI Tests]]
-- [[_COMMUNITY_Scan Correction State|Scan Correction State]]
-- [[_COMMUNITY_Sail Button Styles|Sail Button Styles]]
-- [[_COMMUNITY_Project Architecture Docs|Project Architecture Docs]]
-- [[_COMMUNITY_Badge Component|Badge Component]]
-- [[_COMMUNITY_Hero Background Image|Hero Background Image]]
-- [[_COMMUNITY_Authentication Service|Authentication Service]]
-- [[_COMMUNITY_Competitor Onboarding Analysis|Competitor Onboarding Analysis]]
-- [[_COMMUNITY_Subscription Period Helpers|Subscription Period Helpers]]
-- [[_COMMUNITY_Auth Store|Auth Store]]
-- [[_COMMUNITY_Sign-In Providers Enum|Sign-In Providers Enum]]
-- [[_COMMUNITY_SwiftData Preview Helper|SwiftData Preview Helper]]
-- [[_COMMUNITY_Phase 4 Roadmap Tasks|Phase 4 Roadmap Tasks]]
-- [[_COMMUNITY_Author Portrait Asset|Author Portrait Asset]]
-- [[_COMMUNITY_Item Data Model|Item Data Model]]
-- [[_COMMUNITY_DI Container|DI Container]]
-- [[_COMMUNITY_AI Tool Definition|AI Tool Definition]]
-- [[_COMMUNITY_StoreKit Review Extension|StoreKit Review Extension]]
-- [[_COMMUNITY_UINavigationController Extension|UINavigationController Extension]]
-- [[_COMMUNITY_Unit Tests|Unit Tests]]
-- [[_COMMUNITY_App Constants|App Constants]]
-- [[_COMMUNITY_App Theme|App Theme]]
-- [[_COMMUNITY_User Repository Protocol|User Repository Protocol]]
-- [[_COMMUNITY_SwiftUI Font Extension|SwiftUI Font Extension]]
-- [[_COMMUNITY_TCG Scanner Plan & Risks|TCG Scanner Plan & Risks]]
-- [[_COMMUNITY_Pre-Onboarding Fixes|Pre-Onboarding Fixes]]
-- [[_COMMUNITY_Search API Endpoint|Search API Endpoint]]
-- [[_COMMUNITY_Sets Catalog Endpoint|Sets Catalog Endpoint]]
-- [[_COMMUNITY_Offline Card Autocomplete|Offline Card Autocomplete]]
-- [[_COMMUNITY_Grading API Docs|Grading API Docs]]
-- [[_COMMUNITY_TCG Scanner Progress Log|TCG Scanner Progress Log]]
-- [[_COMMUNITY_App Icon Container|App Icon Container]]
-- [[_COMMUNITY_Logo Card Illustration|Logo Card Illustration]]
-- [[_COMMUNITY_Logo Pokeball Symbol|Logo Pokeball Symbol]]
-- [[_COMMUNITY_Logo Scan Corners|Logo Scan Corners]]
-- [[_COMMUNITY_Logo Purple Backdrop|Logo Purple Backdrop]]
-- [[_COMMUNITY_Logo TCG Text Label|Logo TCG Text Label]]
-- [[_COMMUNITY_Shield Checkmark Icon|Shield Checkmark Icon]]
-- [[_COMMUNITY_Red Padlock Icon|Red Padlock Icon]]
-- [[_COMMUNITY_3D Camera Icon|3D Camera Icon]]
-- [[_COMMUNITY_AppIcon Container|AppIcon Container]]
-- [[_COMMUNITY_AppIcon Card Illustration|AppIcon Card Illustration]]
-- [[_COMMUNITY_AppIcon Scan Corners|AppIcon Scan Corners]]
-- [[_COMMUNITY_AppIcon Pokeball Symbol|AppIcon Pokeball Symbol]]
-- [[_COMMUNITY_AppIcon Purple Backdrop|AppIcon Purple Backdrop]]
-- [[_COMMUNITY_Magic Top Hat Icon|Magic Top Hat Icon]]
-- [[_COMMUNITY_Magic Star Wand Icon|Magic Star Wand Icon]]
-- [[_COMMUNITY_Magic Red Band Icon|Magic Red Band Icon]]
-- [[_COMMUNITY_Google Logo Asset|Google Logo Asset]]
-- [[_COMMUNITY_Cash Stack Icon|Cash Stack Icon]]
-- [[_COMMUNITY_Onboarding Paywall Mockup|Onboarding Paywall Mockup]]
-- [[_COMMUNITY_Pro Features Table|Pro Features Table]]
-- [[_COMMUNITY_Reviews Rating Badge|Reviews Rating Badge]]
-- [[_COMMUNITY_Testimonial Text|Testimonial Text]]
-- [[_COMMUNITY_Paywall CTA Button|Paywall CTA Button]]
-- [[_COMMUNITY_Xcode Navigator Screenshot|Xcode Navigator Screenshot]]
-- [[_COMMUNITY_Features Folder Structure|Features Folder Structure]]
-- [[_COMMUNITY_Architecture Folders Layout|Architecture Folders Layout]]
-- [[_COMMUNITY_Core Swift Files|Core Swift Files]]
-- [[_COMMUNITY_UI Components Screenshot|UI Components Screenshot]]
-- [[_COMMUNITY_Sign-In Button Samples|Sign-In Button Samples]]
-- [[_COMMUNITY_Account Form Card|Account Form Card]]
-- [[_COMMUNITY_Dashboard Tab Bar|Dashboard Tab Bar]]
-- [[_COMMUNITY_iPhone Device Mockup|iPhone Device Mockup]]
+- [[_COMMUNITY_Community 0|Community 0]]
+- [[_COMMUNITY_Community 1|Community 1]]
+- [[_COMMUNITY_Community 2|Community 2]]
+- [[_COMMUNITY_Community 3|Community 3]]
+- [[_COMMUNITY_Community 4|Community 4]]
+- [[_COMMUNITY_Community 5|Community 5]]
+- [[_COMMUNITY_Community 6|Community 6]]
+- [[_COMMUNITY_Community 7|Community 7]]
+- [[_COMMUNITY_Community 8|Community 8]]
+- [[_COMMUNITY_Community 9|Community 9]]
+- [[_COMMUNITY_Community 10|Community 10]]
+- [[_COMMUNITY_Community 11|Community 11]]
+- [[_COMMUNITY_Community 12|Community 12]]
+- [[_COMMUNITY_Community 13|Community 13]]
+- [[_COMMUNITY_Community 14|Community 14]]
+- [[_COMMUNITY_Community 15|Community 15]]
+- [[_COMMUNITY_Community 16|Community 16]]
+- [[_COMMUNITY_Community 17|Community 17]]
+- [[_COMMUNITY_Community 18|Community 18]]
+- [[_COMMUNITY_Community 19|Community 19]]
+- [[_COMMUNITY_Community 20|Community 20]]
+- [[_COMMUNITY_Community 21|Community 21]]
+- [[_COMMUNITY_Community 22|Community 22]]
+- [[_COMMUNITY_Community 23|Community 23]]
+- [[_COMMUNITY_Community 24|Community 24]]
+- [[_COMMUNITY_Community 25|Community 25]]
+- [[_COMMUNITY_Community 26|Community 26]]
+- [[_COMMUNITY_Community 27|Community 27]]
+- [[_COMMUNITY_Community 28|Community 28]]
+- [[_COMMUNITY_Community 29|Community 29]]
+- [[_COMMUNITY_Community 30|Community 30]]
+- [[_COMMUNITY_Community 31|Community 31]]
+- [[_COMMUNITY_Community 32|Community 32]]
+- [[_COMMUNITY_Community 33|Community 33]]
+- [[_COMMUNITY_Community 34|Community 34]]
+- [[_COMMUNITY_Community 35|Community 35]]
+- [[_COMMUNITY_Community 36|Community 36]]
+- [[_COMMUNITY_Community 37|Community 37]]
+- [[_COMMUNITY_Community 38|Community 38]]
+- [[_COMMUNITY_Community 39|Community 39]]
+- [[_COMMUNITY_Community 40|Community 40]]
+- [[_COMMUNITY_Community 41|Community 41]]
+- [[_COMMUNITY_Community 42|Community 42]]
+- [[_COMMUNITY_Community 43|Community 43]]
+- [[_COMMUNITY_Community 44|Community 44]]
+- [[_COMMUNITY_Community 45|Community 45]]
+- [[_COMMUNITY_Community 46|Community 46]]
+- [[_COMMUNITY_Community 47|Community 47]]
+- [[_COMMUNITY_Community 48|Community 48]]
+- [[_COMMUNITY_Community 49|Community 49]]
+- [[_COMMUNITY_Community 50|Community 50]]
+- [[_COMMUNITY_Community 51|Community 51]]
+- [[_COMMUNITY_Community 52|Community 52]]
+- [[_COMMUNITY_Community 53|Community 53]]
+- [[_COMMUNITY_Community 54|Community 54]]
+- [[_COMMUNITY_Community 55|Community 55]]
+- [[_COMMUNITY_Community 56|Community 56]]
+- [[_COMMUNITY_Community 57|Community 57]]
+- [[_COMMUNITY_Community 58|Community 58]]
+- [[_COMMUNITY_Community 59|Community 59]]
+- [[_COMMUNITY_Community 60|Community 60]]
+- [[_COMMUNITY_Community 61|Community 61]]
+- [[_COMMUNITY_Community 62|Community 62]]
+- [[_COMMUNITY_Community 63|Community 63]]
+- [[_COMMUNITY_Community 64|Community 64]]
+- [[_COMMUNITY_Community 65|Community 65]]
+- [[_COMMUNITY_Community 66|Community 66]]
+- [[_COMMUNITY_Community 67|Community 67]]
+- [[_COMMUNITY_Community 68|Community 68]]
+- [[_COMMUNITY_Community 69|Community 69]]
+- [[_COMMUNITY_Community 70|Community 70]]
+- [[_COMMUNITY_Community 71|Community 71]]
+- [[_COMMUNITY_Community 72|Community 72]]
+- [[_COMMUNITY_Community 73|Community 73]]
+- [[_COMMUNITY_Community 74|Community 74]]
+- [[_COMMUNITY_Community 75|Community 75]]
+- [[_COMMUNITY_Community 76|Community 76]]
+- [[_COMMUNITY_Community 77|Community 77]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `CodingKeys` - 90 edges
-2. `CodingKeys` - 51 edges
-3. `text` - 46 edges
-4. `font()` - 46 edges
-5. `String` - 34 edges
-6. `image()` - 32 edges
-7. `AnalyticsEvent` - 28 edges
-8. `data` - 22 edges
-9. `CodingKeys` - 22 edges
-10. `Route` - 21 edges
+1. `AnalyticsEvent` - 30 edges
+2. `String` - 12 edges
+3. `SettingsItem` - 11 edges
+4. `UnifiedCard Model` - 11 edges
+5. `PaywallYearlyViewModel` - 10 edges
+6. `PaywallViewModel` - 10 edges
+7. `XcodeProjectRenamer` - 10 edges
+8. `UIImage` - 9 edges
+9. `Router` - 8 edges
+10. `Route` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `SavedCard SwiftData Model` --semantically_similar_to--> `UnifiedCard Model`  [INFERRED] [semantically similar]
-  API_SWIFT_MODEL.md → UNIFIED_CARD_API_SPEC.md
-- `CardResponse Codable` --semantically_similar_to--> `POST /v1/scan endpoint`  [INFERRED] [semantically similar]
-  API_SWIFT_MODEL.md → UNIFIED_CARD_API_SPEC.md
-- `Sports Scanner Screen` --semantically_similar_to--> `Scanner Screen Continuous Scan`  [INFERRED] [semantically similar]
-  MVP_PRD_SPORTS.md → MVP_PRD.md
-- `Sports CardRecord Model` --semantically_similar_to--> `CardRecord Collection Model`  [INFERRED] [semantically similar]
-  MVP_PRD_SPORTS.md → MVP_PRD.md
-- `Pricing Codable` --semantically_similar_to--> `PriceEntry unified pricing`  [INFERRED] [semantically similar]
-  API_SWIFT_MODEL.md → UNIFIED_CARD_API_SPEC.md
+- `UnifiedCard Model` --semantically_similar_to--> `SavedCard SwiftData Model`  [INFERRED] [semantically similar]
+  UNIFIED_CARD_API_SPEC.md → API_SWIFT_MODEL.md
+- `POST /v1/scan endpoint` --semantically_similar_to--> `CardResponse Codable`  [INFERRED] [semantically similar]
+  UNIFIED_CARD_API_SPEC.md → API_SWIFT_MODEL.md
+- `Scanner Screen Continuous Scan` --semantically_similar_to--> `Sports Scanner Screen`  [INFERRED] [semantically similar]
+  MVP_PRD.md → MVP_PRD_SPORTS.md
+- `CardRecord Collection Model` --semantically_similar_to--> `Sports CardRecord Model`  [INFERRED] [semantically similar]
+  MVP_PRD.md → MVP_PRD_SPORTS.md
+- `PriceEntry unified pricing` --semantically_similar_to--> `Pricing Codable`  [INFERRED] [semantically similar]
+  UNIFIED_CARD_API_SPEC.md → API_SWIFT_MODEL.md
 
 ## Hyperedges (group relationships)
 - **Two-Pass Vision LLM Scan Pipeline** — unified_card_api_spec_pass1_classification, unified_card_api_spec_pass2_tcg, unified_card_api_spec_pass2_sports, unified_card_api_spec_confidence_scoring, unified_card_api_spec_unifiedcard [EXTRACTED 0.95]
@@ -127,456 +120,424 @@
 
 ## Communities
 
-### Community 0 - "Shared UI Components"
-Cohesion: 0.02
-Nodes (66): AboutAuthorView, AboutAuthorView_Previews, Accordion, AccordionItem, AddToCollectionSheet, AppPreviewCardsView, ArcShape, Banner (+58 more)
-
-### Community 1 - "AI Service Layer"
-Cohesion: 0.04
-Nodes (41): AIServiceProvider, Message, info, ButtonStyle, result, CardIdentifierError, decodingFailed, invalidResponse (+33 more)
-
-### Community 2 - "Card API Models"
-Cohesion: 0.05
-Nodes (66): Candidate, CardAttributes, CardData, CardIdentity, CardImages, CardMetadata, CardResponse, ChartDataPoint (+58 more)
-
-### Community 3 - "Card Detail View"
+### Community 0 - "Community 0"
 Cohesion: 0.06
-Nodes (16): text, image(), CardDetailView, font(), GradeDetailView, GradingHistoryView, GradingResultsView, HomeView (+8 more)
+Nodes (10): ObservableObject, PaywallViewModel, PaywallYearlyViewModel, Color, XcodeProjectRenamer, Subscription, pro, SubscriptionsRepository (+2 more)
 
-### Community 4 - "Card Model Coding Keys"
-Cohesion: 0.02
-Nodes (84): CodingKeys, attack, attacks, attribute, attributes, avgDailyVolume, cacheHit, candidates (+76 more)
-
-### Community 5 - "App Lifecycle & Delegates"
-Cohesion: 0.03
-Nodes (30): AppDelegate, AVCapturePhotoCaptureDelegate, PreviewContainerView, ScannerCameraPreview, ScannerPhotoCaptureDelegate, CameraPreviewView, CameraView, PhotoCaptureDelegate (+22 more)
-
-### Community 6 - "App Bootstrap & Analytics"
+### Community 1 - "Community 1"
 Cohesion: 0.05
-Nodes (18): AnalyticsServiceProtocol, App, AppMain, date, set, CardCollection, CardRecord, CrashReportingServiceProtocol (+10 more)
+Nodes (22): Accordion, AccordionItem, AppPreviewCardsView, ButtonStyle, Card, Checkbox, HomeView, LogoView (+14 more)
 
-### Community 7 - "Paywall & Subscriptions"
-Cohesion: 0.05
-Nodes (14): ObservableObject, PaywallViewModel, PaywallYearlyViewModel, PurchaseProductDetails, XcodeProjectRenamer, messageUs, restorePurchase, SettingsViewModel (+6 more)
-
-### Community 8 - "Collection Sorting & Filters"
-Cohesion: 0.04
-Nodes (54): CaseIterable, CollectionSortMode, nameAsc, newest, valueAsc, valueDesc, ExportScope, all (+46 more)
-
-### Community 9 - "OpenAI Parser & Detection"
-Cohesion: 0.03
-Nodes (50): CodingKeys, arguments, cachedTokens, callId, content, createdAt, description, domains (+42 more)
-
-### Community 10 - "Camera Service"
-Cohesion: 0.05
-Nodes (14): AnalyticsServiceProtocol, CameraService, Equatable, GradeRecord, GradingFlowView, FlowPhase, capturing, error (+6 more)
-
-### Community 11 - "Home & App State"
-Cohesion: 0.05
-Nodes (23): AppState, Hashable, HomeViewModel, Color, OnboardingConstants, OnboardingFlowView, Route, camera (+15 more)
-
-### Community 12 - "Swift API Model Docs"
+### Community 2 - "Community 2"
 Cohesion: 0.05
 Nodes (44): Candidate Codable, CardAttributes Codable, CardData Codable, CardIdentity Codable, CardImages Codable, CardMetadata Codable, CardResponse Codable, CardsAPI Client Class (+36 more)
 
-### Community 13 - "CSV Import/Export Service"
-Cohesion: 0.13
-Nodes (7): CSVService, ImportMode, merge, replace, ImportResult, ImportExportView, WatchlistItem
-
-### Community 14 - "AI Service Errors"
+### Community 3 - "Community 3"
 Cohesion: 0.06
-Nodes (27): AIServiceError, functionHandlingFailed, invalidAPIKey, invalidResponse, networkError, rateLimited, serverError, unknownError (+19 more)
+Nodes (33): CaseIterable, Hashable, Identifiable, PurchaseProductDetails, Route, home, onboarding, paywall (+25 more)
 
-### Community 15 - "MVP PRD Concepts"
+### Community 4 - "Community 4"
+Cohesion: 0.07
+Nodes (9): AppState, main(), Color, OnboardingConstants, OnboardingFlowView, Router, UserDefaultsDataSource, UserRepository (+1 more)
+
+### Community 5 - "Community 5"
+Cohesion: 0.07
+Nodes (15): Asset, BundleToken, ColorAsset.Color, Colors, image(), ImageAsset.Image, Images, SwiftUI.Color (+7 more)
+
+### Community 6 - "Community 6"
+Cohesion: 0.07
+Nodes (28): AnalyticsEvent, appOpened, bookmarkToggled, cheatSheetViewed, examDateSet, examSimulatorCompleted, examSimulatorStarted, handbookOpened (+20 more)
+
+### Community 7 - "Community 7"
 Cohesion: 0.08
 Nodes (29): API Swift Model Reference, Card Detail Screen TCG, CardRecord Collection Model, Collection Dashboard, Price Data TCGPlayer eBay Cache, Scan Job State Machine, Scanner Screen Continuous Scan, ScanRecord SwiftData Model (+21 more)
 
-### Community 16 - "Grading API Models"
-Cohesion: 0.07
-Nodes (25): CodingKeys, imageURL, type, CodingKey, CodingKeys, backFlat, bgsRange, centering (+17 more)
+### Community 8 - "Community 8"
+Cohesion: 0.11
+Nodes (6): App, AppMain, Decimal, String, SubscriptionService, SwiftDataDatasource
 
-### Community 17 - "Analytics Events Enum"
-Cohesion: 0.07
-Nodes (26): AnalyticsEvent, appOpened, cardAddedToCollection, collectionCreated, detectionCompleted, detectionFailed, detectionStarted, gradingCompleted (+18 more)
+### Community 9 - "Community 9"
+Cohesion: 0.11
+Nodes (9): FixedSizeScrollView, View, BlinkingDot, OnboardingHeroView, ScanLineView, ScanRingPulse, SentryTestAlertModifier, SettingsView (+1 more)
 
-### Community 18 - "Grading Capture Steps"
-Cohesion: 0.12
-Nodes (14): GradingStep, backFlat, cornersBottom, cornersTop, edges, frontAngled, frontFlat, ViewfinderStyle (+6 more)
-
-### Community 19 - "Generated Color Assets"
-Cohesion: 0.16
-Nodes (9): Asset, BundleToken, ColorAsset.Color, Colors, ImageAsset.Image, Images, SwiftUI.Color, SwiftUI.Image (+1 more)
-
-### Community 20 - "Onboarding Welcome Flow"
+### Community 10 - "Community 10"
 Cohesion: 0.13
-Nodes (8): position, FixedSizeScrollView, View, BlinkingDot, OnboardingHeroView, ScanLineView, ScanRingPulse, ViewModifier
+Nodes (9): AppDelegate, Coordinator, MailView, MFMailComposeViewControllerDelegate, NSObject, UIApplicationDelegate, UINavigationControllerDelegate, UIViewControllerRepresentable (+1 more)
 
-### Community 21 - "Generated Fonts"
+### Community 11 - "Community 11"
+Cohesion: 0.16
+Nodes (7): DIContainer, captureError(), captureMessage(), initialize(), sanitize(), sendDebugTestEvent(), setAnonymousUser()
+
+### Community 12 - "Community 12"
+Cohesion: 0.12
+Nodes (12): Badge, BadgeStyle, destructive, outline, primary, secondary, SailButton, SailButtonStyle (+4 more)
+
+### Community 13 - "Community 13"
+Cohesion: 0.15
+Nodes (5): AnalyticsServiceProtocol, AnalyticsServiceProtocol, CrashReportingServiceProtocol, PostHogAnalyticsService, Sendable
+
+### Community 14 - "Community 14"
 Cohesion: 0.24
 Nodes (8): BundleToken, FontConvertible.Font, FontFamily, register(), registerIfNeeded(), Rubik, SwiftUI.Font, swiftUIFont()
 
-### Community 22 - "UI Tests"
+### Community 15 - "Community 15"
 Cohesion: 0.18
-Nodes (3): pokeUITests, pokeUITestsLaunchTests, XCTestCase
+Nodes (5): ImageFormat, jpeg, png, loadUIImage(), UIImage
 
-### Community 23 - "Scan Correction State"
-Cohesion: 0.25
-Nodes (6): LoadState, expired, failed, loaded, loading, ScanCorrectionViewModel
+### Community 16 - "Community 16"
+Cohesion: 0.18
+Nodes (3): examprepUITests, examprepUITestsLaunchTests, XCTestCase
 
-### Community 24 - "Sail Button Styles"
-Cohesion: 0.25
-Nodes (6): SailButton, SailButtonStyle, link, neutral, primary, secondary
+### Community 17 - "Community 17"
+Cohesion: 0.18
+Nodes (5): ArcShape, OnboardingValueView, OnboardingRateUsView, Triangle, Shape
 
-### Community 25 - "Project Architecture Docs"
+### Community 18 - "Community 18"
 Cohesion: 0.25
 Nodes (8): AppMain Bootstrap Entry Point, MVVM Clean Architecture Layout, Swift 6 Code Conventions, PaperScan CLAUDE.md Project Guide, TCGPlayer Scanner MVP PRD, SportScan MVP PRD, Architecture Overview Two Apps One API, Unified Card API Spec v1.0
 
-### Community 26 - "Badge Component"
+### Community 19 - "Community 19"
 Cohesion: 0.29
-Nodes (6): Badge, BadgeStyle, destructive, outline, primary, secondary
+Nodes (5): Banner, BannerStyle, error, info, success
 
-### Community 27 - "Hero Background Image"
+### Community 20 - "Community 20"
 Cohesion: 0.38
 Nodes (7): Hero Background Image, Fanned Magic The Gathering Cards, Desaturated Monochrome Treatment, Magic The Gathering Card Back, PaperScan App, Purple Gradient Backdrop, TCG Collection Theme
 
-### Community 28 - "Authentication Service"
+### Community 21 - "Community 21"
 Cohesion: 0.4
 Nodes (2): AuthService, AuthServiceProtocol
 
-### Community 29 - "Competitor Onboarding Analysis"
+### Community 22 - "Community 22"
 Cohesion: 0.4
 Nodes (6): Competitor App CardDex, Competitor App CardScan Pro, Onboarding Competitive Analysis, Feature Gap Analysis PaperScan vs Competition, Competitor App Scanemon, Competitor App Snapdex
 
-### Community 30 - "Subscription Period Helpers"
+### Community 23 - "Community 23"
 Cohesion: 0.4
 Nodes (3): Package, SubscriptionPeriod, SubscriptionPeriod.Unit
 
-### Community 31 - "Auth Store"
+### Community 24 - "Community 24"
 Cohesion: 0.5
 Nodes (1): AuthStore
 
-### Community 32 - "Sign-In Providers Enum"
+### Community 25 - "Community 25"
 Cohesion: 0.5
 Nodes (3): SignInProvider, apple, google
 
-### Community 33 - "SwiftData Preview Helper"
+### Community 26 - "Community 26"
 Cohesion: 0.5
 Nodes (1): Preview
 
-### Community 34 - "Phase 4 Roadmap Tasks"
+### Community 27 - "Community 27"
 Cohesion: 0.5
 Nodes (4): CSV Export M3, Offline Behaviour M3, Push Notifications M3, Phase 4 Polish Retention Cleanup Tasks
 
-### Community 35 - "Author Portrait Asset"
+### Community 28 - "Community 28"
 Cohesion: 0.5
 Nodes (4): Asset catalog image likely used for app author/about screen, Author portrait photo (young man, outdoor greenery background), Outdoor nature setting with foliage and rocks, Man with short dark hair, beard, white t-shirt
 
-### Community 36 - "Item Data Model"
+### Community 29 - "Community 29"
+Cohesion: 0.67
+Nodes (1): examprepTests
+
+### Community 30 - "Community 30"
 Cohesion: 0.67
 Nodes (1): Item
 
-### Community 37 - "DI Container"
-Cohesion: 0.67
-Nodes (1): DIContainer
-
-### Community 38 - "AI Tool Definition"
-Cohesion: 0.67
-Nodes (2): RegisterableFunction, ToolDefinition
-
-### Community 39 - "StoreKit Review Extension"
+### Community 31 - "Community 31"
 Cohesion: 0.67
 Nodes (1): SKStoreReviewController
 
-### Community 40 - "UINavigationController Extension"
+### Community 32 - "Community 32"
+Cohesion: 0.67
+Nodes (1): JSONDecoder
+
+### Community 33 - "Community 33"
 Cohesion: 0.67
 Nodes (1): UINavigationController
 
-### Community 41 - "Unit Tests"
-Cohesion: 0.67
-Nodes (1): pokeTests
-
-### Community 42 - "App Constants"
+### Community 34 - "Community 34"
 Cohesion: 1.0
 Nodes (1): Constants
 
-### Community 43 - "App Theme"
+### Community 35 - "Community 35"
 Cohesion: 1.0
 Nodes (1): AppTheme
 
-### Community 44 - "User Repository Protocol"
+### Community 36 - "Community 36"
 Cohesion: 1.0
 Nodes (1): UserRepositoryProtocol
 
-### Community 45 - "SwiftUI Font Extension"
+### Community 37 - "Community 37"
 Cohesion: 1.0
 Nodes (1): SwiftUI.Font
 
-### Community 46 - "TCG Scanner Plan & Risks"
+### Community 38 - "Community 38"
 Cohesion: 1.0
 Nodes (2): TCG Scanner Implementation Plan, Risk Log
 
-### Community 47 - "Pre-Onboarding Fixes"
+### Community 39 - "Community 39"
 Cohesion: 1.0
 Nodes (1): Immediate Fixes Before New Onboarding
 
-### Community 48 - "Search API Endpoint"
+### Community 40 - "Community 40"
 Cohesion: 1.0
 Nodes (1): GET /v1/search endpoint
 
-### Community 49 - "Sets Catalog Endpoint"
+### Community 41 - "Community 41"
 Cohesion: 1.0
 Nodes (1): GET /v1/catalog/sets endpoint
 
-### Community 50 - "Offline Card Autocomplete"
+### Community 42 - "Community 42"
 Cohesion: 1.0
 Nodes (1): Local Card Index Offline Autocomplete
 
-### Community 51 - "Grading API Docs"
+### Community 43 - "Community 43"
 Cohesion: 1.0
 Nodes (1): Grading API Documentation
 
-### Community 52 - "TCG Scanner Progress Log"
+### Community 44 - "Community 44"
 Cohesion: 1.0
 Nodes (1): TCG Scanner Progress Log
 
-### Community 53 - "App Icon Container"
+### Community 45 - "Community 45"
 Cohesion: 1.0
 Nodes (1): PaperScan App Icon (1024x1024)
 
-### Community 54 - "Logo Card Illustration"
+### Community 46 - "Community 46"
 Cohesion: 1.0
 Nodes (1): TCG Card Illustration
 
-### Community 55 - "Logo Pokeball Symbol"
+### Community 47 - "Community 47"
 Cohesion: 1.0
 Nodes (1): Pokeball Symbol
 
-### Community 56 - "Logo Scan Corners"
+### Community 48 - "Community 48"
 Cohesion: 1.0
 Nodes (1): Scanner Corner Brackets
 
-### Community 57 - "Logo Purple Backdrop"
+### Community 49 - "Community 49"
 Cohesion: 1.0
 Nodes (1): Purple Rounded Background
 
-### Community 58 - "Logo TCG Text Label"
+### Community 50 - "Community 50"
 Cohesion: 1.0
 Nodes (1): TCG Text Label
 
-### Community 59 - "Shield Checkmark Icon"
+### Community 51 - "Community 51"
 Cohesion: 1.0
 Nodes (1): Metallic Shield with Checkmark
 
-### Community 60 - "Red Padlock Icon"
+### Community 52 - "Community 52"
 Cohesion: 1.0
 Nodes (1): 3D Red Padlock Icon
 
-### Community 61 - "3D Camera Icon"
+### Community 53 - "Community 53"
 Cohesion: 1.0
 Nodes (1): 3D Camera Icon
 
-### Community 62 - "AppIcon Container"
+### Community 54 - "Community 54"
 Cohesion: 1.0
 Nodes (1): PaperScan App Icon
 
-### Community 63 - "AppIcon Card Illustration"
+### Community 55 - "Community 55"
 Cohesion: 1.0
 Nodes (1): TCG Card Illustration
 
-### Community 64 - "AppIcon Scan Corners"
+### Community 56 - "Community 56"
 Cohesion: 1.0
 Nodes (1): Scan Frame Corners
 
-### Community 65 - "AppIcon Pokeball Symbol"
+### Community 57 - "Community 57"
 Cohesion: 1.0
 Nodes (1): Pokeball Symbol
 
-### Community 66 - "AppIcon Purple Backdrop"
+### Community 58 - "Community 58"
 Cohesion: 1.0
 Nodes (1): Purple Rounded Background
 
-### Community 67 - "Magic Top Hat Icon"
+### Community 59 - "Community 59"
 Cohesion: 1.0
 Nodes (1): Magic Top Hat with Wand
 
-### Community 68 - "Magic Star Wand Icon"
+### Community 60 - "Community 60"
 Cohesion: 1.0
 Nodes (1): Silver Star Magic Wand
 
-### Community 69 - "Magic Red Band Icon"
+### Community 61 - "Community 61"
 Cohesion: 1.0
 Nodes (1): Red Hat Band
 
-### Community 70 - "Google Logo Asset"
+### Community 62 - "Community 62"
 Cohesion: 1.0
 Nodes (1): Google Logo Icon
 
-### Community 71 - "Cash Stack Icon"
+### Community 63 - "Community 63"
 Cohesion: 1.0
 Nodes (1): Stack of Cash with Dollar Sign
 
-### Community 72 - "Onboarding Paywall Mockup"
+### Community 64 - "Community 64"
 Cohesion: 1.0
 Nodes (1): SwiftSail Pro Paywall Mockup
 
-### Community 73 - "Pro Features Table"
+### Community 65 - "Community 65"
 Cohesion: 1.0
 Nodes (1): Free vs Pro Features Table
 
-### Community 74 - "Reviews Rating Badge"
+### Community 66 - "Community 66"
 Cohesion: 1.0
 Nodes (1): 4.7 Star Rating 200+ Reviews
 
-### Community 75 - "Testimonial Text"
+### Community 67 - "Community 67"
 Cohesion: 1.0
 Nodes (1): Streamlined Trading Journal Testimonial
 
-### Community 76 - "Paywall CTA Button"
+### Community 68 - "Community 68"
 Cohesion: 1.0
 Nodes (1): Get SwiftSail Pro CTA
 
-### Community 77 - "Xcode Navigator Screenshot"
+### Community 69 - "Community 69"
 Cohesion: 1.0
 Nodes (1): Xcode Project Navigator - SwiftSail
 
-### Community 78 - "Features Folder Structure"
+### Community 70 - "Community 70"
 Cohesion: 1.0
 Nodes (1): Features Folder (Onboarding, Analytics, Settings, Purchases, Dashboard, Auth)
 
-### Community 79 - "Architecture Folders Layout"
+### Community 71 - "Community 71"
 Cohesion: 1.0
 Nodes (1): Architecture Folders (Domain, Data, Presentation)
 
-### Community 80 - "Core Swift Files"
+### Community 72 - "Community 72"
 Cohesion: 1.0
 Nodes (1): Swift Files (AppDependencies, ContentView, AppRouter, AppDelegate, SceneDelegate, Constants)
 
-### Community 81 - "UI Components Screenshot"
+### Community 73 - "Community 73"
 Cohesion: 1.0
 Nodes (1): Onboarding Screen 2 - UI Components Showcase
 
-### Community 82 - "Sign-In Button Samples"
+### Community 74 - "Community 74"
 Cohesion: 1.0
 Nodes (1): Button Component Samples (Sign in with Apple, I agree)
 
-### Community 83 - "Account Form Card"
+### Community 75 - "Community 75"
 Cohesion: 1.0
 Nodes (1): Card Component - Create Account Form
 
-### Community 84 - "Dashboard Tab Bar"
+### Community 76 - "Community 76"
 Cohesion: 1.0
 Nodes (1): Bottom Tab Bar - Dashboard / UI Components
 
-### Community 85 - "iPhone Device Mockup"
+### Community 77 - "Community 77"
 Cohesion: 1.0
 Nodes (1): iPhone Device Frame Mockup
 
 ## Knowledge Gaps
-- **397 isolated node(s):** `Constants`, `AppTheme`, `onboarding`, `settings`, `paywall` (+392 more)
+- **164 isolated node(s):** `Constants`, `AppTheme`, `onboarding`, `home`, `progress` (+159 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **Thin community `App Constants`** (2 nodes): `Constants`, `Constants.swift`
+- **Thin community `Community 34`** (2 nodes): `Constants`, `Constants.swift`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `App Theme`** (2 nodes): `Theme.swift`, `AppTheme`
+- **Thin community `Community 35`** (2 nodes): `Theme.swift`, `AppTheme`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `User Repository Protocol`** (2 nodes): `UserRepositoryProtocol.swift`, `UserRepositoryProtocol`
+- **Thin community `Community 36`** (2 nodes): `UserRepositoryProtocol.swift`, `UserRepositoryProtocol`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `SwiftUI Font Extension`** (2 nodes): `SwiftUI.Font`, `FontExtension.swift`
+- **Thin community `Community 37`** (2 nodes): `SwiftUI.Font`, `FontExtension.swift`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `TCG Scanner Plan & Risks`** (2 nodes): `TCG Scanner Implementation Plan`, `Risk Log`
+- **Thin community `Community 38`** (2 nodes): `TCG Scanner Implementation Plan`, `Risk Log`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Pre-Onboarding Fixes`** (1 nodes): `Immediate Fixes Before New Onboarding`
+- **Thin community `Community 39`** (1 nodes): `Immediate Fixes Before New Onboarding`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Search API Endpoint`** (1 nodes): `GET /v1/search endpoint`
+- **Thin community `Community 40`** (1 nodes): `GET /v1/search endpoint`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Sets Catalog Endpoint`** (1 nodes): `GET /v1/catalog/sets endpoint`
+- **Thin community `Community 41`** (1 nodes): `GET /v1/catalog/sets endpoint`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Offline Card Autocomplete`** (1 nodes): `Local Card Index Offline Autocomplete`
+- **Thin community `Community 42`** (1 nodes): `Local Card Index Offline Autocomplete`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Grading API Docs`** (1 nodes): `Grading API Documentation`
+- **Thin community `Community 43`** (1 nodes): `Grading API Documentation`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `TCG Scanner Progress Log`** (1 nodes): `TCG Scanner Progress Log`
+- **Thin community `Community 44`** (1 nodes): `TCG Scanner Progress Log`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `App Icon Container`** (1 nodes): `PaperScan App Icon (1024x1024)`
+- **Thin community `Community 45`** (1 nodes): `PaperScan App Icon (1024x1024)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Logo Card Illustration`** (1 nodes): `TCG Card Illustration`
+- **Thin community `Community 46`** (1 nodes): `TCG Card Illustration`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Logo Pokeball Symbol`** (1 nodes): `Pokeball Symbol`
+- **Thin community `Community 47`** (1 nodes): `Pokeball Symbol`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Logo Scan Corners`** (1 nodes): `Scanner Corner Brackets`
+- **Thin community `Community 48`** (1 nodes): `Scanner Corner Brackets`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Logo Purple Backdrop`** (1 nodes): `Purple Rounded Background`
+- **Thin community `Community 49`** (1 nodes): `Purple Rounded Background`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Logo TCG Text Label`** (1 nodes): `TCG Text Label`
+- **Thin community `Community 50`** (1 nodes): `TCG Text Label`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Shield Checkmark Icon`** (1 nodes): `Metallic Shield with Checkmark`
+- **Thin community `Community 51`** (1 nodes): `Metallic Shield with Checkmark`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Red Padlock Icon`** (1 nodes): `3D Red Padlock Icon`
+- **Thin community `Community 52`** (1 nodes): `3D Red Padlock Icon`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `3D Camera Icon`** (1 nodes): `3D Camera Icon`
+- **Thin community `Community 53`** (1 nodes): `3D Camera Icon`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `AppIcon Container`** (1 nodes): `PaperScan App Icon`
+- **Thin community `Community 54`** (1 nodes): `PaperScan App Icon`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `AppIcon Card Illustration`** (1 nodes): `TCG Card Illustration`
+- **Thin community `Community 55`** (1 nodes): `TCG Card Illustration`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `AppIcon Scan Corners`** (1 nodes): `Scan Frame Corners`
+- **Thin community `Community 56`** (1 nodes): `Scan Frame Corners`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `AppIcon Pokeball Symbol`** (1 nodes): `Pokeball Symbol`
+- **Thin community `Community 57`** (1 nodes): `Pokeball Symbol`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `AppIcon Purple Backdrop`** (1 nodes): `Purple Rounded Background`
+- **Thin community `Community 58`** (1 nodes): `Purple Rounded Background`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Magic Top Hat Icon`** (1 nodes): `Magic Top Hat with Wand`
+- **Thin community `Community 59`** (1 nodes): `Magic Top Hat with Wand`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Magic Star Wand Icon`** (1 nodes): `Silver Star Magic Wand`
+- **Thin community `Community 60`** (1 nodes): `Silver Star Magic Wand`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Magic Red Band Icon`** (1 nodes): `Red Hat Band`
+- **Thin community `Community 61`** (1 nodes): `Red Hat Band`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Google Logo Asset`** (1 nodes): `Google Logo Icon`
+- **Thin community `Community 62`** (1 nodes): `Google Logo Icon`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Cash Stack Icon`** (1 nodes): `Stack of Cash with Dollar Sign`
+- **Thin community `Community 63`** (1 nodes): `Stack of Cash with Dollar Sign`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Onboarding Paywall Mockup`** (1 nodes): `SwiftSail Pro Paywall Mockup`
+- **Thin community `Community 64`** (1 nodes): `SwiftSail Pro Paywall Mockup`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Pro Features Table`** (1 nodes): `Free vs Pro Features Table`
+- **Thin community `Community 65`** (1 nodes): `Free vs Pro Features Table`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Reviews Rating Badge`** (1 nodes): `4.7 Star Rating 200+ Reviews`
+- **Thin community `Community 66`** (1 nodes): `4.7 Star Rating 200+ Reviews`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Testimonial Text`** (1 nodes): `Streamlined Trading Journal Testimonial`
+- **Thin community `Community 67`** (1 nodes): `Streamlined Trading Journal Testimonial`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Paywall CTA Button`** (1 nodes): `Get SwiftSail Pro CTA`
+- **Thin community `Community 68`** (1 nodes): `Get SwiftSail Pro CTA`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Xcode Navigator Screenshot`** (1 nodes): `Xcode Project Navigator - SwiftSail`
+- **Thin community `Community 69`** (1 nodes): `Xcode Project Navigator - SwiftSail`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Features Folder Structure`** (1 nodes): `Features Folder (Onboarding, Analytics, Settings, Purchases, Dashboard, Auth)`
+- **Thin community `Community 70`** (1 nodes): `Features Folder (Onboarding, Analytics, Settings, Purchases, Dashboard, Auth)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Architecture Folders Layout`** (1 nodes): `Architecture Folders (Domain, Data, Presentation)`
+- **Thin community `Community 71`** (1 nodes): `Architecture Folders (Domain, Data, Presentation)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Core Swift Files`** (1 nodes): `Swift Files (AppDependencies, ContentView, AppRouter, AppDelegate, SceneDelegate, Constants)`
+- **Thin community `Community 72`** (1 nodes): `Swift Files (AppDependencies, ContentView, AppRouter, AppDelegate, SceneDelegate, Constants)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `UI Components Screenshot`** (1 nodes): `Onboarding Screen 2 - UI Components Showcase`
+- **Thin community `Community 73`** (1 nodes): `Onboarding Screen 2 - UI Components Showcase`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Sign-In Button Samples`** (1 nodes): `Button Component Samples (Sign in with Apple, I agree)`
+- **Thin community `Community 74`** (1 nodes): `Button Component Samples (Sign in with Apple, I agree)`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Account Form Card`** (1 nodes): `Card Component - Create Account Form`
+- **Thin community `Community 75`** (1 nodes): `Card Component - Create Account Form`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Dashboard Tab Bar`** (1 nodes): `Bottom Tab Bar - Dashboard / UI Components`
+- **Thin community `Community 76`** (1 nodes): `Bottom Tab Bar - Dashboard / UI Components`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `iPhone Device Mockup`** (1 nodes): `iPhone Device Frame Mockup`
+- **Thin community `Community 77`** (1 nodes): `iPhone Device Frame Mockup`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `CodingKeys` connect `Card Model Coding Keys` to `AI Service Layer`, `Card API Models`, `App Bootstrap & Analytics`, `Collection Sorting & Filters`, `Grading API Models`, `Onboarding Welcome Flow`?**
-  _High betweenness centrality (0.102) - this node is a cross-community bridge._
-- **Why does `CodingKeys` connect `OpenAI Parser & Detection` to `AI Service Layer`, `Card API Models`, `Collection Sorting & Filters`, `Grading API Models`, `Generated Color Assets`?**
-  _High betweenness centrality (0.081) - this node is a cross-community bridge._
-- **Why does `url` connect `AI Service Layer` to `OpenAI Parser & Detection`, `Card Detail View`, `Paywall & Subscriptions`?**
-  _High betweenness centrality (0.057) - this node is a cross-community bridge._
-- **Are the 45 inferred relationships involving `text` (e.g. with `.scanRow()` and `.lastGradeCard()`) actually correct?**
-  _`text` has 45 INFERRED edges - model-reasoned connections that need verification._
+- **Why does `OnboardingFlowView` connect `Community 4` to `Community 1`, `Community 11`?**
+  _High betweenness centrality (0.144) - this node is a cross-community bridge._
+- **Why does `Reviews` connect `Community 5` to `Community 1`?**
+  _High betweenness centrality (0.072) - this node is a cross-community bridge._
+- **Why does `AnalyticsEvent` connect `Community 6` to `Community 3`, `Community 13`?**
+  _High betweenness centrality (0.065) - this node is a cross-community bridge._
+- **Are the 8 inferred relationships involving `String` (e.g. with `.toLocalCurrencyString()` and `.scheduleTrialReminderIfNeeded()`) actually correct?**
+  _`String` has 8 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `Constants`, `AppTheme`, `onboarding` to the rest of the system?**
-  _397 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `Shared UI Components` be split into smaller, more focused modules?**
-  _Cohesion score 0.02 - nodes in this community are weakly interconnected._
-- **Should `AI Service Layer` be split into smaller, more focused modules?**
-  _Cohesion score 0.04 - nodes in this community are weakly interconnected._
+  _164 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Community 0` be split into smaller, more focused modules?**
+  _Cohesion score 0.06 - nodes in this community are weakly interconnected._
+- **Should `Community 1` be split into smaller, more focused modules?**
+  _Cohesion score 0.05 - nodes in this community are weakly interconnected._

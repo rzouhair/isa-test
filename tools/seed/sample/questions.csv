@@ -1,0 +1,11 @@
+external_id,license_code,state_code,category_code,text,explanation,image_name,difficulty,lang
+Q001,car,CA,general_knowledge,"What does a flashing yellow traffic signal mean?","A flashing yellow light means slow down and proceed with caution.",,1,en
+Q002,car,CA,general_knowledge,"At a four-way stop, who has the right of way?","The vehicle that arrives first has the right of way. If two arrive at the same time, the one on the right goes first.",,1,en
+Q003,car,CA,road_signs,"What shape is a stop sign?","Stop signs are octagonal (8 sides) and red with white letters.",,1,en
+Q004,car,CA,road_signs,"A red circle with a diagonal line through it means:","A red circle with a slash means the action shown is prohibited.",,1,en
+Q005,car,CA,traffic_rules,"What is the legal blood alcohol concentration (BAC) limit for drivers 21 and over in California?","In California, the legal BAC limit is 0.08% for drivers 21 and over.",,2,en
+Q006,cdl,CA,general_knowledge,"When driving a CDL vehicle, you should keep at least how many seconds of following distance per 10 feet of vehicle length at speeds under 40 mph?","CDL drivers should maintain one second per 10 feet of vehicle length when under 40 mph, plus 1 extra second over 40 mph.",,2,en
+Q007,cdl,CA,air_brakes,"What is the purpose of a slack adjuster?","A slack adjuster compensates for brake shoe wear, keeping the brakes properly adjusted.",,2,en
+Q008,cdl,CA,hazmat,"In order to transport hazardous materials, a driver must have:","All drivers transporting hazardous materials must have a HazMat endorsement on their CDL.",,2,en
+Q009,cdl,CA,school_bus,"Before loading students, a school bus driver should:","The bus driver must activate flashing lights and confirm all students are clear of the danger zone before loading.",,1,en
+Q010,cdl,CA,pre_trip,"During a pre-trip inspection, tire tread depth on steering tires must be at least:","Federal regulations require at least 4/32 inch tread depth on steering tires.",,2,en

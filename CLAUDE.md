@@ -9,7 +9,7 @@ Poke is an iOS app built with **SwiftUI** and **Swift 6**, following **MVVM + Cl
 ## Architecture
 
 ```
-poke/
+examprep/
 │
 ├── Application/
 │   App lifecycle and bootstrap. AppMain.swift is the @main entry point

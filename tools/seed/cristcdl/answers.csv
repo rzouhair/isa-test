@@ -1,0 +1,3348 @@
+question_external_id,text,is_correct,sort_order
+CDL-AB-0001,After every four hours of service.,0,0
+CDL-AB-0001,After every working day.,1,1
+CDL-AB-0001,Once a week.,0,2
+CDL-AB-0002,To release the brakes.,0,0
+CDL-AB-0002,To test the slack adjusters.,0,1
+CDL-AB-0002,To apply the brakes.,1,2
+CDL-AB-0003,Perception distance.,0,0
+CDL-AB-0003,Reaction distance.,0,1
+CDL-AB-0003,Brake lag distance.,1,2
+CDL-AB-0004,Emergency brake system.,0,0
+CDL-AB-0004,Service brake system.,1,1
+CDL-AB-0004,Parking brake system.,0,2
+CDL-AB-0005,Pump the brake pedal rapidly and lightly.,0,0
+CDL-AB-0005,"Brake as hard as you can, get off the brakes when the wheels lock, get back on the brakes when the wheels start rolling again.",1,1
+CDL-AB-0005,"Brake hard until the wheels lock, and then get off the brakes for as much time as the wheels were locked.",0,2
+CDL-AB-0006,50,0,0
+CDL-AB-0006,23,0,1
+CDL-AB-0006,32,1,2
+CDL-AB-0007,Rid the wet tank of alcohol that condenses and sits at the bottom.,0,0
+CDL-AB-0007,Eliminate the need for daily tank draining.,0,1
+CDL-AB-0007,Reduce the risk of ice in air brake valves in cold weather.,1,2
+CDL-AB-0008,Fluid pressure,0,0
+CDL-AB-0008,Spring pressure,1,1
+CDL-AB-0008,Air pressure,0,2
+CDL-AB-0009,Increases when the service brakes are hot.,0,0
+CDL-AB-0009,Depends on the adjustment of the service brakes.,1,1
+CDL-AB-0009,Is not affected by the condition of the service brakes.,0,2
+CDL-AB-0010,Set the parking brakes.,0,0
+CDL-AB-0010,Remove the keys.,0,1
+CDL-AB-0010,Chock the wheels.,0,2
+CDL-AB-0010,Do all of the above.,1,3
+CDL-AB-0011,None,0,0
+CDL-AB-0011,All weather conditions,1,1
+CDL-AB-0011,Wet or icy conditions only,0,2
+CDL-AB-0011,Good weather only,0,3
+CDL-AB-0012,your transmission fluid may drain out.,0,0
+CDL-AB-0012,your brakes may fail because of water freezing.,1,1
+CDL-AB-0012,you will drive too quickly.,0,2
+CDL-AB-0012,your left side brake will cease to operate.,0,3
+CDL-AB-0013,increases your normal braking capability.,0,0
+CDL-AB-0013,activates when your wheels are about to lock up.,1,1
+CDL-AB-0013,decreases your normal braking capability.,0,2
+CDL-AB-0013,shortens your stopping distance.,0,3
+CDL-AB-0014,Excessive use of the service brakes,0,0
+CDL-AB-0014,Not relying enough on engine braking,0,1
+CDL-AB-0014,Brakes being out of adjustment,0,2
+CDL-AB-0014,All of the above,1,3
+CDL-AB-0015,Continue to step on and off the brake pedal until the manufacturer's low psi specification is met for spring brakes to deploy.,0,0
+CDL-AB-0015,"On single vehicles, continue to step on and off the brake pedal until the parking brake valve pops out.",0,1
+CDL-AB-0015,"On tractor-trailer vehicles, continue to step on and off the brake pedal until the parking brake valve pops out.",0,2
+CDL-AB-0015,All of the above are correct.,1,3
+CDL-AB-0016,60,0,0
+CDL-AB-0016,20,0,1
+CDL-AB-0016,45,1,2
+CDL-AB-0017,125,1,0
+CDL-AB-0017,150,0,1
+CDL-AB-0017,100,0,2
+CDL-AB-0018,the modulating control valve to wear out.,0,0
+CDL-AB-0018,the brakes to fade.,1,1
+CDL-AB-0018,the brake linings to split.,0,2
+CDL-AB-0019,expansion of the brake drums.,1,0
+CDL-AB-0019,improper adjustment of the S-cams.,0,1
+CDL-AB-0019,increased contact between the brake drums and the brake linings.,0,2
+CDL-AB-0020,150 psi.,0,0
+CDL-AB-0020,75 psi.,0,1
+CDL-AB-0020,125 psi.,1,2
+CDL-AB-0021,bolts and braces.,0,0
+CDL-AB-0021,springs.,0,1
+CDL-AB-0021,air pressure.,1,2
+CDL-AB-0022,the air pressure may drop too low during driving.,1,0
+CDL-AB-0022,have the problem fixed after your trip is over.,0,1
+CDL-AB-0022,the alcohol evaporator may be low.,0,2
+CDL-AB-0023,"turn off the engine, release the parking brake, and let the system settle.",1,0
+CDL-AB-0023,charge the air system and leave the engine running.,0,1
+CDL-AB-0023,leave the engine running and release the parking brake.,0,2
+CDL-AB-0024,hydraulic fluid,0,0
+CDL-AB-0024,compressed air,1,1
+CDL-AB-0024,natural gas,0,2
+CDL-AB-0025,compressed air enters the brake chambers.,1,0
+CDL-AB-0025,compressed air is released from the air tanks.,0,1
+CDL-AB-0025,compressed air is released from the brake chambers.,0,2
+CDL-AB-0026,The speed of the air compressor.,0,0
+CDL-AB-0026,Air pressure applied to the brakes.,0,1
+CDL-AB-0026,When air is pumped into the air tanks.,1,2
+CDL-AB-0027,Stop and safely park as soon as possible.,1,0
+CDL-AB-0027,Up shift.,0,1
+CDL-AB-0027,Adjust the brake pedal for more travel.,0,2
+CDL-AB-0028,An air use gauge.,0,0
+CDL-AB-0028,A supply pressure gauge.,1,1
+CDL-AB-0028,At least two brake heaters.,0,2
+CDL-AB-0029,Emergency brakes.,1,0
+CDL-AB-0029,Foot brakes.,0,1
+CDL-AB-0029,S-cam brakes.,0,2
+CDL-AB-0030,Can steer hard while braking hard.,0,0
+CDL-AB-0030,Use the full power of the brakes and lock them.,0,1
+CDL-AB-0030,Stay in a straight line and can steer.,1,2
+CDL-AB-0031,20 psi,0,0
+CDL-AB-0031,40 psi,0,1
+CDL-AB-0031,60 psi,1,2
+CDL-AB-0032,Disc brakes,0,0
+CDL-AB-0032,Wedge drum,0,1
+CDL-AB-0032,S-cam brake,1,2
+CDL-AB-0033,"Release the brake when you are 5 mph below your ""safe"" speed.",1,0
+CDL-AB-0033,Use stab braking.,0,1
+CDL-AB-0033,Begin braking when you are 10 mph above your safe speed.,0,2
+CDL-AB-0034,A spring-loaded valve that will let you put on the brakes on slowly if the service brakes fail.,1,0
+CDL-AB-0034,There is no such thing.,0,1
+CDL-AB-0034,Should not be used because it is very unsafe.,0,2
+CDL-AB-0035,You will still have normal brake function and will just need to get the ABS repaired soon.,1,0
+CDL-AB-0035,It may cause problems with other mechanical systems and possibly pose a huge fire risk.,0,1
+CDL-AB-0035,It will slow your truck to a halt and force you to pull over.,0,2
+CDL-AB-0035,You will have no brake function and your truck will be out of control.,0,3
+CDL-AB-0036,"Brake the same way no matter what you're driving: a vehicle with ABS, a vehicle with a trailer, or something else.",0,0
+CDL-AB-0036,"When you slow down, you should monitor your tractor and trailer and ease off the brakes to keep control.",0,1
+CDL-AB-0036,You should use only the braking necessary to stay safely in control.,0,2
+CDL-AB-0036,You should drive faster so that you will be able to keep the trailer and tractor straight.,1,3
+CDL-AB-0037,"Usually, one system operates the front axle and the other one operates the rear axle.",0,0
+CDL-AB-0037,It uses a single set of brake controls.,0,1
+CDL-AB-0037,"One system is called the ""primary"" system and the other one is called the ""secondary"" system.",0,2
+CDL-AB-0037,All of the above are true.,1,3
+CDL-AB-0038,Check if the vehicle was manufactured after 2000.,0,0
+CDL-AB-0038,Check if the vehicle was manufactured after 2010.,0,1
+CDL-AB-0038,ABS is still optional.,0,2
+CDL-AB-0038,Check if the vehicle was manufactured after 1998.,1,3
+CDL-AB-0039,brakes that come on automatically on a truck or tractor when the psi drops too low.,0,0
+CDL-AB-0039,made up of powerful springs that are held back by air pressure while you are driving.,0,1
+CDL-AB-0039,"not going to take full effect until your psi drops to a certain range, typically 20 to 30 psi.",0,2
+CDL-AB-0039,all of the above.,1,3
+CDL-AB-0040,only the parking brakes,0,0
+CDL-AB-0040,parts of the service brakes and parking brakes,1,1
+CDL-AB-0040,only the service brakes,0,2
+CDL-AB-0041,a loss of brake air pressure.,1,0
+CDL-AB-0041,a buildup of brake air pressure.,0,1
+CDL-AB-0041,no change in brake air pressure.,0,2
+CDL-AB-0042,Only when driving downhill,0,0
+CDL-AB-0042,Never,1,1
+CDL-AB-0042,Only on a slippery road,0,2
+CDL-AB-0043,the brake feels spongy when you apply pressure.,0,0
+CDL-AB-0043,you release the brake pedal and your speed increases.,0,1
+CDL-AB-0043,you have to press the brake pedal harder than usual to control your speed.,1,2
+CDL-AB-0044,a yellow lamp on the left side.,1,0
+CDL-AB-0044,a white lamp on the left side.,0,1
+CDL-AB-0044,a white lamp on the right side.,0,2
+CDL-AB-0045,Disconnecting the steering axle brakes will help keep your vehicle in a straight-line during emergency braking.,0,0
+CDL-AB-0045,Don't lock the wheels for longer than an instant.,1,1
+CDL-AB-0045,Never do it without downshifting first.,0,2
+CDL-AB-0046,lock the wheels for short periods of time.,0,0
+CDL-AB-0046,can turn sharply.,0,1
+CDL-AB-0046,brake in a straight line.,1,2
+CDL-AB-0047,The brakes could heat up.,0,0
+CDL-AB-0047,The brakes could lock up.,0,1
+CDL-AB-0047,The brakes could fail.,1,2
+CDL-AB-0048,"It is shaped like the letter ""S.""",1,0
+CDL-AB-0048,It makes the brake shoes move in an S-shaped path.,0,1
+CDL-AB-0048,It is constantly spinning whenever the wheel is spinning.,0,2
+CDL-AB-0049,"stop the vehicle, put it in low gear, depress the brake pedal, and then gently pull against the brakes.",0,0
+CDL-AB-0049,brake firmly while slowly moving forward.,1,1
+CDL-AB-0049,brake firmly while slowly moving backward.,0,2
+CDL-AB-0050,Never,1,0
+CDL-AB-0050,If you will only be away from the truck for a few minutes,0,1
+CDL-AB-0050,If you will be conducting your pre-trip inspection,0,2
+CDL-AB-0051,Release the spring brakes to move a short distance.,1,0
+CDL-AB-0051,Apply more brake pressure if the main tank is getting low.,0,1
+CDL-AB-0051,Stay parked without using up service air pressure.,0,2
+CDL-AB-0052,Worn 1/32 of an inch.,0,0
+CDL-AB-0052,Against the drum.,1,1
+CDL-AB-0052,Disconnected from the slack adjusters.,0,2
+CDL-AB-0052,Worn dangerously thin.,0,3
+CDL-AB-0053,You must push harder on the brake pedal to control your speed on a downgrade.,1,0
+CDL-AB-0053,The brake feels spongy when pressure is applied.,0,1
+CDL-AB-0053,Pressure on the brake pedal is released and speed increases.,0,2
+CDL-AB-0054,Has been used on the trip.,0,0
+CDL-AB-0054,Is in the air tanks.,0,1
+CDL-AB-0054,Is being applied to the brakes.,1,2
+CDL-AB-0055,The tractor protection valve,0,0
+CDL-AB-0055,The emergency relay valve,0,1
+CDL-AB-0055,The one-way check valve,1,2
+CDL-AB-0056,The low boiling point of water reduces braking power.,0,0
+CDL-AB-0056,Water can freeze in cold weather and cause brake failure.,1,1
+CDL-AB-0056,Water over cools the compressor.,0,2
+CDL-AB-0057,Air pressure,1,0
+CDL-AB-0057,Spring pressure,0,1
+CDL-AB-0057,Centrifugal force,0,2
+CDL-AB-0058,1/8,0,0
+CDL-AB-0058,1/4,0,1
+CDL-AB-0058,1/2,1,2
+CDL-AB-0059,5 psi for single vehicles and 6 psi for combination vehicles.,0,0
+CDL-AB-0059,5 psi for single vehicles and 10 psi for combination vehicles.,0,1
+CDL-AB-0059,3 psi for single vehicles and 4 psi for combination vehicles.,1,2
+CDL-AB-0059,1 psi for single vehicles and 3 psi for combination vehicles.,0,3
+CDL-AB-0060,They work as a supplement to the braking effect of your engine.,1,0
+CDL-AB-0060,Not applicable; no braking effect is involved in a downgrade.,0,1
+CDL-AB-0060,They work as the main braking mechanism.,0,2
+CDL-AB-0060,They work as the main braking mechanism with the engine braking effect as an emergency backup.,0,3
+CDL-AB-0061,"Accelerate, then brake hard.",0,0
+CDL-AB-0061,Use gloves and pull hard on each slack adjuster you can reach.,1,1
+CDL-AB-0061,Press the brake pedal while listening for any strange noises.,0,2
+CDL-AB-0061,All of the above will work.,0,3
+CDL-AB-0062,applies the brakes during normal driving.,0,0
+CDL-AB-0062,lets the air out of the brake chambers.,1,1
+CDL-AB-0062,applies the brakes in the event of an emergency.,0,2
+CDL-AB-0063,it may lead to sudden emergency braking in a single-circuit air system.,1,0
+CDL-AB-0063,"you may lose air pressure, but at least you'll know about it anyway.",0,1
+CDL-AB-0063,neither of the above will happen.,0,2
+CDL-AB-0064,The manual slack adjusters will not be set properly.,0,0
+CDL-AB-0064,The emergency brakes will come on immediately.,0,1
+CDL-AB-0064,Either the front or rear brakes will not be fully operational.,1,2
+CDL-AB-0065,300 to 350 feet,0,0
+CDL-AB-0065,More than 400 feet,1,1
+CDL-AB-0065,100 to 250 feet,0,2
+CDL-AB-0066,S-cam,0,0
+CDL-AB-0066,emergency,1,1
+CDL-AB-0066,foot,0,2
+CDL-AB-0067,Stop on level ground and apply the parking brakes.,0,0
+CDL-AB-0067,"Park on level ground, chock the wheels, and release the parking brakes.",1,1
+CDL-AB-0067,Park on level ground and drain off air pressure before adjusting.,0,2
+CDL-AB-0068,Reduce your speed and drive to the nearest garage for repairs.,0,0
+CDL-AB-0068,Continue at normal speed and find a garage before the brakes lock.,0,1
+CDL-AB-0068,Stop. Safely park and continue only after the system is fixed.,1,2
+CDL-AB-0069,Check and fill the alcohol level.,1,0
+CDL-AB-0069,Change the alcohol from a new bottle.,0,1
+CDL-AB-0069,Clean the air filter with alcohol,0,2
+CDL-AB-0070,slack adjuster; brake camshaft,1,0
+CDL-AB-0070,slack adjuster; tie rod,0,1
+CDL-AB-0070,brake camshaft; tie rod,0,2
+CDL-AB-0071,When you are testing whether they will hold the vehicle,0,0
+CDL-AB-0071,If the brakes are very hot,1,1
+CDL-AB-0071,If you're parking for less than one hour,0,2
+CDL-AB-0072,"Overheating, low air pressure, and not relying on the engine braking effect",1,0
+CDL-AB-0072,Not taking your foot off the accelerator,0,1
+CDL-AB-0072,Not pressing the brake pedal hard enough,0,2
+CDL-AB-0073,"the ""controlled braking"" method.",0,0
+CDL-AB-0073,"the ""stab braking"" method.",0,1
+CDL-AB-0073,either of the above.,1,2
+CDL-AB-0074,60 to 80 psi.,0,0
+CDL-AB-0074,20 to 45 psi.,1,1
+CDL-AB-0074,10 to 15 psi.,0,2
+CDL-AB-0075,amount of pressure in the brake system.,0,0
+CDL-AB-0075,front brakes.,0,1
+CDL-AB-0075,spring brakes.,1,2
+CDL-AB-0076,1 psi in 30 seconds,0,0
+CDL-AB-0076,1 psi in one minute,0,1
+CDL-AB-0076,3 psi in one minute,1,2
+CDL-AB-0077,Air pressure.,1,0
+CDL-AB-0077,Electrical.,0,1
+CDL-AB-0077,Mechanical force.,0,2
+CDL-AB-0078,1,0,0
+CDL-AB-0078,2,1,1
+CDL-AB-0078,3,0,2
+CDL-AB-0079,At least two air tanks.,0,0
+CDL-AB-0079,An air pressure gauge to show the pressure available for braking.,1,1
+CDL-AB-0079,An air pressure gauge to show air used by the brake chambers for braking.,0,2
+CDL-AB-0080,1/2 inch,0,0
+CDL-AB-0080,1 inch,1,1
+CDL-AB-0080,1-1/2 inches,0,2
+CDL-AB-0081,"With the engine off, step on and off the brake pedal to lower the air pressure below 60 psi.",1,0
+CDL-AB-0081,Pump the brakes while your vehicle is fully on.,0,1
+CDL-AB-0081,Pump the brakes until the air pressure drops below 30 psi.,0,2
+CDL-AB-0081,Manually let the air out of your brakes and see if the signal comes on.,0,3
+CDL-AB-0082,Vehicles built after 2005 must have low air pressure warning signals.,0,0
+CDL-AB-0082,All vehicles with air brakes currently in operation must have low air pressure warning signals.,1,1
+CDL-AB-0082,Vehicles built after 2010 must have low air pressure warning signals.,0,2
+CDL-AB-0082,None; low air pressure warning signals are optional.,0,3
+CDL-AB-0083,5 mph slower.,1,0
+CDL-AB-0083,15 mph slower.,0,1
+CDL-AB-0083,10 mph slower.,0,2
+CDL-AB-0084,stop on level ground and apply the parking brakes.,0,0
+CDL-AB-0084,park on level ground and drain off the air pressure.,0,1
+CDL-AB-0084,"park on level ground, chock the wheels, and release the parking brakes.",1,2
+CDL-AB-0085,so you can coast downhill.,0,0
+CDL-AB-0085,so you only have to apply the brake just hard enough to feel a definite slowdown.,1,1
+CDL-AB-0085,so you can go through the gears on the way down.,0,2
+CDL-AB-0086,be sure the air brake system is fully pressurized.,0,0
+CDL-AB-0086,let the air out of the brake chambers.,1,1
+CDL-AB-0086,turn off the engine.,0,2
+CDL-AB-0087,between the power screw and push rod on disc brakes.,0,0
+CDL-AB-0087,a part of the air brake system that is used to adjust the brakes.,0,1
+CDL-AB-0087,between the push rod and S-cam on drum brakes.,0,2
+CDL-AB-0087,all of the above.,1,3
+CDL-AB-0088,Service brake system,0,0
+CDL-AB-0088,Parking brake system,0,1
+CDL-AB-0088,Emergency brake system,0,2
+CDL-AB-0088,Radio signal system,1,3
+CDL-AB-0089,Use different brake drums.,0,0
+CDL-AB-0089,Need to have airflow through the lines to work.,1,1
+CDL-AB-0089,Require heavier return springs.,0,2
+CDL-AB-0090,Whenever the vehicle is parked.,1,0
+CDL-AB-0090,To hold your speed when going downhill.,0,1
+CDL-AB-0090,Only during pre and post trip inspections.,0,2
+CDL-AB-0091,Controls the speed of the air compressor.,0,0
+CDL-AB-0091,Is to be used as a footrest during normal driving.,0,1
+CDL-AB-0091,Controls the air pressure applied to the brakes.,1,2
+CDL-AB-0092,"Stop, safely park, and continue only when the system is fixed.",1,0
+CDL-AB-0092,Reduce your speed and test the remaining system while underway.,0,1
+CDL-AB-0092,Reduce your speed and drive to the nearest garage for repairs.,0,2
+CDL-AB-0093,will close automatically if the air supply drops to a certain level.,0,0
+CDL-AB-0093,will close if you apply the parking brakes.,0,1
+CDL-AB-0093,provides the air supply for the brake system.,0,2
+CDL-AB-0093,does all of the above.,1,3
+CDL-AB-0094,Stop.,1,0
+CDL-AB-0094,Upshift.,0,1
+CDL-AB-0094,Downshift.,0,2
+CDL-AB-0095,Only if you are away from your vehicle for an extended period of time,0,0
+CDL-AB-0095,"Every time you leave your vehicle, with a few exceptions",1,1
+CDL-AB-0095,Only in urban areas where there are many other vehicles,0,2
+CDL-AB-0095,Every time you leave your vehicle for any length of time,0,3
+CDL-AB-0096,Has been used in this trip.,0,0
+CDL-AB-0096,Is in the air tanks.,1,1
+CDL-AB-0096,Is being sent to the brake chambers.,0,2
+CDL-AB-0097,Slack adjuster,0,0
+CDL-AB-0097,Brake drum,0,1
+CDL-AB-0097,Return spring,0,2
+CDL-AB-0097,Safety valve,1,3
+CDL-AB-0098,120,0,0
+CDL-AB-0098,150,1,1
+CDL-AB-0098,160,0,2
+CDL-AB-0099,Use the hand valve and service brakes.,0,0
+CDL-AB-0099,Use the stab braking method,1,1
+CDL-AB-0099,Use the brakes hard without locking the wheels.,0,2
+CDL-AB-0100,"If the air brakes leak down, springs apply the brakes to stop the vehicle.",1,0
+CDL-AB-0100,They are the CamLaster brakes.,0,1
+CDL-AB-0100,They are the springs on the brake pedal.,0,2
+CDL-CV-0001,To park at loading docks,0,0
+CDL-CV-0001,To park on a grade,0,1
+CDL-CV-0001,Never,1,2
+CDL-CV-0002,Service Brake: off; Parking Brake: off; Trailer air supply: in / open; Trolley: applied,1,0
+CDL-CV-0002,Service Brake: off; Parking Brake: off; Trailer air supply: in / open; Trolley: released,0,1
+CDL-CV-0002,Service Brake: off; Parking Brake: off; Trailer air supply: out; Trolley: applied,0,2
+CDL-CV-0002,No answers are correct,0,3
+CDL-CV-0003,The kingpin is about 1 1/4 inches above the fifth wheel,0,0
+CDL-CV-0003,The end of the kingpin is even with the top of the fifth wheel,0,1
+CDL-CV-0003,The trailer will be raised slightly when the tractor is backed under it,1,2
+CDL-CV-0004,Put the tractor in gear and pull ahead with a sharp jerk,0,0
+CDL-CV-0004,"Pull gently forward in low gear against the locked trailer brakes, then inspect the coupling",1,1
+CDL-CV-0004,Rock the trailer back and forth with the trailer brakes locked,0,2
+CDL-CV-0005,Service Brake: off; Parking Brake: off; Trailer air supply: in / open; Trolley: released,0,0
+CDL-CV-0005,Service Brake: off; Parking Brake: off; Trailer air supply: out; Trolley: released,1,1
+CDL-CV-0005,Service Brake: off; Parking Brake: off; Trailer air supply: out; Trolley: applied,0,2
+CDL-CV-0005,No answers are correct,0,3
+CDL-CV-0006,Emergency trailer brakes to come on,1,0
+CDL-CV-0006,Air compressor to unload instead of pumping air,0,1
+CDL-CV-0006,Trailer supply valve will open,0,2
+CDL-CV-0006,Nothing will happen until air pressure reaches 10 PSI,0,3
+CDL-CV-0007,Pushing in the trailer air supply valve,1,0
+CDL-CV-0007,Pulling out the trailer air supply valve,0,1
+CDL-CV-0007,Connecting the service line glad hand,0,2
+CDL-CV-0007,Pulling out the system parking brake,0,3
+CDL-CV-0008,Make sure that the brakes are properly adjusted,0,0
+CDL-CV-0008,Go slowly around turns,1,1
+CDL-CV-0008,Keep the fifth wheel's free play as tight as possible,0,2
+CDL-CV-0009,You can set the fifth wheel for weight balance,0,0
+CDL-CV-0009,"The parking lock is off, and you may drive away",0,1
+CDL-CV-0009,The coupling is not right and should be fixed before driving the coupled unit,1,2
+CDL-CV-0010,Trailer landing gear to be fully extended,0,0
+CDL-CV-0010,End of the kingpin is even with the top of the fifth wheel,0,1
+CDL-CV-0010,Trailer will be lifted slightly when the tractor backs under it,1,2
+CDL-CV-0011,make sure the trailer has enough of an air supply for its brakes to hold.,0,0
+CDL-CV-0011,call in for any special requests.,0,1
+CDL-CV-0011,make sure the ground is solid and can support the weight of the trailer.,1,2
+CDL-CV-0012,hang it with the plug up.,0,0
+CDL-CV-0012,hang it with the plug down.,1,1
+CDL-CV-0012,coil it to keep it out of the way.,0,2
+CDL-CV-0013,glad hands,1,0
+CDL-CV-0013,lug nuts,0,1
+CDL-CV-0013,pins,0,2
+CDL-CV-0014,radio in for assistance.,0,0
+CDL-CV-0014,get away from your vehicle and call 911 or the posted emergency number.,1,1
+CDL-CV-0014,honk your horn loudly and call 911 or the posted emergency number.,0,2
+CDL-CV-0015,"the tractor protection valve control (trailer air supply control) will pop out or go from ""normal"" to ""emergency.""",1,0
+CDL-CV-0015,the parking brake valve will pop out.,0,1
+CDL-CV-0015,the low air pressure warning signal will come on.,0,2
+CDL-CV-0016,the brakes on the trailer wheels caused the skid in the first place.,1,0
+CDL-CV-0016,the brakes on the trailer wheels will not respond to the hand brake.,0,1
+CDL-CV-0016,the brake handle is too hard to reach.,0,2
+CDL-CV-0017,you should use the parking brake.,0,0
+CDL-CV-0017,of the danger of making the trailer skid.,1,1
+CDL-CV-0017,it won't work as well as the foot brake.,0,2
+CDL-CV-0018,empty.,1,0
+CDL-CV-0018,overloaded.,0,1
+CDL-CV-0018,loaded to full capacity.,0,2
+CDL-CV-0019,always approach the trailer at a slight angle.,0,0
+CDL-CV-0019,always use the lowest reverse gear.,1,1
+CDL-CV-0019,do it quickly to ensure that the kingpin is locked into the fifth wheel.,0,2
+CDL-CV-0020,hear the wheels skidding.,0,0
+CDL-CV-0020,"feel for ""pulling"" in the cab.",0,1
+CDL-CV-0020,see it in your mirrors.,1,2
+CDL-CV-0021,It is a device used to keep the trailer behind the tractor.,0,0
+CDL-CV-0021,It is a six-sided yellow knob used to control the tractor protection valve.,0,1
+CDL-CV-0021,"It is used to supply the trailer with air, shut the air off, and apply the trailer emergency brakes.",1,2
+CDL-CV-0022,It will keep dirt and water out of the lines.,1,0
+CDL-CV-0022,"If you don't, you will never build system pressure.",0,1
+CDL-CV-0022,The connected brake circuit becomes a backup air tank.,0,2
+CDL-CV-0023,Up,0,0
+CDL-CV-0023,Down,0,1
+CDL-CV-0023,Normal,1,2
+CDL-CV-0024,two times more likely to roll over in a crash than empty rigs.,0,0
+CDL-CV-0024,five times more likely to roll over in a crash than empty rigs.,0,1
+CDL-CV-0024,ten times more likely to roll over in a crash than empty rigs.,1,2
+CDL-CV-0025,release the brakes.,1,0
+CDL-CV-0025,use the trailer hand brakes.,0,1
+CDL-CV-0025,Counter steer.,0,2
+CDL-CV-0026,Turning on the parking brakes from the cab.,0,0
+CDL-CV-0026,Applying and releasing the trailer brakes and listening for brake sounds.,1,1
+CDL-CV-0026,Lifting the brake pedal.,0,2
+CDL-CV-0027,1,0,0
+CDL-CV-0027,2,0,1
+CDL-CV-0027,3,1,2
+CDL-CV-0028,The emergency tractor brakes will come on,0,0
+CDL-CV-0028,The trailer's air tank will exhaust through the open line,0,1
+CDL-CV-0028,Nothing is likely to happen until you try to apply the brakes,1,2
+CDL-CV-0029,"Supply air to the trailer system, then pull out the trailer air supply knob to lock the trailer brakes",1,0
+CDL-CV-0029,Make sure that the trailer brakes are off,0,1
+CDL-CV-0029,Apply the service brakes twice to alert others,0,2
+CDL-CV-0030,Raised half way with the crank handle removed,0,0
+CDL-CV-0030,Fully raised with the crank handle secured in its bracket,1,1
+CDL-CV-0030,Three turns off the top with the crank handle secured in its bracket,0,2
+CDL-CV-0031,"If the trailer has no spring brakes, you can drive away, but you will not have trailer brakes",1,0
+CDL-CV-0031,The hand valve will apply the tractor brakes instead of the trailer brakes,0,1
+CDL-CV-0031,The brake pedal will work the trailer spring brakes instead of the air brakes,0,2
+CDL-CV-0032,To ensure good electrical connections,0,0
+CDL-CV-0032,To prevent steering problems,1,1
+CDL-CV-0032,To reduce heat and noise,0,2
+CDL-CV-0033,spread evenly across the trailer(s) and as low as possible.,1,0
+CDL-CV-0033,stacked closest to the doors.,0,1
+CDL-CV-0033,stacked as close to the front of the rig as possible.,0,2
+CDL-CV-0034,With the tractor frame under the trailer,1,0
+CDL-CV-0034,With the fifth wheel directly beneath the kingpin,0,1
+CDL-CV-0034,Completely cleared from the trailer,0,2
+CDL-CV-0035,whether it is on the tractor or the trailers.,1,0
+CDL-CV-0035,only if it is on the tractor and all trailers.,0,1
+CDL-CV-0035,only if it is on the tractor.,0,2
+CDL-CV-0036,"if the air supply leaks away, there will be no brakes.",1,0
+CDL-CV-0036,you don't want the trailer rolling down a hill.,0,1
+CDL-CV-0036,some states require chocking of trailer wheels.,0,2
+CDL-CV-0037,closed,0,0
+CDL-CV-0037,open,1,1
+CDL-CV-0037,neutral,0,2
+CDL-CV-0038,When you lock up the drive tires on the tractor and the tractor spins out sideways as the trailer continues to push forward,1,0
+CDL-CV-0038,When you lock up the drive tires on the trailer and the trailer spins out sideways as the tractor continues to push forward,0,1
+CDL-CV-0038,Neither of the above,0,2
+CDL-CV-0039,Neutral,1,0
+CDL-CV-0039,High reverse,0,1
+CDL-CV-0039,Low reverse,0,2
+CDL-CV-0040,2,0,0
+CDL-CV-0040,3,0,1
+CDL-CV-0040,4,1,2
+CDL-CV-0041,The connected brake circuit becomes a backup air tank,0,0
+CDL-CV-0041,It will keep dirt and water out of the lines,1,1
+CDL-CV-0041,"If you did not, you could never build system pressure",0,2
+CDL-CV-0042,The tractor to lose all air pressure,0,0
+CDL-CV-0042,The tractor protection valve to close,1,1
+CDL-CV-0042,The trailer supply valve to stay open,0,2
+CDL-CV-0042,System parking brake will close,0,3
+CDL-CV-0043,Only with the foot brake,0,0
+CDL-CV-0043,To test the trailer brakes,1,1
+CDL-CV-0043,Only when the trailer is fully loaded,0,2
+CDL-CV-0044,there is less traction.,1,0
+CDL-CV-0044,you're unlikely to brake as hard.,0,1
+CDL-CV-0044,the center of gravity is lower.,0,2
+CDL-CV-0045,turn the crank a few more times until the trailer is lifted off the fifth wheel.,0,0
+CDL-CV-0045,turn the crank a few more times to lift some weight off the tractor.,1,1
+CDL-CV-0045,secure the crank handle safely.,0,2
+CDL-CV-0046,75 to 100 psi.,0,0
+CDL-CV-0046,50 to 75 psi.,0,1
+CDL-CV-0046,20 to 45 psi.,1,2
+CDL-CV-0047,check the electrical cables.,0,0
+CDL-CV-0047,cross the air lines.,0,1
+CDL-CV-0047,check the air line connections.,1,2
+CDL-CV-0048,easier it is to turn over.,1,0
+CDL-CV-0048,easier it is to turn around corners.,0,1
+CDL-CV-0048,more stable it is when turning.,0,2
+CDL-CV-0049,emergency,1,0
+CDL-CV-0049,normal,0,1
+CDL-CV-0049,neutral,0,2
+CDL-CV-0050,level with the ground.,0,0
+CDL-CV-0050,tilted down toward the rear of the tractor.,1,1
+CDL-CV-0050,tilted up toward the rear of the tractor.,0,2
+CDL-CV-0051,There is enough clearance between the tops of the tractor tires and the nose of the trailer,0,0
+CDL-CV-0051,There is enough clearance between the tractor frame and the landing gear,0,1
+CDL-CV-0051,Both answers are correct,1,2
+CDL-CV-0052,The electrical service cable,0,0
+CDL-CV-0052,The emergency and service air lines,1,1
+CDL-CV-0052,Nothing; back up and lock the fifth wheel,0,2
+CDL-CV-0053,Trailer brakes are locked,1,0
+CDL-CV-0053,Tractor protection valve is normal,0,1
+CDL-CV-0053,Air brakes are off,0,2
+CDL-CV-0054,The rear wheels of the last trailer,1,0
+CDL-CV-0054,The rear wheels of the first trailer,0,1
+CDL-CV-0054,The rear wheels of the tractor,0,2
+CDL-CV-0055,"The trailer is half full, and the cargo is loaded in the front of the trailer. When making a sudden movement of the steering wheel, the cargo will tend to forcefully slide to the back of the trailer, forcing the trailer to roll over.",0,0
+CDL-CV-0055,"When making a quick lane change or sudden movement of the steering wheel, the tractor tends to rock and sway. The velocity of the rearmost trailer forces the tractor to roll over before the trailer.",0,1
+CDL-CV-0055,"When making a quick lane change or sudden movement of the steering wheel, the rear trailer tends to swing out. The force of the rear trailer becomes amplified, causing it to roll over.",1,2
+CDL-CV-0056,keep pressing the brake pedal firmly.,0,0
+CDL-CV-0056,flash your high-beam headlights on and off several times.,0,1
+CDL-CV-0056,step on and off the brake pedal several times.,1,2
+CDL-CV-0057,A 5-axle tractor towing a 45-foot trailer,0,0
+CDL-CV-0057,A 5-axle tractor towing a 42-foot trailer,0,1
+CDL-CV-0057,A 5-axle tractor towing a 52-foot trailer,1,2
+CDL-CV-0058,following too closely.,0,0
+CDL-CV-0058,rollovers.,1,1
+CDL-CV-0058,speed.,0,2
+CDL-CV-0059,red flags,0,0
+CDL-CV-0059,red lights,1,1
+CDL-CV-0059,a red flag,0,2
+CDL-CV-0060,It should not be done,1,0
+CDL-CV-0060,It results in less skidding than using the brake pedal alone,0,1
+CDL-CV-0060,It is the best way to brake and keep the truck in a straight line,0,2
+CDL-CV-0061,At normal pressure,1,0
+CDL-CV-0061,Half the maximum pressure,0,1
+CDL-CV-0061,Between 60 and 80 PSI,0,2
+CDL-CV-0062,Turning on the parking brakes from the cab,0,0
+CDL-CV-0062,Applying and releasing the trailer brakes and listening for brake sounds,1,1
+CDL-CV-0062,Lifting the brake pedal,0,2
+CDL-CV-0063,"If you must cross into the oncoming lane to make a turn and you see vehicles coming toward you, stop and back up for them.",0,0
+CDL-CV-0063,You should turn wide as you complete the turn.,1,1
+CDL-CV-0063,You should turn wide before you start the turn.,0,2
+CDL-CV-0064,Look under the vehicle for the ECU and wheel speed sensor wires coming from the back of the brakes.,1,0
+CDL-CV-0064,Look under the vehicle for the ABS test light.,0,1
+CDL-CV-0064,Brake the vehicle on a slippery road and see if the wheels lock.,0,2
+CDL-CV-0065,Air lines that control the emergency brakes of the tractor,0,0
+CDL-CV-0065,Air lines connecting the parking brake to the trailer brakes,0,1
+CDL-CV-0065,Air lines that control the emergency brakes on combination vehicles,1,2
+CDL-CV-0066,begin to lower the trailer landing gear.,0,0
+CDL-CV-0066,immediately apply your tractor parking brakes.,0,1
+CDL-CV-0066,back up gently to ease pressure on the fifth wheel locking jaws.,1,2
+CDL-CV-0067,fully loaded,1,0
+CDL-CV-0067,empty,0,1
+CDL-CV-0067,lightly loaded,0,2
+CDL-CV-0068,emergency,1,0
+CDL-CV-0068,service,0,1
+CDL-CV-0068,parking,0,2
+CDL-CV-0069,Trailer emergency / spring brakes to come on,1,0
+CDL-CV-0069,Trailer tank pressure to be lost,0,1
+CDL-CV-0069,Tractor spring brakes to lock on,0,2
+CDL-CV-0070,Are easier to brake because they are heavier,0,0
+CDL-CV-0070,Usually need a glad hand converter,0,1
+CDL-CV-0070,Often do not have spring brakes,1,2
+CDL-CV-0070,None of the answers are correct,0,3
+CDL-CV-0071,At lease 1/2 inch,0,0
+CDL-CV-0071,None,1,1
+CDL-CV-0071,Just enough to see light through it,0,2
+CDL-CV-0072,On the front left or rear left corner,1,0
+CDL-CV-0072,On the left side and on the front center,0,1
+CDL-CV-0072,On the right rear corner,0,2
+CDL-CV-0073,Curved line and signal line,0,0
+CDL-CV-0073,Straight line and control line,0,1
+CDL-CV-0073,Control line and signal line,1,2
+CDL-CV-0074,at normal pressure.,1,0
+CDL-CV-0074,bled down to half the maximum pressure.,0,1
+CDL-CV-0074,between 60 and 80 psi.,0,2
+CDL-CV-0075,pulled tight with very little slack.,0,0
+CDL-CV-0075,secured but with enough slack for turns.,1,1
+CDL-CV-0075,resting on the frame of the tractor.,0,2
+CDL-CV-0076,Always delay braking a heavy vehicle until you have no other choice,0,0
+CDL-CV-0076,Light vehicles need more braking power to stop than heavy ones,0,1
+CDL-CV-0076,Bobtail tractors can take longer to stop than a combination vehicle loaded to the maximum gross weight,1,2
+CDL-CV-0077,The shank,1,0
+CDL-CV-0077,The head,0,1
+CDL-CV-0077,The base,0,2
+CDL-CV-0078,10,1,0
+CDL-CV-0078,30,0,1
+CDL-CV-0078,20,0,2
+CDL-CV-0079,connecting the service line glad hand.,0,0
+CDL-CV-0079,pushing in the trailer air supply control.,1,1
+CDL-CV-0079,pulling out the trailer air supply control.,0,2
+CDL-CV-0080,About 12 degrees off the line of the trailer.,0,0
+CDL-CV-0080,So that the kingpin engages the driver's side locking jaw first.,0,1
+CDL-CV-0080,Directly in front of the trailer.,1,2
+CDL-CV-0081,"Red, blue",1,0
+CDL-CV-0081,"Black, yellow",0,1
+CDL-CV-0081,"Blue, red",0,2
+CDL-CV-0082,they are more likely to get stuck on raised railroad crossings.,1,0
+CDL-CV-0082,they are more likely to jackknife on the uneven ground.,0,1
+CDL-CV-0082,they may take longer to stop.,0,2
+CDL-CV-0083,low gear.,1,0
+CDL-CV-0083,intermediate gear.,0,1
+CDL-CV-0083,high gear.,0,2
+CDL-CV-0084,45 degrees,0,0
+CDL-CV-0084,90 degrees,1,1
+CDL-CV-0084,180 degrees,0,2
+CDL-CV-0085,you could lose your brakes while driving.,1,0
+CDL-CV-0085,tire pressure will drop.,0,1
+CDL-CV-0085,your fuel usage will increase.,0,2
+CDL-CV-0086,A tractor pulling two trailers,0,0
+CDL-CV-0086,A single tractor trailer,0,1
+CDL-CV-0086,A tractor pulling three trailers,1,2
+CDL-CV-0087,the same number of,0,0
+CDL-CV-0087,fewer,0,1
+CDL-CV-0087,more,1,2
+CDL-CV-0088,the trailer is more likely to swing out.,0,0
+CDL-CV-0088,the trailer is still less likely to swing out.,1,1
+CDL-CV-0088,"it doesn't make it any more, or less likely that the trailer will swing out.",0,2
+CDL-CV-0089,Over the locking lever,1,0
+CDL-CV-0089,Under the locking lever,0,1
+CDL-CV-0089,Through the locking lever,0,2
+CDL-CV-0090,a Class A CDL.,0,0
+CDL-CV-0090,a Class A CDL with a doubles/triples endorsement.,1,1
+CDL-CV-0090,a doubles/triples endorsement on your CDL.,0,2
+CDL-DT-0001,The trailer will be raised slightly when the converter dolly is backed under it.,1,0
+CDL-DT-0001,The center of the kingpin lines up with the locking jaws,0,1
+CDL-DT-0001,The kingpin rests on the fifth wheel,0,2
+CDL-DT-0002,Restore traction to the tires,1,0
+CDL-DT-0002,Use stab or controlled braking,0,1
+CDL-DT-0002,Counter steer and accelerate,0,2
+CDL-DT-0003,Any time you must,0,0
+CDL-DT-0003,Never,1,1
+CDL-DT-0003,When the road is dry,0,2
+CDL-DT-0004,The shortest trailer,0,0
+CDL-DT-0004,The heaviest trailer,1,1
+CDL-DT-0004,The lightest trailer,0,2
+CDL-DT-0005,Allow more following distance than for smaller vehicles,0,0
+CDL-DT-0005,Use special care in bad weather and mountain conditions,0,1
+CDL-DT-0005,Do both things,1,2
+CDL-DT-0006,Braking during the turn,0,0
+CDL-DT-0006,"Slowing to a safe speed before entering the curve, then accelerate slightly during the curve",1,1
+CDL-DT-0006,Downshift after you enter the curve,0,2
+CDL-DT-0007,9,0,0
+CDL-DT-0007,10,1,1
+CDL-DT-0007,11,0,2
+CDL-DT-0008,Push the brake pedal as hard as you can and hold it there,0,0
+CDL-DT-0008,Use controlled or stab braking,1,1
+CDL-DT-0008,Use only the trailer brakes,0,2
+CDL-DT-0009,"Open, free",0,0
+CDL-DT-0009,"Closed, latched",1,1
+CDL-DT-0009,"Open, latched",0,2
+CDL-DT-0010,an electronic device that connects the electric power from a semitrailer to the rear of a tractor-trailer.,0,0
+CDL-DT-0010,a coupling device that connects a semitrailer to the rear of a tractor-trailer.,1,1
+CDL-DT-0010,a coupling device that converts the electricity between a semitrailer and a tractor-trailer for international trucking.,0,2
+CDL-DT-0011,opening the air tank petcock.,0,0
+CDL-DT-0011,using the dolly's parking brake control.,1,1
+CDL-DT-0011,doing both of the above.,0,2
+CDL-DT-0012,Pull against the rear semitrailer's pin.,1,0
+CDL-DT-0012,"Drive forward, brake suddenly, and see if the rear semitrailer hits the one in front of it.",0,1
+CDL-DT-0012,Drive forward slowly and see if the rear semitrailer stays attached.,0,2
+CDL-DT-0013,leaks of water or gasoline,0,0
+CDL-DT-0013,dirt or grime,0,1
+CDL-DT-0013,leaks of air or hydraulic fluid,1,2
+CDL-DT-0014,you couple the third trailer to the second trailer before you couple them to the first trailer.,1,0
+CDL-DT-0014,you do not have to use a converter dolly.,0,1
+CDL-DT-0014,you couple the second trailer to the first trailer and then couple them both to the tractor.,0,2
+CDL-DT-0015,"Check for normal air pressure. Release the parking brakes. Pull forward slowly. Apply the trailer brakes, using the hand control if so equipped.",1,0
+CDL-DT-0015,"Apply the trailer brakes, using the hand control if so equipped. Release the trailer's parking brakes. Check for normal air pressure. Pull forward slowly.",0,1
+CDL-DT-0015,"Check for normal air pressure. Release the parking brakes. Apply the trailer brakes, using the hand control if so equipped. Step off the brakes and pull forward slowly.",0,2
+CDL-DT-0016,park the vehicle in a straight line on firm level ground.,1,0
+CDL-DT-0016,park the vehicle at a 45-degree angle on an incline.,0,1
+CDL-DT-0016,park the vehicle at a 45-degree angle on level ground.,0,2
+CDL-DT-0017,10,0,0
+CDL-DT-0017,12,0,1
+CDL-DT-0017,11,1,2
+CDL-DT-0018,Are against the law in most states,0,0
+CDL-DT-0018,Make things look smaller and farther away than the really are,1,1
+CDL-DT-0018,Do not need to be checked as often as flat mirrors because they show a larger area,0,2
+CDL-DT-0019,Always keep your vehicle to the right side of your lane,0,0
+CDL-DT-0019,High winds are not a problem for doubles and triples,0,1
+CDL-DT-0019,You should avoid traveling next to others when possible,1,2
+CDL-DT-0020,A triple rig can stop quicker than a 5-axle tractor semi-trailer due to off tracking,0,0
+CDL-DT-0020,The rear trailer of a 100-foot triple is less likely to turn over than a single semi-trailer due to the crack the whip effect,0,1
+CDL-DT-0020,A sudden movement with the steering wheel can result in a tipped over rear trailer,1,2
+CDL-DT-0021,After signaling the change,0,0
+CDL-DT-0021,Right after starting the lane change,0,1
+CDL-DT-0021,After completing the lane change,0,2
+CDL-DT-0021,All answers are correct,1,3
+CDL-DT-0022,Close the shut off valves at the rear of both trailers,0,0
+CDL-DT-0022,Open the shut off valves at the rear of both trailers,0,1
+CDL-DT-0022,"Open the shut off valves at the rear of the first trailer, and close the shut off valves at the rear of the second trailer",1,2
+CDL-DT-0023,Use a lower gear,0,0
+CDL-DT-0023,Increase engine rpm,0,1
+CDL-DT-0023,Drive though quickly,1,2
+CDL-DT-0023,Gently pressing the brake pedal while driving through the water.,0,3
+CDL-DT-0024,the fifth wheel and the landing gear.,0,0
+CDL-DT-0024,the trailers and the radios in the tractor.,0,1
+CDL-DT-0024,"the shut-off valves, the converter dolly or dollies, and the air brakes on all trailers.",1,2
+CDL-DT-0025,aggressive drivers may cause trouble for you on the road.,0,0
+CDL-DT-0025,the vehicle is more likely to roll over or jackknife.,1,1
+CDL-DT-0025,both of the above are true.,0,2
+CDL-DT-0026,The trailers spring brakes and emergency air brakes,0,0
+CDL-DT-0026,Wheel chocks,0,1
+CDL-DT-0026,Either answer can be correct,1,2
+CDL-DT-0027,Doubles / triples flip over from quick steering movement easier than many other vehicles,1,0
+CDL-DT-0027,You should put on the brakes at the same time you perform quick steering movements,0,1
+CDL-DT-0027,Counter steering is easier with doubles / triples than with most other vehicles,0,2
+CDL-DT-0028,Use only the trailer brakes,0,0
+CDL-DT-0028,Go 5 MPH below your safe speed,1,1
+CDL-DT-0028,Use stab braking,0,2
+CDL-DT-0029,Often do not have spring brakes,1,0
+CDL-DT-0029,Have little braking power because they are small,0,1
+CDL-DT-0029,Usually need a glad hand converter,0,2
+CDL-DT-0030,The rig will continue to move in a straight line no matter how much the steering wheel is turned,0,0
+CDL-DT-0030,The rig will stay in a straight line but slide sideways,0,1
+CDL-DT-0030,A trailer jackknife,1,2
+CDL-DT-0031,March 2000.,0,0
+CDL-DT-0031,March 1998.,1,1
+CDL-DT-0031,March 2003.,0,2
+CDL-DT-0032,Its design makes it more likely to have problems.,0,0
+CDL-DT-0032,There are more critical parts to check.,1,1
+CDL-DT-0032,The types of cargoes it carries make it more likely to have problems.,0,2
+CDL-DT-0033,At highway speed you should look up to 1/4 mile ahead of your truck,0,0
+CDL-DT-0033,"Good drivers shift their attention back and forth, near and far",0,1
+CDL-DT-0033,Many drivers do not look far enough ahead of their truck,0,2
+CDL-DT-0033,All answers are correct,1,3
+CDL-DT-0034,The rear trailer of a triple,1,0
+CDL-DT-0034,The rear trailer of a double,0,1
+CDL-DT-0034,A full trailer behind a truck,0,2
+CDL-DT-0035,fifth; two or three,0,0
+CDL-DT-0035,third; two or three,0,1
+CDL-DT-0035,fifth; one or two,1,2
+CDL-DT-0036,to disconnect the safety chains.,0,0
+CDL-DT-0036,to slowly pull clear of it.,0,1
+CDL-DT-0036,to lower its landing gear.,1,2
+CDL-DT-0037,Go to the rear of the second trailer and open the emergency line shut off,1,0
+CDL-DT-0037,Watch each trailers air gauge for a drop of 30 PSI,0,1
+CDL-DT-0037,"Apply the hand valve at 10 MPH, you should stop in the same distance as a truck with one trailer at 5 MPH",0,2
+CDL-DT-0038,The trailer brakes will unlock,0,0
+CDL-DT-0038,The airlines will rupture,0,1
+CDL-DT-0038,The dolly tow bar may fly up,1,2
+CDL-DT-0039,It depends on the load,0,0
+CDL-DT-0039,None,1,1
+CDL-DT-0039,1/2 to 3/4 inch,0,2
+CDL-DT-0040,uncouple the converter dolly.,0,0
+CDL-DT-0040,release the brakes on the converter dolly.,0,1
+CDL-DT-0040,slowly pull clear of the converter dolly.,1,2
+CDL-DT-0041,have little braking power because they are small.,0,0
+CDL-DT-0041,sometimes do not have antilock brakes.,1,1
+CDL-DT-0041,usually need a glad hand converter.,0,2
+CDL-DT-0042,Supply air to the trailer air system with the tractor and then disconnect the emergency line,1,0
+CDL-DT-0042,Make sure the trailer will roll freely when coupling,0,1
+CDL-DT-0042,Hook the trailer electric cord to a portable generator for braking power,0,2
+CDL-DT-0043,Require shorter stopping distances than full ones.,0,0
+CDL-DT-0043,May have poor traction due to bouncing and wheel lockup,1,1
+CDL-DT-0043,Are the easiest to stop since there is no shifting cargo,0,2
+CDL-DT-0044,that you can pull straight through.,1,0
+CDL-DT-0044,that is as close as possible to your destination.,0,1
+CDL-DT-0044,that you can back out of.,0,2
+CDL-DT-0045,The emergency line valve open and release air,0,0
+CDL-DT-0045,The service brakes slowly move to the fully applied position,0,1
+CDL-DT-0045,Air escapes from the open valve,1,2
+CDL-DT-0046,Use the engine brake or speed retarder,1,0
+CDL-DT-0046,Keep other traffic out of you side space,0,1
+CDL-DT-0046,Use a light touch on the accelerator and brake pedals,0,2
+CDL-DT-0047,less,1,0
+CDL-DT-0047,more,0,1
+CDL-DT-0047,neither more nor less,0,2
+CDL-GK-0001,call in and check with dispatch.,0,0
+CDL-GK-0001,"check critical items such as the tires, brakes, and cargo tie-downs.",1,1
+CDL-GK-0001,"check critical items such as the windshield wipers, heater, and defroster.",0,2
+CDL-GK-0002,Used whenever it is safe and legal to do so,1,0
+CDL-GK-0002,Turned on when an oncoming driver does not dim his or her lights,0,1
+CDL-GK-0002,Dimmed when you are within 100 feet of another vehicle,0,2
+CDL-GK-0003,Pulling a hand valve,0,0
+CDL-GK-0003,Self-operated when the air pressure is above 150 PSI,1,1
+CDL-GK-0003,Must be pulled after every working day,0,2
+CDL-GK-0004,Turning on your headlights during the day when visibility is reduced due to rain or snow,0,0
+CDL-GK-0004,Flashing your brake lights to warn someone behind you of a hazard that will require slowing down,0,1
+CDL-GK-0004,Flashing your brake lights to warn someone behind you that you're are going to stop on the road,0,2
+CDL-GK-0004,All answers are correct,1,3
+CDL-GK-0005,Gear box,1,0
+CDL-GK-0005,Bearing plate,0,1
+CDL-GK-0005,Torque rod,0,2
+CDL-GK-0005,Leaf spring,0,3
+CDL-GK-0006,Engage the clutch before removing your foot from the brake.,0,0
+CDL-GK-0006,Apply the trailer brake hand valve.,0,1
+CDL-GK-0006,Set the parking brake whenever necessary.,0,2
+CDL-GK-0006,Do all of the above.,1,3
+CDL-GK-0007,Accelerating,0,0
+CDL-GK-0007,Steering,0,1
+CDL-GK-0007,First-aid certification,1,2
+CDL-GK-0007,Backing safely,0,3
+CDL-GK-0008,32 feet,0,0
+CDL-GK-0008,61 feet,1,1
+CDL-GK-0008,93 feet,0,2
+CDL-GK-0009,Driving too fast for road conditions,1,0
+CDL-GK-0009,Poorly adjusted brakes,0,1
+CDL-GK-0009,Bad tires,0,2
+CDL-GK-0009,Poorly designed roads,0,3
+CDL-GK-0010,One block,0,0
+CDL-GK-0010,500 feet,0,1
+CDL-GK-0010,1/4 mile,1,2
+CDL-GK-0011,"One within 10 feet of the rear of the vehicle, one about 100 feet to the rear, and one about 200 feet to the rear",0,0
+CDL-GK-0011,"One within 10 feet of the rear of the vehicle, one about 100 feet to the rear, and one about 100 feet from the front of the vehicle",1,1
+CDL-GK-0011,"One about 50 feet from the rear of the vehicle, one about 100 feet to the rear, and one about 100 feet from the front of the vehicle",0,2
+CDL-GK-0011,"One within 10 feet of the front of the vehicle, one about 200 feet from the front, and one about 100 feet to the rear",0,3
+CDL-GK-0012,A warning,0,0
+CDL-GK-0012,At least a one-year suspension of your CDL,1,1
+CDL-GK-0012,A fine of $500.00,0,2
+CDL-GK-0013,Protect you from your cargo in case of collision,0,0
+CDL-GK-0013,Block the forward movement of your cargo,0,1
+CDL-GK-0013,Protect you from your cargo in case of collision and block the forward movement of your cargo,1,2
+CDL-GK-0013,No answers are correct,0,3
+CDL-GK-0014,Reaction distance and effective braking distance,0,0
+CDL-GK-0014,Perception distance and effective braking  distance,0,1
+CDL-GK-0014,"Perception distance, reaction distance, brake lag distance, and effective braking distance",1,2
+CDL-GK-0015,You should drive alongside other vehicles to help break up the wind,0,0
+CDL-GK-0015,"The lighter your vehicle, the less trouble you will have with the wind",0,1
+CDL-GK-0015,Winds are especially a problem when coming out of tunnels,1,2
+CDL-GK-0016,Heavy vehicles need larger gaps in traffic than cars,1,0
+CDL-GK-0016,The best way to cross traffic is to pull the vehicle partway across the road and block one lane while waiting for the other to clear,0,1
+CDL-GK-0016,"The heavier your load, the smaller the gap needed to cross traffic",0,2
+CDL-GK-0016,"Because heavy vehicles are easy to see, you can count on other drivers to move out of your way or slow down for you",0,3
+CDL-GK-0017,Speed up,0,0
+CDL-GK-0017,Signal them to pass you,0,1
+CDL-GK-0017,Back off,1,2
+CDL-GK-0018,2 seconds,0,0
+CDL-GK-0018,3 seconds,0,1
+CDL-GK-0018,4 seconds,0,2
+CDL-GK-0018,5 seconds,1,3
+CDL-GK-0019,The weight transmitted to the tires from the axle,0,0
+CDL-GK-0019,The weight transmitted to the ground by one axle or one set of axles,1,1
+CDL-GK-0019,Both above,0,2
+CDL-GK-0019,No answers are correct,0,3
+CDL-GK-0020,.04,1,0
+CDL-GK-0020,.01,0,1
+CDL-GK-0020,.10,0,2
+CDL-GK-0021,"The heavier a vehicle or the faster it is moving, the more heat the brakes must absorb to stop it",1,0
+CDL-GK-0021,Brakes have more stopping power when they get very hot,0,1
+CDL-GK-0021,Brake drums cool very quickly when the vehicle is moving very fast,0,2
+CDL-GK-0022,Stopping is always the safest action in a traffic emergency,0,0
+CDL-GK-0022,Heavy vehicles can almost always turn more quickly than they can stop,1,1
+CDL-GK-0022,Leaving the road is always riskier than hitting another vehicle,0,2
+CDL-GK-0023,It may be a slow-moving vehicle,1,0
+CDL-GK-0023,The vehicle is hauling hazardous materials,0,1
+CDL-GK-0023,It is a law enforcement vehicle,0,2
+CDL-GK-0024,Parked,1,0
+CDL-GK-0024,Moving slowly,0,1
+CDL-GK-0024,Going downhill,0,2
+CDL-GK-0024,Moving at highway speed,0,3
+CDL-GK-0025,May be brought up to date once a week,0,0
+CDL-GK-0025,Is also called a tachograph,0,1
+CDL-GK-0025,Must be shown immediately when an officer request it,1,2
+CDL-GK-0025,All answers are correct,0,3
+CDL-GK-0026,Poor traction,1,0
+CDL-GK-0026,Too much play in the steering wheel is not a problem,0,1
+CDL-GK-0026,Damage to the tires,0,2
+CDL-GK-0026,All answers are correct,0,3
+CDL-GK-0027,Start stab braking,0,0
+CDL-GK-0027,Accelerate slightly,0,1
+CDL-GK-0027,Release the accelerator,1,2
+CDL-GK-0028,Downshift,0,0
+CDL-GK-0028,Pump the brake pedal,0,1
+CDL-GK-0028,Look for an escape ramp or escape route,1,2
+CDL-GK-0029,Unstable loads such as hanging meat or livestock require extra caution on curves,1,0
+CDL-GK-0029,Oversize loads can be hauled without special permits during times when the roads are not busy,0,1
+CDL-GK-0029,Loads that consist of liquids in bulk do not present vehicle handling problems because they are usually very heavy,0,2
+CDL-GK-0030,Never,0,0
+CDL-GK-0030,Only when the vehicle does not require placards,1,1
+CDL-GK-0030,Only when the shipment will not cross state lines,0,2
+CDL-GK-0031,After 5 hours,0,0
+CDL-GK-0031,After 7 hours,0,1
+CDL-GK-0031,After 9 hours,0,2
+CDL-GK-0031,When you become sleepy,1,3
+CDL-GK-0032,The amount of liquid will expand in transit,0,0
+CDL-GK-0032,The weight of the liquid,0,1
+CDL-GK-0032,The legal weight limits,0,2
+CDL-GK-0032,All answers are correct,1,3
+CDL-GK-0033,Protect people from spilled cargo,0,0
+CDL-GK-0033,Protect the roadway from spilled cargo,0,1
+CDL-GK-0033,Protect vehicle following you from spilled cargo,0,2
+CDL-GK-0033,All answers are correct,1,3
+CDL-GK-0034,Pre-trip,0,0
+CDL-GK-0034,En-route,0,1
+CDL-GK-0034,Post-trip,0,2
+CDL-GK-0034,All answers are correct,1,3
+CDL-GK-0035,25 miles,0,0
+CDL-GK-0035,50 miles,1,1
+CDL-GK-0035,100 miles,0,2
+CDL-GK-0035,No answers are correct,0,3
+CDL-GK-0036,It can startle other drivers,1,0
+CDL-GK-0036,It wears down the battery,0,1
+CDL-GK-0036,The horn is not a good way to let others know you are there,0,2
+CDL-GK-0037,Under-inflated tires,0,0
+CDL-GK-0037,Loose fuel connections,0,1
+CDL-GK-0037,Electrical short-circuits,0,2
+CDL-GK-0037,All answers are correct,1,3
+CDL-GK-0038,Brake shoes should not be worn dangerously thin,0,0
+CDL-GK-0038,Brake pads should not have brake fluid on them,0,1
+CDL-GK-0038,One missing leaf in a leaf spring can be dangerous,0,2
+CDL-GK-0038,All answers are correct and true,1,3
+CDL-GK-0039,Hard braking,0,0
+CDL-GK-0039,Steer into the oncoming lane,0,1
+CDL-GK-0039,Steer onto the left shoulder,0,2
+CDL-GK-0039,Steer to the right,1,3
+CDL-GK-0040,The length of a vehicle,0,0
+CDL-GK-0040,Twice the length of the vehicle,0,1
+CDL-GK-0040,More than the length of a football field,1,2
+CDL-GK-0040,The length of a football field,0,3
+CDL-GK-0041,It will give the tires more traction,0,0
+CDL-GK-0041,It makes the road more slippery,1,1
+CDL-GK-0041,It will make the tires stick to the road,0,2
+CDL-GK-0042,1/3,0,0
+CDL-GK-0042,1/4,0,1
+CDL-GK-0042,1/2,1,2
+CDL-GK-0043,4,0,0
+CDL-GK-0043,3,0,1
+CDL-GK-0043,1,0,2
+CDL-GK-0043,2,1,3
+CDL-GK-0044,A wet-looking road,0,0
+CDL-GK-0044,A bridge,0,1
+CDL-GK-0044,A shaded area,0,2
+CDL-GK-0044,All of the above,1,3
+CDL-GK-0045,It may turn uphill.,0,0
+CDL-GK-0045,It may be located a few miles from the top of a downgrade.,0,1
+CDL-GK-0045,It may be made of soft gravel.,0,2
+CDL-GK-0045,It is not useful if you are traveling too fast.,1,3
+CDL-GK-0046,leaks.,1,0
+CDL-GK-0046,broken leaf springs.,0,1
+CDL-GK-0046,twisted axles.,0,2
+CDL-GK-0046,tears.,0,3
+CDL-GK-0047,a small sample of whatever is inside.,0,0
+CDL-GK-0047,a picture of whatever is inside.,0,1
+CDL-GK-0047,that you don't exceed gross weight or axle weight limits.,1,2
+CDL-GK-0047,all of the above.,0,3
+CDL-GK-0048,Low beams,0,0
+CDL-GK-0048,Novelty lights,0,1
+CDL-GK-0048,Emergency flashers,0,2
+CDL-GK-0048,High beams,1,3
+CDL-GK-0049,"Yes, as long as the radiator isn't damaged.",0,0
+CDL-GK-0049,"Yes, as long as there is no overflow.",0,1
+CDL-GK-0049,No.,1,2
+CDL-GK-0049,Yes.,0,3
+CDL-GK-0050,a fire extinguisher.,0,0
+CDL-GK-0050,a spare jacket.,1,1
+CDL-GK-0050,spare electrical fuses.,0,2
+CDL-GK-0050,warning devices.,0,3
+CDL-GK-0051,Turning the steering wheel counter clockwise,0,0
+CDL-GK-0051,Steering in the opposite direction from what other drivers expect you to do,0,1
+CDL-GK-0051,Using the steering axle brakes to prevent over steering,0,2
+CDL-GK-0051,Turning the wheel in the opposite direction after steering to avoid a traffic emergency,1,3
+CDL-GK-0052,Stay off the brake until the vehicle slows down on its own,1,0
+CDL-GK-0052,Quickly steer onto the shoulder,0,1
+CDL-GK-0052,Begin light braking,0,2
+CDL-GK-0052,Begin controlled or stab braking,0,3
+CDL-GK-0053,"Identify, project, dedicate, execute",0,0
+CDL-GK-0053,"Idea, predicts, decide, execute",0,1
+CDL-GK-0053,"Identify, predict, decide, execute",1,2
+CDL-GK-0054,You should look at a mirror for several seconds at a time,0,0
+CDL-GK-0054,Convex mirrors make things look closer than they really are,0,1
+CDL-GK-0054,There are blind spots that your mirror cannot show you,1,2
+CDL-GK-0054,You should check your mirrors twice for a lane change,0,3
+CDL-GK-0055,One tie down,0,0
+CDL-GK-0055,Two tie downs,1,1
+CDL-GK-0055,Small loads do not have to have tie downs,0,2
+CDL-GK-0056,"Make sure the road is clear, and continue to return to the road",0,0
+CDL-GK-0056,Stop and turn your vehicle around before entering the road,0,1
+CDL-GK-0056,Reduce your speed to 20 mph or less before returning to the road,1,2
+CDL-GK-0057,The weight of the cargo tied down,0,0
+CDL-GK-0057,One and one-half times the weight of the cargo tied down,1,1
+CDL-GK-0057,Twice the weight of the cargo tied down,0,2
+CDL-GK-0057,Three times the weight of the cargo tied down,0,3
+CDL-GK-0058,Wheel lockup,0,0
+CDL-GK-0058,Trailer jackknife,0,1
+CDL-GK-0058,Lack of braking power,0,2
+CDL-GK-0058,All answers are correct,1,3
+CDL-GK-0059,6-9 seconds,0,0
+CDL-GK-0059,9-12 seconds,0,1
+CDL-GK-0059,12-15 seconds,1,2
+CDL-GK-0060,On a wet road you should reduce your speed by about 1/3,0,0
+CDL-GK-0060,On packed snow you should reduce your speed by about 1/2,0,1
+CDL-GK-0060,"When the road is slippery it will take longer to stop, and it will be harder to turn without skidding",0,2
+CDL-GK-0060,All answers are correct,1,3
+CDL-GK-0061,The same gear you would use to climb the hill,0,0
+CDL-GK-0061,A lower gear than you would use to climb the hill,1,1
+CDL-GK-0061,A higher gear than you would use to climb the hill,0,2
+CDL-GK-0062,Apply more power to the wheels,0,0
+CDL-GK-0062,Stop accelerating,1,1
+CDL-GK-0062,Apply the brake,0,2
+CDL-GK-0062,Downshift,0,3
+CDL-GK-0063,Keep it as close to the fire as possible,0,0
+CDL-GK-0063,Stay downwind of the fire,0,1
+CDL-GK-0063,Aim at the base of the fire,1,2
+CDL-GK-0064,Hard steering,0,0
+CDL-GK-0064,Damage to the steering axle,0,1
+CDL-GK-0064,Damage to the tires,0,2
+CDL-GK-0064,All answers are correct,1,3
+CDL-GK-0065,To have your foot over the brake and ready to push it if necessary,1,0
+CDL-GK-0065,Pushing the brake lightly and rapidly,0,1
+CDL-GK-0065,Pushing on the brake just enough to make the brake lights to come on,0,2
+CDL-GK-0066,A driver can use any prescription drug while driving,0,0
+CDL-GK-0066,Amphetamines can be used to help the driver stay alert,0,1
+CDL-GK-0066,Use of drugs can lead to accidents and / or arrest,1,2
+CDL-GK-0067,10,1,0
+CDL-GK-0067,15,0,1
+CDL-GK-0067,18,0,2
+CDL-GK-0068,In a parking lot when the vehicle is not moving,0,0
+CDL-GK-0068,When the vehicle is moving at about 5 mph,1,1
+CDL-GK-0068,At a special brake testing center only,0,2
+CDL-GK-0069,Slow down to a safe speed before the turn,1,0
+CDL-GK-0069,Slow to the posted speed limit for the off-ramp,0,1
+CDL-GK-0069,Come to a full stop at the top of the ramp,0,2
+CDL-GK-0069,Wait until you are in the curve before downshifting,0,3
+CDL-GK-0070,Any time you are in a moving vehicle,1,0
+CDL-GK-0070,Only in states where it is required by law,0,1
+CDL-GK-0070,Only when traveling on a highway,0,2
+CDL-GK-0071,Electrical fires,0,0
+CDL-GK-0071,Burning fires,0,1
+CDL-GK-0071,Burning cloth,0,2
+CDL-GK-0071,All answers are correct,1,3
+CDL-GK-0072,"If you must leave the road, try to get all wheels off the pavement or at least one side of vehicle's tires off the road",1,0
+CDL-GK-0072,Brake gently to avoid skidding,0,1
+CDL-GK-0072,Use hard braking if you are moving at a speed greater that 20-mph,0,2
+CDL-GK-0072,Most shoulders will not support a large vehicle,0,3
+CDL-GK-0073,They have a high center of gravity,0,0
+CDL-GK-0073,The load can shift,0,1
+CDL-GK-0073,Both above,1,2
+CDL-GK-0073,No answers are correct,0,3
+CDL-GK-0074,Dirt,1,0
+CDL-GK-0074,Water,0,1
+CDL-GK-0074,Nothing,0,2
+CDL-GK-0075,Bulkheads,1,0
+CDL-GK-0075,Baffles,0,1
+CDL-GK-0075,Containers,0,2
+CDL-GK-0076,Not worry about the clearance if you stay on the state or federal highways,0,0
+CDL-GK-0076,Assume all clearances are high enough,0,1
+CDL-GK-0076,"If you aren't sure about the clearance, stop and make sure",1,2
+CDL-GK-0076,All answers are correct,0,3
+CDL-GK-0077,Before starting,0,0
+CDL-GK-0077,Every 3 hours or 150 miles,0,1
+CDL-GK-0077,After every break,0,2
+CDL-GK-0077,All answers are correct,1,3
+CDL-GK-0078,Protect people from spilled cargo,0,0
+CDL-GK-0078,Protect cargo from weather,0,1
+CDL-GK-0078,May be required by law,0,2
+CDL-GK-0078,All answers are correct,1,3
+CDL-GK-0079,Keep your speed slow enough that you can stop within the range of your headlights,1,0
+CDL-GK-0079,Look directly at oncoming headlights only briefly,0,1
+CDL-GK-0079,Wear sun glasses,0,2
+CDL-GK-0079,Keep your instrument lights bright,0,3
+CDL-GK-0080,Should never be used,0,0
+CDL-GK-0080,Should only be used on slick roads,0,1
+CDL-GK-0080,Involves locking the wheels,1,2
+CDL-GK-0080,Involves steady pressure on the brake pedal,0,3
+CDL-GK-0081,You should not downshift if you have an automatic transmission,0,0
+CDL-GK-0081,Pumping the brake pedal may bring the pressure up so you can stop the vehicle,1,1
+CDL-GK-0081,The parking brake will not work either because it is part of the same hydraulic system,0,2
+CDL-GK-0082,Keep the clutch slipping while slowly accelerating,0,0
+CDL-GK-0082,Use the parking brake to hold the vehicle until the clutch engages,1,1
+CDL-GK-0082,Let the vehicle roll backwards a few feet before you engage the clutch,0,2
+CDL-GK-0082,"Let the vehicle roll backwards a few feet before you engage the clutch, but turn the wheel so that the back moves away from the roadway",0,3
+CDL-GK-0083,Increase the space in front of you,1,0
+CDL-GK-0083,Flash your brake lights,0,1
+CDL-GK-0083,Speed up,0,2
+CDL-GK-0083,Signal the tailgater when it is safe to pass,0,3
+CDL-GK-0084,Rust around wheel nuts may mean that they are loose,1,0
+CDL-GK-0084,Cracked wheels or rims can be used if they have been welded,0,1
+CDL-GK-0084,A vehicle can be safely driven with one missing lug nut on a wheel,0,2
+CDL-GK-0084,Mismatched lock rings can be used on the same vehicle,0,3
+CDL-GK-0085,Avoid eye contact.,0,0
+CDL-GK-0085,Call the police from your cell phone if you can do it safely.,0,1
+CDL-GK-0085,Ignore rude gestures and refuse to react negatively.,0,2
+CDL-GK-0085,Do all of the above.,1,3
+CDL-GK-0086,have all your emotionally difficult conversations in the first hour of driving.,0,0
+CDL-GK-0086,"eat, drink, and smoke only on straight portions of the road.",0,1
+CDL-GK-0086,avoid using your cell phone until you reach your destination.,1,2
+CDL-GK-0086,read maps or use your phone only when there are no other vehicles around you.,0,3
+CDL-GK-0087,Underinflated tires,1,0
+CDL-GK-0087,Cold tires,0,1
+CDL-GK-0087,Overinflated tires,0,2
+CDL-GK-0087,All of the above,0,3
+CDL-GK-0088,"Yes, but only on wet surfaces.",0,0
+CDL-GK-0088,No.,1,1
+CDL-GK-0088,"Yes, but only if the trucks are newer than 1998.",0,2
+CDL-GK-0088,Yes.,0,3
+CDL-GK-0089,7 to 12 seconds,0,0
+CDL-GK-0089,5 to 10 seconds,0,1
+CDL-GK-0089,12 to 15 seconds,1,2
+CDL-GK-0089,10 to 12 seconds,0,3
+CDL-GK-0090,Brake hard and immediately.,1,0
+CDL-GK-0090,Be aware that a tire has failed.,0,1
+CDL-GK-0090,Stay off the brake pedal.,0,2
+CDL-GK-0090,Hold the steering wheel firmly.,0,3
+CDL-GK-0091,Someone might try to pass you on your right.,1,0
+CDL-GK-0091,You might damage your leaf springs.,0,1
+CDL-GK-0091,Someone might try to pass you on your left.,0,2
+CDL-GK-0091,All of the above might happen.,0,3
+CDL-GK-0092,Time,1,0
+CDL-GK-0092,Fresh air,0,1
+CDL-GK-0092,A glass of water,0,2
+CDL-GK-0092,Coffee,0,3
+CDL-GK-0093,perception distance + reaction distance + braking distance.,1,0
+CDL-GK-0093,reaction distance + braking distance.,0,1
+CDL-GK-0093,reaction distance + viewing distance + braking distance.,0,2
+CDL-GK-0093,braking distance + stopping distance.,0,3
+CDL-GK-0094,show a wider area than flat mirrors.,1,0
+CDL-GK-0094,make objects appear larger than they really are.,0,1
+CDL-GK-0094,make objects appear closer than they really are.,0,2
+CDL-GK-0095,are typically used for freight carried partway by rail or ship.,1,0
+CDL-GK-0095,should come with their own tie-down devices.,0,1
+CDL-GK-0095,do not need to be inspected or secured by the driver.,0,2
+CDL-GK-0096,3,1,0
+CDL-GK-0096,1,0,1
+CDL-GK-0096,4,0,2
+CDL-GK-0097,It does not affect the road surface or driving conditions.,0,0
+CDL-GK-0097,It is very sticky and slows down your vehicle.,0,1
+CDL-GK-0097,"Tar rises to the road surface in very hot weather, causing the roads to become very slippery.",1,2
+CDL-GK-0098,are unstable loads.,1,0
+CDL-GK-0098,do not require special care.,0,1
+CDL-GK-0098,have low centers of gravity.,0,2
+CDL-GK-0099,should have a screen larger than 4 inches.,0,0
+CDL-GK-0099,should be designed for truck navigation.,1,1
+CDL-GK-0099,should be made in the USA.,0,2
+CDL-GK-0100,overinflated tires.,0,0
+CDL-GK-0100,poorly adjusted brakes.,0,1
+CDL-GK-0100,driving too fast for road conditions.,1,2
+CDL-GK-0101,"Keep driving, and reach out the window and knock the ice off",0,0
+CDL-GK-0101,"Keep driving, and turn your defroster on",0,1
+CDL-GK-0101,Pull over in a safe place and remove the ice,1,2
+CDL-GK-0102,Yes,0,0
+CDL-GK-0102,No,1,1
+CDL-GK-0102,It doesn't make any difference if you drive slowly,0,2
+CDL-GK-0103,32 feet,0,0
+CDL-GK-0103,One block,1,1
+CDL-GK-0103,Two Vehicle lengths ahead,0,2
+CDL-GK-0104,Poor traction,1,0
+CDL-GK-0104,A need to disconnect the steering axle brakes,0,1
+CDL-GK-0104,Damage to drive axle tires,0,2
+CDL-GK-0104,Better handling,0,3
+CDL-GK-0105,Are designed to protect vehicles from damage,1,0
+CDL-GK-0105,Should not be used unless you have first tried all other ways to save your vehicle after brake failure on a downgrade,0,1
+CDL-GK-0105,Cannot be used by certain types of heavy vehicles,0,2
+CDL-GK-0106,Brakes can grab or become weak.,1,0
+CDL-GK-0106,Brakes can work better.,0,1
+CDL-GK-0106,Your foot can get tired.,0,2
+CDL-GK-0107,primary and secondary safety cab locks,0,0
+CDL-GK-0107,frame and cross members,0,1
+CDL-GK-0107,air lines and electrical wiring,1,2
+CDL-GK-0108,someone who has the Hazardous Materials Endorsement rides with you.,0,0
+CDL-GK-0108,the vehicle does not require placards.,1,1
+CDL-GK-0108,the cargo will be transported less than 100 miles.,0,2
+CDL-GK-0109,Not having sufficient space to drive all the way through without stopping,0,0
+CDL-GK-0109,Getting stuck on the tracks because of insufficient clearance,0,1
+CDL-GK-0109,Both of the above,1,2
+CDL-GK-0110,Before and after signaling the change,0,0
+CDL-GK-0110,After starting and after completing the lane change,0,1
+CDL-GK-0110,Both of the above,1,2
+CDL-GK-0111,A hazardous materials placard is on the vehicle.,0,0
+CDL-GK-0111,"There is a four-inch, diamond-shaped hazardous materials label on the container.",0,1
+CDL-GK-0111,Both of these answers are correct.,1,2
+CDL-GK-0112,When to use placards,0,0
+CDL-GK-0112,Basic chemistry,1,1
+CDL-GK-0112,Which products can be loaded together,0,2
+CDL-GK-0113,They should only be used when driving during the daytime.,0,0
+CDL-GK-0113,They can be used while driving as long as you only take half the regular dose.,0,1
+CDL-GK-0113,"They often make you sleepy. Therefore, they should not be used while driving.",1,2
+CDL-GK-0114,Short-term or daily rental truck drivers are often not used to the limited vision and pose a hazard.,1,0
+CDL-GK-0114,Mail or delivery truck drivers do not pose a hazard.,0,1
+CDL-GK-0114,Drivers using turn signals can be trusted to turn in the direction they indicate.,0,2
+CDL-GK-0115,"Cracking is likely to occur, but it is not a safety threat.",1,0
+CDL-GK-0115,Loose belts will not turn the water pump and/or fan on properly.,0,1
+CDL-GK-0115,You can check the tightness of belts by pressing on them.,0,2
+CDL-GK-0116,Keep the vehicle's taillights on to warn other drivers.,0,0
+CDL-GK-0116,Move the rear reflective triangle back if the driver's vision is obscured to within 500 feet.,1,1
+CDL-GK-0116,Put out your emergency warning devices within five minutes.,0,2
+CDL-GK-0117,Move severely injured persons if there is a danger due to fire or passing traffic.,0,0
+CDL-GK-0117,"If a qualified person is helping them, stay out of the way unless asked to assist.",0,1
+CDL-GK-0117,Allow injured persons to become chilled or overheated.,1,2
+CDL-GK-0118,Many heavy vehicle accidents occur between midnight and 6 a.m.,1,0
+CDL-GK-0118,Most hazards are more easily seen at night than during the day.,0,1
+CDL-GK-0118,Most people are more alert at night than during the day.,0,2
+CDL-GK-0119,"When the temperature drops, bridges will freeze before roadways.",0,0
+CDL-GK-0119,Driving conditions become more dangerous as the temperature rises to the point where ice begins to melt.,0,1
+CDL-GK-0119,"As rain continues, the road becomes more slippery than it was when the rain began.",1,2
+CDL-GK-0120,The weight transmitted to the ground by one axle or one set of axles,1,0
+CDL-GK-0120,The weight transmitted to the tires from the axle,0,1
+CDL-GK-0120,Both of the above,0,2
+CDL-GK-0121,0.16,0,0
+CDL-GK-0121,0.1,0,1
+CDL-GK-0121,0.4,1,2
+CDL-GK-0122,flashing lights.,0,0
+CDL-GK-0122,driving limited to certain times.,0,1
+CDL-GK-0122,both of the above.,1,2
+CDL-GK-0123,start the engine and listen for unusual noises.,0,0
+CDL-GK-0123,make sure the parking brake is on and put the gearshift in neutral (or park if automatic).,0,1
+CDL-GK-0123,Both of the above,1,2
+CDL-GK-0124,Adjust the headlights.,0,0
+CDL-GK-0124,Leave your high beams on.,1,1
+CDL-GK-0124,Clean the headlights.,0,2
+CDL-GK-0125,Leaking shock absorbers,0,0
+CDL-GK-0125,Broken leaves in a leaf spring and a cracked or broken spring hanger,0,1
+CDL-GK-0125,Both of the above,1,2
+CDL-GK-0126,Signal well in advance of the turn.,0,0
+CDL-GK-0126,Signal continuously up through the turn.,0,1
+CDL-GK-0126,Do both of the above.,1,2
+CDL-GK-0127,You should bleed a small amount of air to keep tire pressure steady.,0,0
+CDL-GK-0127,You should check tire mounting and air pressure before driving.,1,1
+CDL-GK-0127,"If a tire is too hot to touch, you should hose it down with water.",0,2
+CDL-GK-0128,Look toward the right edge of your lane or the right edge of the road.,1,0
+CDL-GK-0128,Flash your high beams at the other driver.,0,1
+CDL-GK-0128,Slow down and look straight ahead in your lane.,0,2
+CDL-GK-0129,have at least 4/32-inch tread depth.,0,0
+CDL-GK-0129,have at least 6/32-inch tread depth.,0,1
+CDL-GK-0129,provide enough traction to steer and push the vehicle through snow.,1,2
+CDL-GK-0130,find another route that is better lit.,0,0
+CDL-GK-0130,turn your interior lights on.,0,1
+CDL-GK-0130,use your high beams when legal and keep your interior lights off.,1,2
+CDL-GK-0131,take the medication as well as other medications to keep you alert.,0,0
+CDL-GK-0131,ask the doctor if the medication will affect your ability to drive.,1,1
+CDL-GK-0131,take the medication but stop taking it if you notice it is affecting your driving.,0,2
+CDL-GK-0132,Using hand signals,0,0
+CDL-GK-0132,Driving brightly colored vehicles,0,1
+CDL-GK-0132,Letting other drivers know you're there,1,2
+CDL-GK-0133,With your right hand on the wheel,0,0
+CDL-GK-0133,"Firmly, with one hand at the top of the wheel and the other hand at the bottom of the wheel",0,1
+CDL-GK-0133,"Firmly, with both hands-on opposite sides of the wheel",1,2
+CDL-GK-0134,not worry about any of it.,0,0
+CDL-GK-0134,look in the mirror to see if you look good.,0,1
+CDL-GK-0134,clean and adjust as necessary.,1,2
+CDL-GK-0135,see you.,0,0
+CDL-GK-0135,may move into your traffic lane.,1,1
+CDL-GK-0135,will move out of your lane of traffic.,0,2
+CDL-GK-0136,Take some caffeine pills.,0,0
+CDL-GK-0136,Drink some coffee.,0,1
+CDL-GK-0136,Get some sleep.,1,2
+CDL-GK-0137,five minutes.,0,0
+CDL-GK-0137,fifteen minutes.,0,1
+CDL-GK-0137,ten minutes.,1,2
+CDL-GK-0138,Federal regulations apply only to trucks and buses driven at least 50 miles on a trip.,0,0
+CDL-GK-0138,Laws and restrictions can vary from place to place.,1,1
+CDL-GK-0138,County and city laws do not apply to trucks and buses engaged in interstate commerce.,0,2
+CDL-GK-0139,coast down hills that are not very steep inclines.,0,0
+CDL-GK-0139,apply constant hard pressure on the brakes.,0,1
+CDL-GK-0139,select a gear that will keep your vehicle at a safe speed on steep downgrades.,1,2
+CDL-GK-0140,use a lower gear than you would use to climb the hill.,1,0
+CDL-GK-0140,use the same gear you would use to climb the hill.,0,1
+CDL-GK-0140,shift into neutral and coast.,0,2
+CDL-GK-0141,The cargo should be rearranged so that the heaviest parts of the cargo are under the lightest parts.,1,0
+CDL-GK-0141,The vehicle is less likely to tip over.,0,1
+CDL-GK-0141,The vehicle is less dangerous on curves.,0,2
+CDL-GK-0142,shape.,0,0
+CDL-GK-0142,color.,0,1
+CDL-GK-0142,label.,1,2
+CDL-GK-0143,warning devices.,0,0
+CDL-GK-0143,a charged fire extinguisher.,0,1
+CDL-GK-0143,tire changing equipment.,1,2
+CDL-GK-0144,use stab or controlled braking.,0,0
+CDL-GK-0144,counter steer and accelerate.,0,1
+CDL-GK-0144,restore traction to the tires.,1,2
+CDL-GK-0145,Reduced braking power,1,0
+CDL-GK-0145,Excessive brake wear,0,1
+CDL-GK-0145,Hydroplaning,0,2
+CDL-GK-0146,consent to be tested for alcohol in your blood.,1,0
+CDL-GK-0146,understand that you may now drink alcohol before driving.,0,1
+CDL-GK-0146,consent to have your vehicle inspected for alcohol.,0,2
+CDL-GK-0147,6,0,0
+CDL-GK-0147,2,0,1
+CDL-GK-0147,4,1,2
+CDL-GK-0148,Turn on your flashers if it is legal to do so.,0,0
+CDL-GK-0148,Stay to the right.,0,1
+CDL-GK-0148,Signal other drivers when it is safe for them to pass you.,1,2
+CDL-GK-0149,"One within 10 feet of the rear of the vehicle, one about 100 feet to the rear, and one about 200 feet to the rear",1,0
+CDL-GK-0149,"One within 10 feet of the rear of the vehicle, one about 100 feet to the rear, and one about 100 feet from the front of the vehicle",0,1
+CDL-GK-0149,"One about 50 feet from the rear of the vehicle, one about 100 feet to the rear, and one about 100 feet from the front of the vehicle",0,2
+CDL-GK-0150,The light ahead just turned green,0,0
+CDL-GK-0150,The light ahead has been green for quite a while,1,1
+CDL-GK-0150,The light ahead has just turned red,0,2
+CDL-GK-0151,Hard steering and possible breakdown,1,0
+CDL-GK-0151,Better handling,0,1
+CDL-GK-0151,A need to disconnect the steering axle brakes,0,2
+CDL-GK-0152,Downshift while in the curve,0,0
+CDL-GK-0152,Downshift as you come out of the curve,0,1
+CDL-GK-0152,Downshift before entering the curve and accelerate slightly as you go through it,1,2
+CDL-GK-0152,"Downshift at any time, it doesn't make a difference",0,3
+CDL-GK-0153,Yes,1,0
+CDL-GK-0153,No,0,1
+CDL-GK-0154,The maximum safe weight a tire can carry at a specified pressure,1,0
+CDL-GK-0154,Specified pressure an air tire can carry,0,1
+CDL-GK-0154,Both above,0,2
+CDL-GK-0154,No answers are correct,0,3
+CDL-GK-0155,Approximately 400 feet,0,0
+CDL-GK-0155,Approximately 420 feet,0,1
+CDL-GK-0155,Approximately 450 feet,1,2
+CDL-GK-0156,Apply more braking pressure to the brake pedal,0,0
+CDL-GK-0156,"Apply more pressure to the brake pedal and steer, counter steer",0,1
+CDL-GK-0156,Release brakes and counter steer,1,2
+CDL-GK-0157,Mirrors,0,0
+CDL-GK-0157,Cargo and cargo covers,0,1
+CDL-GK-0157,Tires,0,2
+CDL-GK-0157,Text messages,1,3
+CDL-GK-0158,Releasing the clutch and pressing the accelerator at the same time,0,0
+CDL-GK-0158,Releasing the clutch,0,1
+CDL-GK-0158,Pushing in the clutch and shifting into a higher gear at the same time,0,2
+CDL-GK-0158,Accelerating while pressing the clutch and turning toward the driver's side,1,3
+CDL-GK-0159,someone could start and move the truck.,1,0
+CDL-GK-0159,someone could steal the truck.,0,1
+CDL-GK-0159,it could damage the starting mechanism.,0,2
+CDL-GK-0159,any of the above could occur.,0,3
+CDL-GK-0160,Wait until the vehicle ahead of you passes a shadow or landmark. Then count the seconds until you reach it.,1,0
+CDL-GK-0160,Send a text message to a friend to text you back in ten seconds. See how far you have traveled in that time.,0,1
+CDL-GK-0160,Use the stopwatch on your cell phone to determine how long it takes you to reach a mile marker after the vehicle in front of you has passed it.,0,2
+CDL-GK-0160,"Get 1/4 closer to the vehicle in front of you, then back off again. Multiply how long this took you by four to give the following distance.",0,3
+CDL-GK-0161,vehicles constantly traveling above the speed limit.,0,0
+CDL-GK-0161,drivers having conversations with passengers.,1,1
+CDL-GK-0161,vehicles exiting the roadway.,0,2
+CDL-GK-0161,drivers listening to overly loud music.,0,3
+CDL-GK-0162,"""Go.""",0,0
+CDL-GK-0162,"""Stop.""",1,1
+CDL-GK-0162,"""Faster.""",0,2
+CDL-GK-0162,"""Turn up the music.""",0,3
+CDL-GK-0163,take a cold shower.,0,0
+CDL-GK-0163,wait for it to wear off.,1,1
+CDL-GK-0163,drink coffee.,0,2
+CDL-GK-0164,"at the front, back, and/or sides of a piece of cargo.",1,0
+CDL-GK-0164,only at the front of a piece of cargo.,0,1
+CDL-GK-0164,at the cargo deck.,0,2
+CDL-GK-0165,turn the steering wheel as far to the left as you can.,0,0
+CDL-GK-0165,leave it in gear (if it has a manual transmission).,0,1
+CDL-GK-0165,apply the parking brake.,1,2
+CDL-GK-0166,flash your brake lights.,0,0
+CDL-GK-0166,increase your following distance.,1,1
+CDL-GK-0166,signal the tailgater when it is safe to pass you.,0,2
+CDL-GK-0167,It takes 14 seconds to clear a single track and more than 15 seconds to clear a double track.,1,0
+CDL-GK-0167,It takes 10 seconds to clear a single track and more than 12 seconds to clear a double track.,0,1
+CDL-GK-0167,It takes 7 seconds to clear a single track and more than 10 seconds to clear a double track.,0,2
+CDL-GK-0168,Set the parking brake and pull forward gently.,1,0
+CDL-GK-0168,Move back slowly and set the parking brake.,0,1
+CDL-GK-0168,Set the parking brake at highway speeds.,0,2
+CDL-GK-0169,Traffic and road conditions,1,0
+CDL-GK-0169,Road signs and traffic,0,1
+CDL-GK-0169,Police and weigh stations,0,2
+CDL-GK-0170,You can avoid a head-on collision.,0,0
+CDL-GK-0170,Someone may be passing to the left.,0,1
+CDL-GK-0170,Both of these answers are correct.,1,2
+CDL-GK-0171,offensive.,0,0
+CDL-GK-0171,defensive.,1,1
+CDL-GK-0171,objective.,0,2
+CDL-GK-0172,"Yes, but only if the coolant recovery container is part of the pressurized system.",0,0
+CDL-GK-0172,"No, never.",0,1
+CDL-GK-0172,"Yes, as long as the engine isn't overheated.",1,2
+CDL-GK-0173,"Tie rod, spindle, and pitman arm",1,0
+CDL-GK-0173,"Main spring, axle, and spring shackle",0,1
+CDL-GK-0173,"Leaf spring, vehicle frame, and torque rod",0,2
+CDL-GK-0174,avoid braking until your speed has decreased to about 20 mph.,1,0
+CDL-GK-0174,tap repeatedly on the brakes.,0,1
+CDL-GK-0174,try to get all the wheels off the pavement.,0,2
+CDL-GK-0175,two red flags,1,0
+CDL-GK-0175,two red lights,0,1
+CDL-GK-0175,one red flag,0,2
+CDL-GK-0176,"Based on your vehicle and its cargo, select a speed that is safe within the posted limit.",1,0
+CDL-GK-0176,Follow the vehicle in front of you.,0,1
+CDL-GK-0176,"If you have a light load, go faster than you would with a heavy load.",0,2
+CDL-GK-0177,start to slow down so you will be ready to stop.,1,0
+CDL-GK-0177,continue at your current speed.,0,1
+CDL-GK-0177,accelerate so you get through the light.,0,2
+CDL-GK-0178,Shut off the engine.,0,0
+CDL-GK-0178,Get off the road as soon as possible.,1,1
+CDL-GK-0178,Call or radio for help.,0,2
+CDL-GK-0179,The cumulative effect of not getting enough sleep,1,0
+CDL-GK-0179,The money you owe hotels after resting there,0,1
+CDL-GK-0179,The amount of sleep you get each day,0,2
+CDL-GK-0180,Cargo securement,0,0
+CDL-GK-0180,Amount of fuel in the vehicle,1,1
+CDL-GK-0180,Whether all vehicle lights are working and clean,0,2
+CDL-GK-0181,"accelerator, brakes, and clutch pedals.",0,0
+CDL-GK-0181,steering wheel and transmission controls.,0,1
+CDL-GK-0181,both of the above.,1,2
+CDL-GK-0182,"Your blood alcohol level (BAC) is determined by how fast you drink, how much you drink, and how much you weigh.",0,0
+CDL-GK-0182,Alcohol goes directly from the stomach to the blood stream.,0,1
+CDL-GK-0182,A drinker can control how fast his or her body absorbs and gets rid of alcohol.,1,2
+CDL-GK-0183,A vehicle defect that is found during inspection and corrected can prevent problems later.,0,0
+CDL-GK-0183,Federal and state regulations require you to inspect your vehicle.,0,1
+CDL-GK-0183,Both of the above,1,2
+CDL-GK-0184,for the hours you are normally awake.,1,0
+CDL-GK-0184,between the hours of 10 a.m. and midnight.,0,1
+CDL-GK-0184,between the hours of 4 a.m. and 6 p.m.,0,2
+CDL-GK-0185,Flashing your brake lights to stop someone from tailgating,1,0
+CDL-GK-0185,Turning on your headlights during times when visibility is reduced,0,1
+CDL-GK-0185,Flashing your brake lights to warn someone behind you that you are slowing down,0,2
+CDL-GK-0186,Some people aren't affected by drinking,0,0
+CDL-GK-0186,A few beers have the same effect on driving as a few shots of whisky,1,1
+CDL-GK-0186,Coffee and fresh air can sober a person up,0,2
+CDL-GK-0187,"When turning, you should cancel the signal just before you make the turn",0,0
+CDL-GK-0187,You do not need to use your signal when changing lanes on a four-lane highway,0,1
+CDL-GK-0187,"When turning, you should signal early",1,2
+CDL-GK-0187,You should use your turn signal to mark your vehicle when it is pulled off the side of the road,0,3
+CDL-GK-0188,Brakes,0,0
+CDL-GK-0188,Steering,1,1
+CDL-GK-0188,Clutch,0,2
+CDL-GK-0189,Special transit permits,0,0
+CDL-GK-0189,Driving limited to certain times,0,1
+CDL-GK-0189,Flashing lights,0,2
+CDL-GK-0189,All answers are correct,1,3
+CDL-GK-0190,Drive alongside other drivers,0,0
+CDL-GK-0190,Make turns as gently as possible,1,1
+CDL-GK-0190,Decrease the distance that you look ahead of your vehicle,0,2
+CDL-GK-0191,Loss of engine braking effect,0,0
+CDL-GK-0191,Loss of steering control,1,1
+CDL-GK-0191,Damage to the transmission,0,2
+CDL-GK-0192,Care for the injured and collect required information.,0,0
+CDL-GK-0192,Protect the area and notify the authorities.,0,1
+CDL-GK-0192,Both of the above are required procedures,1,2
+CDL-GK-0193,Constantly blow your horn while passing the vehicle.,1,0
+CDL-GK-0193,Assume the other driver does not see you.,0,1
+CDL-GK-0193,"At night, flash your lights from low to high beam and back while you pass the vehicle.",0,2
+CDL-GK-0194,You should back and turn toward the driver's side whenever possible.,0,0
+CDL-GK-0194,Backing is always dangerous.,0,1
+CDL-GK-0194,Both of the above are true.,1,2
+CDL-GK-0195,A thin layer of ice clear enough that you can see the road underneath it,1,0
+CDL-GK-0195,Dirty snow,0,1
+CDL-GK-0195,Rain and snow mixed,0,2
+CDL-GK-0196,there is at least one curb next to your vehicle.,0,0
+CDL-GK-0196,you can pull forward when you leave.,1,1
+CDL-GK-0196,your vehicle is protected by trees or some overhang.,0,2
+CDL-GK-0197,"The steering box should not have mismatched, bent, or cracked lug nuts.",0,0
+CDL-GK-0197,Up to 1/4 of the steering parts may be broken.,0,1
+CDL-GK-0197,"The steering box should not be missing any nuts, bolts, or cotter keys.",1,2
+CDL-GK-0198,Stay in your vehicle.,0,0
+CDL-GK-0198,Scream for help.,0,1
+CDL-GK-0198,Get out of your vehicle and away from the tracks.,1,2
+CDL-GK-0199,4/32 inch,0,0
+CDL-GK-0199,2/32 inch,1,1
+CDL-GK-0199,3/32 inch,0,2
+CDL-GK-0200,25 feet,0,0
+CDL-GK-0200,1 mile,0,1
+CDL-GK-0200,1/4 mile,1,2
+CDL-GK-0201,gross vehicle weight.,0,0
+CDL-GK-0201,gross combination weight.,1,1
+CDL-GK-0201,gross axle weight.,0,2
+CDL-GK-0202,the eyes see a hazard to the time the brain knows that it is a hazard.,0,0
+CDL-GK-0202,the eyes see a hazard to the time the foot pushes the brake pedal.,0,1
+CDL-GK-0202,the brain tells the foot to push the brake pedal to the time the foot actually pushes the pedal.,1,2
+CDL-GK-0203,assume the car left the roadway and change lanes as usual.,0,0
+CDL-GK-0203,ease into the other lane slowly so the other car can get out of the way.,0,1
+CDL-GK-0203,wait until you are sure the car isn't in your blind spot.,1,2
+CDL-GK-0204,involves steady pressure on the brake pedal without locking the wheels.,0,0
+CDL-GK-0204,involves releasing the brakes only after the wheels lock up.,1,1
+CDL-GK-0204,should never be used.,0,2
+CDL-GK-0205,No.,0,0
+CDL-GK-0205,"Yes, and they might place it out of service.",1,1
+CDL-GK-0205,"Yes, but they will not place it out of service.",0,2
+CDL-GK-0206,stop often and take short breaks before you feel really drowsy or tired.,1,0
+CDL-GK-0206,take a short break once or twice during the trip when you are feeling tired or drowsy.,0,1
+CDL-GK-0206,avoid short breaks but keep the window open.,0,2
+CDL-GK-0207,shift into a lower gear.,1,0
+CDL-GK-0207,drive on the shoulder so that others can pass you easily.,0,1
+CDL-GK-0207,exit the roadway until traffic is lighter.,0,2
+CDL-GK-0208,2,1,0
+CDL-GK-0208,3,0,1
+CDL-GK-0208,1,0,2
+CDL-GK-0209,a yellow malfunction lamp in the center of the dolly.,0,0
+CDL-GK-0209,a yellow malfunction lamp on the right side of the dolly.,0,1
+CDL-GK-0209,a yellow malfunction lamp on the left side of the dolly.,1,2
+CDL-GK-0210,Because people feel more comfortable when you do,0,0
+CDL-GK-0210,Because you have blind spots,1,1
+CDL-GK-0210,Because you are providing a job for someone else,0,2
+CDL-GK-0210,For all of the above reasons,0,3
+CDL-GK-0211,14 seconds,0,0
+CDL-GK-0211,More than 30 seconds,0,1
+CDL-GK-0211,10 seconds,0,2
+CDL-GK-0211,More than 15 seconds,1,3
+CDL-GK-0212,A road user or road condition that presents a possible danger,1,0
+CDL-GK-0212,Something you can safely ignore,0,1
+CDL-GK-0212,Something you can easily avoid,0,2
+CDL-GK-0212,Something you must stop for,0,3
+CDL-GK-0213,avoid medications that cause drowsiness.,0,0
+CDL-GK-0213,schedule your trips for the daytime hours.,0,1
+CDL-GK-0213,get 8-9 hours of sleep beforehand.,0,2
+CDL-GK-0213,do all of the above.,1,3
+CDL-GK-0214,"10 feet, 100 feet, and 200 feet toward approaching traffic",1,0
+CDL-GK-0214,"50 feet, 100 feet, and 150 feet toward approaching traffic",0,1
+CDL-GK-0214,"100 feet, 200 feet, and 300 feet toward approaching traffic",0,2
+CDL-GK-0214,"20 feet, 50 feet, and 100 feet toward approaching traffic",0,3
+CDL-GK-0215,is a good idea because the extra pressure will be relieved.,0,0
+CDL-GK-0215,will have no effect at all.,0,1
+CDL-GK-0215,will cool them down. You will be able to continue your trip sooner.,0,2
+CDL-GK-0215,"is a bad idea because when the tires cool off, the pressure will be too low.",1,3
+CDL-GK-0216,3 seconds,0,0
+CDL-GK-0216,4 seconds,1,1
+CDL-GK-0216,7 seconds,0,2
+CDL-GK-0216,6 seconds,0,3
+CDL-GK-0217,Dual tires should be touching each other,0,0
+CDL-GK-0217,Tires of mismatched sizes should not be used on the same vehicle,1,1
+CDL-GK-0217,Radial and bias-ply tires can be used together on the same vehicle,0,2
+CDL-GK-0218,Use your high beams until you completely pass,0,0
+CDL-GK-0218,Signal early,0,1
+CDL-GK-0218,Tap the electrical horn first,1,2
+CDL-GK-0219,Separate the load,0,0
+CDL-GK-0219,Control the load surge,1,1
+CDL-GK-0219,To keep expansion of load down,0,2
+CDL-GK-0219,No answers are correct,0,3
+CDL-GK-0220,A half-hour break for coffee will do more to keep you alert that a half-hour nap,0,0
+CDL-GK-0220,There are drugs that can overcome being tired,0,1
+CDL-GK-0220,"If you must stop to take a nap, it should be at a truck stop or other public area never on the side of the road",0,2
+CDL-GK-0220,The only thing that can cure fatigue is sleep,1,3
+CDL-GK-0221,Whether all vehicle lights are working and are clean,0,0
+CDL-GK-0221,Wiper blades,0,1
+CDL-GK-0221,Cargo securement,0,2
+CDL-GK-0221,All answers are correct,1,3
+CDL-GK-0222,Can be caused by the brakes becoming too hot,1,0
+CDL-GK-0222,Can be corrected by letting up on the brakes for 1-2 seconds and then reapply them,0,1
+CDL-GK-0222,Only occurs with drum brakes,0,2
+CDL-GK-0223,Can cause the vehicle to skid when the road is slippery,1,0
+CDL-GK-0223,Work better at very low rpm's,0,1
+CDL-GK-0223,Allow you to disconnect the steering axle brakes,0,2
+CDL-GK-0223,Cannot be used on interstate highways,0,3
+CDL-GK-0224,Get the vehicle off the road and stop in an open area,1,0
+CDL-GK-0224,Immediately open the door and jump out,0,1
+CDL-GK-0224,Head for the nearest service station,0,2
+CDL-GK-0225,Steer into the left lane,0,0
+CDL-GK-0225,Steer into the oncoming lanes,0,1
+CDL-GK-0225,Steer to the right,1,2
+CDL-GK-0226,The name of the hazard class on the shipping paper,0,0
+CDL-GK-0226,"A four-inch, diamond shaped, hazardous materials label on the container",0,1
+CDL-GK-0226,Hazardous material placards on the vehicle,0,2
+CDL-GK-0226,All answers are correct,1,3
+CDL-GK-0227,One year,0,0
+CDL-GK-0227,Two years,1,1
+CDL-GK-0227,Four years,0,2
+CDL-GK-0228,You should assume the posted clearance signs are correct,0,0
+CDL-GK-0228,A vehicle's clearance can change with the load carried,1,1
+CDL-GK-0228,"If the road surface causes your vehicle to tilt toward objects at the edge of the road, you should drive close to the shoulder",0,2
+CDL-GK-0228,Extra speed will cause air to push your vehicle down for extra clearance,0,3
+CDL-GK-0229,Be placed out of service for 72 hours,0,0
+CDL-GK-0229,Be placed out of service for 24 hours,1,1
+CDL-GK-0229,Be placed out of service for 48 hours,0,2
+CDL-GK-0230,Driving through quickly,0,0
+CDL-GK-0230,Gently pressing the brake pedal while driving through the water,1,1
+CDL-GK-0230,Applying hard pressure on both the brake pedal and accelerator after coming out of the water,0,2
+CDL-GK-0230,Turning on your brake heaters,0,3
+CDL-GK-0231,"Light, pumping action",0,0
+CDL-GK-0231,"Release the brake when you are 5mph below your safe speed, then let your speed come back up to your safe speed and repeat.",1,1
+CDL-GK-0231,Light steady pressure,0,2
+CDL-GK-0232,Backing is always dangerous,0,0
+CDL-GK-0232,You should back and turn toward the driver's side whenever possible,0,1
+CDL-GK-0232,You should use a helper and communicate with hand signals,0,2
+CDL-GK-0232,All answers are correct are true,1,3
+CDL-GK-0233,Cargo doors and cargo securement,0,0
+CDL-GK-0233,Tire temperature,0,1
+CDL-GK-0233,Brake temperature,0,2
+CDL-GK-0233,All answers are correct,1,3
+CDL-GK-0234,"Come to a complete stop if possible, before steering back onto the pavement",1,0
+CDL-GK-0234,"Brake hard to slow the vehicle then, steer sharply onto the pavement",0,1
+CDL-GK-0234,Keep moving at the present speed and steer very gently back onto the pavement,0,2
+CDL-GK-0235,214 feet,0,0
+CDL-GK-0235,215 feet,0,1
+CDL-GK-0235,216 feet,1,2
+CDL-GK-0236,Steering,0,0
+CDL-GK-0236,Braking,0,1
+CDL-GK-0236,Speed control,0,2
+CDL-GK-0236,All answers are correct,1,3
+CDL-GK-0237,The eyes see a hazard to the time the brain knows that it is a hazard,0,0
+CDL-GK-0237,The brain tells the foot to push the brake pedal to the time the foot pushes the pedal,1,1
+CDL-GK-0237,The eyes see a hazard to the time the foot pushes the brake pedal,0,2
+CDL-GK-0237,The brake pedal is pressed to the time the brakes begin to slow the vehicle,0,3
+CDL-GK-0238,Can be used while you are turning sharply,0,0
+CDL-GK-0238,Involves locking the wheels for short periods of time,0,1
+CDL-GK-0238,Is used to keep a vehicle from skidding,1,2
+CDL-GK-0238,All answers are correct,0,3
+CDL-GK-0239,Take your foot off the accelerator,1,0
+CDL-GK-0239,Take your foot off the accelerator and apply the brakes,0,1
+CDL-GK-0239,Try a lower gear,0,2
+CDL-GK-0240,In your pocket,1,0
+CDL-GK-0240,On the dashboard,0,1
+CDL-GK-0240,In the ignition,0,2
+CDL-GK-0240,Pocket on the door,0,3
+CDL-GK-0241,Fast enough to keep up with other drivers,0,0
+CDL-GK-0241,Faster than other traffic,0,1
+CDL-GK-0241,Only fast enough so that you can stop within the distance that you can see ahead,1,2
+CDL-GK-0242,Apply the brakes while turning,0,0
+CDL-GK-0242,Steer with one hand so that you can turn the wheel more quickly,0,1
+CDL-GK-0242,Don't turn any more than is needed to clear what is in your way,1,2
+CDL-GK-0243,Turn the steering wheel as far to the left as you can,0,0
+CDL-GK-0243,Apply the parking brake,1,1
+CDL-GK-0243,Leave it in gear,0,2
+CDL-GK-0244,"A hammer, nails, screwdriver, pliers, and screws",0,0
+CDL-GK-0244,A wrecking bar and fire extinguisher only,0,1
+CDL-GK-0244,"A can of brake fluid, flashlight and a new bottle of window washer fluid",0,2
+CDL-GK-0244,"A fire extinguisher, spare electrical fuses, road flare (fusees) or triangles, emergency kit, and body fluid cleanup kit.",1,3
+CDL-GK-0245,To the front,0,0
+CDL-GK-0245,To the rear,0,1
+CDL-GK-0245,On the side away from most traffic,0,2
+CDL-GK-0245,Balanced in the cargo area,1,3
+CDL-GK-0246,Scheduling trips during hours that you are normally asleep,0,0
+CDL-GK-0246,Taking a cold pill,0,1
+CDL-GK-0246,Taking short breaks before you are drowsy,1,2
+CDL-GK-0247,To see if they have been removed,0,0
+CDL-GK-0247,To insure they are securely fastened to the bus,0,1
+CDL-GK-0247,To insure the seat and back portions are not loose,0,2
+CDL-GK-0247,All answers are correct,1,3
+CDL-GK-0248,Steering wheel play of more than 10 degrees can make it hard to steer,1,0
+CDL-GK-0248,Leaks in the exhaust system are not a problem if they are outside the cab,0,1
+CDL-GK-0248,Some leakage of power steering fluid is normal,0,2
+CDL-GK-0249,Use dirt to put it out,0,0
+CDL-GK-0249,Call the proper authorities,1,1
+CDL-GK-0249,Use the fire extinguisher,0,2
+CDL-GK-0250,Front of cargo,0,0
+CDL-GK-0250,Back of cargo,0,1
+CDL-GK-0250,Side of cargo,0,2
+CDL-GK-0250,All answers are correct,1,3
+CDL-GK-0251,The condition of the tires and cargo,0,0
+CDL-GK-0251,Where the rear wheels of your vehicle are while you make turns,0,1
+CDL-GK-0251,Traffic gaps before you merge,0,2
+CDL-GK-0251,All answers are correct,1,3
+CDL-GK-0252,Carry the triangles at your side,0,0
+CDL-GK-0252,Hold the triangles between your body and oncoming traffic,1,1
+CDL-GK-0252,Keep them out of sight while you walk to the spot where you set them out,0,2
+CDL-GK-0253,117 feet,0,0
+CDL-GK-0253,142 feet,1,1
+CDL-GK-0253,158 feet,0,2
+CDL-GK-0254,Fire extinguisher,0,0
+CDL-GK-0254,Spare electrical fuses if the vehicle uses them,0,1
+CDL-GK-0254,Warning devices for parked vehicles,0,2
+CDL-GK-0254,All answers are correct,1,3
+CDL-GK-0255,"When traction is poor, more power should be applied to the accelerator",0,0
+CDL-GK-0255,Improper acceleration can cause mechanical damage,1,1
+CDL-GK-0255,You should feel a jerking motion if you are accelerating your vehicle properly,0,2
+CDL-GK-0256,Accident reports will be accurate,0,0
+CDL-GK-0256,Law enforcement personnel can be called,0,1
+CDL-GK-0256,You will have time to plan your escape if the hazard becomes an emergency,1,2
+CDL-GK-0257,It should not be done with automatic transmissions,0,0
+CDL-GK-0257,It allows engine compression and friction to help the brakes slow the vehicle,1,1
+CDL-GK-0257,The proper time to downshift is just after the vehicle starts down the hill,0,2
+CDL-GK-0257,It is necessary if the vehicle has retarders,0,3
+CDL-GK-0258,Inspecting your cargo,0,0
+CDL-GK-0258,Recognizing overloads and poorly balanced weight,0,1
+CDL-GK-0258,Knowing your cargo is securely tied down and covered,0,2
+CDL-GK-0258,All answers are correct,1,3
+CDL-GK-0259,Not the responsibility of the driver,0,0
+CDL-GK-0259,Should be performed after every break you take while driving,1,1
+CDL-GK-0259,Are only needed if hazardous materials are being hauled,0,2
+CDL-GK-0259,Should be performed every six hours or 300 miles,0,3
+CDL-GK-0260,Avoiding high speed driving,0,0
+CDL-GK-0260,Making sure the engine has the right amount of oil,0,1
+CDL-GK-0260,Properly adjusted v-belts,0,2
+CDL-GK-0260,All answers are correct,1,3
+CDL-GK-0261,signs that help tax collectors determine how much to tax a hazardous cargo.,0,0
+CDL-GK-0261,"signs that warn the public to stay at least 1,000 feet from the vehicle.",0,1
+CDL-GK-0261,signs on the inside of the vehicle that remind the driver of what he or she is carrying.,0,2
+CDL-GK-0261,signs on the outside of the vehicle that identify the hazard class of the cargo.,1,3
+CDL-GK-0262,4/32 inch.,1,0
+CDL-GK-0262,1/32 inch.,0,1
+CDL-GK-0262,3/8 inch.,0,2
+CDL-GK-0262,1/2 inch.,0,3
+CDL-GK-0263,keep your wheels from locking when you brake hard.,1,0
+CDL-GK-0263,let you drive faster.,0,1
+CDL-GK-0263,increase your vehicle's stopping power.,0,2
+CDL-GK-0263,shorten your stopping distance.,0,3
+CDL-GK-0264,"Retarders help slow a vehicle, reducing the need for braking.",0,0
+CDL-GK-0264,"You should turn the retarder off whenever the road is wet, icy, or snow-covered.",0,1
+CDL-GK-0264,"When your drive wheels have poor traction, the retarder may cause them to skid.",0,2
+CDL-GK-0264,All of the above statements are correct.,1,3
+CDL-GK-0265,wait until you are in the curve before downshifting.,0,0
+CDL-GK-0265,slow down to the posted speed limit for the off ramp.,0,1
+CDL-GK-0265,slow down to a safe speed before taking the curve.,1,2
+CDL-GK-0266,Protect the accident scene.,1,0
+CDL-GK-0266,Flag down help.,0,1
+CDL-GK-0266,Clear the area.,0,2
+CDL-GK-0267,Seconds,1,0
+CDL-GK-0267,It does not matter.,0,1
+CDL-GK-0267,Minutes,0,2
+CDL-GK-0268,perception,1,0
+CDL-GK-0268,reaction,0,1
+CDL-GK-0268,braking,0,2
+CDL-GK-0269,air brakes.,0,0
+CDL-GK-0269,spring brakes.,0,1
+CDL-GK-0269,anti-lock brakes.,1,2
+CDL-GK-0270,When going down grades,1,0
+CDL-GK-0270,When going around curves,0,1
+CDL-GK-0270,When going up grades,0,2
+CDL-GK-0271,"When pulling off the shoulder, pulling up until the trailer is straight",0,0
+CDL-GK-0271,Pulling forward while backing a trailer to reposition it,1,1
+CDL-GK-0271,A maneuver performed by a tow truck to pick up an overturned truck,0,2
+CDL-GK-0272,Whenever you are hauling hazardous materials,0,0
+CDL-GK-0272,Whenever you're driving a CMV,1,1
+CDL-GK-0272,Only in states where the law requires it,0,2
+CDL-GK-0273,Type of tire tread,1,0
+CDL-GK-0273,Weight of the load,0,1
+CDL-GK-0273,Length of the grade,0,2
+CDL-GK-0274,excessive speeding (15 mph or more above the posted limit) and improper lane changes.,0,0
+CDL-GK-0274,reckless driving and following a vehicle too closely.,0,1
+CDL-GK-0274,both of the above.,1,2
+CDL-GK-0275,"maintenance, physical, general.",0,0
+CDL-GK-0275,"post-trip, pre-trip, en-route.",1,1
+CDL-GK-0275,both of the above.,0,2
+CDL-GK-0276,It is usually illegal to turn off your signal before starting a turn.,0,0
+CDL-GK-0276,You need both hands on the wheel to turn safely.,0,1
+CDL-GK-0276,Both of the above are correct.,1,2
+CDL-GK-0277,Steer to the right.,1,0
+CDL-GK-0277,Brake hard.,0,1
+CDL-GK-0277,Prepare for impact.,0,2
+CDL-GK-0278,Poor trailer ventilation can cause flammable cargo to catch fire.,1,0
+CDL-GK-0278,Carrying a properly charged fire extinguisher will help prevent fires.,0,1
+CDL-GK-0278,Underinflated tires will NOT cause a vehicle fire.,0,2
+CDL-GK-0279,"Inspecting the cargo, recognizing overloads, and properly securing the cargo",1,0
+CDL-GK-0279,"Preparing the shipping papers, inspecting the cargo, and properly securing the cargo",0,1
+CDL-GK-0279,"Weighing the cargo, properly securing the cargo, and delivering the cargo",0,2
+CDL-GK-0280,Get out and inspect the areas.,0,0
+CDL-GK-0280,Look out the window.,0,1
+CDL-GK-0280,Check your mirrors regularly.,1,2
+CDL-GK-0281,turn off the engine and take the key with you.,0,0
+CDL-GK-0281,turn on the headlights and four-way flashers.,0,1
+CDL-GK-0281,Both of these answers are correct.,1,2
+CDL-GK-0282,Within 100 feet behind the vehicle,0,0
+CDL-GK-0282,Within 250 feet behind the vehicle,0,1
+CDL-GK-0282,Within 500 feet behind the vehicle,1,2
+CDL-GK-0283,"Low beams, high beams, four-way flashers, and turn signals",1,0
+CDL-GK-0283,"Windshield wipers, mirrors, and hood latches",0,1
+CDL-GK-0283,"Oil, transmission, air compressor, and radiator",0,2
+CDL-GK-0284,It will go away by itself over a period of time.,0,0
+CDL-GK-0284,It can only be paid off by sleeping.,1,1
+CDL-GK-0284,It can be overcome with willpower and non-sleep aids.,0,2
+CDL-GK-0285,Speed up or shift to a higher gear.,0,0
+CDL-GK-0285,Apply the brakes harder and faster.,0,1
+CDL-GK-0285,"Slow down, shift to a low gear, and gently apply the brakes.",1,2
+CDL-GK-0286,The road conditions,0,0
+CDL-GK-0286,The total weight of your vehicle and its cargo,0,1
+CDL-GK-0286,The steepness of the grade,0,2
+CDL-GK-0286,All of the above,1,3
+CDL-GK-0287,"you can see better, watching the vehicle's rear from the side window.",1,0
+CDL-GK-0287,it's more comfortable for turning your neck.,0,1
+CDL-GK-0287,your truck will probably pull toward the driver's side.,0,2
+CDL-GK-0287,all of the above are true.,0,3
+CDL-GK-0288,Wood,1,0
+CDL-GK-0288,Electrical,0,1
+CDL-GK-0288,Grease,0,2
+CDL-GK-0288,Gasoline,0,3
+CDL-GK-0289,Refuse to haul the load,1,0
+CDL-GK-0289,Take the placards off the vehicle,0,1
+CDL-GK-0289,"Haul the load, but only to the nearest place where a driver with a hazardous materials endorsement can take over",0,2
+CDL-GK-0289,"Haul the load, but file a report with the department of transportation after the trip",0,3
+CDL-GK-0290,The vehicle pulls to one side when the brake pedal is pressed,0,0
+CDL-GK-0290,Stopping action is delayed,0,1
+CDL-GK-0290,The brake pedal feels unusual,0,2
+CDL-GK-0290,All answers are correct,1,3
+CDL-GK-0291,Should be kept as high as possible,0,0
+CDL-GK-0291,Can make a vehicle more likely to tip over on curves,1,1
+CDL-GK-0291,Is only a problem if the vehicle is overloaded,0,2
+CDL-GK-0292,Check for overloads,0,0
+CDL-GK-0292,Check for poorly balanced weight,0,1
+CDL-GK-0292,Check if cargo is secured,0,2
+CDL-GK-0292,All answers are correct,1,3
+CDL-GK-0293,Double clutching should not be used when the road is slippery,0,0
+CDL-GK-0293,Double clutching should only be used with a heavy load,0,1
+CDL-GK-0293,You can use the tachometer to tell you when to shift,1,2
+CDL-GK-0294,The total weight of single vehicle,0,0
+CDL-GK-0294,The total weight of single plus load,0,1
+CDL-GK-0294,The total weight of a powered unit plus trailer(s),0,2
+CDL-GK-0294,The total weight of a powered unit plus trailer(s) plus the cargo,1,3
+CDL-GK-0295,Many accidents are caused by drivers keeping too much space in front of their vehicles,0,0
+CDL-GK-0295,Smaller vehicles require more space to stop than larger ones,0,1
+CDL-GK-0295,When the road is slippery you should keep more space in front of your vehicle,1,2
+CDL-GK-0296,Stop driving and park where it is safe to do so,1,0
+CDL-GK-0296,Downshift to stop,0,1
+CDL-GK-0296,Apply the brakes often to keep the linings dry,0,2
+CDL-GK-0297,"When you downshift for a curve, you should do so before you enter the curve",1,0
+CDL-GK-0297,"When you downshift for a hill, you should do so after you start down the hill",0,1
+CDL-GK-0297,"When double clutching, you should let the RPM's decrease while the clutch is released, and the shift lever is in neutral",0,2
+CDL-GK-0298,Slide sideways and spin out,0,0
+CDL-GK-0298,Go straight ahead but will turn if you turn the steering wheel,0,1
+CDL-GK-0298,Go straight ahead even if the steering wheel is turned,1,2
+CDL-GK-0299,There is no need to worry about engine overheating when the weather is very cold,0,0
+CDL-GK-0299,Windshield washer antifreeze should be added to the washer reservoir,1,1
+CDL-GK-0299,Exhaust system leaks are less dangerous in cold weather,0,2
+CDL-GK-0299,"In snowstorms, wiper blades should be adjusted so that they do not make direct contact with the windshield",0,3
+CDL-GK-0300,Robotics,0,0
+CDL-GK-0300,"Exhaust, electrical, hydraulics, and engine",1,1
+CDL-GK-0300,Brake system,0,2
+CDL-GK-0301,Use a smaller following distance,0,0
+CDL-GK-0301,Apply the brakes during turns,0,1
+CDL-GK-0301,Slow down gradually,1,2
+CDL-GK-0301,All the above,0,3
+CDL-GK-0302,Steering that feels heavy,0,0
+CDL-GK-0302,A loud bang,0,1
+CDL-GK-0302,Vibration,0,2
+CDL-GK-0302,All answers are correct,1,3
+CDL-GK-0303,"If a hill or curve keeps drivers behind you from seeing the vehicle within 500 feet, the rear reflective triangle should be moved back down the road to give adequate warning",1,0
+CDL-GK-0303,You do not need to put out reflective triangles unless the vehicle will be stopped for 30 minutes or more,0,1
+CDL-GK-0303,The vehicles taillights should be kept on warning other drivers,0,2
+CDL-GK-0304,Drive slowly,0,0
+CDL-GK-0304,Turn on you flashers / hazard lights,0,1
+CDL-GK-0304,Use your brake lights to warn drivers behind you,0,2
+CDL-GK-0304,All answers are correct,1,3
+CDL-GK-0305,Recognizing possible overloads,0,0
+CDL-GK-0305,Ensuring the freshness of sealed cargo,1,1
+CDL-GK-0305,Making sure that cargo is properly secured,0,2
+CDL-GK-0305,Inspecting the cargo,0,3
+CDL-GK-0306,Moving van,0,0
+CDL-GK-0306,Lowboy,0,1
+CDL-GK-0306,Car carrier,0,2
+CDL-GK-0306,All of the above,1,3
+CDL-GK-0307,frequent changes of speed.,1,0
+CDL-GK-0307,purposely blocking another vehicle from changing lanes.,0,1
+CDL-GK-0307,purposely straddling two lanes of traffic.,0,2
+CDL-GK-0308,They are used to stop vehicles that lose their brakes on downhill grades,0,0
+CDL-GK-0308,They are designed to prevent injury to drivers and passengers,0,1
+CDL-GK-0308,They protect equipment and cargo from severe damage,0,2
+CDL-GK-0308,All answers are correct and true,1,3
+CDL-GK-0309,Every three hours or 150 miles,0,0
+CDL-GK-0309,Within the first 50 miles,0,1
+CDL-GK-0309,After each break you take,0,2
+CDL-GK-0309,All of the above,1,3
+CDL-GK-0310,the same maximum axle weight for any axle spacing.,0,0
+CDL-GK-0310,less maximum axle weight for axles that are close together.,1,1
+CDL-GK-0310,less maximum axle weight for axles that are far apart.,0,2
+CDL-GK-0311,You can sober up in less time.,0,0
+CDL-GK-0311,Judgment and self-control are affected.,1,1
+CDL-GK-0311,You see more clearly how alcohol is affecting you.,0,2
+CDL-GK-0312,The legal maximum weight allowed by a state can be considered safe for all driving conditions,0,0
+CDL-GK-0312,Slight overloading of a vehicle can make its brakes work better,0,1
+CDL-GK-0312,State laws dictate legal weight limits,1,2
+CDL-GK-0312,"If the shipper loads cargo, the driver is not responsible for overloading",0,3
+CDL-GK-0313,It wears brake linings,0,0
+CDL-GK-0313,Disconnecting steering axle brakes will help keep your vehicle in a straight-line during emergency braking,0,1
+CDL-GK-0313,"If the wheels are skidding, you cannot control the vehicle",1,2
+CDL-GK-0314,They must be no more than 15 inches above the ground when the vehicle is completely unloaded.,0,0
+CDL-GK-0314,It depends on the state.,1,1
+CDL-GK-0314,They must be no more than 8 inches above the ground when the vehicle is fully loaded.,0,2
+CDL-GK-0315,off-tracking.,1,0
+CDL-GK-0315,hydroplaning.,0,1
+CDL-GK-0315,fishtailing.,0,2
+CDL-GK-0316,Driving in the snow,0,0
+CDL-GK-0316,When you hit a pothole,0,1
+CDL-GK-0316,When the tires skim over the road surface,1,2
+CDL-GK-0317,stop and make sure if you aren't certain that a clearance is high enough.,1,0
+CDL-GK-0317,assume all clearances are high enough.,0,1
+CDL-GK-0317,not worry about the height clearance as long as you stay on state or federal highways.,0,2
+CDL-GK-0318,height.,0,0
+CDL-GK-0318,body weight.,1,1
+CDL-GK-0318,age.,0,2
+CDL-GK-0319,help prevent skids and reduce brake wear.,0,0
+CDL-GK-0319,apply extra braking power to the non-drive axles.,0,1
+CDL-GK-0319,help slow the vehicle while driving and reduce brake wear.,1,2
+CDL-GK-0320,Multi-speed rear axles,0,0
+CDL-GK-0320,Auxiliary transmissions,0,1
+CDL-GK-0320,Both of the above,1,2
+CDL-GK-0321,Engine oil level,0,0
+CDL-GK-0321,Valve clearance,1,1
+CDL-GK-0321,Condition of belts and hoses,0,2
+CDL-GK-0322,Move the vehicle slowly and see if it stops when the brake is applied,0,0
+CDL-GK-0322,Measure the free play in the pedal with a ruler,0,1
+CDL-GK-0322,"With the vehicle stopped, pump the pedal three times; apply firm pressure for 5 seconds, then hold and see if the pedal moves",1,2
+CDL-GK-0323,Short circuits and loose connections,1,0
+CDL-GK-0323,Spilled fuel cleaned up quickly and properly,0,1
+CDL-GK-0323,Driver smoking in a rest area,0,2
+CDL-GK-0323,Flammable cargo with proper ventilation,0,3
+CDL-GK-0324,outrun you.,0,0
+CDL-GK-0324,stop faster than you.,1,1
+CDL-GK-0324,make turns faster than you.,0,2
+CDL-GK-0325,As far ahead as you can see,0,0
+CDL-GK-0325,1 block,1,1
+CDL-GK-0325,2 blocks,0,2
+CDL-GK-0326,Underinflated tires and duals that touch,1,0
+CDL-GK-0326,Tight turns and gravel roads,0,1
+CDL-GK-0326,Driver smoking and following too close,0,2
+CDL-GK-0327,You should review it during your pre-trip inspection.,1,0
+CDL-GK-0327,It doesn't have to be reviewed.,0,1
+CDL-GK-0327,You should review it once a week.,0,2
+CDL-GK-0328,Stop and direct traffic around it.,0,0
+CDL-GK-0328,Steer around it when it is safe to do so,1,1
+CDL-GK-0328,Brake hard to avoid hitting it,0,2
+CDL-GK-0329,Starting up a hill and finishing a curve,0,0
+CDL-GK-0329,Starting down a hill and finishing a curve,0,1
+CDL-GK-0329,Starting down a hill and entering a curve,1,2
+CDL-GK-0329,Starting up a hill and entering a curve,0,3
+CDL-GK-0330,Turning too sharply,0,0
+CDL-GK-0330,Not enough weight on the front axle,0,1
+CDL-GK-0330,Over acceleration,0,2
+CDL-GK-0330,All answers are correct,1,3
+CDL-GK-0331,Straight ahead,0,0
+CDL-GK-0331,To the right side of the road,0,1
+CDL-GK-0331,To the left side of the road,0,2
+CDL-GK-0331,"Back and forth, near and far",1,3
+CDL-GK-0332,"If your engine overheats within 20 miles of the end of your trip, you should complete the trip and then check the problem",0,0
+CDL-GK-0332,You should never shut off an overheated engine until it cools,0,1
+CDL-GK-0332,You should never remove the radiator cap on a pressurized system,1,2
+CDL-GK-0332,Antifreeze is not needed when the weather is warm,0,3
+CDL-GK-0333,used to get out of a burning truck.,0,0
+CDL-GK-0333,used to stop runaway vehicles.,1,1
+CDL-GK-0333,for combination vehicles only.,0,2
+CDL-GK-0334,near; lower,1,0
+CDL-GK-0334,below; higher,0,1
+CDL-GK-0334,above; lower,0,2
+CDL-GK-0335,Carbon dioxide,0,0
+CDL-GK-0335,Water,0,1
+CDL-GK-0335,Dry chemical,1,2
+CDL-GK-0336,"Brake shoes must not be worn dangerously thin, missing, or broken.",0,0
+CDL-GK-0336,"Brake pads should not have oil, grease, or brake fluid on them.",0,1
+CDL-GK-0336,Both of the above are correct.,1,2
+CDL-GK-0337,Trucks with a high center of gravity can stop faster.,0,0
+CDL-GK-0337,Trucks with a high center of gravity can roll over at the posted speed limit for a curve.,1,1
+CDL-GK-0337,Trucks with a high center of gravity can get stuck on railroad tracks.,0,2
+CDL-GK-0338,1/3,1,0
+CDL-GK-0338,1/2,0,1
+CDL-GK-0338,2/3,0,2
+CDL-GK-0339,Total weight of a single vehicle,0,0
+CDL-GK-0339,Total weight of a single vehicle plus its load,1,1
+CDL-GK-0339,Both above,0,2
+CDL-GK-0339,No answers are correct,0,3
+CDL-GK-0340,You should inspect your tires more often because they are more likely to fail,1,0
+CDL-GK-0340,If a tire it is too hot to touch you should drive on it to cool it off,0,1
+CDL-GK-0340,Recapped tires are less likely to fail in hot weather than new tires,0,2
+CDL-GK-0341,High center of gravity,0,0
+CDL-GK-0341,Danger of load surge,0,1
+CDL-GK-0341,High center of gravity and danger of load surge,1,2
+CDL-GK-0341,No answers are correct,0,3
+CDL-GK-0342,Every 1/4 mile,0,0
+CDL-GK-0342,Every 8 to 10 seconds,1,1
+CDL-GK-0342,When turning or changing lanes,0,2
+CDL-GK-0343,"Check if your vehicle was manufactured after March 1, 1998. (Such vehicles are required to have the panel light.)",0,0
+CDL-GK-0343,Check for a yellow ABS malfunction lamp on the instrument panel.,0,1
+CDL-GK-0343,Look for wheel speed sensor wires that are coming from the rear of your brakes.,0,2
+CDL-GK-0343,All of the above can work.,1,3
+CDL-GK-0344,slide sideways and spin out.,0,0
+CDL-GK-0344,go straight ahead even if the steering wheel is turned.,1,1
+CDL-GK-0344,go to the right.,0,2
+CDL-GK-0345,500 feet.,1,0
+CDL-GK-0345,300 feet.,0,1
+CDL-GK-0345,400 feet.,0,2
+CDL-GK-0346,Try to get your vehicle to the side of the road.,0,0
+CDL-GK-0346,"If you're stopping to help, park away from the accident.",0,1
+CDL-GK-0346,Both of the above are correct,1,2
+CDL-GK-0347,You need to be in the same gear at the bottom of the hill.,0,0
+CDL-GK-0347,You will not be able to shift into a lower gear once you are going down a hill.,1,1
+CDL-GK-0347,The clutch is made to be used on even surfaces.,0,2
+CDL-GK-0348,turn on your parking lights.,0,0
+CDL-GK-0348,watch for sharp pavement drop-offs.,1,1
+CDL-GK-0348,reduce speed only if workers are close to the roadway.,0,2
+CDL-GK-0349,turn the wheel sharply for all turns.,0,0
+CDL-GK-0349,adjust to conditions while driving.,1,1
+CDL-GK-0349,brake hard at all stops.,0,2
+CDL-GK-0350,Slow down to prevent a crash.,0,0
+CDL-GK-0350,Signal and change lanes to avoid the car if possible.,0,1
+CDL-GK-0350,Honk and stay close behind the car.,1,2
+CDL-GK-0350,Both A and B.,0,3
+CDL-GK-0351,to the front.,0,0
+CDL-GK-0351,to the rear.,0,1
+CDL-GK-0351,balanced in the cargo area.,1,2
+CDL-GK-0352,Have a drink to calm your nerves.,0,0
+CDL-GK-0352,Set out warning devices to keep other vehicles from running into the accident scene.,1,1
+CDL-GK-0352,"Leave your vehicle, do nothing, and get to higher ground.",0,2
+CDL-GK-0352,Stay in your vehicle and do nothing until help arrives.,0,3
+CDL-GK-0353,The drinker clearly sees how alcohol is affecting them,0,0
+CDL-GK-0353,The effects of alcohol decreases,0,1
+CDL-GK-0353,The person becomes more dangerous if allowed to drive,1,2
+CDL-GK-0353,The drinker can sober up in less time,0,3
+CDL-GK-0354,Only occurs when there is a lot of water,0,0
+CDL-GK-0354,Only occurs at speeds above 50 mph,0,1
+CDL-GK-0354,Cannot occur when driving through a puddle,0,2
+CDL-GK-0354,Is more likely if tire pressure is low,1,3
+CDL-GK-0355,Increase stopping distance,0,0
+CDL-GK-0355,Tip over,1,1
+CDL-GK-0355,Increase speed going downhill,0,2
+CDL-GK-0355,No answers are correct,0,3
+CDL-GK-0356,"If cargo in a van or a box trailer catches on fire, you should open the cargo doors as soon as you can",0,0
+CDL-GK-0356,"If your engine is on fire, you should open the hood as soon as you can",0,1
+CDL-GK-0356,"If a trailer is on fire, you should drive fast to put out the flames",0,2
+CDL-GK-0356,A burning tire must be cooled,1,3
+CDL-GK-0357,10 feet of cargo,1,0
+CDL-GK-0357,12 feet of cargo,0,1
+CDL-GK-0357,15 feet of cargo,0,2
+CDL-GK-0358,Note the problem and continue your route,0,0
+CDL-GK-0358,Go home because shouldn't drive the vehicle this way,0,1
+CDL-GK-0358,Report the problem and arrange for another vehicle to use,1,2
+CDL-GK-0358,No answers are correct,0,3
+CDL-GK-0359,Overloading can damage vehicle,0,0
+CDL-GK-0359,Other highway users can hit or be hit by loose cargo,0,1
+CDL-GK-0359,Loose cargo can cause injury to the driver or passengers during a quick stop or crash,0,2
+CDL-GK-0359,All answers are correct are true,1,3
+CDL-GK-0360,30 mph,0,0
+CDL-GK-0360,35 mph,1,1
+CDL-GK-0360,40 mph,0,2
+CDL-GK-0361,During bad weather; in mountains,1,0
+CDL-GK-0361,At night; in heavy traffic,0,1
+CDL-GK-0361,Through tunnels; over bridges,0,2
+CDL-GK-0362,"Watch gauges and mirrors and use your senses to check for problems: LOOK, LISTEN, and SMELL.",1,0
+CDL-GK-0362,Check your maps and directions and the weather report.,0,1
+CDL-GK-0362,Check load stability by slightly swerving left to right in your lane.,0,2
+CDL-GK-0363,control of the vehicle.,1,0
+CDL-GK-0363,the engine warm.,0,1
+CDL-GK-0363,the engine oil flowing.,0,2
+CDL-GK-0364,Pull off the road and get some sleep.,1,0
+CDL-GK-0364,Open the windows for some fresh air.,0,1
+CDL-GK-0364,Drink a cup of coffee.,0,2
+CDL-GK-0364,Drink energy drinks.,0,3
+CDL-GK-0365,Oil,0,0
+CDL-GK-0365,Air,1,1
+CDL-GK-0365,Temp,0,2
+CDL-GK-0366,2 seconds,0,0
+CDL-GK-0366,3 seconds,0,1
+CDL-GK-0366,4 seconds,1,2
+CDL-GK-0367,"The term ""tank vehicle"" refers only to those vehicles having a permanently attached tank.",0,0
+CDL-GK-0367,Special skills are required to haul liquid tanks.,1,1
+CDL-GK-0367,All tank vehicles have some sort of bulkhead or baffle.,0,2
+CDL-GK-0368,Tire fires,1,0
+CDL-GK-0368,Gasoline fires,0,1
+CDL-GK-0368,Electrical fires,0,2
+CDL-GK-0369,Tire damage,1,0
+CDL-GK-0369,Mechanical damage,0,1
+CDL-GK-0369,Damage to the coupling,0,2
+CDL-GK-0370,Shift up.,1,0
+CDL-GK-0370,Pump the brakes.,0,1
+CDL-GK-0370,Use the parking or emergency brake.,0,2
+CDL-HZ-0001,9,1,0
+CDL-HZ-0001,23,0,1
+CDL-HZ-0001,24,0,2
+CDL-HZ-0002,Dangerous,0,0
+CDL-HZ-0002,Poison/ inhalation hazard,1,1
+CDL-HZ-0002,Flammable,0,2
+CDL-HZ-0003,The shipper's loading foreman is present,0,0
+CDL-HZ-0003,The explosives have been placed at least 200 feet away from the vehicles and occupied buildings,1,1
+CDL-HZ-0003,At least 30 minutes have passed,0,2
+CDL-HZ-0004,The shipper is a private carrier carrying his or her own product,1,0
+CDL-HZ-0004,The shipment is a hazardous waste,0,1
+CDL-HZ-0004,The driver is given a sealed cargo compartment,0,2
+CDL-HZ-0005,Signal fires,0,0
+CDL-HZ-0005,Reflective triangles,1,1
+CDL-HZ-0005,Flares or fusees,0,2
+CDL-HZ-0006,A placard flammable at 1000 pounds,0,0
+CDL-HZ-0006,A placard blasting agent at any amount,0,1
+CDL-HZ-0006,A placard corrosive at 1001 pounds,1,2
+CDL-HZ-0007,Is another way of writing the weight of the package.,0,0
+CDL-HZ-0007,Tells the degree of control needed during transportation,1,1
+CDL-HZ-0007,Is something that only the shipper needs to worry about,0,2
+CDL-HZ-0008,Must be signed and carried by anyone transporting a hazardous waste,1,0
+CDL-HZ-0008,Is the same as any other shipping paper,0,1
+CDL-HZ-0008,Is required only if there is a loss of cargo during transport,0,2
+CDL-HZ-0009,It is ok to ship this material by air only,0,0
+CDL-HZ-0009,There are no restrictions with this material if shipped by water only,0,1
+CDL-HZ-0009,This material has no restrictions when shipped by air and/or water,0,2
+CDL-HZ-0009,This material is only restricted when shipped by air and/or water,1,3
+CDL-HZ-0010,Only when filling a trailer with explosives,0,0
+CDL-HZ-0010,Only when unloading a cargo tank filled with any flammable liquid,0,1
+CDL-HZ-0010,"When filling or unloading any flammable liquid tank, ground must be maintained until filling hole is properly closed",1,2
+CDL-HZ-0011,10,0,0
+CDL-HZ-0011,50,1,1
+CDL-HZ-0011,25,0,2
+CDL-HZ-0012,The carrier's insurance policy,0,0
+CDL-HZ-0012,The written route plan,1,1
+CDL-HZ-0012,Both above,0,2
+CDL-HZ-0013,In an emergency,1,0
+CDL-HZ-0013,When the fire department is there,0,1
+CDL-HZ-0013,You should never make a transfer,0,2
+CDL-HZ-0014,Any other hazardous material,0,0
+CDL-HZ-0014,Nothing,0,1
+CDL-HZ-0014,You can't haul a forbidden cargo,1,2
+CDL-HZ-0015,250 mm oval,0,0
+CDL-HZ-0015,250 mm  diamond,0,1
+CDL-HZ-0015,at least a 250 mm square or diamond,1,2
+CDL-HZ-0016,Never use hooks or other metal tools,1,0
+CDL-HZ-0016,Keep bystanders 100 feet away,0,1
+CDL-HZ-0016,Double wrap wet boxes in plastic to prevent staining,0,2
+CDL-HZ-0017,The name and address of shipper or co-signee,0,0
+CDL-HZ-0017,The hazardous materials shipping name and identification number,0,1
+CDL-HZ-0017,The required label,0,2
+CDL-HZ-0017,All the answers are correct,1,3
+CDL-HZ-0018,Are equipped with fire sprinklers,0,0
+CDL-HZ-0018,Have legal total limit of a nonflammable material,0,1
+CDL-HZ-0018,Can safely pass the fire without stopping,1,2
+CDL-HZ-0019,Non-hazardous material,1,0
+CDL-HZ-0019,Reportable quantity of a hazardous substance,0,1
+CDL-HZ-0019,Hazardous waste,0,2
+CDL-HZ-0020,International transportation,1,0
+CDL-HZ-0020,Invalid substance,0,1
+CDL-HZ-0020,International restrictions,0,2
+CDL-HZ-0021,Keep driving slowly and cautiously until you reach a phone.,0,0
+CDL-HZ-0021,Send someone for help with all the necessary information.,1,1
+CDL-HZ-0021,Keep driving for help as quickly as possible.,0,2
+CDL-HZ-0021,Leave your truck parked with its emergency lights on and walk for help.,0,3
+CDL-HZ-0022,On the driver's seat whenever you are out of the vehicle,1,0
+CDL-HZ-0022,In a fireproof pouch under the passenger seat while you are driving,0,1
+CDL-HZ-0022,In a locked glove compartment whenever you are out of the vehicle,0,2
+CDL-HZ-0022,In a fireproof pouch under the driver's seat that you can reach while you are driving,0,3
+CDL-HZ-0023,Class 1 only.,0,0
+CDL-HZ-0023,Class 4.2 only.,0,1
+CDL-HZ-0023,"Classes 1, 2, 3, or 4.",1,2
+CDL-HZ-0023,Class 5.2 only.,0,3
+CDL-HZ-0024,To give people something interesting to look at while they drive,0,0
+CDL-HZ-0024,To warn those with children to drive in another lane,0,1
+CDL-HZ-0024,To force other drivers to stay 20 feet away in every direction,0,2
+CDL-HZ-0024,To communicate risk,1,3
+CDL-HZ-0025,Inform someone and do not load the battery acid.,1,0
+CDL-HZ-0025,Make sure the battery acid is loaded on top of the silver cyanide.,0,1
+CDL-HZ-0025,Make sure the silver cyanide is loaded on top of the battery acid.,0,2
+CDL-HZ-0025,Make sure there is plenty of space between the two.,0,3
+CDL-HZ-0026,on a temporary license plate holder and on the steering wheel.,0,0
+CDL-HZ-0026,on the back of the truck and inside the glove compartment.,0,1
+CDL-HZ-0026,on all bulk packaging and on the cargo tanks.,1,2
+CDL-HZ-0026,on the gas tank and on a sticker in the glove compartment.,0,3
+CDL-HZ-0027,Prevent smoking and keep open flames away.,0,0
+CDL-HZ-0027,Keep people away and warn them of danger.,0,1
+CDL-HZ-0027,Do both of the above.,1,2
+CDL-HZ-0028,"The shipper, all carriers, and the receiver",1,0
+CDL-HZ-0028,The shipper and the receiver,0,1
+CDL-HZ-0028,The shipper and the first carrier,0,2
+CDL-HZ-0029,package different types of hazardous materials for transport.,0,0
+CDL-HZ-0029,placard your vehicle.,1,1
+CDL-HZ-0029,identify various types of hazardous materials by smell and appearance.,0,2
+CDL-HZ-0030,page numbers if the shipping paper has more than one page.,0,0
+CDL-HZ-0030,a proper shipping description for each hazardous material and a shipper's certification stating that they prepared the shipment according to the regulations.,0,1
+CDL-HZ-0030,both of the above.,1,2
+CDL-HZ-0031,1 year,0,0
+CDL-HZ-0031,2 years,0,1
+CDL-HZ-0031,3 years,1,2
+CDL-HZ-0031,4 years,0,3
+CDL-HZ-0032,Material listed on that line in the largest part of the shipment,0,0
+CDL-HZ-0032,Entry refers to the materials that must be top loaded,0,1
+CDL-HZ-0032,Shipment is regulated by hazardous material regulations,1,2
+CDL-HZ-0033,Keep people away and warn them of the danger,0,0
+CDL-HZ-0033,Prevent smoking and keep open flames away,0,1
+CDL-HZ-0033,All answers are correct,1,2
+CDL-HZ-0034,Oval,0,0
+CDL-HZ-0034,Rectangle,0,1
+CDL-HZ-0034,Diamond,1,2
+CDL-HZ-0035,Explosives,0,0
+CDL-HZ-0035,Oxidizers,0,1
+CDL-HZ-0035,Flammables,0,2
+CDL-HZ-0035,All the answers are correct,1,3
+CDL-HZ-0036,Materials hazard class,0,0
+CDL-HZ-0036,Amount being shipped,0,1
+CDL-HZ-0036,All the answers are correct,1,2
+CDL-HZ-0037,"Material has an insurance value of over $1,000",0,0
+CDL-HZ-0037,Material is in a package containing no other materials,0,1
+CDL-HZ-0037,Carrier must report any spill of this material,1,2
+CDL-HZ-0038,Gases,0,0
+CDL-HZ-0038,"Identifies the proper shipping name for which one or more technical names of the hazardous material must be entered in parentheses, along with the basic description",1,1
+CDL-HZ-0038,Identifies the proper shipping name,0,2
+CDL-HZ-0039,5 to 10 feet,0,0
+CDL-HZ-0039,15 to 50 yards,0,1
+CDL-HZ-0039,15 to 20 feet,0,2
+CDL-HZ-0039,15 to 50 feet,1,3
+CDL-HZ-0040,An extra fire bottle,0,0
+CDL-HZ-0040,The consignee's phone number,0,1
+CDL-HZ-0040,A copy of FMCSR part 397,1,2
+CDL-HZ-0041,Poisons,1,0
+CDL-HZ-0041,Flammable gases,0,1
+CDL-HZ-0041,Explosives,0,2
+CDL-HZ-0042,Any property that is totally fenced in by an 8-foot-high fence,0,0
+CDL-HZ-0042,Any property that is totally fenced in by an 8-foot-high fence and has a guard on duty all day long,0,1
+CDL-HZ-0042,Any property that has been government approved for this use,1,2
+CDL-HZ-0043,The driver,1,0
+CDL-HZ-0043,The carrier,0,1
+CDL-HZ-0043,The shipper,0,2
+CDL-HZ-0044,Never,1,0
+CDL-HZ-0044,Only when the load is placarded,0,1
+CDL-HZ-0044,Only when the shipment does not cross state lines,0,2
+CDL-HZ-0045,Below any other commodities,0,0
+CDL-HZ-0045,Above any other commodities,1,1
+CDL-HZ-0045,No more than 3 tiers high,0,2
+CDL-HZ-0046,make it easy to identify.,1,0
+CDL-HZ-0046,make it easy to open and close the packages.,0,1
+CDL-HZ-0046,make it as light as possible.,0,2
+CDL-HZ-0046,do all of the above.,0,3
+CDL-HZ-0047,The amount of a substance or material being shipped,0,0
+CDL-HZ-0047,The amount of all the hazardous materials of all classes in your vehicle,0,1
+CDL-HZ-0047,The manufacturing date of the material,1,2
+CDL-HZ-0047,The hazard class of the substance or material,0,3
+CDL-HZ-0048,UN marks,0,0
+CDL-HZ-0048,Identification number,0,1
+CDL-HZ-0048,Name in italics,1,2
+CDL-HZ-0048,Descriptive name in Roman print,0,3
+CDL-HZ-0049,"Classes 1, 4, and 5.1",0,0
+CDL-HZ-0049,"Classes 1, 3, and 4",0,1
+CDL-HZ-0049,"Classes 1, 2.1, and 3",1,2
+CDL-HZ-0049,"Classes 1, 3, and 6",0,3
+CDL-HZ-0050,Cargo tanks are filled while on the vehicle; portable tanks can be filled either on or off the vehicle.,0,0
+CDL-HZ-0050,Cargo tanks are permanently attached to vehicles; portable tanks are temporarily attached.,0,1
+CDL-HZ-0050,Portable tanks must show the owner or lessee's name on them.,0,2
+CDL-HZ-0050,All of the above are major differences.,1,3
+CDL-HZ-0051,eight,1,0
+CDL-HZ-0051,five,0,1
+CDL-HZ-0051,three,0,2
+CDL-HZ-0052,use placards.,0,0
+CDL-HZ-0052,have their drivers text their locations.,1,1
+CDL-HZ-0052,provide proper shipping papers.,0,2
+CDL-HZ-0053,the driver.,0,0
+CDL-HZ-0053,the receiver.,0,1
+CDL-HZ-0053,the shipper.,1,2
+CDL-HZ-0054,Close all manholes and valves. Be sure they are free of leaks.,1,0
+CDL-HZ-0054,Call CHEMTREC by phone and tell them where you are going.,0,1
+CDL-HZ-0054,Have the loading observers sign the shipping papers.,0,2
+CDL-HZ-0055,less than half of the load.,0,0
+CDL-HZ-0055,bundled loosely together with steel strapping.,0,1
+CDL-HZ-0055,loaded upright or lying down flat and braced.,1,2
+CDL-HZ-0056,An emergency kit for controlling leaks in fittings on the dome cover plate,0,0
+CDL-HZ-0056,An approved gas mask,0,1
+CDL-HZ-0056,Both of the above,1,2
+CDL-HZ-0057,Only if regulations specifically authorize the shipper to do it,1,0
+CDL-HZ-0057,Only if there isn't enough room for the whole thing,0,1
+CDL-HZ-0057,Only if it is one of the five most frequently shipped hazardous materials,0,2
+CDL-HZ-0058,Leave it on the entire time.,0,0
+CDL-HZ-0058,Turn it off on arrival; use other power to run the pump.,0,1
+CDL-HZ-0058,Turn it off after unhooking the hoses.,0,2
+CDL-HZ-0058,Turn it off before unhooking the hoses.,1,3
+CDL-HZ-0059,Non-ferrous metal,1,0
+CDL-HZ-0059,Stainless steel,0,1
+CDL-HZ-0059,Carbon steel,0,2
+CDL-HZ-0059,All of the above,0,3
+CDL-HZ-0060,On the packages and on paperwork at the shipping point of origin,0,0
+CDL-HZ-0060,On the packages and on paperwork at the shipping destination,0,1
+CDL-HZ-0060,On the shipping papers and on a secret document in the driver's wallet,0,2
+CDL-HZ-0060,On the shipping papers and on the packages,1,3
+CDL-HZ-0061,Cargo tank without baffles,0,0
+CDL-HZ-0061,Radioactive material,1,1
+CDL-HZ-0061,OMR-D materials,0,2
+CDL-HZ-0062,Within 10 feet of the pump with a fire extinguisher,0,0
+CDL-HZ-0062,"At the nozzle, controlling the fuel flow",1,1
+CDL-HZ-0062,At the emergency power shut off for the pump,0,2
+CDL-HZ-0063,They clean up any spill,0,0
+CDL-HZ-0063,They maintain the scene and keep people away,0,1
+CDL-HZ-0063,They coordinate and advise companies on spills; they also link up proper authorities with those companies,1,2
+CDL-HZ-0064,"Four, two on the front and two on the back",0,0
+CDL-HZ-0064,"Two, one on the front and one on the back",0,1
+CDL-HZ-0064,"Four, one on the front, one on the back, and one on each side of the vehicle",1,2
+CDL-HZ-0065,Explosives 1.1 through 1.3,1,0
+CDL-HZ-0065,Corrosives and oxidizers,0,1
+CDL-HZ-0065,Acids and poisons,0,2
+CDL-HZ-0066,The driver,0,0
+CDL-HZ-0066,The shipper,0,1
+CDL-HZ-0066,The carrier,1,2
+CDL-HZ-0067,EPA dangerous materials list,1,0
+CDL-HZ-0067,Hazardous materials table,0,1
+CDL-HZ-0067,List of hazardous substances and reportable quantities,0,2
+CDL-HZ-0068,The driver,1,0
+CDL-HZ-0068,The passenger,0,1
+CDL-HZ-0068,The carrier,0,2
+CDL-HZ-0069,1 week,0,0
+CDL-HZ-0069,60 days,0,1
+CDL-HZ-0069,30 days,1,2
+CDL-HZ-0070,Before starting the trip,1,0
+CDL-HZ-0070,Within the first 50 miles of the trip,0,1
+CDL-HZ-0070,While you are still on a part of the route that you know,0,2
+CDL-HZ-0071,110 gallons,0,0
+CDL-HZ-0071,100 gallons,0,1
+CDL-HZ-0071,More than 119 gallons,1,2
+CDL-HZ-0072,Domestic restrictions,0,0
+CDL-HZ-0072,Detonators,0,1
+CDL-HZ-0072,Domestic transportation,1,2
+CDL-HZ-0073,The medical term for hazardous materials used by medical personnel,0,0
+CDL-HZ-0073,The name of a hazardous material most commonly used on the street,0,1
+CDL-HZ-0073,The name of a hazardous material most commonly used in the trucking community and accepted as standard,0,2
+CDL-HZ-0073,"The name of a hazardous material used in scientific journals and texts, recognized as its chemical or microbiological name",1,3
+CDL-HZ-0074,Class 7 (radioactive materials),1,0
+CDL-HZ-0074,Class 1 (explosives),0,1
+CDL-HZ-0074,Class 3 (flammable liquids),0,2
+CDL-HZ-0074,Class 4 (flammable solids),0,3
+CDL-HZ-0075,A maximum net mass of 400 kg (882 pounds) or less and a maximum capacity of 450 L (119 gallons) or less if used as a receptacle for a solid,0,0
+CDL-HZ-0075,"A water capacity of 454 kg (1,000 pounds) or less if used as a receptacle for a gas",0,1
+CDL-HZ-0075,A maximum capacity of 450 L (119 gallons) or less if used as a receptacle for a liquid,0,2
+CDL-HZ-0075,All of the above,1,3
+CDL-HZ-0076,Because they are expensive,0,0
+CDL-HZ-0076,"Because while being transported, they pose a risk to health, property, or safety",1,1
+CDL-HZ-0076,Because they are rare,0,2
+CDL-HZ-0077,is required only if there is a loss of cargo during transport.,0,0
+CDL-HZ-0077,is the same as any other shipping paper.,0,1
+CDL-HZ-0077,must be signed by each carrier transporting the shipment.,1,2
+CDL-HZ-0078,Internationally,0,0
+CDL-HZ-0078,Within the United States and to and from Canada,1,1
+CDL-HZ-0078,Both of these answers,0,2
+CDL-HZ-0079,100,0,0
+CDL-HZ-0079,200,0,1
+CDL-HZ-0079,300,1,2
+CDL-HZ-0080,A UL rating of 10 BC or above,1,0
+CDL-HZ-0080,A UL rating of 5 BC or above,0,1
+CDL-HZ-0080,A UL rating of 15 ABC,0,2
+CDL-HZ-0081,Open and inspect every package and container,0,0
+CDL-HZ-0081,Check for a fence around the loading dock,0,1
+CDL-HZ-0081,Look at the shipping papers,1,2
+CDL-HZ-0082,Loaded in an upright or horizontal position,0,0
+CDL-HZ-0082,Loaded into racks attached to the vehicle,0,1
+CDL-HZ-0082,In boxes that will keep them from turning over,0,2
+CDL-HZ-0082,All answers are correct,1,3
+CDL-HZ-0083,Continue at reduced speed and check that tire every 25 miles,0,0
+CDL-HZ-0083,Stop at the nearest safe place and fix it,1,1
+CDL-HZ-0083,Report it to your carrier immediately,0,2
+CDL-HZ-0084,In a pouch on the driver's door,0,0
+CDL-HZ-0084,Within reach always,0,1
+CDL-HZ-0084,All Answers are correct,1,2
+CDL-HZ-0085,50 mm,0,0
+CDL-HZ-0085,100 mm,1,1
+CDL-HZ-0085,25 mm,0,2
+CDL-HZ-0086,contains an index of hazardous material identification numbers (which is why you must label things correctly).,0,0
+CDL-HZ-0086,was created by the US Department of Transportation and is used nationwide.,0,1
+CDL-HZ-0086,is studied by emergency personnel to help keep the public safe.,0,2
+CDL-HZ-0086,does all of the above.,1,3
+CDL-HZ-0087,any amount,1,0
+CDL-HZ-0087,100 gallons,0,1
+CDL-HZ-0087,110 gallons,0,2
+CDL-HZ-0088,Tell only the emergency response team about the hazard,0,0
+CDL-HZ-0088,Keep all people far away and upwind of the accident,1,1
+CDL-HZ-0088,Prevent a panic by acting like nothing is wrong,0,2
+CDL-HZ-0089,True,0,0
+CDL-HZ-0089,False,1,1
+CDL-HZ-0090,The shipper,1,0
+CDL-HZ-0090,The carrier,0,1
+CDL-HZ-0090,The driver,0,2
+CDL-HZ-0091,Two or more trailers,0,0
+CDL-HZ-0091,A 200-inch wheelbase trailer,0,1
+CDL-HZ-0091,A placarded cargo tank,1,2
+CDL-HZ-0092,explosives 1.1 placards,1,0
+CDL-HZ-0092,dangerous placards,0,1
+CDL-HZ-0092,blasting agents' placards,0,2
+CDL-HZ-0093,25,0,0
+CDL-HZ-0093,50,1,1
+CDL-HZ-0093,75,0,2
+CDL-HZ-0094,The same as all other paper work,0,0
+CDL-HZ-0094,always kept with the driver,0,1
+CDL-HZ-0094,Tabbed differently and kept on top of all other paperwork,1,2
+CDL-HZ-0095,The proper shipping name is invalid,0,0
+CDL-HZ-0095,The proper shipping name without regard whether the material meets the definition of that class,1,1
+CDL-HZ-0095,Do not use proper shipping name,0,2
+CDL-HZ-0096,Once every three hours,0,0
+CDL-HZ-0096,Once every 100 miles,0,1
+CDL-HZ-0096,At the start of each trip and every time you stop,1,2
+CDL-HZ-0096,Every time you stop,0,3
+CDL-HZ-0097,within 25 feet.,1,0
+CDL-HZ-0097,within 50 feet.,0,1
+CDL-HZ-0097,within 100 feet.,0,2
+CDL-HZ-0098,"how to package, load, transport, and unload hazardous materials safely.",1,0
+CDL-HZ-0098,how to safely contain a spill of hazardous materials.,0,1
+CDL-HZ-0098,how to drive safely with hazardous materials.,0,2
+CDL-HZ-0099,15,0,0
+CDL-HZ-0099,20,0,1
+CDL-HZ-0099,25,1,2
+CDL-HZ-0100,"It isn't the proper shipping name, those in roman type above it are",1,0
+CDL-HZ-0100,Just another way of writing the shipping name,0,1
+CDL-HZ-0100,That this substance is highly flammable,0,2
+CDL-HZ-0101,Any more than 500 feet,0,0
+CDL-HZ-0101,In an upwind direction,0,1
+CDL-HZ-0101,Any more than safety required,1,2
+CDL-HZ-0102,Every three years when license is renewed,0,0
+CDL-HZ-0102,Every four years when license is renewed,0,1
+CDL-HZ-0102,Every five years when license is renewed,1,2
+CDL-HZ-0102,None of the answers are correct,0,3
+CDL-HZ-0103,No.,0,0
+CDL-HZ-0103,It is impossible to tell without more information.,0,1
+CDL-HZ-0103,"Yes, but only if the arm is down telling vehicles to stop.",0,2
+CDL-HZ-0103,Yes.,1,3
+CDL-HZ-0104,with you.,0,0
+CDL-HZ-0104,on the dashboard in clear view.,0,1
+CDL-HZ-0104,in the pouch on the driver's door.,1,2
+CDL-HZ-0105,A bulk container permanently attached to a vehicle,1,0
+CDL-HZ-0105,A bulk container not permanently attached to a vehicle,0,1
+CDL-HZ-0105,Both answers are correct,0,2
+CDL-HZ-0105,Both answers are wrong,0,3
+CDL-HZ-0106,Never,0,0
+CDL-HZ-0106,When the shipper says it's ok,0,1
+CDL-HZ-0106,To protect life or property,1,2
+CDL-HZ-0107,The hazard class,0,0
+CDL-HZ-0107,The proper shipping name,0,1
+CDL-HZ-0107,The identification number,1,2
+CDL-HZ-0108,"""Explosives"" placards.",1,0
+CDL-HZ-0108,"""Blasting Agents"" placards.",0,1
+CDL-HZ-0108,"""Dangerous"" placards.",0,2
+CDL-HZ-0109,every 5 hours,0,0
+CDL-HZ-0109,every week,0,1
+CDL-HZ-0109,at the start of each trip and each time you stop.,1,2
+CDL-HZ-0110,Explosives,0,0
+CDL-HZ-0110,Flammable liquids,0,1
+CDL-HZ-0110,Flammable gas,0,2
+CDL-HZ-0110,All the answers are correct,1,3
+CDL-HZ-0111,To tax shippers correctly,0,0
+CDL-HZ-0111,To communicate the risk,1,1
+CDL-HZ-0111,To allow state enforcement,0,2
+CDL-HZ-0112,At least half a mile,0,0
+CDL-HZ-0112,At least 10 feet,0,1
+CDL-HZ-0112,At least 20 feet,0,2
+CDL-HZ-0112,At least 5 feet,1,3
+CDL-HZ-0113,To certify that it has prepared the shipment in accordance with regulations,1,0
+CDL-HZ-0113,To certify that it accepts liability for an accident,0,1
+CDL-HZ-0113,To certify that the entire shipment is present and accounted for before the carrier accepts it,0,2
+CDL-HZ-0114,Wait at least 2 hours before continuing your trip,0,0
+CDL-HZ-0114,"Cool the tire, then check it every 2 hours",0,1
+CDL-HZ-0114,Remove the tire and place it in the spare tire rack,0,2
+CDL-HZ-0114,Remove the tire and place it a safe distance from the vehicle,1,3
+CDL-PS-0001,15 to 50 feet before a railroad crossing,1,0
+CDL-PS-0001,5 to 10 feet before a railroad crossing,0,1
+CDL-PS-0001,20 to 25 feet before a railroad crossing,0,2
+CDL-PS-0001,No answers are correct,0,3
+CDL-PS-0002,75,0,0
+CDL-PS-0002,100,1,1
+CDL-PS-0002,150,0,2
+CDL-PS-0003,Faster speed on turns and curves,0,0
+CDL-PS-0003,Sharper turns and curves,0,1
+CDL-PS-0003,Greater distance between the front and rear wheels,0,2
+CDL-PS-0003,All answers are correct,1,3
+CDL-PS-0004,By another bus with its 4-way flashers on,0,0
+CDL-PS-0004,"By a tow truck with a GVWR of at least 27,000 pounds",0,1
+CDL-PS-0004,If the distance is less than 1 mile,0,2
+CDL-PS-0004,If getting off the bus would be riskier for the riders,1,3
+CDL-PS-0005,One second for every 10 feet of vehicle length rounded upward,0,0
+CDL-PS-0005,One second for every 10 feet of vehicle length rounded upward plus one second,1,1
+CDL-PS-0005,Four seconds,0,2
+CDL-PS-0006,With a higher grade of fuel,0,0
+CDL-PS-0006,In a closed building,1,1
+CDL-PS-0006,Without a static chain,0,2
+CDL-PS-0006,With any of the windows open,0,3
+CDL-PS-0007,Behind the seats,0,0
+CDL-PS-0007,On the seats,0,1
+CDL-PS-0007,In the aisle,1,2
+CDL-PS-0008,Only when the bus is at a stop,1,0
+CDL-PS-0008,Only when the bus is moving at 30 MPH or less,0,1
+CDL-PS-0008,Whenever the driver finds it necessary while driving,0,2
+CDL-PS-0009,On any or all the wheels,0,0
+CDL-PS-0009,Only when the average speed will be less than 40 MPH,0,1
+CDL-PS-0009,Only on the outside wheel of dual wheels,0,2
+CDL-PS-0009,Anywhere except on the front wheels,1,3
+CDL-PS-0010,Let the vehicle on the right have the right of way,0,0
+CDL-PS-0010,Let whoever got there first have the right of way,0,1
+CDL-PS-0010,Let the other driver have the right of way,1,2
+CDL-PS-0011,They drive a vehicle that is designed to carry more than nine passengers,0,0
+CDL-PS-0011,"They drive a vehicle that has a gross weight rating of more than 26,000 pounds",0,1
+CDL-PS-0011,They drive a vehicle that is designed to carry more than sixteen passengers including the driver,1,2
+CDL-PS-0012,To replace the parking brake,0,0
+CDL-PS-0012,To replace the rear door emergency buzzer,0,1
+CDL-PS-0012,As a safety feature when the exit door is open,1,2
+CDL-PS-0012,All answers are correct,0,3
+CDL-PS-0013,2/32,0,0
+CDL-PS-0013,4/32,1,1
+CDL-PS-0013,6/32,0,2
+CDL-PS-0014,Signaling to others that it is safe to pass your bus,1,0
+CDL-PS-0014,Using four-way flashers to warn of danger ahead,0,1
+CDL-PS-0014,Signaling to others that you will change lanes,0,2
+CDL-PS-0014,All the previous answers are proper to use,0,3
+CDL-PS-0015,A two-inch line on the floor to the rear of the driver's seat,1,0
+CDL-PS-0015,There is no such thing on a bus,0,1
+CDL-PS-0015,A two-inch line dividing the aisle in half,0,2
+CDL-PS-0016,Destination sign,0,0
+CDL-PS-0016,Service brakes,1,1
+CDL-PS-0016,Rest room service,0,2
+CDL-PS-0017,Inspect your bus,0,0
+CDL-PS-0017,Report any defects,0,1
+CDL-PS-0017,Take all your personal belongings,0,2
+CDL-PS-0017,All answers are correct,1,3
+CDL-PS-0018,the steering mechanism.,0,0
+CDL-PS-0018,the AM/FM radio.,1,1
+CDL-PS-0018,the parking brake.,0,2
+CDL-PS-0018,the windshield wipers.,0,3
+CDL-PS-0019,cross as fast as possible.,0,0
+CDL-PS-0019,slow down and make sure it's safe to proceed.,1,1
+CDL-PS-0019,stop at least 100 feet before the draw of the bridge.,0,2
+CDL-PS-0019,stop and wait for the attendant's instructions.,0,3
+CDL-PS-0020,open,0,0
+CDL-PS-0020,lift,0,1
+CDL-PS-0020,close,0,2
+CDL-PS-0020,latch,1,3
+CDL-PS-0021,in parking lots.,0,0
+CDL-PS-0021,on roundabouts.,0,1
+CDL-PS-0021,on highways.,0,2
+CDL-PS-0021,at intersections.,1,3
+CDL-PS-0022,50,0,0
+CDL-PS-0022,20,0,1
+CDL-PS-0022,15,1,2
+CDL-PS-0022,25,0,3
+CDL-PS-0023,if a passenger asks about them.,0,0
+CDL-PS-0023,before the trip.,1,1
+CDL-PS-0023,if a violation occurs.,0,2
+CDL-PS-0023,while on the road.,0,3
+CDL-PS-0024,You can tow a disabled bus with passengers aboard only to the nearest safe spot to let them off.,0,0
+CDL-PS-0024,You can tow a disabled bus with riders aboard only if it's dangerous for riders to get off.,0,1
+CDL-PS-0024,Both of the above are true.,1,2
+CDL-PS-0024,Neither of the above is true.,0,3
+CDL-PS-0025,"26,000",0,0
+CDL-PS-0025,"32,000",0,1
+CDL-PS-0025,"34,000",1,2
+CDL-PS-0026,15 to 20 feet before the draw of the bridge,0,0
+CDL-PS-0026,5 to 10 feet before the draw of the bridge,0,1
+CDL-PS-0026,20 to 25 feet before the draw of the bridge,0,2
+CDL-PS-0026,50 feet before the draw of the bridge,1,3
+CDL-PS-0027,The driver can move freely and easily,0,0
+CDL-PS-0027,Any driver can use all exits,0,1
+CDL-PS-0027,Riders are protected from falling or shifting packages,0,2
+CDL-PS-0027,All answers are correct,1,3
+CDL-PS-0028,To stand between the fixed seats,0,0
+CDL-PS-0028,In front of the standee line,1,1
+CDL-PS-0028,Within five feet of an emergency exit,0,2
+CDL-PS-0029,Materials name,0,0
+CDL-PS-0029,ID number and hazard label,0,1
+CDL-PS-0029,All answers are correct,1,2
+CDL-PS-0030,Backing on level ground,0,0
+CDL-PS-0030,Off tracking on sloped curves,0,1
+CDL-PS-0030,Humps or dips in the road,1,2
+CDL-PS-0030,Driving in slippery conditions,0,3
+CDL-PS-0031,A,0,0
+CDL-PS-0031,B,0,1
+CDL-PS-0031,C,1,2
+CDL-PS-0032,Fueling your bus with riders on board,0,0
+CDL-PS-0032,Talking  with riders while driving,0,1
+CDL-PS-0032,Towing a disabled bus,0,2
+CDL-PS-0032,All answers are correct,1,3
+CDL-PS-0033,Hold the foot brake until the clutch has been fully released,0,0
+CDL-PS-0033,Accelerate hard and release the clutch quickly,0,1
+CDL-PS-0033,Slowly release the clutch while releasing the parking brakes,1,2
+CDL-PS-0034,100,0,0
+CDL-PS-0034,250,0,1
+CDL-PS-0034,500,1,2
+CDL-PS-0035,Back toward the side opposite the driver,0,0
+CDL-PS-0035,Turn the steering wheel away from the direction in which you want the back of the vehicle to go,0,1
+CDL-PS-0035,Use voice signals to communicate with a helper,0,2
+CDL-PS-0035,No answer is correct,1,3
+CDL-PS-0036,Come to a complete stop before crossing,1,0
+CDL-PS-0036,Slow down and prepare to stop if a train is approaching,0,1
+CDL-PS-0036,Turn the vehicle flashers on before crossing,0,2
+CDL-PS-0036,Tap the electric horn before crossing,0,3
+CDL-PS-0037,You can carry any hazardous materials on your bus as long as they are properly labeled.,1,0
+CDL-PS-0037,"Buses may carry small-arms ammunition labeled ""ORM-D.""",0,1
+CDL-PS-0037,"Shippers must mark each package of hazardous materials with the material's name, ID number, and hazard label.",0,2
+CDL-PS-0037,Many hazardous materials cannot be carried on a bus.,0,3
+CDL-PS-0038,follow your carrier's guidelines for dealing with unruly passengers.,0,0
+CDL-PS-0038,"drop the person off in a safe, well-lit public area where there are other people.",0,1
+CDL-PS-0038,drop the person off at the next scheduled stop.,0,2
+CDL-PS-0038,do any of the above.,1,3
+CDL-PS-0039,"The ""Emergency Exit"" sign on an emergency door must be clearly visible.",0,0
+CDL-PS-0039,Aisles and stairwells should always be clear.,0,1
+CDL-PS-0039,All seats must be securely fastened to the bus.,0,2
+CDL-PS-0039,All of the above,1,3
+CDL-PS-0040,make frequent stops to check on the bus's interior.,0,0
+CDL-PS-0040,collect all the valuables from the passengers.,0,1
+CDL-PS-0040,do not allow riders on the bus until departure time.,1,2
+CDL-PS-0040,install cameras.,0,3
+CDL-PS-0041,start moving as soon as your passengers are loaded.,0,0
+CDL-PS-0041,watch for poles and tree branches.,1,1
+CDL-PS-0041,passing vehicles must slow down and yield to the bus.,0,2
+CDL-PS-0041,you may assume that other drivers will leave you room.,0,3
+CDL-PS-0042,"Emergency reflectors, fire extinguisher, signal flares and tire repair kit",0,0
+CDL-PS-0042,"Hydraulic jack, fire extinguisher, signal flares",0,1
+CDL-PS-0042,"Fire extinguisher, spare electrical fuses, and emergency reflectors",1,2
+CDL-PS-0043,Poles and wires,0,0
+CDL-PS-0043,Clearance your bus needs,0,1
+CDL-PS-0043,Gaps your bus needs to accelerate,0,2
+CDL-PS-0043,All answers are correct,1,3
+CDL-PS-0044,Before you start your trip,0,0
+CDL-PS-0044,Only if repairs are needed,0,1
+CDL-PS-0044,After it is certified and there are no repairs needed,1,2
+CDL-PS-0045,Not allow them to do it,1,0
+CDL-PS-0045,Tell them they must go to the rear of the bus,0,1
+CDL-PS-0045,Instruct them to sit next to an open window,0,2
+CDL-PS-0046,The location and departure time,0,0
+CDL-PS-0046,The reason for stopping,0,1
+CDL-PS-0046,All answers are correct,1,2
+CDL-PS-0047,Only by a mechanic,0,0
+CDL-PS-0047,Only while the engine is hot,0,1
+CDL-PS-0047,Every 90 days,0,2
+CDL-PS-0047,No answers are correct,1,3
+CDL-PS-0048,100,1,0
+CDL-PS-0048,250,0,1
+CDL-PS-0048,500,0,2
+CDL-PS-0049,Be secured when operating the bus,1,0
+CDL-PS-0049,always have a red electric door light turned on,0,1
+CDL-PS-0049,"Not have any signs, stickers, or markings anywhere near it",0,2
+CDL-PS-0049,Meet all the requirements listed in the answers above,0,3
+CDL-PS-0050,At the start of every trip,0,0
+CDL-PS-0050,At the end of every work day,1,1
+CDL-PS-0050,At every duty status change,0,2
+CDL-PS-0050,After every rest break,0,3
+CDL-PS-0051,"Ill or impaired, and the condition interferes with the ability to drive safely",1,0
+CDL-PS-0051,Ill for longer than three hours,0,1
+CDL-PS-0051,Taking medication of any kind,0,2
+CDL-PS-0051,All answers are correct,0,3
+CDL-PS-0052,Small arms ammunition,0,0
+CDL-PS-0052,Tear gas,1,1
+CDL-PS-0052,Emergency hospital supplies,0,2
+CDL-PS-0052,Emergency drug shipments,0,3
+CDL-PS-0053,Street car crossing,0,0
+CDL-PS-0053,"Railroad tracks marked as ""exempt"" or ""abandoned.""",0,1
+CDL-PS-0053,When a policeman or flagman is directing traffic,0,2
+CDL-PS-0053,All answers are correct,1,3
+CDL-PS-0054,Turning your high beams on,0,0
+CDL-PS-0054,Putting down your visors to block the beams,0,1
+CDL-PS-0054,Blinking your trailer or side lights,0,2
+CDL-PS-0054,Looking to the right side of your lane,1,3
+CDL-PS-0055,Fanning or pumping the brakes,0,0
+CDL-PS-0055,Using only the parking brakes,0,1
+CDL-PS-0055,Use the snub braking method,1,2
+CDL-PS-0056,The highest range should always be used  except when roads are slippery,0,0
+CDL-PS-0056,The highest range should only be used with heavy loads,0,1
+CDL-PS-0056,Lowest ranges should be used for greater engine braking on downgrades,1,2
+CDL-PS-0057,When the maneuver is complete,1,0
+CDL-PS-0057,When you know that all other divers have seen your signal,0,1
+CDL-PS-0057,Just before starting the maneuver,0,2
+CDL-PS-0057,About halfway through the maneuver,0,3
+CDL-PS-0058,"In line with traffic, against the farthest left wall divider, or line",0,0
+CDL-PS-0058,In line with traffic and centered between the left edge of the shoulder and the left edge of traffic,0,1
+CDL-PS-0058,At an angle to traffic with the front door facing the downstream side of traffic,1,2
+CDL-PS-0059,Roof vents,0,0
+CDL-PS-0059,Windows,0,1
+CDL-PS-0059,Emergency windows,1,2
+CDL-PS-0060,Driving too slowly,0,0
+CDL-PS-0060,Driving on a wet surface,0,1
+CDL-PS-0060,Driving at the correct speed,0,2
+CDL-PS-0060,Driving too fast,1,3
+CDL-PS-0061,0,1,0
+CDL-PS-0061,4,0,1
+CDL-PS-0061,6,0,2
+CDL-PS-0062,downshift,0,0
+CDL-PS-0062,coast in neutral,0,1
+CDL-PS-0062,upshift,0,2
+CDL-PS-0062,not shift gears,1,3
+CDL-PS-0063,you have personally witnessed all the defects listed on the report being repaired.,0,0
+CDL-PS-0063,you know the previous driver personally and trust him or her.,0,1
+CDL-PS-0063,the defects listed on it have been certified as either repaired or not needing to be repaired.,1,2
+CDL-PS-0064,"Yes, but only for short distances.",0,0
+CDL-PS-0064,"Yes, but only at night.",0,1
+CDL-PS-0064,No.,0,2
+CDL-PS-0064,Yes.,1,3
+CDL-PS-0065,You need about four times as much braking distance at 40 mph as at 20 mph.,1,0
+CDL-PS-0065,The total stopping distance of a bus is the distance it takes to stop once the brakes are applied.,0,1
+CDL-PS-0065,Stopping time increases by one second for each 10 mph over 20 mph.,0,2
+CDL-PS-0065,The posted speed limit will always allow you to stop safely.,0,3
+CDL-PS-0066,when a flag person (flagger) signals you to stop,0,0
+CDL-PS-0066,at a railroad crossing,0,1
+CDL-PS-0066,at a red light,0,2
+CDL-PS-0066,at a streetcar crossing,1,3
+CDL-PS-0067,Only when you will be driving over 35 MPH,0,0
+CDL-PS-0067,"Only when driving on sand, gravel, or ice-covered roads",0,1
+CDL-PS-0067,always,1,2
+CDL-PS-0068,Drive slightly faster than the other traffic,0,0
+CDL-PS-0068,Drive slightly slower than the other traffic,0,1
+CDL-PS-0068,Increase the normal daytime following distance by one second,1,2
+CDL-PS-0069,Class 1 poison,0,0
+CDL-PS-0069,Explosives,0,1
+CDL-PS-0069,Small arms ammunition labeled ORM-D,1,2
+CDL-PS-0070,By driving slightly faster than the other traffic,0,0
+CDL-PS-0070,By passing only the slowest vehicles,0,1
+CDL-PS-0070,By traveling in convoy packs with other heavy vehicles,0,2
+CDL-PS-0070,By staying in the right-hand lane,1,3
+CDL-PS-0071,safe for cars in good weather.,1,0
+CDL-PS-0071,safe for buses in good weather.,0,1
+CDL-PS-0071,safe for cars and buses in bad weather.,0,2
+CDL-PS-0071,all of the above.,0,3
+CDL-PS-0072,You may not leave the roof hatches open at any time.,0,0
+CDL-PS-0072,Always leave the roof hatches partly open.,0,1
+CDL-PS-0072,You can lock the roof hatches in a partly open position for fresh air.,1,2
+CDL-PS-0072,The bus has lower clearance when the roof hatches are open.,0,3
+CDL-PS-0073,Not allow riders on the bus until departure time,0,0
+CDL-PS-0073,Mention and explain the rules,0,1
+CDL-PS-0073,All answers are correct,1,2
+CDL-PS-0074,May be thrown off the bus,0,0
+CDL-PS-0074,Should not be discharged where it would be unsafe for them,1,1
+CDL-PS-0074,Is not your responsibility,0,2
+CDL-PS-0075,Labeled,1,0
+CDL-PS-0075,Stored in the passenger compartment,0,1
+CDL-PS-0075,All answers are correct,0,2
+CDL-PS-0076,law enforcement personnel can be called.,0,0
+CDL-PS-0076,accident reports will be accurate.,0,1
+CDL-PS-0076,you can help impaired drivers.,0,2
+CDL-PS-0076,you will have time to plan your escape if the hazard becomes an emergency.,1,3
+CDL-PS-0077,wait for a sufficient gap in traffic.,1,0
+CDL-PS-0077,start to pull out as soon as you signal.,0,1
+CDL-PS-0077,assume that other drivers will yield to you.,0,2
+CDL-PS-0077,make sure all the passengers are sitting down.,0,3
+CDL-PS-0078,Every handhold and railing are secure,0,0
+CDL-PS-0078,Rider signaling devices are working,0,1
+CDL-PS-0078,Emergency exit handles are secure,0,2
+CDL-PS-0078,All answers are correct,1,3
+CDL-PS-0079,allow riders to drink and smoke on the bus.,0,0
+CDL-PS-0079,have conversations with passengers.,0,1
+CDL-PS-0079,remind riders to take carry-ons with them whenever they get off the bus.,1,2
+CDL-PS-0079,allow riders on the bus before departure time.,0,3
+CDL-PS-0080,Never drive with an open emergency exit door or window.,0,0
+CDL-PS-0080,The seats must be safe for riders and securely fastened to the bus.,0,1
+CDL-PS-0080,"If there is a red emergency door light, it must work.",0,2
+CDL-PS-0080,"If you use your outside lights, you don't need to turn on the red emergency door light.",1,3
+CDL-PS-0081,Add one more second to your following distance,0,0
+CDL-PS-0081,Keep much more space than in ideal driving conditions,1,1
+CDL-PS-0081,Keep the same amount of space,0,2
+CDL-PS-0082,The driver's seat,1,0
+CDL-PS-0082,Side seats,0,1
+CDL-PS-0082,Neither of the above,0,2
+CDL-PS-0082,Both of the above,0,3
+CDL-PS-0083,Class A bus,1,0
+CDL-PS-0083,Class B bus,0,1
+CDL-PS-0083,Class C bus,0,2
+CDL-PT-0001,A. True.,1,0
+CDL-PT-0001,B. False.,0,1
+CDL-PT-0002,A. Yes,1,0
+CDL-PT-0002,B. No,0,1
+CDL-PT-0003,A. That they work.,0,0
+CDL-PT-0003,"B. That the lens covers are there, lights are securely attached, clean, and working.",1,1
+CDL-PT-0003,"C. Nothing, you do not have to check the lights.",0,2
+CDL-PT-0004,"A. That the windshield is there, not cracked or chipped.",0,0
+CDL-PT-0004,"B. That the windshield is there, not cracked or chipped, clean, the seals are in good condition, and not leaking.",1,1
+CDL-PT-0004,"C. That it is clean, and not leaking.",0,2
+CDL-PT-0005,"A. The hinges, catches, and springs.",0,0
+CDL-PT-0005,"B. The important stuff is under the hood, so nothing.",0,1
+CDL-PT-0005,C. For damage.,0,2
+CDL-PT-0005,D. Both A and C.,1,3
+CDL-PT-0006,A. Properly mounted.,0,0
+CDL-PT-0006,B. No cracks.,0,1
+CDL-PT-0006,C. Clean.,0,2
+CDL-PT-0006,D. All the above.,1,3
+CDL-PT-0007,"A. Windshield wiper fluid, oil, coolant, and moisture or leaks.",0,0
+CDL-PT-0007,"B. Transmission fluid, oil, coolant, and power steering fluid.",0,1
+CDL-PT-0007,"C. Moisture or leaks, oil, coolant, power steering fluid.",1,2
+CDL-PT-0007,D. None of these.,0,3
+CDL-PT-0008,"A. Power steering pump, fuel pump, alternator, water pump.",0,0
+CDL-PT-0008,"B. Power steering pump, fuel pump, alternator, air compressor.",0,1
+CDL-PT-0008,"C. Fuel pump, alternator, air compressor, water pump.",0,2
+CDL-PT-0008,"D. Power steering pump, alternator, air compressor, and water pump.",1,3
+CDL-PT-0009,A. Proper level.,0,0
+CDL-PT-0009,B. Clean of debris.,0,1
+CDL-PT-0009,C. Not leaking.,0,2
+CDL-PT-0009,D. All the above.,1,3
+CDL-PT-0010,"A. Upper steering linkage, gearbox, tie rod ends, and tie rod.",0,0
+CDL-PT-0010,"B. Upper steering linkage, universal joints, tie rod ends, tie rod.",0,1
+CDL-PT-0010,"C. Upper steering linkage, universal joints, power steering pump, pitman arm, drag link, tie rod ends, tie rod.",1,2
+CDL-PT-0010,"D. Upper steering linkage, universal joints, pitman arm, tie rod ends, tie rod.",0,3
+CDL-PT-0011,A. All castle nuts are tight and secure.,0,0
+CDL-PT-0011,B. Cotter pins in place.,0,1
+CDL-PT-0011,C. No excessive play.,0,2
+CDL-PT-0011,D. All the above.,1,3
+CDL-PT-0012,A. Oil level,0,0
+CDL-PT-0012,B. Oil pressure,1,1
+CDL-PT-0012,C. Power steering fluid,0,2
+CDL-PT-0012,D. Coolant level,0,3
+CDL-PT-0013,A. Power steering belt.,0,0
+CDL-PT-0013,B. Water pump belt.,0,1
+CDL-PT-0013,C. Safety belt.,1,2
+CDL-PT-0013,D Air compressor belt.,0,3
+CDL-PT-0014,A. The coupling system.,0,0
+CDL-PT-0014,B. The safety system.,0,1
+CDL-PT-0014,C. The suspension system,1,2
+CDL-PT-0014,D. The hydraulic system.,0,3
+CDL-PT-0015,"A. Cracks, frays, and tears.",0,0
+CDL-PT-0015,B. Connections tight and secure.,0,1
+CDL-PT-0015,C. Welds.,0,2
+CDL-PT-0015,D. Leaks.,0,3
+CDL-PT-0016,A. Excessive play.,0,0
+CDL-PT-0016,"B. Cracks, frays, and tears.",0,1
+CDL-PT-0016,C. Overheating.,0,2
+CDL-PT-0016,D. Both A and B.,1,3
+CDL-PT-0017,A. Connections tight and secure.,0,0
+CDL-PT-0017,"B. No frays, cracks, or damage.",0,1
+CDL-PT-0017,C. No signs of leaks.,0,2
+CDL-PT-0017,D. All the above.,1,3
+CDL-PT-0018,A. Part of the braking system.,1,0
+CDL-PT-0018,B. Where air is stored for use.,0,1
+CDL-PT-0018,C. Not on a commercial vehicle.,0,2
+CDL-PT-0018,D. Only used in emergencies.,0,3
+CDL-PT-0019,A. Tight and secure.,0,0
+CDL-PT-0019,B. Not leaking.,0,1
+CDL-PT-0019,C. Not damaged.,0,2
+CDL-PT-0019,D. All the above.,1,3
+CDL-PT-0020,A. 1/4 of an inch.,0,0
+CDL-PT-0020,B. 1/2 of an inch.,0,1
+CDL-PT-0020,C. 3/4 of an inch.,0,2
+CDL-PT-0020,D. 1 inch.,1,3
+CDL-PT-0021,A. At least a 1/4 of an inch of life left.,0,0
+CDL-PT-0021,B. Not worn dangerously thin.,0,1
+CDL-PT-0021,C. Not cracked or broken.,0,2
+CDL-PT-0021,D. All the above.,1,3
+CDL-PT-0022,A. Are not out of round and have no illegal welds.,0,0
+CDL-PT-0022,"B. No cracks, or illegal welds.",0,1
+CDL-PT-0022,"C. Not out of round, no illegal welds, and no cracks.",1,2
+CDL-PT-0022,D. None of the above.,0,3
+CDL-PT-0023,A. 1/2 the width of the friction area.,1,0
+CDL-PT-0023,B. One inch across in a straight line.,0,1
+CDL-PT-0023,C. No cracks are allowed.,0,2
+CDL-PT-0023,D. None of the above.,0,3
+CDL-PT-0024,"A. 1/2-inch, 1/4 inch",0,0
+CDL-PT-0024,"B. 4/32-inch,  2/32 inch",1,1
+CDL-PT-0024,"C. 1/8-inch, 1/16 inch",0,2
+CDL-PT-0024,"D. 8/32-inch, 4/32 inch.",0,3
+CDL-PT-0025,A. True.,0,0
+CDL-PT-0025,B. False.,1,1
+CDL-PT-0026,"A. Cuts, cracks, and bulges.",0,0
+CDL-PT-0026,"B. Cuts, cracks, bulges, and depth.",0,1
+CDL-PT-0026,"C. Cuts, cracks, bulges, and inflation.",0,2
+CDL-PT-0026,"D. Cuts, cracks, bulges, depth, and inflation.",1,3
+CDL-PT-0027,A. True.,1,0
+CDL-PT-0027,B. False.,0,1
+CDL-PT-0028,A. True.,0,0
+CDL-PT-0028,B. False.,1,1
+CDL-PT-0029,A. Tight and secure.,0,0
+CDL-PT-0029,B. No worn or stripped threads.,0,1
+CDL-PT-0029,C. No rust marks (from the lug nuts to the outside of rim).,0,2
+CDL-PT-0029,D. All the above.,1,3
+CDL-PT-0030,A. Filled to the proper level.,0,0
+CDL-PT-0030,B. All bolts tight and secure.,0,1
+CDL-PT-0030,C. Seal is in good condition and not leaking.,0,2
+CDL-PT-0030,D. All the above.,1,3
+CDL-PT-0031,A. True.,1,0
+CDL-PT-0031,B. False,0,1
+CDL-PT-0032,A. True.,0,0
+CDL-PT-0032,B. False.,1,1
+CDL-PT-0033,True.,1,0
+CDL-PT-0033,False.,0,1
+CDL-PT-0034,Steps into the vehicle.,0,0
+CDL-PT-0034,Fuel and air tanks.,0,1
+CDL-PT-0034,Mirrors.,0,2
+CDL-PT-0034,Lights and reflectors.,0,3
+CDL-PT-0035,The cap.,1,0
+CDL-PT-0035,No leaks.,0,1
+CDL-PT-0035,Mounting brackets and bolts.,0,2
+CDL-PT-0035,Hoses.,0,3
+CDL-PT-0036,Properly mounted.,0,0
+CDL-PT-0036,Properly mounted and not damaged.,0,1
+CDL-PT-0036,"Properly mounted, not damaged, and all bolts tight and secure.",1,2
+CDL-PT-0036,Strong enough to support twice your weight.,0,3
+CDL-PT-0037,Mounted,0,0
+CDL-PT-0037,Tight and secure,0,1
+CDL-PT-0037,All bolts in place,0,2
+CDL-PT-0037,All the above,1,3
+CDL-PT-0038,Yes.,1,0
+CDL-PT-0038,No.,0,1
+CDL-PT-0039,Start the vehicle.,0,0
+CDL-PT-0039,Turn on your lights.,0,1
+CDL-PT-0039,Buckle your seatbelt.,1,2
+CDL-PT-0039,Check the air horn.,0,3
+CDL-PT-0040,Mounts.,0,0
+CDL-PT-0040,Adjusted so that you can see.,1,1
+CDL-PT-0040,Clean.,0,2
+CDL-PT-0040,No cracks.,0,3
+CDL-PT-0041,Windshield wipers.,0,0
+CDL-PT-0041,Air and city horns.,0,1
+CDL-PT-0041,"Blower motors, temperature control, and diverter.",0,2
+CDL-PT-0041,Lights.,0,3
+CDL-PT-0042,No play.,0,0
+CDL-PT-0042,"No play exceeding 2"" or 10 degrees.",1,1
+CDL-PT-0042,That it turns.,0,2
+CDL-PT-0042,None of the above.,0,3
+CDL-PT-0043,The vehicle is in neutral.,0,0
+CDL-PT-0043,Parking brake is set.,0,1
+CDL-PT-0043,Seat belt is fastened.,0,2
+CDL-PT-0043,All the above.,1,3
+CDL-PT-0044,Air pressure gauge.,0,0
+CDL-PT-0044,Oil pressure gauge.,0,1
+CDL-PT-0044,Voltmeter.,0,2
+CDL-PT-0044,Water pressure gauge.,1,3
+CDL-PT-0045,120 PSI.,1,0
+CDL-PT-0045,160 PSI.,0,1
+CDL-PT-0045,100 PSI.,0,2
+CDL-PT-0045,150 PSI.,0,3
+CDL-PT-0046,Voltmeter.,1,0
+CDL-PT-0046,Water temperature.,0,1
+CDL-PT-0046,Air pressure.,0,2
+CDL-PT-0046,Fuel,0,3
+CDL-PT-0047,Nothing.,0,0
+CDL-PT-0047,Rise immediately.,0,1
+CDL-PT-0047,"Nothing, then rise slowly as the vehicle warms up.",1,2
+CDL-PT-0047,None of the above.,0,3
+CDL-PT-0048,True,0,0
+CDL-PT-0048,False,1,1
+CDL-PT-0049,Instrument panel lights.,0,0
+CDL-PT-0049,Left and right turn indicator lights.,0,1
+CDL-PT-0049,Hazard indicators lights.,0,2
+CDL-PT-0049,High beam indicator light.,0,3
+CDL-PT-0050,Fire extinguisher.,0,0
+CDL-PT-0050,Reflective triangles.,0,1
+CDL-PT-0050,Road flares.,0,2
+CDL-PT-0050,First aid kit.,0,3
+CDL-PT-0051,In,0,0
+CDL-PT-0051,Out,1,1
+CDL-PT-0051,Released,0,2
+CDL-PT-0051,None of these,0,3
+CDL-PT-0052,Move the vehicle slowly and then apply the parking brake stopping the vehicle.,0,0
+CDL-PT-0052,Pull against the engaged parking brake with no movement.,1,1
+CDL-PT-0052,Pull against the engaged parking brake with some movement.,0,2
+CDL-PT-0052,Move the vehicle quickly and then apply the parking brake stopping the vehicle.,0,3
+CDL-PT-0053,Pull against the service brake with no movement.,0,0
+CDL-PT-0053,Pull against the service brake with a little movement.,0,1
+CDL-PT-0053,Move quickly and apply the service brake to stop the vehicle.,0,2
+CDL-PT-0053,Move slowly and apply the service brake to stop the vehicle.,1,3
+CDL-PT-0054,Yes.,1,0
+CDL-PT-0054,No,0,1
+CDL-PT-0055,True,1,0
+CDL-PT-0055,False,0,1
+CDL-PT-0056,"Trailer air supply in, parking brake in, trolley released, and pressure on brake pedal.",1,0
+CDL-PT-0056,"Trailer air supply out, parking brake in, trolley released, and pressure on the brake pedal.",0,1
+CDL-PT-0056,"Trailer air supply in, parking brake out, trolley released, and no pressure on the brake pedal.",0,2
+CDL-PT-0056,"Trailer air supply in, parking brake in, trolley applied, and pressure on the brake pedal.",0,3
+CDL-PT-0057,"3 PSI for a vehicle with no trailer, and 3 PSI for a combination vehicle in one minute.",0,0
+CDL-PT-0057,"3 PSI for a vehicle with no trailer, and 4 PSI for a combination vehicle in one minute.",1,1
+CDL-PT-0057,"2 PSI for a vehicle with no trailer, and 3 PSI for a combination vehicle in one minute.",0,2
+CDL-PT-0057,"2 PSI for a vehicle with no trailer, and 2 PSI for the tractor plus 1 PSI for each trailer in a combination vehicle in one minute.",0,3
+CDL-PT-0058,Turn on your lights.,0,0
+CDL-PT-0058,Make sure the vehicle is in neutral.,0,1
+CDL-PT-0058,Turn the key on so that the instrument warning lights come on.,1,2
+CDL-PT-0058,"Nothing, start fanning the brakes.",0,3
+CDL-PT-0059,100 PSI,0,0
+CDL-PT-0059,80 PSI,0,1
+CDL-PT-0059,60 PSI,1,2
+CDL-PT-0059,40 PSI,0,3
+CDL-PT-0060,20 PSI,0,0
+CDL-PT-0060,40 PSI,1,1
+CDL-PT-0060,50 PSI,0,2
+CDL-PT-0060,10 PSI,0,3
+CDL-PT-0061,True.,0,0
+CDL-PT-0061,False.,1,1
+CDL-PT-0062,"Front of vehicle, rear of vehicle.",0,0
+CDL-PT-0062,"Front of vehicle, both sides of vehicle, and rear of vehicle.",0,1
+CDL-PT-0062,"Front of vehicle, and both sides.",0,2
+CDL-PT-0062,Answer B plus rear of tractor in combination vehicles.,1,3
+CDL-PT-0063,"Hazard, headlights, running, and clearance lights.",0,0
+CDL-PT-0063,"Hazard, left turn, right turn, headlights high and low beam, brake, running, and clearance lights.",1,1
+CDL-PT-0063,"Left turn, right turn, headlights high and low beam, running, and clearance lights.",0,2
+CDL-PT-0063,"Hazard, left turn, right turn, running, and headlights high and low beam.",0,3
+CDL-PT-0064,Handrails and steps.,0,0
+CDL-PT-0064,Fuel tanks and air tanks.,0,1
+CDL-PT-0064,Condition of the exterior cab.,0,2
+CDL-PT-0064,Both A and B.,1,3
+CDL-PT-0065,Security.,0,0
+CDL-PT-0065,Damage.,0,1
+CDL-PT-0065,Supports weight.,0,2
+CDL-PT-0065,All the above,1,3
+CDL-PT-0066,"Securely mounted, and no leaks",0,0
+CDL-PT-0066,"Securely mounted, mounting bands and rubber grommets in good condition, lines between the tanks secure with no damage, and no leaks from the tanks or the lines.",1,1
+CDL-PT-0066,"Securely mounted, mounting bands in good condition, lines between the tanks secure with no damage, and no leaks from the tanks or the lines.",0,2
+CDL-PT-0066,"Securely mounted, mounting bands in good condition, lines between the tanks secure with no damage, and no leaks from the tanks.",0,3
+CDL-PT-0067,True,1,0
+CDL-PT-0067,False,0,1
+CDL-PT-0068,The connections and lines.,0,0
+CDL-PT-0068,"The connection at the tractor, the lines for breaks cracks frays, and the connection to the trailer.",0,1
+CDL-PT-0068,"The connection at the tractor, the lines for breaks cracks frays, the connection to the trailer, and that none of these are leaking.",1,2
+CDL-PT-0068,The connections and for leaks.,0,3
+CDL-PT-0069,"Frame, catwalk, exhaust, and driveshaft.",1,0
+CDL-PT-0069,"Frame, catwalk, exhaust, cab mounts, and driveshaft.",0,1
+CDL-PT-0069,"Frame, catwalk, and exhaust.",0,2
+CDL-PT-0069,"Frame, catwalk, exhaust, and cab mounts.",0,3
+CDL-PT-0070,"Torsion bar, space between the tires or spacers, and air bags.",0,0
+CDL-PT-0070,"Torsion bar, treads, space between the tires or spacers, and air bags.",1,1
+CDL-PT-0070,"Torsion bar, treads, and air bags.",0,2
+CDL-PT-0070,"Tread depth, space between the tires or spacers, and air bags.",0,3
+CDL-PT-0071,"That it is not bent, damaged, cracked, and that it is securely mounted.",0,0
+CDL-PT-0071,"That it is not bent, and that it is securely mounted.",0,1
+CDL-PT-0071,"That it is not bent, damaged, or cracked.",0,2
+CDL-PT-0071,"That it is not bent, damaged, or cracked, has no illegal welds, and that it is securely mounted.",1,3
+CDL-PT-0072,"Not bent or damaged, no cracks, and no illegal welds.",0,0
+CDL-PT-0072,"Securely mounted, no cracks, and no illegal welds.",0,1
+CDL-PT-0072,"Securely mounted, not bent or damaged, no cracks, and no illegal welds.",1,2
+CDL-PT-0072,"Securely mounted, not bent or damaged, and no cracks.",0,3
+CDL-PT-0073,True,1,0
+CDL-PT-0073,False,0,1
+CDL-PT-0074,True,1,0
+CDL-PT-0074,False,0,1
+CDL-PT-0075,True,0,0
+CDL-PT-0075,False,1,1
+CDL-PT-0076,completely in with the locking mechanism secured.,1,0
+CDL-PT-0076,completely out with the locking mechanism secured.,0,1
+CDL-PT-0076,completely in with the locking mechanism released.,0,2
+CDL-PT-0076,completely out with the locking mechanism released.,0,3
+CDL-PT-0077,Locking jaws,0,0
+CDL-PT-0077,Springs,0,1
+CDL-PT-0077,Air,0,2
+CDL-PT-0077,Locking pins,1,3
+CDL-PT-0078,"Tight and secure, properly mounted, and there are no illegal welds.",0,0
+CDL-PT-0078,"Tight and secure, all the bolts are in place and secure, and there are no illegal welds.",0,1
+CDL-PT-0078,"Tight and secure, properly mounted, all the bolts are in place and secure, not excessively damaged, and there are no illegal welds.",1,2
+CDL-PT-0078,"Tight and secure, properly mounted, and all the bolts are in place and secure.",0,3
+CDL-PT-0079,"ICC bumper, mud flaps, light lens covers, and reflectors.",0,0
+CDL-PT-0079,"Mud flaps, light lens covers, and reflectors.",1,1
+CDL-PT-0079,"Air lines, ICC bumper, and reflectors.",0,2
+CDL-PT-0079,"Mud flaps, air lines, and ICC bumper.",0,3
+CDL-SB-0001,The school bus is stopped for a red light,0,0
+CDL-SB-0001,The school bus is stopped for a train crossing,0,1
+CDL-SB-0001,The school bus is stopped because it is broken down,0,2
+CDL-SB-0001,The school bus is stopped to pick up or discharge pupils,1,3
+CDL-SB-0002,Approaching traffic,0,0
+CDL-SB-0002,All the students on board,1,1
+CDL-SB-0002,Open windows,0,2
+CDL-SB-0003,400 feet,0,0
+CDL-SB-0003,200 feet,1,1
+CDL-SB-0003,300 feet,0,2
+CDL-SB-0003,300 yards,0,3
+CDL-SB-0004,Move student to set closer to you,0,0
+CDL-SB-0004,Remove student from the bus immediately,0,1
+CDL-SB-0004,Pull bus to the side of the road and firmly explain the rules and regulations to the unruly student,1,2
+CDL-SB-0005,Yellow warning and red warning lights,0,0
+CDL-SB-0005,Yellow warning lights,0,1
+CDL-SB-0005,Red warning lights,1,2
+CDL-SB-0005,Whenever the driver wants to stop traffic,0,3
+CDL-SB-0006,The students can only be picked up or dropped off on the resident side of the road,1,0
+CDL-SB-0006,The students can be dropped off or picked up on either side of the highway,0,1
+CDL-SB-0006,The students must be picked up and dropped off in the center of the road,0,2
+CDL-SB-0006,No answers are correct,0,3
+CDL-SB-0007,100 feet in advance,1,0
+CDL-SB-0007,300 feet in advance,0,1
+CDL-SB-0007,500 feet in advance,0,2
+CDL-SB-0008,Whenever the bus is stopped to pick up students,0,0
+CDL-SB-0008,Whenever the bus is stopped to discharge students,0,1
+CDL-SB-0008,Whenever it is extremely hot outside,0,2
+CDL-SB-0008,Whenever the bus is stopped at a railroad crossing,1,3
+CDL-SB-0009,Full side of the bus and rear of bus,0,0
+CDL-SB-0009,200 feet behind,1,1
+CDL-SB-0009,Pedestrians on the side walk on both sides of the bus,0,2
+CDL-SB-0010,"the emergency exits are undamaged, operate smoothly, and close securely from the inside.",0,0
+CDL-SB-0010,the emergency exit warning devices (if so equipped) are working.,0,1
+CDL-SB-0010,both of the above are true.,1,2
+CDL-SB-0011,"The driver should make a U-turn, so those students won't have to cross in front of the bus after exiting it.",0,0
+CDL-SB-0011,"When the driver signals that it is safe to proceed, the students should cross the street while remaining in the driver's view.",1,1
+CDL-SB-0011,"When the driver signals that it is safe to proceed, the students should run across the street to reduce their exposure to danger.",0,2
+CDL-SB-0012,doesn't have a crossbuck sign.,0,0
+CDL-SB-0012,doesn't have any type of traffic control device.,1,1
+CDL-SB-0012,is a railroad crossing at which you don't have to stop.,0,2
+CDL-SB-0013,the fuel tank,0,0
+CDL-SB-0013,an emergency exit,1,1
+CDL-SB-0013,the battery box,0,2
+CDL-SB-0014,at least one traffic lane on either side of the bus.,0,0
+CDL-SB-0014,the front of the rear tires touching the ground.,0,1
+CDL-SB-0014,both of the above.,1,2
+CDL-SB-0015,if there is a better location nearby.,0,0
+CDL-SB-0015,only with the written approval of the school district.,1,1
+CDL-SB-0015,only if all the passengers agree to the change.,0,2
+CDL-SB-0016,"the battery is secure, connections are tight with minimal corrosion, and cell caps are present.",0,0
+CDL-SB-0016,the battery box and cover or door are secure.,0,1
+CDL-SB-0016,both of the above are true.,1,2
+CDL-SB-0017,10 feet,1,0
+CDL-SB-0017,5 feet,0,1
+CDL-SB-0017,20 feet,0,2
+CDL-SB-0018,tailgate a big truck so it can shield you from the wind.,0,0
+CDL-SB-0018,speed up to get away from the wind as quickly as possible.,0,1
+CDL-SB-0018,keep a strong grip on the steering wheel and try to anticipate gusts.,1,2
+CDL-SB-0019,in a logical sequence to ensure that a child or object is not in any of the danger zones.,1,0
+CDL-SB-0019,every 4 seconds.,0,1
+CDL-SB-0019,every 10 seconds and more often in heavy traffic.,0,2
+CDL-SB-0020,"Stop, go, and stop.",0,0
+CDL-SB-0020,"Stop, look, and listen.",1,1
+CDL-SB-0020,"Stop, look, and turn on the emergency flashers.",0,2
+CDL-SB-0021,The school bus driver,0,0
+CDL-SB-0021,The school principal,0,1
+CDL-SB-0021,"The school principal, superintendent, or the superintendent's designee",1,2
+CDL-SB-0021,The student's teacher,0,3
+CDL-SB-0022,Turn warning lights on,0,0
+CDL-SB-0022,Do not shift gears while crossing railroad,0,1
+CDL-SB-0022,Both of the above,1,2
+CDL-SB-0023,Keep your eyes on the car in front of you and watch mirrors for gaps,1,0
+CDL-SB-0023,Watch for gaps,0,1
+CDL-SB-0023,Speed up,0,2
+CDL-SB-0024,At any time,0,0
+CDL-SB-0024,Never,1,1
+CDL-SB-0024,Only when the bus driver says it is ok,0,2
+CDL-SB-0024,No answers are correct,0,3
+CDL-SB-0025,Apply more breaking force to the front axle,0,0
+CDL-SB-0025,Help the breaks lock when they refuse to,0,1
+CDL-SB-0025,Prevent breaks from locking up when hard pressure is applied,1,2
+CDL-SB-0026,For a Pre-Trip inspection,0,0
+CDL-SB-0026,Anytime,0,1
+CDL-SB-0026,Never,1,2
+CDL-SB-0027,"If time allows, notify the dispatch office about your situation, your location, and the type of assistance you need.",1,0
+CDL-SB-0027,"If time allows, back up to a safe location before evacuating the bus.",0,1
+CDL-SB-0027,"If time allows, walk through the bus and close all the windows.",0,2
+CDL-SB-0028,stand outside the bus in front of a crossover mirror to supervise unloading.,0,0
+CDL-SB-0028,leave the engine running so you can drive away when the students have exited.,0,1
+CDL-SB-0028,tell the students to remain seated until they are told to exit.,1,2
+CDL-SB-0029,100 feet,0,0
+CDL-SB-0029,200 feet,0,1
+CDL-SB-0029,400 feet,1,2
+CDL-SB-0030,Never,0,0
+CDL-SB-0030,If the behavior is serious enough,0,1
+CDL-SB-0030,Only at school or the student's designated bus stop,1,2
+CDL-SB-0031,right beside the bus.,0,0
+CDL-SB-0031,at least 10 to 15 feet away from the side of the bus.,1,1
+CDL-SB-0031,at least 25 feet away from the side of the bus.,0,2
+CDL-SB-0032,set the parking brake.,0,0
+CDL-SB-0032,check for traffic once more.,1,1
+CDL-SB-0032,turn on the alternating flashing red lights.,0,2
+CDL-SB-0033,Because drivers tend to ignore students walking to school,0,0
+CDL-SB-0033,Because only high school students understand how to cross the road,0,1
+CDL-SB-0033,Because so many students are killed each year while getting on or off school buses,1,2
+CDL-SB-0034,if their injuries might be worsened by moving them.,0,0
+CDL-SB-0034,if they would be exposed to downed power lines or other hazards.,0,1
+CDL-SB-0034,in either of the above situations.,1,2
+CDL-SB-0035,put the transmission in park or neutral and set the parking brake.,0,0
+CDL-SB-0035,count the number of students at the bus stop and make sure that all of them board the bus.,1,1
+CDL-SB-0035,load students two abreast when possible for efficiency.,0,2
+CDL-SB-0036,All,1,0
+CDL-SB-0036,Only those involving injury or death,0,1
+CDL-SB-0036,None,0,2
+CDL-SB-0037,You,1,0
+CDL-SB-0037,The students' parents,0,1
+CDL-SB-0037,The students,0,2
+CDL-SB-0038,a railroad crossing that has a traffic control device.,1,0
+CDL-SB-0038,a railroad crossing without traffic control devices.,0,1
+CDL-SB-0038,a railroad crossing at which you don't have to stop.,0,2
+CDL-SB-0039,10 feet.,0,0
+CDL-SB-0039,5 feet.,0,1
+CDL-SB-0039,3 feet.,1,2
+CDL-SB-0040,a first-aid kit and a body fluid cleanup kit.,1,0
+CDL-SB-0040,a first-aid kit and alcohol.,0,1
+CDL-SB-0040,three flares and a bolt cutter.,0,2
+CDL-SB-0041,Will be walking a black dog,0,0
+CDL-SB-0041,Will be carrying a white cane,1,1
+CDL-SB-0041,They will only be at designated crossing areas,0,2
+CDL-SB-0042,When approaching a railroad crossing,0,0
+CDL-SB-0042,When stopped or parked along a road due to a breakdown,0,1
+CDL-SB-0042,When backing up or turning around,0,2
+CDL-SB-0042,All answers are correct,1,3
+CDL-SB-0043,Whenever there is an emergency,0,0
+CDL-SB-0043,Whenever the bus must stop,0,1
+CDL-SB-0043,Whenever the bus is picking up or discharging students,1,2
+CDL-SB-0043,All answers are correct,0,3
+CDL-SB-0044,"2/32""",0,0
+CDL-SB-0044,"4/32""",1,1
+CDL-SB-0044,"1/32""",0,2
+CDL-SB-0045,National School Bus Glossy Yellow,1,0
+CDL-SB-0045,Orange-yellow,0,1
+CDL-SB-0045,Fluorescent yellow,0,2
+CDL-SB-0046,The driver should check all mirrors again,0,0
+CDL-SB-0046,Ask the other students if they have seen the missing student,0,1
+CDL-SB-0046,Get off the bus and locate the student,1,2
+CDL-SB-0047,the length of the bus plus 15 feet.,1,0
+CDL-SB-0047,the length of the bus plus 10 feet.,0,1
+CDL-SB-0047,the length of the bus plus 25 feet.,0,2
+CDL-SB-0048,To give the mechanics something to do,0,0
+CDL-SB-0048,"For safety as required by federal, state, and local laws",1,1
+CDL-SB-0048,To improve fuel economy,0,2
+CDL-SB-0049,whether the seats are clean.,0,0
+CDL-SB-0049,for mechanical or operational problems.,1,1
+CDL-SB-0049,for litter on the floor.,0,2
+CDL-SB-0050,an eight-light,1,0
+CDL-SB-0050,a four-light,0,1
+CDL-SB-0050,a six-light,0,2
+CDL-SB-0051,30 feet,1,0
+CDL-SB-0051,15 feet,0,1
+CDL-SB-0051,50 feet,0,2
+CDL-SB-0052,activate your alternating flashing amber lights.,0,0
+CDL-SB-0052,check all mirrors constantly.,0,1
+CDL-SB-0052,do both of the above.,1,2
+CDL-SB-0053,Only if the school district allows and a written note from a parent has been received,1,0
+CDL-SB-0053,Only if the bus driver wants to,0,1
+CDL-SB-0053,Only one time a month can this be done,0,2
+CDL-SB-0053,No answers are correct,0,3
+CDL-SB-0054,The schools bus mechanic,0,0
+CDL-SB-0054,The schools bus mechanic and the bus driver,0,1
+CDL-SB-0054,The schools designated pre-trip inspection person,0,2
+CDL-SB-0054,The school bus driver,1,3
+CDL-SB-0055,5,0,0
+CDL-SB-0055,10,1,1
+CDL-SB-0055,15,0,2
+CDL-SB-0056,Notify the dispatch office of the evacuation.,0,0
+CDL-SB-0056,Dangle the radio telephone or microphone out of the driver's window for later use.,0,1
+CDL-SB-0056,Secure the bus.,1,2
+CDL-SB-0057,annually.,1,0
+CDL-SB-0057,every 3 years.,0,1
+CDL-SB-0057,every 5 years.,0,2
+CDL-SB-0058,The crossover mirrors,1,0
+CDL-SB-0058,The flat mirrors,0,1
+CDL-SB-0058,The convex mirrors,0,2
+CDL-SB-0059,operates smoothly and closes securely from the inside.,1,0
+CDL-SB-0059,operates smoothly and closes securely from the outside.,0,1
+CDL-SB-0059,operates smoothly and closes securely by remote control.,0,2
+CDL-SB-0060,"that no parts are missing, leaking, or damaged and the lift is at least 50% retracted.",0,0
+CDL-SB-0060,"that no parts are missing, leaking, or damaged and the lift is fully retracted and latched.",1,1
+CDL-SB-0060,that the lift goes up and down smoothly.,0,2
+CDL-SB-0061,Zero Tolerance,1,0
+CDL-SB-0061,More than .02 but less than .10 BAC,0,1
+CDL-SB-0061,.10 BAC like any other driver,0,2
+CDL-SB-0062,The right front tire meeting the ground,1,0
+CDL-SB-0062,The right rear tire hub,0,1
+CDL-SB-0062,200 feet behind the bus,0,2
+CDL-SB-0063,the bus is stalled on a railroad track but there is no train in sight.,1,0
+CDL-SB-0063,the antilock brake (ABS) warning light is on.,0,1
+CDL-SB-0063,the bus is stalled on the shoulder of a divided highway and it is getting hot inside.,0,2
+CDL-SB-0064,activate the alternating flashing amber lights.,0,0
+CDL-SB-0064,activate the alternating flashing red lights and ensure that the stop arm is extended.,1,1
+CDL-SB-0064,load the students as quickly as possible.,0,2
+CDL-SB-0065,proceed with extreme caution.,0,0
+CDL-SB-0065,call your dispatcher and ask for instructions.,1,1
+CDL-SB-0065,turn around and find another route.,0,2
+CDL-SB-0066,between 15 and 50 feet from the nearest rail.,1,0
+CDL-SB-0066,between 10 and 40 feet from the nearest rail.,0,1
+CDL-SB-0066,between 15 and 30 feet from the nearest rail.,0,2
+CDL-SB-0067,go home.,0,0
+CDL-SB-0067,cross in front of the school bus.,0,1
+CDL-SB-0067,walk 10 to 15 feet from the side of the school bus.,1,2
+CDL-SB-0068,before entering traffic.,0,0
+CDL-SB-0068,constantly.,1,1
+CDL-SB-0068,after all students have entered or exited the bus.,0,2
+CDL-SB-0069,At least 100 feet from the railroad crossing,0,0
+CDL-SB-0069,At least 200 feet from the railroad crossing,1,1
+CDL-SB-0069,At least 300 feet from the railroad crossing,0,2
+CDL-SB-0070,At a highway railroad crossing,0,0
+CDL-SB-0070,Loading and unloading students,1,1
+CDL-SB-0070,Crossing an intersection,0,2
+CDL-SB-0071,"Tell students to leave any dropped objects, move out of the danger zones, and get your attention to retrieve the objects.",1,0
+CDL-SB-0071,Tell students that they can pick up any dropped objects that are not under the bus.,0,1
+CDL-SB-0071,Tell students not to use the handrail when exiting the bus because they could get caught.,0,2
+CDL-SB-0072,toward the right edge,1,0
+CDL-SB-0072,toward the left edge,0,1
+CDL-SB-0072,in the center,0,2
+CDL-SB-0073,Ask other students if they saw this student.,0,0
+CDL-SB-0073,"Secure the bus, take the key, and check around and underneath the bus for the student.",1,1
+CDL-SB-0073,Look in your mirrors for the student.,0,2
+CDL-SB-0074,All buses equipped with ABS systems have a tag on the sun visor,0,0
+CDL-SB-0074,When the key is turned on an ABS. light will come on and off,1,1
+CDL-SB-0074,The bus will stop much slower,0,2
+CDL-SB-0075,keep the students on the bus until first responders arrive.,0,0
+CDL-SB-0075,evacuate the students downwind of the bus.,0,1
+CDL-SB-0075,evacuate the students upwind of the bus.,1,2
+CDL-SB-0076,Yes,0,0
+CDL-SB-0076,No,1,1
+CDL-SB-0077,20 to 50 feet before the school bus stop,0,0
+CDL-SB-0077,300 to 500 feet before the school bus stop,0,1
+CDL-SB-0077,100 to 300 feet before the school bus stop,1,2
+CDL-SB-0078,damage or vandalism.,0,0
+CDL-SB-0078,personal belongings that were left on the bus.,0,1
+CDL-SB-0078,dirt or shoeprints on the floor.,1,2
+CDL-SB-0079,if the position of the bus may change and further increase the danger.,0,0
+CDL-SB-0079,if the bus is on fire.,0,1
+CDL-SB-0079,in either of the above situations.,1,2
+CDL-SB-0080,Turn on red warning lights,0,0
+CDL-SB-0080,Turn on hazards,1,1
+CDL-SB-0080,Use turn signal,0,2
+CDL-TK-0001,Flat,0,0
+CDL-TK-0001,Wide,0,1
+CDL-TK-0001,High,1,2
+CDL-TK-0002,You will continue in a straight line and keep moving forward no matter how much you steer,1,0
+CDL-TK-0002,Liquid surge will pull the tank from the truck,0,1
+CDL-TK-0002,The truck will roll over,0,2
+CDL-TK-0003,15 feet,0,0
+CDL-TK-0003,20 feet,0,1
+CDL-TK-0003,25 feet,1,2
+CDL-TK-0004,Liquid weight,0,0
+CDL-TK-0004,How fast the tanks drain,0,1
+CDL-TK-0004,Allowance for expansion of liquid,1,2
+CDL-TK-0005,Suspension system failure,0,0
+CDL-TK-0005,Over speeding,0,1
+CDL-TK-0005,Roll over,1,2
+CDL-TK-0006,Starting or stopping,1,0
+CDL-TK-0006,Loading or unloading,0,1
+CDL-TK-0006,Hauling milk or other food products,0,2
+CDL-TK-0007,Side to side,1,0
+CDL-TK-0007,Top to bottom,0,1
+CDL-TK-0007,Front to back,0,2
+CDL-TK-0008,There will be less side to side surge than there is in tanks without baffles,0,0
+CDL-TK-0008,There will be less front to back surge than there is in tanks without baffles,1,1
+CDL-TK-0008,There will be slower surge than quick surge,0,2
+CDL-TK-0009,You need about two times as much stopping distance at 40 MPH as at 20 MPH,0,0
+CDL-TK-0009,Wet roads can double stopping distance at any speed,1,1
+CDL-TK-0009,All answers are true,0,2
+CDL-TK-0010,Much of the load's weight is carried high up off the road.,0,0
+CDL-TK-0010,Tankers can turn over at the speed limits posted for curves.,0,1
+CDL-TK-0010,Both of the above,1,2
+CDL-TK-0011,"individual tanks over 225 gallons or a total of at least 2,400 gallons.",0,0
+CDL-TK-0011,"individual tanks over 119 gallons or a total of at least 1,000 gallons.",1,1
+CDL-TK-0011,individual tanks over 65 gallons or a total of at least 500 gallons.,0,2
+CDL-TK-0012,"Before loading it, driving it, or unloading it",1,0
+CDL-TK-0012,Before loading it or driving it,0,1
+CDL-TK-0012,Before driving it,0,2
+CDL-TK-0013,Keep a steady foot on the brake and don't release the brake too soon.,1,0
+CDL-TK-0013,Brake firmly.,0,1
+CDL-TK-0013,Brake quickly to slow down and then brake quickly again to come to a full stop.,0,2
+CDL-TK-0014,If the liquid is likely to expand a lot,0,0
+CDL-TK-0014,If the liquid is very dense,0,1
+CDL-TK-0014,If it has to stay very clean,1,2
+CDL-TK-0015,"If the wheels are skidding, you cannot control the vehicle.",1,0
+CDL-TK-0015,Disconnecting the steering axle brakes will help keep your vehicle in a straight line.,0,1
+CDL-TK-0015,Never do it without downshifting first.,0,2
+CDL-TK-0016,you'll definitely lock the brakes.,0,0
+CDL-TK-0016,you can use the parking brake before the brake pedal.,0,1
+CDL-TK-0016,your vehicle will stay in a straight line.,1,2
+CDL-TK-0017,Vapor recovery kits.,0,0
+CDL-TK-0017,Grounding and bonding cables.,0,1
+CDL-TK-0017,Emergency shut-off systems.,0,2
+CDL-TK-0017,All of the above.,1,3
+CDL-TK-0018,the rear reflective triangle should be moved back down the road to give adequate warning,1,0
+CDL-TK-0018,You do not need to put out reflective triangles unless the vehicle will be stopped for 30 minutes or more,0,1
+CDL-TK-0018,The vehicles taillights should be kept on warning other drivers,0,2
+CDL-TK-0019,Water content,0,0
+CDL-TK-0019,Air to fuel ratio,0,1
+CDL-TK-0019,Weight distribution,1,2
+CDL-TK-0020,Distribution of weight,1,0
+CDL-TK-0020,Air to fuel ratio,0,1
+CDL-TK-0020,Water content,0,2
+CDL-TK-0021,The truck will seem heavier than it really is,0,0
+CDL-TK-0021,There will be less front to back surge than there is in a tanker without baffles,1,1
+CDL-TK-0021,The truck will handle the same as a tanker without baffles,0,2
+CDL-TK-0022,Bulkheads,0,0
+CDL-TK-0022,Baffles,1,1
+CDL-TK-0022,Barriers,0,2
+CDL-TK-0022,Pancakes,0,3
+CDL-TK-0023,Lock the brakes with the pedal and hold it there,0,0
+CDL-TK-0023,Use only the emergency brakes,0,1
+CDL-TK-0023,Use controlled or stab braking,1,2
+CDL-TK-0024,Accelerate slightly,1,0
+CDL-TK-0024,Brake lightly,0,1
+CDL-TK-0024,Downshift twice,0,2
+CDL-TK-0025,Open,0,0
+CDL-TK-0025,Adjusted,0,1
+CDL-TK-0025,Closed,1,2
+CDL-TK-0026,the type of liquid.,1,0
+CDL-TK-0026,the amount of liquid.,0,1
+CDL-TK-0026,the temperatures that your vehicle will be subjected to.,0,2
+CDL-TK-0027,roll over.,1,0
+CDL-TK-0027,not slow down.,0,1
+CDL-TK-0027,skid.,0,2
+CDL-TK-0028,the liquid may expand in transit.,0,0
+CDL-TK-0028,a full load of a dense liquid may exceed the legal weight limit.,0,1
+CDL-TK-0028,both of the above are true.,1,2
+CDL-TK-0029,four,1,0
+CDL-TK-0029,two,0,1
+CDL-TK-0029,three,0,2
+CDL-TK-0030,Some of the heaviest liquids do not need any,0,0
+CDL-TK-0030,Tank baffles are not always legal with outage,0,1
+CDL-TK-0030,Some liquids expand more than others when they get warm,1,2
+CDL-TK-0031,The distance you will travel in the next 15 seconds,0,0
+CDL-TK-0031,The distance you can see ahead,1,1
+CDL-TK-0031,The length of your vehicle,0,2
+CDL-TK-0031,The length of a football field,0,3
+CDL-TK-0032,Top to bottom,0,0
+CDL-TK-0032,Side to side,1,1
+CDL-TK-0032,Front to back,0,2
+CDL-TK-0033,Bulkheads,1,0
+CDL-TK-0033,Baffles,0,1
+CDL-TK-0033,Barriers,0,2
+CDL-TK-0034,splashing,0,0
+CDL-TK-0034,waves,0,1
+CDL-TK-0034,surging,1,2
+CDL-TK-0035,liquids or gases.,1,0
+CDL-TK-0035,passengers.,0,1
+CDL-TK-0035,hazardous materials.,0,2
+CDL-TK-0036,the front or the rear,1,0
+CDL-TK-0036,the front,0,1
+CDL-TK-0036,the rear,0,2
+CDL-TK-0037,left partially open to prevent a buildup of fumes.,0,0
+CDL-TK-0037,opened and reclosed before you drive the vehicle.,0,1
+CDL-TK-0037,closed before you drive the vehicle.,1,2
+CDL-TK-0038,After every four hours of service,0,0
+CDL-TK-0038,Once a week,0,1
+CDL-TK-0038,At the end of each working day,1,2
+CDL-TK-0039,Do it the same way that you inspected other tank vehicles before.,0,0
+CDL-TK-0039,Read the vehicle's manual to learn how to do it.,1,1
+CDL-TK-0039,Ask a fellow driver how to do it.,0,2
+CDL-TK-0040,a tank made of aluminum.,0,0
+CDL-TK-0040,a liquid tank with baffles.,0,1
+CDL-TK-0040,an un-baffled liquid tank.,1,2
+CDL-TK-0041,on narrow city streets.,0,0
+CDL-TK-0041,on hills.,0,1
+CDL-TK-0041,on slippery roads.,1,2
+CDL-TK-0042,A tanker is easier to counter steer than most vehicles,0,0
+CDL-TK-0042,"When making a quick steering movement, do not apply the brakes",1,1
+CDL-TK-0042,You should wrap your thumbs around the steering wheel before starting a quick steering movement,0,2
+CDL-TK-0043,Going up or down a hill,0,0
+CDL-TK-0043,Starting or stopping,1,1
+CDL-TK-0043,Driving against the wind,0,2
+CDL-TK-0044,receive a citation and be prevented from further driving.,1,0
+CDL-TK-0044,receive a citation.,0,1
+CDL-TK-0044,receive a pay cut.,0,2
+CDL-TK-0045,15 to 50,1,0
+CDL-TK-0045,10 to 35,0,1
+CDL-TK-0045,5 to 20,0,2
+CDL-TK-0046,brake harder.,0,0
+CDL-TK-0046,"brake harder, turn quickly, and counter-steer.",0,1
+CDL-TK-0046,"stop braking, turn quickly, and counter-steer.",1,2
+CDL-TK-0047,Leaks,1,0
+CDL-TK-0047,Joints,0,1
+CDL-TK-0047,Barriers,0,2
+CDL-TK-0048,Surge raises the wind drag of the truck,0,0
+CDL-TK-0048,Surge can move the truck in the direction the liquid waves move,1,1
+CDL-TK-0048,Surge lets you turn corners tighter,0,2
+CDL-TK-0049,To the front,1,0
+CDL-TK-0049,In the back,0,1
+CDL-TK-0049,In the middle,0,2
+CDL-TK-0050,Liquid movement,1,0
+CDL-TK-0050,Extreme weight,0,1
+CDL-TK-0050,Uneven expansion,0,2
+CDL-TK-0051,"Much of the tanker's weight is low, toward the ground.",0,0
+CDL-TK-0051,Much of the tanker's weight is high up off the ground.,1,1
+CDL-TK-0051,The top of the tanker is far away from the Earth's gravity.,0,2
+CDL-TK-0052,Only if the tank has baffles,0,0
+CDL-TK-0052,Always,1,1
+CDL-TK-0052,Never,0,2

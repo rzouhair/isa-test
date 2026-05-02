@@ -1,1 +1,1 @@
-card,yugioh,magic,mtg,onepiece,lorcana,collectr,ludex,pokedex,beckett,trading,player,binder,holo
+commercial,license,driving,written,airbrake,tanker,passenger,pretrip,inspection,manual,bus,endorse
