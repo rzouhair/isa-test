@@ -1,6 +1,6 @@
 # Privacy Policy
 
-This privacy policy applies to the **CDL Prep - CDL Practice Test** app (hereby referred to as "Application") for mobile devices that was created by Zouhair Rouika (hereby referred to as "Service Provider") as a subscription service. This service is intended for use "AS IS".
+This privacy policy applies to the **ISA Arborist Exam Prep** app (hereby referred to as "Application") for mobile devices that was created by Zouhair Rouika (hereby referred to as "Service Provider") as a subscription service. This service is intended for use "AS IS".
 
 ## Information Collection and Use
 
@@ -10,10 +10,10 @@ The Application collects information when you download and use it. This informat
 - The pages of the Application that you visit, the time and date of your visit, the time spent on those pages
 - The time spent on the Application
 - The operating system you use on your mobile device
-- Anonymous study activity (questions answered, accuracy by category, exam attempts, streaks) used to improve the Application
-- Your study progress, bookmarks, weak-question history, target exam date, and selected state, which are stored locally on your device and, where applicable, synced with third-party services for subscription and analytics purposes
+- Anonymous study activity (questions answered, accuracy by ISA exam domain, mock exam attempts, streaks, flashcard reviews) used to improve the Application
+- Your study progress, bookmarks, weak-question history, and target exam date, which are stored locally on your device and, where applicable, synced with third-party services for subscription and analytics purposes
 
-The Application does not gather precise information about the location of your mobile device and does not use location services. The "state" you select during onboarding is used solely to load the correct CDL handbook and pass threshold — it is not derived from device location.
+The Application does not gather precise information about the location of your mobile device and does not use location services.
 
 The Service Provider may use the information you provided to contact you from time to time to provide you with important information, required notices and marketing promotions.
 
@@ -53,11 +53,15 @@ The Application does not address anyone under the age of 13. The Service Provide
 
 The Service Provider is concerned about safeguarding the confidentiality of your information. The Service Provider provides physical, electronic, and procedural safeguards to protect information the Service Provider processes and maintains.
 
+## Trademark Notice
+
+ISA® and Certified Arborist® are trademarks of the International Society of Arboriculture. The Application is an independent study tool and is not affiliated with, endorsed by, or sponsored by the International Society of Arboriculture.
+
 ## Changes
 
 This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes to the Privacy Policy by updating this page with the new Privacy Policy. You are advised to consult this Privacy Policy regularly for any changes, as continued use is deemed approval of all changes.
 
-This privacy policy is effective as of 2026-04-30.
+This privacy policy is effective as of 2026-05-04.
 
 ## Your Consent
 

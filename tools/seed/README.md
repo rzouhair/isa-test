@@ -1,11 +1,11 @@
 # Exam content seeder
 
-Builds `examprep/Resources/exam_content.sqlite` from CSVs in `sample/`.
+Builds `isaprep/Resources/exam_content.sqlite` from CSVs in `sample/`.
 
 ## Run
 
 ```bash
-python3 tools/seed/seed.py --out examprep/Resources/exam_content.sqlite
+python3 tools/seed/seed.py --out isaprep/Resources/exam_content.sqlite
 ```
 
 ## Add / edit content

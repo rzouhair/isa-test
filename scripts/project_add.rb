@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 #
-# Registers Phase 2 assets into examprep.xcodeproj:
+# Registers Phase 2 assets into isaprep.xcodeproj:
 #   - Adds GRDB.swift SPM package dependency + product
-#   - Registers new Swift source files in the `examprep` target's Sources phase
+#   - Registers new Swift source files in the `isaprep` target's Sources phase
 #   - Registers exam_content.sqlite as a Copy-Bundle-Resources entry
 #
 # Idempotent — safe to re-run. Does not remove anything.
@@ -14,34 +14,34 @@
 
 require 'xcodeproj'
 
-PROJECT_PATH = File.expand_path('../examprep.xcodeproj', __dir__)
+PROJECT_PATH = File.expand_path('../isaprep.xcodeproj', __dir__)
 REPO_ROOT = File.expand_path('..', __dir__)
 
 NEW_SWIFT_FILES = [
-  'examprep/Domain/Models/UserExamProfile.swift',
-  'examprep/Domain/Models/QuestionAttempt.swift',
-  'examprep/Domain/Models/PracticeSession.swift',
-  'examprep/Domain/Models/SessionAnswer.swift',
-  'examprep/Domain/Models/BookmarkedQuestion.swift',
-  'examprep/Domain/Models/StudyStreak.swift',
-  'examprep/Domain/Models/Content/ContentDTOs.swift',
-  'examprep/Data/DB/GRDBContentDatabase.swift',
-  'examprep/Domain/Protocols/ContentRepositoryProtocol.swift',
-  'examprep/Domain/Protocols/UserProgressRepositoryProtocol.swift',
-  'examprep/Domain/Protocols/StatsRepositoryProtocol.swift',
-  'examprep/Data/Repositories/GRDBContentRepository.swift',
-  'examprep/Data/Repositories/SwiftDataUserProgressRepository.swift',
-  'examprep/Data/Repositories/DefaultStatsRepository.swift',
+  'isaprep/Domain/Models/UserExamProfile.swift',
+  'isaprep/Domain/Models/QuestionAttempt.swift',
+  'isaprep/Domain/Models/PracticeSession.swift',
+  'isaprep/Domain/Models/SessionAnswer.swift',
+  'isaprep/Domain/Models/BookmarkedQuestion.swift',
+  'isaprep/Domain/Models/StudyStreak.swift',
+  'isaprep/Domain/Models/Content/ContentDTOs.swift',
+  'isaprep/Data/DB/GRDBContentDatabase.swift',
+  'isaprep/Domain/Protocols/ContentRepositoryProtocol.swift',
+  'isaprep/Domain/Protocols/UserProgressRepositoryProtocol.swift',
+  'isaprep/Domain/Protocols/StatsRepositoryProtocol.swift',
+  'isaprep/Data/Repositories/GRDBContentRepository.swift',
+  'isaprep/Data/Repositories/SwiftDataUserProgressRepository.swift',
+  'isaprep/Data/Repositories/DefaultStatsRepository.swift',
 ].freeze
 
 NEW_TEST_FILES = [
-  'examprepTests/ContentRepositoryTests.swift',
-  'examprepTests/UserProgressRepositoryTests.swift',
-  'examprepTests/StatsRepositoryTests.swift',
+  'isaprepTests/ContentRepositoryTests.swift',
+  'isaprepTests/UserProgressRepositoryTests.swift',
+  'isaprepTests/StatsRepositoryTests.swift',
 ].freeze
 
 RESOURCE_FILES = [
-  'examprep/Resources/exam_content.sqlite',
+  'isaprep/Resources/exam_content.sqlite',
 ].freeze
 
 GRDB_PACKAGE_URL = 'https://github.com/groue/GRDB.swift'
@@ -50,14 +50,14 @@ GRDB_PRODUCT = 'GRDB'
 
 def main
   project = Xcodeproj::Project.open(PROJECT_PATH)
-  app_target = project.targets.find { |t| t.name == 'examprep' } or abort 'examprep target not found'
-  test_target = project.targets.find { |t| t.name == 'examprepTests' } or abort 'examprepTests target not found'
+  app_target = project.targets.find { |t| t.name == 'isaprep' } or abort 'isaprep target not found'
+  test_target = project.targets.find { |t| t.name == 'isaprepTests' } or abort 'isaprepTests target not found'
 
   add_grdb_package!(project, app_target, test_target)
 
-  # Source files live under the 'examprep' group; tests under 'examprepTests'.
-  main_group = project.main_group['examprep'] || project.main_group
-  tests_group = project.main_group['examprepTests'] || project.main_group
+  # Source files live under the 'isaprep' group; tests under 'isaprepTests'.
+  main_group = project.main_group['isaprep'] || project.main_group
+  tests_group = project.main_group['isaprepTests'] || project.main_group
 
   NEW_SWIFT_FILES.each { |rel| ensure_source_in_target(project, rel, main_group, app_target) }
   NEW_TEST_FILES.each { |rel| ensure_source_in_target(project, rel, tests_group, test_target) }

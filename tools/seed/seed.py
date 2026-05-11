@@ -3,7 +3,7 @@
 Build exam_content.sqlite from CSVs in sample/.
 
 Usage:
-    python3 tools/seed/seed.py --out examprep/Resources/exam_content.sqlite
+    python3 tools/seed/seed.py --out isaprep/Resources/exam_content.sqlite
 
 CSV formats (sample/ dir):
   - licenses.csv:    code,name,icon

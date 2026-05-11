@@ -186,7 +186,7 @@ Nodes (5): ImageFormat, jpeg, png, loadUIImage(), UIImage
 
 ### Community 16 - "Community 16"
 Cohesion: 0.18
-Nodes (3): examprepUITests, examprepUITestsLaunchTests, XCTestCase
+Nodes (3): isaprepUITests, isaprepUITestsLaunchTests, XCTestCase
 
 ### Community 17 - "Community 17"
 Cohesion: 0.18
@@ -238,7 +238,7 @@ Nodes (4): Asset catalog image likely used for app author/about screen, Author p
 
 ### Community 29 - "Community 29"
 Cohesion: 0.67
-Nodes (1): examprepTests
+Nodes (1): isaprepTests
 
 ### Community 30 - "Community 30"
 Cohesion: 0.67

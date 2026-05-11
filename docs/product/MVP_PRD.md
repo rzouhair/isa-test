@@ -152,7 +152,7 @@ ScanRecord (@Model) {
   rarity:            String?
   year:              String?
   language:          String?
-  game:              String?         // examprepmon | mtg | yugioh | lorcana
+  game:              String?         // isaprepmon | mtg | yugioh | lorcana
   variant:           String?
   variantName:       String?
 
@@ -196,7 +196,7 @@ CardRecord {
   number:               String
   rarity:               String
   variant:              String    // HOLO | FULL_ART | ALT_ART | STANDARD | etc
-  game:                 String    // examprepmon | mtg | yugioh | lorcana
+  game:                 String    // isaprepmon | mtg | yugioh | lorcana
   tcgplayer_price:      Decimal
   ebay_price:           Decimal?
   price_updated_at:     Timestamp

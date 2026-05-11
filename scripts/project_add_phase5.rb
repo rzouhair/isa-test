@@ -3,24 +3,24 @@
 # bookmarks, AI tutor, MarkdownText). Idempotent.
 require 'xcodeproj'
 
-PROJECT_PATH = File.expand_path('../examprep.xcodeproj', __dir__)
+PROJECT_PATH = File.expand_path('../isaprep.xcodeproj', __dir__)
 REPO_ROOT = File.expand_path('..', __dir__)
 
 NEW_APP_FILES = [
-  'examprep/Presentation/Components/MarkdownText.swift',
-  'examprep/Features/CheatSheet/CheatSheetListView.swift',
-  'examprep/Features/CheatSheet/CheatSheetDetailView.swift',
-  'examprep/Features/Handbook/HandbookView.swift',
-  'examprep/Features/ExamDatePicker/ExamReminderScheduler.swift',
-  'examprep/Features/ExamDatePicker/ExamDatePickerView.swift',
-  'examprep/Features/Bookmarks/BookmarksView.swift',
-  'examprep/Features/AITutor/AITutorViewModel.swift',
-  'examprep/Features/AITutor/AITutorView.swift',
+  'isaprep/Presentation/Components/MarkdownText.swift',
+  'isaprep/Features/CheatSheet/CheatSheetListView.swift',
+  'isaprep/Features/CheatSheet/CheatSheetDetailView.swift',
+  'isaprep/Features/Handbook/HandbookView.swift',
+  'isaprep/Features/ExamDatePicker/ExamReminderScheduler.swift',
+  'isaprep/Features/ExamDatePicker/ExamDatePickerView.swift',
+  'isaprep/Features/Bookmarks/BookmarksView.swift',
+  'isaprep/Features/AITutor/AITutorViewModel.swift',
+  'isaprep/Features/AITutor/AITutorView.swift',
 ].freeze
 
 project = Xcodeproj::Project.open(PROJECT_PATH)
-app_target = project.targets.find { |t| t.name == 'examprep' } or abort 'examprep target missing'
-examprep_group = project.main_group['examprep'] or abort 'examprep group missing'
+app_target = project.targets.find { |t| t.name == 'isaprep' } or abort 'isaprep target missing'
+isaprep_group = project.main_group['isaprep'] or abort 'isaprep group missing'
 
 def find_or_create_group(root, components)
   components.inject(root) do |grp, name|
@@ -34,7 +34,7 @@ def add(project, rel, root_group, target)
   abort "missing: #{abs}" unless File.exist?(abs)
 
   components = rel.split('/')
-  components.shift                         # drop 'examprep'
+  components.shift                         # drop 'isaprep'
   components.pop                           # drop filename
   target_group = components.empty? ? root_group : find_or_create_group(root_group, components)
 
@@ -61,7 +61,7 @@ def add(project, rel, root_group, target)
   end
 end
 
-NEW_APP_FILES.each { |rel| add(project, rel, examprep_group, app_target) }
+NEW_APP_FILES.each { |rel| add(project, rel, isaprep_group, app_target) }
 
 project.save
 puts "OK: wrote #{PROJECT_PATH}"

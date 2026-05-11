@@ -2,23 +2,23 @@
 # Registers Phase 6 onboarding files.
 require 'xcodeproj'
 
-PROJECT_PATH = File.expand_path('../examprep.xcodeproj', __dir__)
+PROJECT_PATH = File.expand_path('../isaprep.xcodeproj', __dir__)
 REPO_ROOT = File.expand_path('..', __dir__)
 
 NEW_APP_FILES = [
-  'examprep/Features/OnboardingFlow/OnboardingHeroView.swift',
-  'examprep/Features/OnboardingFlow/OnboardingValueProp1View.swift',
-  'examprep/Features/OnboardingFlow/OnboardingValueProp2View.swift',
-  'examprep/Features/OnboardingFlow/OnboardingValueProp3View.swift',
-  'examprep/Features/OnboardingFlow/OnboardingLicenseStepView.swift',
-  'examprep/Features/OnboardingFlow/OnboardingStateStepView.swift',
-  'examprep/Features/OnboardingFlow/OnboardingExamDateStepView.swift',
-  'examprep/Features/OnboardingFlow/OnboardingNotificationsStepView.swift',
+  'isaprep/Features/OnboardingFlow/OnboardingHeroView.swift',
+  'isaprep/Features/OnboardingFlow/OnboardingValueProp1View.swift',
+  'isaprep/Features/OnboardingFlow/OnboardingValueProp2View.swift',
+  'isaprep/Features/OnboardingFlow/OnboardingValueProp3View.swift',
+  'isaprep/Features/OnboardingFlow/OnboardingLicenseStepView.swift',
+  'isaprep/Features/OnboardingFlow/OnboardingStateStepView.swift',
+  'isaprep/Features/OnboardingFlow/OnboardingExamDateStepView.swift',
+  'isaprep/Features/OnboardingFlow/OnboardingNotificationsStepView.swift',
 ].freeze
 
 project = Xcodeproj::Project.open(PROJECT_PATH)
-app_target = project.targets.find { |t| t.name == 'examprep' } or abort 'examprep target missing'
-examprep_group = project.main_group['examprep'] or abort 'examprep group missing'
+app_target = project.targets.find { |t| t.name == 'isaprep' } or abort 'isaprep target missing'
+isaprep_group = project.main_group['isaprep'] or abort 'isaprep group missing'
 
 def find_or_create_group(root, components)
   components.inject(root) do |grp, name|
@@ -59,7 +59,7 @@ def add(project, rel, root_group, target)
   end
 end
 
-NEW_APP_FILES.each { |rel| add(project, rel, examprep_group, app_target) }
+NEW_APP_FILES.each { |rel| add(project, rel, isaprep_group, app_target) }
 
 project.save
 puts "OK"

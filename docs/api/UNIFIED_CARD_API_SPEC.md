@@ -59,7 +59,7 @@ The top-level domain classifier. Detected by Vision LLM in first pass.
 ```swift
 enum CardDomain: String, Codable {
     // TCG
-    case examprepmon
+    case isaprepmon
     case mtg
     case yugioh
     case lorcana
@@ -96,7 +96,7 @@ final class UnifiedCard {
     // === Identity ===
     var id: UUID
     var category: CardCategory          // tcg | sports
-    var domain: CardDomain              // examprepmon | basketball | etc
+    var domain: CardDomain              // isaprepmon | basketball | etc
     
     // === Core fields (all cards) ===
     var name: String                    // Card title or player name
@@ -197,7 +197,7 @@ enum FoilType: String, Codable {
 
 ```swift
 struct TCGMetadata: Codable {
-    var game: TCGGame                   // examprepmon | mtg | yugioh | lorcana
+    var game: TCGGame                   // isaprepmon | mtg | yugioh | lorcana
     var cardType: TCGCardType           // creature | spell | trainer | etc
     var energyTypes: [String]?          // ["Fire", "Water"] for Pokemon
     var hp: Int?
@@ -222,7 +222,7 @@ struct TCGMetadata: Codable {
 }
 
 enum TCGGame: String, Codable {
-    case examprepmon, mtg, yugioh, lorcana, onepiece, digimon
+    case isaprepmon, mtg, yugioh, lorcana, onepiece, digimon
 }
 
 enum TCGCardType: String, Codable {
@@ -342,7 +342,7 @@ Image → Pass 1 (Classification) → Pass 2 (Extraction) → Structured Output
 
 **Pass 1 — Classification (fast, cheap model)**
 
-Determines: category (TCG vs Sports), domain (examprepmon vs basketball), and basic card orientation. This routes the image to the correct Pass 2 prompt.
+Determines: category (TCG vs Sports), domain (isaprepmon vs basketball), and basic card orientation. This routes the image to the correct Pass 2 prompt.
 
 **Pass 2 — Full Extraction (capable model)**
 
@@ -354,7 +354,7 @@ Extracts all metadata fields using a domain-specific prompt. Returns structured 
 You are a trading card classifier. Given this image of a card, determine:
 
 1. category: "tcg" or "sports" or "unknown"
-2. domain: one of [examprepmon, mtg, yugioh, lorcana, onepiece, digimon, 
+2. domain: one of [isaprepmon, mtg, yugioh, lorcana, onepiece, digimon, 
    basketball, football, baseball, hockey, soccer, mma, wrestling, unknown]
 3. orientation: "portrait" or "landscape"
 4. is_graded: true/false (is the card in a grading slab?)
@@ -702,7 +702,7 @@ Submit an image for identification.
 {
   "image": "<base64 or multipart>",
   "hint_category": "tcg" | "sports" | null,
-  "hint_domain": "examprepmon" | "basketball" | null,
+  "hint_domain": "isaprepmon" | "basketball" | null,
   "mode": "single" | "batch",
   "client": "tcg_scanner" | "sport_scan"
 }
@@ -719,7 +719,7 @@ Submit an image for identification.
     {
       "card_id": "uuid",
       "category": "tcg",
-      "domain": "examprepmon",
+      "domain": "isaprepmon",
       "name": "Charizard ex",
       "set_name": "Scarlet & Violet 151",
       "set_code": "SV151",
@@ -790,7 +790,7 @@ Fetch prices for a card.
   "set_code": "SV151",
   "variant_type": "special_art_rare",
   "category": "tcg",
-  "domain": "examprepmon",
+  "domain": "isaprepmon",
   "include_graded": false
 }
 ```
@@ -845,7 +845,7 @@ Price sources by app:
 
 **Request:**
 ```
-GET /v1/search?q=charizard&category=tcg&domain=examprepmon&limit=20&offset=0
+GET /v1/search?q=charizard&category=tcg&domain=isaprepmon&limit=20&offset=0
     &sort=relevance&rarity=ultra_rare&price_min=10&price_max=500
 ```
 
@@ -863,7 +863,7 @@ GET /v1/search?q=charizard&category=tcg&domain=examprepmon&limit=20&offset=0
       "rarity": "ultra_rare",
       "variant": { ... },
       "category": "tcg",
-      "domain": "examprepmon",
+      "domain": "isaprepmon",
       "price_snapshot": {
         "value": 84.50,
         "source": "tcgplayer",
@@ -886,8 +886,8 @@ GET /v1/search/autocomplete?q=chariz&category=tcg&limit=6
 ```json
 {
   "suggestions": [
-    { "text": "Charizard ex", "set": "SV151", "domain": "examprepmon" },
-    { "text": "Charizard VMAX", "set": "SWSH04", "domain": "examprepmon" },
+    { "text": "Charizard ex", "set": "SV151", "domain": "isaprepmon" },
+    { "text": "Charizard VMAX", "set": "SWSH04", "domain": "isaprepmon" },
     ...
   ]
 }
@@ -896,7 +896,7 @@ GET /v1/search/autocomplete?q=chariz&category=tcg&limit=6
 ### 5.6 GET /v1/catalog/sets
 
 ```
-GET /v1/catalog/sets?category=tcg&domain=examprepmon&sort=release_date&limit=20
+GET /v1/catalog/sets?category=tcg&domain=isaprepmon&sort=release_date&limit=20
 ```
 
 **Response:**
@@ -907,7 +907,7 @@ GET /v1/catalog/sets?category=tcg&domain=examprepmon&sort=release_date&limit=20
       "set_code": "SV151",
       "set_name": "Scarlet & Violet 151",
       "year": "2023",
-      "domain": "examprepmon",
+      "domain": "isaprepmon",
       "category": "tcg",
       "card_count": 207,
       "dominant_color": "#E53E3E",
@@ -933,7 +933,7 @@ Price source priority by domain:
 
 | Domain | Primary | Secondary | Supplemental |
 |---|---|---|---|
-| examprepmon | TCGPlayer | eBay | Cardmarket |
+| isaprepmon | TCGPlayer | eBay | Cardmarket |
 | mtg | TCGPlayer | Cardmarket | eBay |
 | yugioh | TCGPlayer | eBay | Cardmarket |
 | lorcana | TCGPlayer | eBay | Cardmarket |
@@ -957,7 +957,7 @@ The backend maintains a single card catalog indexed for search. Structure:
 catalog_card {
   catalog_id:     UUID
   category:       tcg | sports
-  domain:         examprepmon | basketball | ...
+  domain:         isaprepmon | basketball | ...
   name:           String (searchable)
   player_name:    String? (sports, searchable)
   set_name:       String (searchable)

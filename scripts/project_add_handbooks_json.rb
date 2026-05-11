@@ -1,19 +1,19 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
-# Adds examprep/Resources/handbooks.json to Resources group + Copy-Bundle-Resources
-# build phase for the `examprep` target. Idempotent.
+# Adds isaprep/Resources/handbooks.json to Resources group + Copy-Bundle-Resources
+# build phase for the `isaprep` target. Idempotent.
 
 require 'xcodeproj'
 
-PROJECT_PATH = File.expand_path('../examprep.xcodeproj', __dir__)
+PROJECT_PATH = File.expand_path('../isaprep.xcodeproj', __dir__)
 RESOURCE_REL = 'handbooks.json'
-TARGET_NAME  = 'examprep'
+TARGET_NAME  = 'isaprep'
 
 project = Xcodeproj::Project.open(PROJECT_PATH)
 
-main_group = project.main_group['examprep'] || project.main_group
+main_group = project.main_group['isaprep'] || project.main_group
 resources_group = main_group['Resources']
-abort 'Resources group not found under examprep/' unless resources_group
+abort 'Resources group not found under isaprep/' unless resources_group
 
 file_ref = resources_group.files.find { |f| f.path == RESOURCE_REL }
 file_ref ||= resources_group.new_reference(RESOURCE_REL)

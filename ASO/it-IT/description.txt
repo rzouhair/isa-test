@@ -1,51 +1,54 @@
-Pass your CDL on the first try. 1,020+ real exam questions, full-length practice exams, and full coverage of every CDL endorsement — all in one study tool.
+Pass your ISA Certified Arborist exam on the first try. Hundreds of real practice questions, full mock exams, and complete coverage of every ISA exam domain.
 
-Built for commercial drivers preparing for the written exam. Whether you're chasing a Class A, Class B, Hazmat, Tanker, Passenger, or School Bus endorsement, every category is covered with up-to-date questions and clear, plain-English explanations.
+Whether you're studying for the International Society of Arboriculture's Certified Arborist credential, this app gives you everything you need: drill-down practice, instant explanations, and progress tracking that shows where you stand on exam day.
 
-WHAT'S INCLUDED
+WHAT'S INSIDE
 
-• 1,020+ practice questions across all 9 CDL categories
-• Full-length practice exams matching the DMV 80% pass threshold
-• Learn Mode — drill one category at a time with instant feedback
-• Review Mode — see every missed question with a full explanation
+• Hundreds of practice questions across all ISA Certified Arborist exam domains
+• Full-length mock exams matching the official pass threshold
+• Flashcards mode — quick review of key concepts and terminology
+• Learn Mode — drill by topic with instant feedback
+• Review Mode — every missed question with a full explanation
 • Weak Questions — auto-surfaces what you keep getting wrong
 • Bookmarks — save tough questions to revisit
-• Cheat Sheets — quick-reference summaries for Air Brakes and more
-• Handbook viewer — state CDL manuals built in
-• Study streaks — daily goals that keep momentum
-• Stats dashboard — track accuracy by category and trend over time
-• Exam date countdown — custom study plan on the home screen
+• Stats dashboard — accuracy by topic, passing ratio, weak-spot count
+• Exam date countdown — set your target date, get reminders
 
-ALL 9 CDL CATEGORIES
+ISA EXAM DOMAINS COVERED
 
-• General Knowledge
-• Air Brakes
-• Combination Vehicles
-• Doubles and Triples
-• Hazardous Materials (Hazmat)
-• Passenger Transport
-• Pre-Trip Inspection
-• School Bus
-• Tanker
-
-ENDORSEMENTS COVERED
-
-Hazmat (H), Tanker (N), Doubles/Triples (T), Passenger (P), School Bus (S), Air Brakes, Combination Vehicles. Build study sessions around the endorsements you actually need.
+• Soil Science — soil composition, moisture, fertility, drainage
+• Tree Biology — anatomy, physiology, growth, structure
+• Tree Identification — species, characteristics, hardiness
+• Plant Health Care — pest management, disease diagnosis, treatment
+• Pruning — techniques, timing, cut placement, tools
+• Tree Installation — site selection, planting, transplanting
+• Tree Support Systems — cabling, bracing, propping
+• Climbing & Work Practices — gear, knots, safety
+• Tree Risk — assessment basics, hazard identification
+• Tree Protection — construction site protection, root zones
+• Diagnosis & Treatment — common disorders, preventive care
+• Urban Forestry — community trees, ordinances, ecosystem services
 
 HOW IT WORKS
 
-1. Pick your state and target exam date.
-2. Practice by category, or take a full practice exam.
-3. Review misses, retry weak areas, and watch your pass rate climb.
+1. Pick your target ISA exam date during onboarding
+2. Practice by topic, or take a full-length mock exam
+3. Review missed questions, retry weak topics, watch your pass rate climb
 
-Study offline. No ads. No sign-up required to start.
+BUILT FOR FUTURE ARBORISTS
 
-Works on iPhone and iPad. Your progress stays on your device.
+• Practice offline — question bank bundled, no internet needed
+• No ads. Ever.
+• No sign-up required to start practicing
+• Works on iPhone and iPad
+• Progress stays on your device
 
 SUBSCRIPTION
 
-CDL Prep is a subscription service. A weekly or yearly auto-renewing subscription unlocks the full question bank, Review Mode (with full explanations on every missed question), the Handbook viewer, and Cheat Sheets. Subscription auto-renews at the same price unless cancelled at least 24 hours before the period ends. Manage or cancel anytime in your App Store account settings.
+ISA Arborist Exam Prep is a subscription service. A weekly or yearly auto-renewing subscription unlocks the full question bank, every mock exam, full Review Mode with detailed explanations, and complete topic coverage. Subscription auto-renews at the same price unless cancelled at least 24 hours before the period ends. Manage or cancel anytime in your App Store account settings.
+
+The ISA® and Certified Arborist® names are trademarks of the International Society of Arboriculture. This app is an independent study tool and is not affiliated with, endorsed by, or sponsored by ISA.
 
 Support: rouikaalt@gmail.com
-Privacy: https://www.notion.so/CDL-Hazmat-Practice-Test-Prep-Privacy-Policy-3524d383e4768017bf00fa1604067d85?source=copy_link
-Terms: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+Privacy Policy: https://www.notion.so/ISA-Arborist-Exam-Prep-Privacy-Policy-3574d383e47680aca19cf83d66d14371?source=copy_link
+Terms of Use (Apple EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

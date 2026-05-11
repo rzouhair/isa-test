@@ -1,18 +1,18 @@
 #!/usr/bin/env ruby
-# Registers EditLicenseView + EditStateView into examprep target.
+# Registers EditLicenseView + EditStateView into isaprep target.
 require 'xcodeproj'
 
-PROJECT_PATH = File.expand_path('../examprep.xcodeproj', __dir__)
+PROJECT_PATH = File.expand_path('../isaprep.xcodeproj', __dir__)
 REPO_ROOT = File.expand_path('..', __dir__)
 
 NEW_FILES = [
-  'examprep/Features/Settings/EditLicenseView.swift',
-  'examprep/Features/Settings/EditStateView.swift',
+  'isaprep/Features/Settings/EditLicenseView.swift',
+  'isaprep/Features/Settings/EditStateView.swift',
 ].freeze
 
 project = Xcodeproj::Project.open(PROJECT_PATH)
-app_target = project.targets.find { |t| t.name == 'examprep' } or abort 'examprep missing'
-root = project.main_group['examprep'] or abort 'examprep group missing'
+app_target = project.targets.find { |t| t.name == 'isaprep' } or abort 'isaprep missing'
+root = project.main_group['isaprep'] or abort 'isaprep group missing'
 
 def find_or_create_group(root, components)
   components.inject(root) do |grp, name|

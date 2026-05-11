@@ -27,7 +27,7 @@ Strip all TCG domain code. Boot empty-shell app with working paywall, analytics,
 
 ### Step-by-step
 
-**1.1 Rebrand (`examprep/Constants.swift`)**
+**1.1 Rebrand (`isaprep/Constants.swift`)**
 Edit these constant values:
 ```swift
 static let appName = "CDL Prep"                               // was "Karten" / "Poke"
@@ -44,37 +44,37 @@ Update asset catalog `Colors.xcassets` accent color; replace `AppIcon` set; add 
 
 **1.2 Delete feature folders** (Finder + Xcode: remove references, move-to-trash)
 ```
-examprep/Features/CameraCapture/
-examprep/Features/Scanner/
-examprep/Features/Collection/
-examprep/Features/Grading/
-examprep/Features/Watchlist/
-examprep/Features/Detection/
-examprep/Features/Search/
+isaprep/Features/CameraCapture/
+isaprep/Features/Scanner/
+isaprep/Features/Collection/
+isaprep/Features/Grading/
+isaprep/Features/Watchlist/
+isaprep/Features/Detection/
+isaprep/Features/Search/
 ```
 
 **1.3 Delete domain/data files**
 ```
-examprep/Domain/Models/CardRecord.swift
-examprep/Domain/Models/CardCollection.swift
-examprep/Domain/Models/GradeRecord.swift
-examprep/Domain/Models/ScanRecord.swift
-examprep/Domain/Models/WatchlistItem.swift
-examprep/Domain/Models/CardAPIModels.swift
-examprep/Domain/Models/GradingAPIModels.swift
-examprep/Domain/Models/DetectionResult.swift
-examprep/Domain/Enums/TCGType.swift
-examprep/Data/Services/CardIdentifierService.swift
-examprep/Data/Services/GradingService.swift
-examprep/Data/Services/OpenAIProxiedService.swift
-examprep/Data/Services/WatchlistPriceService.swift
-examprep/Domain/Protocols/CardIdentifierServiceProtocol.swift
-examprep/Domain/Protocols/GradingServiceProtocol.swift
-examprep/Presentation/Components/PriceChartView.swift
+isaprep/Domain/Models/CardRecord.swift
+isaprep/Domain/Models/CardCollection.swift
+isaprep/Domain/Models/GradeRecord.swift
+isaprep/Domain/Models/ScanRecord.swift
+isaprep/Domain/Models/WatchlistItem.swift
+isaprep/Domain/Models/CardAPIModels.swift
+isaprep/Domain/Models/GradingAPIModels.swift
+isaprep/Domain/Models/DetectionResult.swift
+isaprep/Domain/Enums/TCGType.swift
+isaprep/Data/Services/CardIdentifierService.swift
+isaprep/Data/Services/GradingService.swift
+isaprep/Data/Services/OpenAIProxiedService.swift
+isaprep/Data/Services/WatchlistPriceService.swift
+isaprep/Domain/Protocols/CardIdentifierServiceProtocol.swift
+isaprep/Domain/Protocols/GradingServiceProtocol.swift
+isaprep/Presentation/Components/PriceChartView.swift
 ```
 Keep `OpenAIService.swift` but delete its `functionRegistry` property (unused).
 
-**1.4 Rewrite `examprep/Core/Navigation/Router.swift`**
+**1.4 Rewrite `isaprep/Core/Navigation/Router.swift`**
 Replace entire `Route` enum with placeholder. Remove all imports of deleted types:
 ```swift
 enum Route: Hashable {
@@ -96,20 +96,20 @@ final class Router {
 ```
 Fix `RouterView` / `navigationDestination(for:)` switch to cover only remaining cases.
 
-**1.5 Refactor `examprep/Application/AppMain.swift`**
+**1.5 Refactor `isaprep/Application/AppMain.swift`**
 - Remove from `ModelContainer(for:)`: `ScanRecord.self, CardRecord.self, CardCollection.self, WatchlistItem.self, GradeRecord.self`
 - Replace with placeholder (will add real models in Phase 2): `ModelContainer(for: Item.self)` (temporary — keep existing `Item.swift` as placeholder)
 - Delete `WatchlistPriceService` injection + its `.task { await WatchlistPriceService.shared.checkOnAppOpen() }` calls
 - Keep RevenueCat `Purchases.configure`, PostHog init, Sentry init
 
-**1.6 Refactor `examprep/Application/AppState.swift`**
+**1.6 Refactor `isaprep/Application/AppState.swift`**
 Replace `SelectedTab` enum:
 ```swift
 enum SelectedTab: Hashable { case home, practice, progress, settings }
 ```
 Keep `isProUser`, `wasPaywallShown`, `showPaywall()`.
 
-**1.7 Refactor `examprep/Application/RootView.swift`**
+**1.7 Refactor `isaprep/Application/RootView.swift`**
 Replace TabView contents with 4 placeholder tabs:
 ```swift
 TabView(selection: $appState.selectedTab) {
@@ -121,12 +121,12 @@ TabView(selection: $appState.selectedTab) {
 ```
 Keep `HighlightTabBar` if used; update its tab items.
 
-**1.8 Refactor `examprep/Core/DI/DIContainer.swift`**
+**1.8 Refactor `isaprep/Core/DI/DIContainer.swift`**
 - Delete registrations for: `cardIdentifierService`, `gradingService`, any card/TCG service
 - Keep: `userRepository`, `analyticsService`, `crashReportingService`, `subscriptionsRepository`, `authService`
 - Resolve compile errors in callers
 
-**1.9 Refactor `examprep/Domain/Enums/AnalyticsEvent.swift`**
+**1.9 Refactor `isaprep/Domain/Enums/AnalyticsEvent.swift`**
 Replace all TCG-related cases. New enum:
 ```swift
 enum AnalyticsEvent: String {
@@ -142,7 +142,7 @@ enum AnalyticsEvent: String {
 ```
 Fix all call sites (grep for removed cases).
 
-**1.10 Refactor `examprep/Features/OnboardingFlow/`**
+**1.10 Refactor `isaprep/Features/OnboardingFlow/`**
 Delete files:
 ```
 OnboardingCorrectionView.swift
@@ -160,7 +160,7 @@ WelcomeView → InstantValueView → RateUsView → TrialScreen1View → TrialSc
 ```
 Leave Phase 6 additions (license/state/exam-date/notif) as TODO comments.
 
-**1.11 Refactor `examprep/Features/Home/HomeView.swift`**
+**1.11 Refactor `isaprep/Features/Home/HomeView.swift`**
 Blank dashboard placeholder:
 ```swift
 VStack { Text("Home"); Text("Coming soon") }
@@ -190,7 +190,7 @@ Ship bundled read-only SQLite of questions/cheat-sheets/handbooks via GRDB. Set 
 Xcode → File → Add Package Dependencies → `https://github.com/groue/GRDB.swift` → "Up to Next Major" 6.x → add `GRDB` product to app target.
 
 **2.2 Add SQLite content DB (bundled, read-only)**
-- DB file: `examprep/Resources/exam_content.sqlite` (shipped in app bundle, copied to Caches on first launch for future updates)
+- DB file: `isaprep/Resources/exam_content.sqlite` (shipped in app bundle, copied to Caches on first launch for future updates)
 
 **2.2 Schema — unified DMV + CDL**
 
@@ -275,7 +275,7 @@ CREATE TABLE exam_specs (                        -- defines realistic exam simul
 );
 ```
 
-**2.3 SwiftData models** `examprep/Domain/Models/`
+**2.3 SwiftData models** `isaprep/Domain/Models/`
 
 `UserExamProfile.swift`:
 ```swift
@@ -372,7 +372,7 @@ ModelContainer(for:
 ```
 Delete `Item.swift` placeholder.
 
-**2.4 GRDB content layer** `examprep/Data/DB/`
+**2.4 GRDB content layer** `isaprep/Data/DB/`
 
 `GRDBContentDatabase.swift`:
 ```swift
@@ -397,7 +397,7 @@ final class GRDBContentDatabase {
 }
 ```
 
-**2.5 DTOs** `examprep/Domain/Models/Content/`
+**2.5 DTOs** `isaprep/Domain/Models/Content/`
 
 ```swift
 struct LicenseDTO: Codable, FetchableRecord { let id: Int; let code: String; let name: String; let icon: String? }
@@ -426,7 +426,7 @@ struct ExamSpecDTO: Codable, FetchableRecord {
 }
 ```
 
-**2.6 Repositories** `examprep/Data/Repositories/`
+**2.6 Repositories** `isaprep/Data/Repositories/`
 
 `ContentRepository.swift` — protocol + GRDB impl, all read-only:
 ```swift
@@ -477,7 +477,7 @@ protocol StatsRepositoryProtocol {
 }
 ```
 
-**2.7 Register in DI** `examprep/Core/DI/DIContainer.swift`
+**2.7 Register in DI** `isaprep/Core/DI/DIContainer.swift`
 ```swift
 register(ContentRepositoryProtocol.self) { GRDBContentRepository() }
 register(UserProgressRepositoryProtocol.self) { SwiftDataUserProgressRepository(context: modelContext) }
@@ -491,7 +491,7 @@ register(StatsRepositoryProtocol.self) { DefaultStatsRepository(content: resolve
 ```python
 # Reads licenses.csv, states.csv, categories.csv, questions.csv, answers.csv,
 #   cheat_sheets.csv, handbooks.csv, exam_specs.csv  →  writes exam_content.sqlite
-# Usage: python tools/seed/seed.py --out examprep/Resources/exam_content.sqlite
+# Usage: python tools/seed/seed.py --out isaprep/Resources/exam_content.sqlite
 ```
 CSV format (users fill these):
 - `questions.csv`: `license_code,state_code,category_code,text,explanation,image_name,difficulty,lang`
@@ -502,7 +502,7 @@ CSV format (users fill these):
 
 Ship a tiny sample: CA + Car + "General Knowledge" + 20 questions, plus CDL + CA + "Hazmat" + 10 questions, so Phase 3 demo works.
 
-**2.9 Unit tests** `examprepTests/Data/`
+**2.9 Unit tests** `isaprepTests/Data/`
 - `ContentRepositoryTests.swift` — load test fixture DB, assert `questions(licenseCode: "car", stateCode: "CA", …)` returns 20 rows
 - `UserProgressRepositoryTests.swift` — in-memory SwiftData container, assert status transitions, bookmark toggle, streak increment
 - `StatsRepositoryTests.swift` — seed attempts, assert per-category averages + weak-Q list ordering
@@ -521,7 +521,7 @@ User picks license → state → category → takes numbered practice test → a
 
 ### Step-by-step
 
-**3.1 Extend Route enum** `examprep/Core/Navigation/Router.swift`
+**3.1 Extend Route enum** `isaprep/Core/Navigation/Router.swift`
 ```swift
 enum Route: Hashable {
     case onboarding, home, settings, paywall
@@ -545,7 +545,7 @@ struct QuizConfig: Hashable {
 ```
 Update `navigationDestination(for: Route.self)` switch to route each case to its View.
 
-**3.2 Feature: License select** `examprep/Features/LicenseSelect/`
+**3.2 Feature: License select** `isaprep/Features/LicenseSelect/`
 
 `LicenseSelectView.swift`:
 ```swift
@@ -567,7 +567,7 @@ struct LicenseSelectView: View {
 ```
 `LicenseSelectViewModel.swift` (@Observable): loads `contentRepo.allLicenses()`, persists pick via `userProgressRepo.setProfile(...)`.
 
-**3.3 Feature: State select** `examprep/Features/StateSelect/`
+**3.3 Feature: State select** `isaprep/Features/StateSelect/`
 
 `StateSelectView.swift`:
 ```swift
@@ -589,7 +589,7 @@ struct StateSelectView: View {
 ```
 ViewModel filters `contentRepo.allStates()` by query.
 
-**3.4 Feature: Home dashboard** `examprep/Features/Home/`
+**3.4 Feature: Home dashboard** `isaprep/Features/Home/`
 
 `HomeView.swift` sections (mirrors CDL app reference):
 ```swift
@@ -604,7 +604,7 @@ ScrollView {
 ```
 `HomeViewModel.swift`: depends on `StatsRepositoryProtocol`, `UserProgressRepositoryProtocol`. Computed: `countdown`, `passingProbability`, `categoryStats`.
 
-**3.5 Feature: Category list** `examprep/Features/CategoryList/`
+**3.5 Feature: Category list** `isaprep/Features/CategoryList/`
 
 `CategoryListView.swift`:
 ```swift
@@ -623,7 +623,7 @@ LazyVGrid(columns: [.init(.flexible()), .init(.flexible())]) {
 ```
 ViewModel loads `contentRepo.categories(licenseCode:)` + joins progress from `StatsRepository`.
 
-**3.6 Feature: Practice test list** `examprep/Features/PracticeTestList/`
+**3.6 Feature: Practice test list** `isaprep/Features/PracticeTestList/`
 
 Numbered tests (#1, #2, …). Algorithm: split available questions for category into groups of N (default 20 or `exam_specs.question_count`). Status per group:
 - `✓ passed` (most-recent session passed)
@@ -642,7 +642,7 @@ LazyVGrid(columns: [.init(.adaptive(minimum: 80))]) {
 ```
 On tap w/ `start` / `failed` / `continue`, router pushes `.quizSession(config:)` w/ `questionIds` for that batch.
 
-**3.7 Feature: Quiz session** `examprep/Features/QuizSession/`
+**3.7 Feature: Quiz session** `isaprep/Features/QuizSession/`
 
 `QuizSessionViewModel.swift` (@Observable):
 ```swift
@@ -706,7 +706,7 @@ VStack {
 .onDisappear { /* save partial session */ }
 ```
 
-**3.8 Feature: Quiz result** `examprep/Features/QuizResult/`
+**3.8 Feature: Quiz result** `isaprep/Features/QuizResult/`
 
 `QuizResultView.swift` mirrors DMV Permit Prep reference:
 ```swift
@@ -726,10 +726,10 @@ VStack(spacing: 24) {
 }
 ```
 
-**3.9 Feature: Review session** `examprep/Features/ReviewSession/`
+**3.9 Feature: Review session** `isaprep/Features/ReviewSession/`
 List of answered questions w/ correct/wrong badge, tap to expand → show explanation + which option user chose vs correct option.
 
-**3.10 New shared components** `examprep/Presentation/Components/`
+**3.10 New shared components** `isaprep/Presentation/Components/`
 
 - `QuestionCardView.swift` — text + optional `Image(vm.imageName)`
 - `AnswerOptionButton.swift` — enum-driven state: `idle | selected | correct | incorrect | disabled`. Colors: green BG on correct, red on incorrect, subtle border on idle
@@ -739,7 +739,7 @@ List of answered questions w/ correct/wrong badge, tap to expand → show explan
 - `CategoryProgressRow.swift` — icon + name + bar + avg score
 - `LicenseButton.swift` — large rounded button w/ icon + title + chevron
 
-**3.11 Tests** `examprepTests/Features/QuizSession/`
+**3.11 Tests** `isaprepTests/Features/QuizSession/`
 - `QuizSessionViewModelTests.swift`:
   - Scoring: 18/20 correct → 0.9 score
   - Timer accumulates correctly
@@ -778,7 +778,7 @@ case examSimulator(config: QuizConfig)
 case statsDashboard
 ```
 
-**4.2 Feature: Learn level list** `examprep/Features/LearnMode/`
+**4.2 Feature: Learn level list** `isaprep/Features/LearnMode/`
 
 Algorithm: split category questions into levels of N=10. Unlock level N+1 when level N has `mastered` ratio ≥ 0.8.
 
@@ -814,11 +814,11 @@ func next() {
 }
 ```
 
-**4.4 Weak questions mode** `examprep/Features/WeakQuestions/`
+**4.4 Weak questions mode** `isaprep/Features/WeakQuestions/`
 
 `WeakQuestionsView.swift` → `QuizSession` w/ `SessionKind.weak`. Questions fetched via `statsRepo.weakQuestionIds(limit: 20)`. UI tint = orange. Header label = "Strengthen skills — Weak Questions".
 
-**4.5 Exam simulator** `examprep/Features/ExamSimulator/`
+**4.5 Exam simulator** `isaprep/Features/ExamSimulator/`
 
 `ExamSimulatorIntroView.swift`: shows spec summary ("46 questions • 40 min • 83% to pass"), start button. Pulls from `contentRepo.examSpec(...)`.
 
@@ -834,7 +834,7 @@ var showsExplanationOnReveal: Bool { config.kind != .simulator }
 var allowsSkip: Bool { config.kind != .simulator }
 ```
 
-**4.6 Feature: Stats dashboard** `examprep/Features/Stats/`
+**4.6 Feature: Stats dashboard** `isaprep/Features/Stats/`
 
 Tab replaces placeholder "Progress" tab.
 
@@ -872,7 +872,7 @@ ScrollView {
 ```
 Simple, explainable. Keep in repo, unit-tested.
 
-**4.8 Tests** `examprepTests/Features/`
+**4.8 Tests** `isaprepTests/Features/`
 - `LearnLevelUnlockTests.swift` — seed mastered ratios, assert unlock rules
 - `ExamSimulatorTests.swift` — verify timer auto-finish, no-skip, no-explain gating
 - `PassingProbabilityTests.swift` — several scenarios
@@ -902,7 +902,7 @@ case bookmarks
 case aiTutor(questionId: Int?)
 ```
 
-**5.2 Feature: Cheat sheets** `examprep/Features/CheatSheet/`
+**5.2 Feature: Cheat sheets** `isaprep/Features/CheatSheet/`
 
 `CheatSheetListView.swift`:
 ```swift
@@ -929,7 +929,7 @@ ScrollView {
 
 Dep: add `MarkdownUI` (SPM: `https://github.com/gonzalezreal/swift-markdown-ui`) or render via `AttributedString(markdown:)` for simpler needs.
 
-**5.3 Feature: Handbook** `examprep/Features/Handbook/`
+**5.3 Feature: Handbook** `isaprep/Features/Handbook/`
 
 `HandbookView.swift`:
 ```swift
@@ -945,9 +945,9 @@ if let pdfName = vm.handbook.pdfName,
 
 `PDFKitView.swift` — UIViewRepresentable wrapping `PDFView`.
 
-Handbook PDFs live in `examprep/Resources/Handbooks/<state>_<license>.pdf`. Pulled lazily by filename from DTO.
+Handbook PDFs live in `isaprep/Resources/Handbooks/<state>_<license>.pdf`. Pulled lazily by filename from DTO.
 
-**5.4 Feature: Exam-date picker** `examprep/Features/ExamDatePicker/`
+**5.4 Feature: Exam-date picker** `isaprep/Features/ExamDatePicker/`
 
 `ExamDatePickerView.swift`:
 ```swift
@@ -988,7 +988,7 @@ func scheduleReminder() {
 
 Add `UNUserNotificationCenter.current().delegate = self` in `AppDelegate` to handle foreground presentation.
 
-**5.5 Feature: Bookmarks** `examprep/Features/Bookmarks/`
+**5.5 Feature: Bookmarks** `isaprep/Features/Bookmarks/`
 
 `BookmarksView.swift`:
 ```swift
@@ -1009,7 +1009,7 @@ List {
 }
 ```
 
-**5.6 Feature: AI Tutor (optional, pro-only)** `examprep/Features/AITutor/`
+**5.6 Feature: AI Tutor (optional, pro-only)** `isaprep/Features/AITutor/`
 
 Gate: `appState.isProUser`, else paywall.
 
@@ -1046,7 +1046,7 @@ Rate limit: ≤ 10 requests per user per day (free trial for pro), unlimited for
 
 **If time-boxed, skip AI Tutor — ship in v1.1.**
 
-**5.7 Settings additions** `examprep/Features/Settings/`
+**5.7 Settings additions** `isaprep/Features/Settings/`
 Add rows:
 - License — shows current, tap → `.licensePicker`
 - State — tap → `.statePicker`
@@ -1078,7 +1078,7 @@ Rebuild onboarding around exam-prep funnel, polish Home, scaffold i18n, wire ful
 
 ### Step-by-step
 
-**6.1 Onboarding rebuild** `examprep/Features/OnboardingFlow/`
+**6.1 Onboarding rebuild** `isaprep/Features/OnboardingFlow/`
 
 New step list (in order):
 1. `OnboardingWelcomeView` — existing, update copy + illustration ("Pass your DMV exam — first try")
@@ -1101,7 +1101,7 @@ enum OnboardingStep: Int, CaseIterable {
 
 Persist completion via `UserRepository.markOnboardingComplete()`. `RootView` checks this flag to skip onboarding on relaunch.
 
-**6.2 Home refinement** `examprep/Features/Home/HomeView.swift`
+**6.2 Home refinement** `isaprep/Features/Home/HomeView.swift`
 
 Final layout (mirrors CDL-Pass "Home" screen):
 ```swift
@@ -1129,7 +1129,7 @@ ScrollView {
 .refreshable { await vm.refresh() }
 ```
 
-**6.3 Localization** `examprep/Presentation/Resources/`
+**6.3 Localization** `isaprep/Presentation/Resources/`
 
 Add `Localizable.xcstrings` (new iOS 17 catalog) with:
 - `en.lproj/` — primary, fill all UI strings
@@ -1145,7 +1145,7 @@ Picker("Language", selection: $vm.preferredLang) {
 }
 ```
 
-**6.4 Analytics funnel** `examprep/Data/Services/PostHogAnalyticsService.swift`
+**6.4 Analytics funnel** `isaprep/Data/Services/PostHogAnalyticsService.swift`
 
 Wire events (call sites):
 - `.onboardingStarted` in `OnboardingFlowView.onAppear`
@@ -1168,7 +1168,7 @@ PostHog dashboard: build funnel `onboardingStarted → licenseSelected → state
 Verify `Inject` still works in new feature files. Add `@ObservedObject private var injectObserver = Inject.observer` + `.enableInjection()` to key views per existing pattern.
 
 **6.7 Tests**
-- End-to-end UI test (`examprepUITests/`): fresh install → onboarding → license → state → paywall → skip → take one quiz → see result → open cheat sheets → close
+- End-to-end UI test (`isaprepUITests/`): fresh install → onboarding → license → state → paywall → skip → take one quiz → see result → open cheat sheets → close
 - Snapshot tests for Home, QuizSession, QuizResult in light/dark mode
 
 ### Verify
@@ -1193,30 +1193,30 @@ Copy this plan file to `tasks/CLEANUP_AND_FEATURES_PLAN.md` in the repo so it's 
 ## Critical files / paths
 
 **Delete (Phase 1)**
-- `examprep/Features/{CameraCapture,Scanner,Collection,Grading,Watchlist,Detection,Search}/`
-- `examprep/Domain/Models/{CardRecord,CardCollection,GradeRecord,ScanRecord,WatchlistItem,CardAPIModels,GradingAPIModels,DetectionResult}.swift`
-- `examprep/Domain/Enums/TCGType.swift`
-- `examprep/Data/Services/{CardIdentifierService,GradingService,OpenAIProxiedService,WatchlistPriceService}.swift`
-- `examprep/Domain/Protocols/{CardIdentifierServiceProtocol,GradingServiceProtocol}.swift`
-- `examprep/Presentation/Components/PriceChartView.swift`
+- `isaprep/Features/{CameraCapture,Scanner,Collection,Grading,Watchlist,Detection,Search}/`
+- `isaprep/Domain/Models/{CardRecord,CardCollection,GradeRecord,ScanRecord,WatchlistItem,CardAPIModels,GradingAPIModels,DetectionResult}.swift`
+- `isaprep/Domain/Enums/TCGType.swift`
+- `isaprep/Data/Services/{CardIdentifierService,GradingService,OpenAIProxiedService,WatchlistPriceService}.swift`
+- `isaprep/Domain/Protocols/{CardIdentifierServiceProtocol,GradingServiceProtocol}.swift`
+- `isaprep/Presentation/Components/PriceChartView.swift`
 
 **Refactor**
-- `examprep/Constants.swift` — rebrand
-- `examprep/Core/Navigation/Router.swift` — new Route enum
-- `examprep/Application/AppMain.swift` — drop TCG models, add GRDB bootstrap + content DB copy
-- `examprep/Application/AppState.swift` — new tab enum
-- `examprep/Core/DI/DIContainer.swift` — register `ContentRepository`, `UserProgressRepository`, `StatsRepository`
-- `examprep/Features/OnboardingFlow/OnboardingFlowView.swift` — trim + add license/state/exam-date steps
-- `examprep/Application/RootView.swift` — new tab set
-- `examprep/Domain/Enums/AnalyticsEvent.swift` — new events
+- `isaprep/Constants.swift` — rebrand
+- `isaprep/Core/Navigation/Router.swift` — new Route enum
+- `isaprep/Application/AppMain.swift` — drop TCG models, add GRDB bootstrap + content DB copy
+- `isaprep/Application/AppState.swift` — new tab enum
+- `isaprep/Core/DI/DIContainer.swift` — register `ContentRepository`, `UserProgressRepository`, `StatsRepository`
+- `isaprep/Features/OnboardingFlow/OnboardingFlowView.swift` — trim + add license/state/exam-date steps
+- `isaprep/Application/RootView.swift` — new tab set
+- `isaprep/Domain/Enums/AnalyticsEvent.swift` — new events
 
 **Add**
-- `examprep/Data/DB/GRDBContentDatabase.swift`
-- `examprep/Data/Repositories/{ContentRepository,UserProgressRepository,StatsRepository}.swift`
-- `examprep/Domain/Models/{UserExamProfile,QuestionAttempt,PracticeSession,SessionAnswer,BookmarkedQuestion,StudyStreak}.swift`
-- `examprep/Features/{LicenseSelect,StateSelect,CategoryList,PracticeTestList,QuizSession,QuizResult,LearnSession,ExamSimulator,CheatSheet,Handbook,Bookmarks,Stats,AITutor}/`
-- `examprep/Presentation/Components/{QuestionCardView,AnswerOptionButton,ScoreGaugeView,ProgressRingView,CountdownView}.swift`
-- `examprep/Resources/exam_content.sqlite`
+- `isaprep/Data/DB/GRDBContentDatabase.swift`
+- `isaprep/Data/Repositories/{ContentRepository,UserProgressRepository,StatsRepository}.swift`
+- `isaprep/Domain/Models/{UserExamProfile,QuestionAttempt,PracticeSession,SessionAnswer,BookmarkedQuestion,StudyStreak}.swift`
+- `isaprep/Features/{LicenseSelect,StateSelect,CategoryList,PracticeTestList,QuizSession,QuizResult,LearnSession,ExamSimulator,CheatSheet,Handbook,Bookmarks,Stats,AITutor}/`
+- `isaprep/Presentation/Components/{QuestionCardView,AnswerOptionButton,ScoreGaugeView,ProgressRingView,CountdownView}.swift`
+- `isaprep/Resources/exam_content.sqlite`
 - `tools/seed/` — schema DDL + Python/Node seed script + sample CSV
 
 ---

@@ -21,7 +21,7 @@ Full plan: `tasks/CLEANUP_AND_FEATURES_PLAN.md`
 - [x] Deleted services: `CardIdentifierService`, `GradingService`, `OpenAIService`, `OpenAIProxiedService`, `WatchlistPriceService`, `CSVService`
 - [x] Deleted UI: `PriceChartView`, `HighlightTabBar`, `ImportExportView`, `AboutAuthorView`, `HomeViewModel`
 - [x] Deleted onboarding step files: Correction, BulkScan, Portfolio, Grading, Watchlist, MultiGame, ExportImport, CameraPermission, Features, Components/CameraView
-- [x] Cleaned `examprep.xcodeproj/project.pbxproj` via `scripts/clean_pbxproj.py` (67 file refs + 195 build refs stripped)
+- [x] Cleaned `isaprep.xcodeproj/project.pbxproj` via `scripts/clean_pbxproj.py` (67 file refs + 195 build refs stripped)
 - [x] Added `Color(hex: Int)` overload in `OnboardingFlowView.swift` (Theme.swift used Int form)
 - [x] `xcodebuild` — **BUILD SUCCEEDED**
 

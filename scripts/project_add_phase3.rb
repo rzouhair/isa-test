@@ -1,38 +1,38 @@
 #!/usr/bin/env ruby
-# Registers Phase 3 files into examprep.xcodeproj.
+# Registers Phase 3 files into isaprep.xcodeproj.
 # Idempotent — safe to re-run.
 require 'xcodeproj'
 
-PROJECT_PATH = File.expand_path('../examprep.xcodeproj', __dir__)
+PROJECT_PATH = File.expand_path('../isaprep.xcodeproj', __dir__)
 REPO_ROOT = File.expand_path('..', __dir__)
 
 NEW_SWIFT_FILES = [
-  'examprep/Presentation/Components/CountdownView.swift',
-  'examprep/Presentation/Components/ScoreGaugeView.swift',
-  'examprep/Presentation/Components/ProgressRingView.swift',
-  'examprep/Presentation/Components/AnswerOptionButton.swift',
-  'examprep/Presentation/Components/QuestionCardView.swift',
-  'examprep/Presentation/Components/CategoryProgressRow.swift',
-  'examprep/Features/LicenseSelect/LicenseSelectView.swift',
-  'examprep/Features/StateSelect/StateSelectView.swift',
-  'examprep/Features/CategoryList/CategoryListView.swift',
-  'examprep/Features/PracticeTestList/PracticeTestListView.swift',
-  'examprep/Features/QuizSession/QuizSessionView.swift',
-  'examprep/Features/QuizSession/QuizSessionViewModel.swift',
-  'examprep/Features/QuizResult/QuizResultView.swift',
-  'examprep/Features/ReviewSession/ReviewSessionView.swift',
-  'examprep/Features/Home/HomeViewModel.swift',
+  'isaprep/Presentation/Components/CountdownView.swift',
+  'isaprep/Presentation/Components/ScoreGaugeView.swift',
+  'isaprep/Presentation/Components/ProgressRingView.swift',
+  'isaprep/Presentation/Components/AnswerOptionButton.swift',
+  'isaprep/Presentation/Components/QuestionCardView.swift',
+  'isaprep/Presentation/Components/CategoryProgressRow.swift',
+  'isaprep/Features/LicenseSelect/LicenseSelectView.swift',
+  'isaprep/Features/StateSelect/StateSelectView.swift',
+  'isaprep/Features/CategoryList/CategoryListView.swift',
+  'isaprep/Features/PracticeTestList/PracticeTestListView.swift',
+  'isaprep/Features/QuizSession/QuizSessionView.swift',
+  'isaprep/Features/QuizSession/QuizSessionViewModel.swift',
+  'isaprep/Features/QuizResult/QuizResultView.swift',
+  'isaprep/Features/ReviewSession/ReviewSessionView.swift',
+  'isaprep/Features/Home/HomeViewModel.swift',
 ].freeze
 
 NEW_TEST_FILES = [
-  'examprepTests/QuizSessionViewModelTests.swift',
+  'isaprepTests/QuizSessionViewModelTests.swift',
 ].freeze
 
 project = Xcodeproj::Project.open(PROJECT_PATH)
-app_target = project.targets.find { |t| t.name == 'examprep' } or abort 'no examprep target'
-test_target = project.targets.find { |t| t.name == 'examprepTests' } or abort 'no examprepTests target'
-main_group = project.main_group['examprep'] || project.main_group
-tests_group = project.main_group['examprepTests'] || project.main_group
+app_target = project.targets.find { |t| t.name == 'isaprep' } or abort 'no isaprep target'
+test_target = project.targets.find { |t| t.name == 'isaprepTests' } or abort 'no isaprepTests target'
+main_group = project.main_group['isaprep'] || project.main_group
+tests_group = project.main_group['isaprepTests'] || project.main_group
 
 def add_source(project, rel, group, target)
   abs = File.join(REPO_ROOT, rel)

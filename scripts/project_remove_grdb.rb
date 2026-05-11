@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
-# Removes the GRDB.swift SPM package + product dependencies from examprep.xcodeproj.
+# Removes the GRDB.swift SPM package + product dependencies from isaprep.xcodeproj.
 # Used after we switched Phase 2 to raw sqlite3 (no external dep) because the
 # GRDB package's submodule clone was unreliable in this environment.
 require 'xcodeproj'
 
-PROJECT_PATH = File.expand_path('../examprep.xcodeproj', __dir__)
+PROJECT_PATH = File.expand_path('../isaprep.xcodeproj', __dir__)
 GRDB_URL = 'https://github.com/groue/GRDB.swift'
 
 project = Xcodeproj::Project.open(PROJECT_PATH)

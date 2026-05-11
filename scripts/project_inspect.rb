@@ -2,7 +2,7 @@
 # Diagnostic: print build-settings for test targets.
 require 'xcodeproj'
 
-PROJECT_PATH = File.expand_path('../examprep.xcodeproj', __dir__)
+PROJECT_PATH = File.expand_path('../isaprep.xcodeproj', __dir__)
 project = Xcodeproj::Project.open(PROJECT_PATH)
 
 keys = %w[TEST_HOST BUNDLE_LOADER TEST_TARGET_NAME PRODUCT_NAME TARGETED_DEVICE_FAMILY MACH_O_TYPE PRODUCT_BUNDLE_IDENTIFIER]

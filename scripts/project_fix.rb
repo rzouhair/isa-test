@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
-# Repairs post-rename residue in examprep.xcodeproj:
-#   - removes examprep/Info.plist from test targets' Copy-Resources phase
-#   - sets PRODUCT_NAME to examprep across all configurations
+# Repairs post-rename residue in isaprep.xcodeproj:
+#   - removes isaprep/Info.plist from test targets' Copy-Resources phase
+#   - sets PRODUCT_NAME to isaprep across all configurations
 require 'xcodeproj'
 
-PROJECT_PATH = File.expand_path('../examprep.xcodeproj', __dir__)
+PROJECT_PATH = File.expand_path('../isaprep.xcodeproj', __dir__)
 
 project = Xcodeproj::Project.open(PROJECT_PATH)
 
@@ -21,13 +21,13 @@ project.targets.each do |target|
   end
 end
 
-# 2. Force PRODUCT_NAME = examprep on the main app target.
-app_target = project.targets.find { |t| t.name == 'examprep' }
+# 2. Force PRODUCT_NAME = isaprep on the main app target.
+app_target = project.targets.find { |t| t.name == 'isaprep' }
 app_target&.build_configurations&.each do |cfg|
   old = cfg.build_settings['PRODUCT_NAME']
-  if old != 'examprep'
-    cfg.build_settings['PRODUCT_NAME'] = 'examprep'
-    puts "~ PRODUCT_NAME: #{old.inspect} -> \"examprep\" (#{cfg.name})"
+  if old != 'isaprep'
+    cfg.build_settings['PRODUCT_NAME'] = 'isaprep'
+    puts "~ PRODUCT_NAME: #{old.inspect} -> \"isaprep\" (#{cfg.name})"
   end
 end
 
@@ -38,17 +38,17 @@ project.targets.each do |target|
     %w[TEST_HOST BUNDLE_LOADER].each do |key|
       value = cfg.build_settings[key]
       next unless value.is_a?(String) && value.include?('Poke')
-      fixed = value.gsub('Poke.app/Poke', 'examprep.app/examprep').gsub('Poke', 'examprep')
+      fixed = value.gsub('Poke.app/Poke', 'isaprep.app/isaprep').gsub('Poke', 'isaprep')
       cfg.build_settings[key] = fixed
       puts "~ #{key}: #{value} -> #{fixed} (#{target.name}/#{cfg.name})"
     end
 
-    # TEST_TARGET_NAME must point to the actual host target (examprep) so
+    # TEST_TARGET_NAME must point to the actual host target (isaprep) so
     # Xcode wires module + framework resolution correctly.
     current = cfg.build_settings['TEST_TARGET_NAME']
-    if current && current != 'examprep'
-      cfg.build_settings['TEST_TARGET_NAME'] = 'examprep'
-      puts "~ TEST_TARGET_NAME: #{current.inspect} -> \"examprep\" (#{target.name}/#{cfg.name})"
+    if current && current != 'isaprep'
+      cfg.build_settings['TEST_TARGET_NAME'] = 'isaprep'
+      puts "~ TEST_TARGET_NAME: #{current.inspect} -> \"isaprep\" (#{target.name}/#{cfg.name})"
     end
   end
 end

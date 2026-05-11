@@ -1,29 +1,29 @@
 #!/usr/bin/env ruby
-# Registers Phase 4 files into examprep.xcodeproj (Learn mode, Weak Qs,
+# Registers Phase 4 files into isaprep.xcodeproj (Learn mode, Weak Qs,
 # Exam simulator, Stats dashboard) and places them in the correct subgroup.
 # Idempotent.
 require 'xcodeproj'
 
-PROJECT_PATH = File.expand_path('../examprep.xcodeproj', __dir__)
+PROJECT_PATH = File.expand_path('../isaprep.xcodeproj', __dir__)
 REPO_ROOT = File.expand_path('..', __dir__)
 
 NEW_APP_FILES = [
-  'examprep/Features/LearnMode/LearnLevelService.swift',
-  'examprep/Features/LearnMode/LearnLevelListView.swift',
-  'examprep/Features/WeakQuestions/WeakQuestionsView.swift',
-  'examprep/Features/ExamSimulator/ExamSimulatorIntroView.swift',
-  'examprep/Features/Stats/StatsDashboardView.swift',
+  'isaprep/Features/LearnMode/LearnLevelService.swift',
+  'isaprep/Features/LearnMode/LearnLevelListView.swift',
+  'isaprep/Features/WeakQuestions/WeakQuestionsView.swift',
+  'isaprep/Features/ExamSimulator/ExamSimulatorIntroView.swift',
+  'isaprep/Features/Stats/StatsDashboardView.swift',
 ].freeze
 
 NEW_TEST_FILES = [
-  'examprepTests/LearnLevelServiceTests.swift',
+  'isaprepTests/LearnLevelServiceTests.swift',
 ].freeze
 
 project = Xcodeproj::Project.open(PROJECT_PATH)
-app_target = project.targets.find { |t| t.name == 'examprep' } or abort 'examprep target missing'
-test_target = project.targets.find { |t| t.name == 'examprepTests' } or abort 'examprepTests target missing'
-examprep_group = project.main_group['examprep'] or abort 'examprep group missing'
-tests_group = project.main_group['examprepTests'] || project.main_group
+app_target = project.targets.find { |t| t.name == 'isaprep' } or abort 'isaprep target missing'
+test_target = project.targets.find { |t| t.name == 'isaprepTests' } or abort 'isaprepTests target missing'
+isaprep_group = project.main_group['isaprep'] or abort 'isaprep group missing'
+tests_group = project.main_group['isaprepTests'] || project.main_group
 
 def find_or_create_group(root, components)
   components.inject(root) do |grp, name|
@@ -37,7 +37,7 @@ def add(project, rel, root_group, target, strip_leading:)
   abort "missing: #{abs}" unless File.exist?(abs)
 
   components = rel.split('/')
-  components.shift if strip_leading         # drop 'examprep' or 'examprepTests'
+  components.shift if strip_leading         # drop 'isaprep' or 'isaprepTests'
   components.pop                            # drop filename
   target_group = components.empty? ? root_group : find_or_create_group(root_group, components)
 
@@ -64,7 +64,7 @@ def add(project, rel, root_group, target, strip_leading:)
   end
 end
 
-NEW_APP_FILES.each  { |rel| add(project, rel, examprep_group, app_target, strip_leading: true) }
+NEW_APP_FILES.each  { |rel| add(project, rel, isaprep_group, app_target, strip_leading: true) }
 NEW_TEST_FILES.each { |rel| add(project, rel, tests_group,   test_target, strip_leading: true) }
 
 project.save

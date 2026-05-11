@@ -14,7 +14,7 @@ import sys
 from pathlib import Path
 
 def main(root: Path) -> int:
-    project_dir = root / "examprep.xcodeproj"
+    project_dir = root / "isaprep.xcodeproj"
     pbxproj = project_dir / "project.pbxproj"
     if not pbxproj.exists():
         print(f"pbxproj not found: {pbxproj}", file=sys.stderr)
@@ -23,14 +23,14 @@ def main(root: Path) -> int:
     text = pbxproj.read_text()
 
     # 1. Find every PBXFileReference with a `path = <something>.swift;` value
-    #    and determine whether the file exists on disk (searching under examprep/ recursively).
+    #    and determine whether the file exists on disk (searching under isaprep/ recursively).
     fileref_pattern = re.compile(
         r'^\s*([0-9A-F]{24})\s*/\*[^*]*\*/\s*=\s*\{isa = PBXFileReference;[^}]*?path\s*=\s*"?([^";]+)"?;[^}]*?\};',
         re.MULTILINE,
     )
 
     # Build set of existing filenames under source roots (app + tests).
-    source_roots = [root / "examprep", root / "examprepTests", root / "examprepUITests"]
+    source_roots = [root / "isaprep", root / "isaprepTests", root / "isaprepUITests"]
     existing_basenames = set()
     for src_root in source_roots:
         if not src_root.exists():
@@ -43,7 +43,7 @@ def main(root: Path) -> int:
     for match in fileref_pattern.finditer(text):
         uuid, path_value = match.group(1), match.group(2)
         basename = os.path.basename(path_value)
-        # Only prune Swift sources (other file types might legitimately live outside examprep/).
+        # Only prune Swift sources (other file types might legitimately live outside isaprep/).
         if basename.endswith(".swift") and basename not in existing_basenames:
             missing_uuids.append((uuid, basename))
 
